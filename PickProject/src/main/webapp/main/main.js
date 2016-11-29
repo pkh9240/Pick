@@ -119,5 +119,13 @@ $(function() {
 			height : "50%"
 		});
 	});
+	$("#adminPage_btn").on("click", function() {
+		$.colorbox({
+			iframe : "true",
+			href : "../adminPage/adminPage.html",
+			width : "85%",
+			height : "85%"
+		});
+	});
 
 });
