@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <html lang="en">
 
+
 <head>
     <title>PICK REGISTRATION</title>
     <meta charset="utf-8">
