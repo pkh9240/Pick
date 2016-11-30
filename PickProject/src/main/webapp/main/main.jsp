@@ -118,8 +118,8 @@
             <div id="main" role="main">
                 <ul id="tiles">
                     <!-- These are our grid blocks -->
-                    <li id="pick10000">
-                        <!--íëì ì»¨íì¸  ìì-->
+                     <li id="pick10000">
+                        <!--하나의 컨텐츠 시작-->
                         <div class='post-module'>
                             <div class='thumbnail'>
                                 <div class='date'>
@@ -127,22 +127,26 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card1.jpg'> </div>
                             <div class='post-content'>
-                                <div class='category'>Computer</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>HOME</div>
+                                <h1 class='title'>어떤게 더 예뻐요?!</h1>
+                                <h2 class='sub_title'>인테리어 바꾸려는데 추천 해 주세요!</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a>
+                                </p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
-                        <!--íëì ì»¨íì¸  ìì-->
+                        <!--하나의 컨텐츠 시작-->
                     </li>
-                    <li id="pick10001">
-                        <!--íëì ì»¨íì¸  ìì-->
+                     <li id="pick10001">
+                        <!--하나의 컨텐츠 시작-->
                         <div class='post-module'>
                             <div class='thumbnail'>
                                 <div class='date'>
@@ -150,21 +154,50 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card2.jpg'> </div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>STUDY</div>
+                                <h1 class='title'>토익책 추천</h1>
+                                <h2 class='sub_title'>토익을 처음 준비해 보는데 어떤 책이 좋아요?!</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
-                        <!--íëì ì»¨íì¸  ìì-->
+                        <!--하나의 컨텐츠 시작-->
                     </li>
                              <li onclick="location.href='single-page.html';">
+        
+                        <div class='post-module'>
+                            <div class='thumbnail'>
+                                <div class='date'>
+                                    <div class='day'>27</div>
+                                    <div class='month'>Mar</div>
+                                </div> <img src='../image/card2.jpg'></div>
+                            <div class='post-content'>
+                                <div class='category'>study</div>
+                                <h1 class='title'>토익책 추천</h1>
+                                <h2 class='sub_title'>토익을 처음 준비해 보는데 어떤 책이 좋아요?!</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
+                                <div class='post-meta'> <span class='timestamp'>
+                                    <i class='fa fa-clock-o'></i> 6 mins ago
+                                 </span> <span class='comments'>
+                                    <i class='fa fa-comments'></i>
+                                        <a href='#'>204 PICK</a>
+                              </span> </div>
+                            </div>
+                        </div>
+      
+                    </li>
+                     <li onclick="location.href='single-page.html';">
                       
                         <div class='post-module'>
                             <div class='thumbnail'>
@@ -173,15 +206,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card3.jpg'> </div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>Ent</div>
+                                <h1 class='title'>재미있는 공연 추천!</h1>
+                                <h2 class='sub_title'>친구들이랑 공연보러 가려는데 요즘 뭐가 재밌어요?</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -196,15 +232,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card4.jpg'> </div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>food</div>
+                                <h1 class='title'>합정역 맛집 추천요!</h1>
+                                <h2 class='sub_title'>이따 합정에 점심 약속 있는데 맛집 좀 추천요!</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -219,15 +258,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card5.jpg'> </div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>car</div>
+                                <h1 class='title'>자동차 추천!</h1>
+                                <h2 class='sub_title'>차 뽑으려는데 추천해 주세요.</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -238,19 +280,22 @@
                         <div class='post-module'>
                             <div class='thumbnail'>
                                 <div class='date'>
-                                    <div class='day'>26</div>
+                                    <div class='day'>27</div>
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card6.jpg'></div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>star</div>
+                                <h1 class='title'>누가 잘생겼나요?</h1>
+                                <h2 class='sub_title'>누가 제일 잘생겼는지 투표해 주세요.</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -265,15 +310,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card7.jpg'> </div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>travel</div>
+                                <h1 class='title'>여름 휴양지 추천</h1>
+                                <h2 class='sub_title'>여름휴가 계획 중인데 추천해 주세요!</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -288,15 +336,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card8.jpg'></div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>shopping</div>
+                                <h1 class='title'>생일선물 추천</h1>
+                                <h2 class='sub_title'>친구 생일선물로 운동화를 고르려는데 추천해 주세요</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -312,15 +363,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card6.jpg'></div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>star</div>
+                                <h1 class='title'>누가 잘생겼나요?</h1>
+                                <h2 class='sub_title'>누가 제일 잘생겼는지 투표해 주세요.</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -335,15 +389,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card1.jpg'></div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>home</div>
+                                <h1 class='title'>어떤게 더 예뻐요?</h1>
+                                <h2 class='sub_title'>인테리어 바꾸려는데 추천해 주세요!</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -358,15 +415,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card2.jpg'></div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>study</div>
+                                <h1 class='title'>토익책 추천</h1>
+                                <h2 class='sub_title'>토익을 처음 준비해 보는데 어떤 책이 좋아요?!</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>
@@ -381,15 +441,18 @@
                                     <div class='month'>Mar</div>
                                 </div> <img src='../image/card3.jpg'> </div>
                             <div class='post-content'>
-                                <div class='category'>Photos</div>
-                                <h1 class='title'>City Lights in New York</h1>
-                                <h2 class='sub_title'>The city that never sleeps.</h2>
-                                <p class='description'>New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                                <div class='category'>ent</div>
+                                <h1 class='title'>재미있는 공연 추천!</h1>
+                                <h2 class='sub_title'>친구들이랑 공연보러 가려는데 요즘 뭐가 재미있어요?</h2>
+                                <p class='description'><a class="detailsub">PICK Detail</a><br/>
+                                    
+                                    <a class="detailcon">
+                                        AGE : 10s, 20s, 30s<br/>GENDER : Female</a></p>
                                 <div class='post-meta'> <span class='timestamp'>
                                     <i class='fa fa-clock-o'></i> 6 mins ago
                                  </span> <span class='comments'>
                                     <i class='fa fa-comments'></i>
-                                        <a href='#'>39 comments</a>
+                                        <a href='#'>204 PICK</a>
                               </span> </div>
                             </div>
                         </div>

@@ -45,31 +45,47 @@ rect:hover {  fill:#D9F3F2; }
 /**/
 /* 커스텀*/
 
+
+
+
+
+
+
+#category{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 90px;
+}
+
 #title{
    
-    padding-top: 
-    height: 60px;
-    position:static;
+
+    position:absolute;
+    left: 530px;
+    top:70px;
     font-size: 2rem;
     font-weight: 700;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
     font-family: 'Nanum Gothic', sans-serif;
   
     padding-top: 10px;
     padding-bottom: 10px;
     color: #333333;
-    
+    letter-spacing: 5px;
     
 }
 #content{
-    
+    letter-spacing: 2px;
      padding-top: 10px;
 
     height: 60px;
-    position:static;
-    font-size: 1rem;
-    font-weight: 200;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
+    position:absolute;
+    left: 505px;
+    top:150px;
+   
+    font-size: 1.2rem;
+    font-weight: 500;
+/*    text-shadow: 2px 2px 3px rgba(0,0,0,0.4);*/
     font-family: 'Nanum Gothic', sans-serif;
 
     padding-top: 10px;
@@ -88,34 +104,81 @@ body{
 	width: 600px;
 	margin: auto;
 }
-
-
+#age_pie{
+    
+    position: absolute;
+        left: 630px;
+    top: 240px;
+    
+}
+#age_legend{
+    
+    position: absolute !important;
+    top:245px !important;
+    left: 855px; !importnat;
+    
+}
+#gender_pie{
+    
+    position: absolute !important;
+    left: 630px !important;
+    top: 480px !important;
+    
+    
+}
 #gender_legend{
+    
+    position: absolute !important;
+    top:550px !important;
+    left: 855px; !importnat;
+
 	margin-bottom: 76px;
 }
+
+
+#histogram{
+    
+    position: absolute !important;
+    top:254px !important;
+    left: 180px; !important;
+    
+}
+
+
+
+
 table{
     width: auto !important;
 }
 
 /**/
 /*comment  */
-	
-
+#comment1{
+  position: absolute;
+    top:404px !important;
+    left: 110px; !important;
+    
+}	
+#commentsend{
+    position: absolute !important;
+    top: 270px !important;
+    left: 595px !important;
+    padding-left: 220px !important;
+    color: #333333 !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    letter-spacing: 1px !important;
+}
 .detailBox {
-    width:400px;
-    border:1px solid #bbb;
-    margin-top: 50px;
-    margin-left: 150px
+    width:900px;
+/*    border:1px solid #bbb;*/
+    margin-top: 300px;
+    margin-left: 60px
 }
-.titleBox {
-    background-color:#fdfdfd;
-    padding:10px;
+#commenttop{
+    margin-top: 300px !important;
 }
-.titleBox label{
-  color:#444;
-  margin:0;
-  display:inline-block;
-}
+
 
 .commentBox {
     padding:10px;
@@ -167,9 +230,23 @@ table{
     font-size:11px;
 }
 .actionBox {
-    border-top:1px dotted #bbb;
+/*    border-top:1px dotted #bbb;*/
     padding:10px;
 }
+.tick text{
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+}
+#save{
+    font-size: 1.3rem;
+    font-weight: 500 !important;
+    letter-spacing: 1px;
+    color: #333333 !important;
+    position: absolute !important;
+    left: 980px !important;
+    top:50px !important;
+}
+
 
 /*  */
 

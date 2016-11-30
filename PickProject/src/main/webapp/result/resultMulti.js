@@ -1,7 +1,7 @@
 function dashboard(id,id1, fData,fData1){
-    var barColor = '#1BCFC9';
-    function segColor(c){ return {male:"turquoise", female:"crimson"}[c]; }
-    function segColor1(c){ return {s10:"cornflowerblue", s20:"olivedrab",s30:"orange",s40:"tomato",s50:"crimson",s60:"purple"}[c]; }
+    var barColor = '#b3c9d6';
+    function segColor(c){ return {male:"#81ae9c", female:"#fb9b99"}[c]; }
+    function segColor1(c){ return {s10:"#f54763", s20:"#fb9b99",s30:"#ffceae",s40:"#c8c7a9",s50:"#81ae9c",s60:"#b3c9d6"}[c]; }
     
     // compute total for each state.
     fData.forEach(function(d){d.total=d.freq.male+d.freq.female;});
@@ -10,12 +10,12 @@ function dashboard(id,id1, fData,fData1){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 500 - hGDim.l - hGDim.r, 
-        hGDim.h = 300 - hGDim.t - hGDim.b;
+        hGDim.w = 350 - hGDim.l - hGDim.r, 
+        hGDim.h = 400 - hGDim.t - hGDim.b;
             
         //create svg for histogram.
         var hGsvg = d3.select(id).append("svg")
-            .attr("width", hGDim.w + hGDim.l + hGDim.r)
+            .attr("width", hGDim.w + hGDim.l + hGDim.r).attr("id","histogram")
             .attr("height", hGDim.h + hGDim.t + hGDim.b).append("g")
             .attr("transform", "translate(" + hGDim.l + "," + hGDim.t + ")");
 
@@ -97,13 +97,14 @@ function dashboard(id,id1, fData,fData1){
         return hG;
     }
     
+    
     // function to handle pieChart.
     function pieChart(pD){
         var pC ={},    pieDim ={w:200, h: 200};
         pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
                 
         // create svg for pie chart.
-        var piesvg = d3.select(id).append("svg").attr("class","pieChart")
+        var piesvg = d3.select(id).append("svg").attr("class","pieChart").attr("id","gender_pie")
             .attr("width", pieDim.w).attr("height", pieDim.h).append("g")
             .attr("transform", "translate("+pieDim.w/2+","+pieDim.h/2+")");
         
@@ -121,7 +122,7 @@ function dashboard(id,id1, fData,fData1){
 
         // create function to update pie-chart. This will be used by histogram.
         pC.update = function(nD){
-            piesvg.selectAll("path").data(pie(nD)).transition().duration(500)
+            piesvg.selectAll("path").data(pie(nD)).transition().duration(300)
                 .attrTween("d", arcTween);
         }        
         // Utility function to be called on mouseover a pie slice.
@@ -150,7 +151,7 @@ function dashboard(id,id1, fData,fData1){
         pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
                 
         // create svg for pie chart.
-        var piesvg = d3.select(id).append("svg").attr("class","pieChart")
+        var piesvg = d3.select(id).append("svg").attr("class","pieChart").attr("id","age_pie")
             .attr("width", pieDim.w).attr("height", pieDim.h).append("g")
             .attr("transform", "translate("+pieDim.w/2+","+pieDim.h/2+")");
         
@@ -204,8 +205,8 @@ function dashboard(id,id1, fData,fData1){
         var tr = legend.append("tbody").selectAll("tr").data(lD).enter().append("tr");
             
         // create the first column for each segment.
-        tr.append("td").append("svg").attr("width", '16').attr("height", '16').append("rect")
-            .attr("width", '16').attr("height", '16')
+        tr.append("td").append("svg").attr("width", '10').attr("height", '10').append("rect")
+            .attr("width", '10').attr("height", '10')
 			.attr("fill",function(d){ return segColor(d.type); });
             
         // create the second column for each segment.
