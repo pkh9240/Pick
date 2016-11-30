@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 					
+<mapper namespace="UserMapper">
+
+	
+	<resultMap type="user" id="userSelectMap">
+		<result property="userEmail" column="USER_MAIL" jdbcType="VARCHAR"/>
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+		<result property="userPassword" column="USER_PWD" jdbcType="VARCHAR"/>
+		<result property="userGender" column="USER_GEND" jdbcType="VARCHAR"/>
+		<result property="userAge" column="USER_AGE" jdbcType="VARCHAR"/>
+		<result property="userPhoto" column="USER_PHOT" jdbcType="VARCHAR"/>
+		<result property="userType" column="USER_TYPE" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="getUser" parameterType="string" resultMap="userSelectMap">
+		SELECT USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE
+		FROM USERS
+		WHERE USER_MAIL=#{value}
+	</select>
+
+	
+</mapper>

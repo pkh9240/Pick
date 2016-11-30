@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="interestView.css">
+    <link rel="stylesheet" href="../interest/interestView.css">
     <link rel="stylesheet" href="../fontello-51c93eec/css/close.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> </head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,15 +30,15 @@
             <div class="input-field col s12">
                 <select>
                     <option value="" disabled selected>Choose your gender</option>
-                    <option value="1">Man</option>
-                    <option value="2">Woman</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
                 </select>
                 <label>gender</label>
             </div>
             <div class="input-field col s12">
                 <select multiple>
                     <option value="" disabled selected>Choose your Interest</option>
-                    <option value="2" data-icon="../image/card6.jpg" class="circle">Computer</option>
+                    <option value="Computer" data-icon="../image/card6.jpg" class="circle">Computer</option>
                     <option value="3" data-icon="../image/card1.jpg" class="circle">Coding</option>
                     <option value="3" data-icon="../image/card2.jpg" class="circle">job</option>
                     <option value="1" data-icon="../image/card3.jpg" class="circle">Computer</option>
@@ -59,7 +62,7 @@
         <!---->
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-        <script src='interestView.js'></script>
+        <script src='../interest/interestView.js'></script>
     </div>
 </body>
 

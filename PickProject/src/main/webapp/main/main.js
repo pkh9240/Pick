@@ -68,7 +68,7 @@ $(function() {
 		$.colorbox({
 
 			iframe : "true",
-			href : "../pick/pick_one.html",
+			href : "../pick/pickOne.jsp",
 			width : "800px",
 			height : "900px"
 		});
@@ -78,7 +78,7 @@ $(function() {
 		$.colorbox({
 
 			iframe : "true",
-			href : "../pick/pick_multi.html",
+			href : "../pick/pickMulti.jsp",
 			width : "800px",
 			height : "900px"
 		});
@@ -93,7 +93,7 @@ $(function() {
 		$.colorbox({
 
 			iframe : "true",
-			href : "../voteRegistration/voteRegistration.html",
+			href : "../voteRegistration/voteRegistration.jsp",
 			width : "500px",
 			height : "900px",
 				scrolling: true
@@ -104,7 +104,7 @@ $(function() {
 	$("#myAccount_btn").on("click", function() {
 		$.colorbox({
 			iframe : "true",
-			href : "../account/accountView.html",
+			href : "../account/accountView.jsp",
 			width : "460px",
 			height : "900px",
 			scrolling: false
@@ -114,18 +114,24 @@ $(function() {
 	$("#myPick_btn").on("click", function() {
 		$.colorbox({
 			iframe : "true",
-			href : "../myPick/myPick.html",
+			href : "../myPick/myPick.jsp",
 			width : "50%",
 			height : "50%"
 		});
 	});
 	$("#adminPage_btn").on("click", function() {
+		
 		$.colorbox({
 			iframe : "true",
-			href : "../adminPage/adminPage.html",
+			href : "../adminPage/adminPage.jsp",
 			width : "85%",
 			height : "85%"
 		});
+	});
+	
+	/*로그아웃 버튼 */
+	$("#logout_btn").on("click", function() {
+		location.href="/user/logout";
 	});
 
 });

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 
 <head>
@@ -26,7 +27,7 @@
             </ul>
         </div>
         <div id="AdminPick" class="col s12">
-            <!--   여기부터 ADMIN PICK       -->
+            <!--   ì¬ê¸°ë¶í° ADMIN PICK       -->
             <div class="row">
                 <div id="admin" class="col s12">
                     <div class="card material-table">
@@ -65,7 +66,7 @@
                                     <td>Kevin</td>
                                     <td>53</td>
                                     <td>Culture</td>
-                                    <td>재미있는 전시회 추천해 주세요!</td>
+                                     <td>iMac vs SAMSUNG PC</td>
                                     <td>MULTI</td>
                                     <td>16.06.02</td>
                                     <td>16.12.31</td>
@@ -76,7 +77,7 @@
                                     <td>Lisa</td>
                                     <td>26</td>
                                     <td>Society</td>
-                                    <td>성과연봉제 도입</td>
+                                     <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.02.03</td>
                                     <td>16.12.13</td>
@@ -87,7 +88,7 @@
                                     <td>GD</td>
                                     <td>94</td>
                                     <td>IT</td>
-                                    <td>구글지도 반출 허용</td>
+                                      <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.03.01</td>
                                     <td>17.02.10</td>
@@ -109,7 +110,7 @@
                                     <td>Kevin</td>
                                     <td>84</td>
                                     <td>Culture</td>
-                                    <td>재미있는 전시회 추천해 주세요!</td>
+                                     <td>iMac vs SAMSUNG PC</td>
                                     <td>MULTI</td>
                                     <td>16.06.02</td>
                                     <td>16.12.31</td>
@@ -120,7 +121,7 @@
                                     <td>Lisa</td>
                                     <td>64</td>
                                     <td>Society</td>
-                                    <td>성과연봉제 도입</td>
+                                    <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.02.03</td>
                                     <td>16.12.13</td>
@@ -131,7 +132,7 @@
                                     <td>GD</td>
                                     <td>39</td>
                                     <td>IT</td>
-                                    <td>구글지도 반출 허용</td>
+                                      <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.03.01</td>
                                     <td>17.02.10</td>
@@ -153,7 +154,7 @@
                                     <td>Kevin</td>
                                     <td>18</td>
                                     <td>Culture</td>
-                                    <td>재미있는 전시회 추천해 주세요!</td>
+                                     <td>iMac vs SAMSUNG PC</td>
                                     <td>MULTI</td>
                                     <td>16.06.02</td>
                                     <td>16.12.31</td>
@@ -164,7 +165,7 @@
                                     <td>Lisa</td>
                                     <td>38</td>
                                     <td>Society</td>
-                                    <td>성과연봉제 도입</td>
+                               <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.02.03</td>
                                     <td>16.12.13</td>
@@ -175,7 +176,7 @@
                                     <td>GD</td>
                                     <td>34</td>
                                     <td>IT</td>
-                                    <td>구글지도 반출 허용</td>
+                                    <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.03.01</td>
                                     <td>17.02.10</td>
@@ -197,7 +198,7 @@
                                     <td>Kevin</td>
                                     <td>66</td>
                                     <td>Culture</td>
-                                    <td>재미있는 전시회 추천해 주세요!</td>
+                                   <td>iMac vs SAMSUNG PC</td>
                                     <td>MULTI</td>
                                     <td>16.06.02</td>
                                     <td>16.12.31</td>
@@ -208,7 +209,7 @@
                                     <td>Lisa</td>
                                     <td>29</td>
                                     <td>Society</td>
-                                    <td>성과연봉제 도입</td>
+                                    <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.02.03</td>
                                     <td>16.12.13</td>
@@ -219,7 +220,7 @@
                                     <td>GD</td>
                                     <td>49</td>
                                     <td>IT</td>
-                                    <td>구글지도 반출 허용</td>
+                                 <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.03.01</td>
                                     <td>17.02.10</td>
@@ -241,7 +242,7 @@
                                     <td>Kevin</td>
                                     <td>54</td>
                                     <td>Culture</td>
-                                    <td>재미있는 전시회 추천해 주세요!</td>
+                                      <td>iMac vs SAMSUNG PC</td>
                                     <td>MULTI</td>
                                     <td>16.06.02</td>
                                     <td>16.12.31</td>
@@ -252,7 +253,7 @@
                                     <td>Lisa</td>
                                     <td>25</td>
                                     <td>Society</td>
-                                    <td>성과연봉제 도입</td>
+                                      <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.02.03</td>
                                     <td>16.12.13</td>
@@ -263,7 +264,7 @@
                                     <td>GD</td>
                                     <td>27</td>
                                     <td>IT</td>
-                                    <td>구글지도 반출 허용</td>
+                                   <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.03.01</td>
                                     <td>17.02.10</td>
@@ -285,7 +286,7 @@
                                     <td>Kevin</td>
                                     <td>23</td>
                                     <td>Culture</td>
-                                    <td>재미있는 전시회 추천해 주세요!</td>
+                                       <td>iMac vs SAMSUNG PC</td>
                                     <td>MULTI</td>
                                     <td>16.06.02</td>
                                     <td>16.12.31</td>
@@ -296,7 +297,7 @@
                                     <td>Lisa</td>
                                     <td>17</td>
                                     <td>Society</td>
-                                    <td>성과연봉제 도입</td>
+                                     <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.02.03</td>
                                     <td>16.12.13</td>
@@ -307,7 +308,7 @@
                                     <td>GD</td>
                                     <td>13</td>
                                     <td>IT</td>
-                                    <td>구글지도 반출 허용</td>
+                                   <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.03.01</td>
                                     <td>17.02.10</td>
@@ -329,7 +330,7 @@
                                     <td>Kevin</td>
                                     <td>64</td>
                                     <td>Culture</td>
-                                    <td>재미있는 전시회 추천해 주세요!</td>
+                                      <td>iMac vs SAMSUNG PC</td>
                                     <td>MULTI</td>
                                     <td>16.06.02</td>
                                     <td>16.12.31</td>
@@ -340,7 +341,7 @@
                                     <td>Lisa</td>
                                     <td>39</td>
                                     <td>Society</td>
-                                    <td>성과연봉제 도입</td>
+                                     <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.02.03</td>
                                     <td>16.12.13</td>
@@ -351,7 +352,7 @@
                                     <td>GD</td>
                                     <td>29</td>
                                     <td>IT</td>
-                                    <td>구글지도 반출 허용</td>
+                                    <td>iMac vs SAMSUNG PC</td>
                                     <td>YN</td>
                                     <td>16.03.01</td>
                                     <td>17.02.10</td>
@@ -369,46 +370,14 @@
                                     <td>239</td>
                                     <td>1923</td>
                                 </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>54</td>
-                                    <td>Culture</td>
-                                    <td>재미있는 전시회 추천해 주세요!</td>
-                                    <td>MULTI</td>
-                                    <td>16.06.02</td>
-                                    <td>16.12.31</td>
-                                    <td>912</td>
-                                    <td>9348</td>
-                                </tr>
-                                <tr>
-                                    <td>Lisa</td>
-                                    <td>39</td>
-                                    <td>Society</td>
-                                    <td>성과연봉제 도입</td>
-                                    <td>YN</td>
-                                    <td>16.02.03</td>
-                                    <td>16.12.13</td>
-                                    <td>573</td>
-                                    <td>3958</td>
-                                </tr>
-                                <tr>
-                                    <td>GD</td>
-                                    <td>29</td>
-                                    <td>IT</td>
-                                    <td>구글지도 반출 허용</td>
-                                    <td>YN</td>
-                                    <td>16.03.01</td>
-                                    <td>17.02.10</td>
-                                    <td>459</td>
-                                    <td>928</td>
-                                </tr>
+                              
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!--   여기부터 FEED       -->
+        <!--   ì¬ê¸°ë¶í° FEED       -->
         <div id="Feed" class="col s12">
             <div class="row">
                 <div id="admin" class="col s12">
@@ -432,87 +401,18 @@
                                 <tr>
                                     <td>Alvin</td>
                                     <td>PickFormError</td>
-                                    <td>새로운 Pick을 등록하려하는데 등록이 안돼요.</td>
+                                  <td>iMac vs SAMSUNG PC</td>
                                     <td>16.11.01</td>
                                     <td>NO</td>
                                 </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>Requirements</td>
-                                    <td>친구를 추가할 수 있는 기능도 넣어주세요.</td>
-                                    <td>16.10.21</td>
-                                    <td>Checked</td>
-                                </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>Requirements</td>
-                                    <td>친구를 추가할 수 있는 기능도 넣어주세요.</td>
-                                    <td>16.10.21</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>Requirements</td>
-                                    <td>친구를 추가할 수 있는 기능도 넣어주세요.</td>
-                                    <td>16.10.21</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>Requirements</td>
-                                    <td>친구를 추가할 수 있는 기능도 넣어주세요.</td>
-                                    <td>16.10.21</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td>Alvin</td>
-                                    <td>PickFormError</td>
-                                    <td>새로운 Pick을 등록하려하는데 등록이 안돼요.</td>
-                                    <td>16.11.01</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>Requirements</td>
-                                    <td>친구를 추가할 수 있는 기능도 넣어주세요.</td>
-                                    <td>16.10.21</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>Requirements</td>
-                                    <td>친구를 추가할 수 있는 기능도 넣어주세요.</td>
-                                    <td>16.10.21</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>Requirements</td>
-                                    <td>친구를 추가할 수 있는 기능도 넣어주세요.</td>
-                                    <td>16.10.21</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td>Kevin</td>
-                                    <td>Requirements</td>
-                                    <td>친구를 추가할 수 있는 기능도 넣어주세요.</td>
-                                    <td>16.10.21</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td>Alvin</td>
-                                    <td>PickFormError</td>
-                                    <td>새로운 Pick을 등록하려하는데 등록이 안돼요.</td>
-                                    <td>16.11.01</td>
-                                    <td>NO</td>
-                                </tr>
+                             
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!--     회원관리    -->
+        <!--     íìê´ë¦¬    -->
         <div id="UserInfo" class="col s12">
             <div class="row">
                 <div id="admin" class="col s12">
@@ -525,7 +425,7 @@
                         <table id="datatable">
                             <thead>
                                 <tr>
-                                    <th data-field="#">#</th>
+                                 
                                     <th data-field="Email">Email</th>
                                     <th data-field="Name">Name</th>
                                     <th data-field="Gender">Gender</th>
@@ -536,14 +436,13 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
+                            
                                     <td>bradcha85@gmail.com</td>
-                                    <td>차병철</td>
-                                    <td>남자</td>
+                                    <td>이름</td>
+                                    <td>성별</td>
                                     <td>32</td>
-                                    <td>관심사확인</td>
-                                    <td>16.11.01</td>
-                                    <td>12345</td>
+                                    <td>관심사</td>
+ 								  <td>12345</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -551,7 +450,7 @@
                 </div>
             </div>
         </div>
-        <!--카테고리목록 및 추가하기 -->
+        <!--ì¹´íê³ ë¦¬ëª©ë¡ ë° ì¶ê°íê¸° -->
         <div id="Category" class="col s12">
             <div class="row">
                 <div id="admin" class="col s12">
@@ -576,7 +475,7 @@
                                     <td>1</td>
                                     <td>Health</td>
                                     <td>image</td>
-                                    <td>링크</td>
+                                    <td>pci</td>
                                     <td>32</td>
                                 </tr>
                             </tbody>

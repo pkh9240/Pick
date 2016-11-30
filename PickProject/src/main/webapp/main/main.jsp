@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 
 <head>
@@ -8,12 +11,14 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <!--     css        -->
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="tagsly/tagsly.css">
-    <link rel="stylesheet" href="../node_modules/jquery-colorbox/colorbox.css"> </head>
-
+    <link rel="stylesheet" href="../main/main.css">
+    <link rel="stylesheet" href="../main/tagsly/tagsly.css">
+    <link rel="stylesheet" href="../node_modules/jquery-colorbox/colorbox.css">
+   </head>
+   
+ 
 <body>
-    <!--플로팅 메뉴-->
+ 
     <div class="float-nav">
         <a href="#" class="menu-btn button-collapse" data-activates="slide-out">
             <ul>
@@ -24,28 +29,28 @@
             <!--            <div class="menu-txt">menu</div>-->
         </a>
     </div>
-    <!--필터링 메뉴-->
+
     <div class="float-filter-nav">
         <a href="#modal1" class="menu-btn">
             <div class="menu-filter-txt">Filter</div>
         </a>
     </div>
-    <!--필터링 모달 -->
+ 
     <div id="modal1" class="modal">
         <div class="modal-content">
             <h4>Fitering</h4>
             <form action="#">
-                <!--성별 필터링 -->
+             
                 <p>Gender</p>
                 <div>
                     <input name="gender" type="radio" id="all" />
                     <label for="all">All</label>
-                    <input name="gender" type="radio" id="man" />
+                    <input name="gender" type="radio" id="male" />
                     <label for="man">Man</label>
-                    <input name="gender" type="radio" id="woman" />
+                    <input name="gender" type="radio" id="female" />
                     <label for="woman">Woman</label>
                 </div>
-                <!--연령대 필터링 -->
+       
                 <p>Age</p>
                 <div>
                     <input type="checkbox" id="s10" />
@@ -62,7 +67,7 @@
                     <label for="s60">60s</label>
                 </div>
             </form>
-            <!--관심사 필터딩-->
+       
             <!--Category-->
             <p>Category (Max 3)</p>
             <div>
@@ -71,7 +76,7 @@
         <div class="modal-footer"> <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Filtering</a> </div>
     </div>
     <!---->
-    <!--추가하기 메뉴-->
+   
     <div class="float-add-nav">
         <a href="#" id="add_btn" class="menu-btn">
             <div class="menu-add-txt">Add</div>
@@ -79,21 +84,27 @@
     </div>
     <!---->
     <!---->
-    <!--왼쪾 사이드바 -->
+
     <ul id="slide-out" class="side-nav">
         <li>
             <div class="userView">
-                <div class="background"><img src="../image/background.png"> </div>
-                <a href="#!user"><img class="circle" src="../image/card6.jpg"></a> <a href="#!name"><span class="white-text name">John Doe</span></a>
-                <a href="#!email"> <span class="white-text email">jdandturk@gmail.com</span> </a>
+                <div class="background">
+                	<img src="../image/background.png">
+                 </div>
+                <a href="#!user">
+                	<img class="circle" src="../image/card6.jpg">
+                </a> <a href="#!name"><span class="white-text name">${user.userName}</span></a>
+                <a href="#!email">
+                	 <span class="white-text email">${user.userEmail}</span> 
+                </a>
             </div>
         </li>
-       <li><a href="#">Logout</a></li>
-         <li><a href="#" id="myAccount_btn">My Account</a></li>
+       	<li><a href="#" id="logout_btn">Logout</a></li>
+        <li><a href="#" id="myAccount_btn">My Account</a></li>
         <li> <a href="#" id="adminPage_btn">Admin Page</a> </li>
         <li> <a href="#" id="myPick_btn">My Pick</a> </li>
     </ul>
-    <!--상단 검색 바 -->
+
     <div class="sw">
         <form>
             <input type="search" class="search" placeholder="      Search..." />
@@ -101,14 +112,14 @@
             <a href="#" class="logo" title="Pick"></a>
         </form>
     </div>
-    <!--내부 컨텐츠-->
+
     <div class="content">
         <div class="wrap">
             <div id="main" role="main">
                 <ul id="tiles">
                     <!-- These are our grid blocks -->
                     <li id="pick10000">
-                        <!--하나의 컨텐츠 시작-->
+                        <!--íëì ì»¨íì¸  ìì-->
                         <div class='post-module'>
                             <div class='thumbnail'>
                                 <div class='date'>
@@ -128,10 +139,10 @@
                               </span> </div>
                             </div>
                         </div>
-                        <!--하나의 컨텐츠 시작-->
+                        <!--íëì ì»¨íì¸  ìì-->
                     </li>
                     <li id="pick10001">
-                        <!--하나의 컨텐츠 시작-->
+                        <!--íëì ì»¨íì¸  ìì-->
                         <div class='post-module'>
                             <div class='thumbnail'>
                                 <div class='date'>
@@ -151,7 +162,7 @@
                               </span> </div>
                             </div>
                         </div>
-                        <!--하나의 컨텐츠 시작-->
+                        <!--íëì ì»¨íì¸  ìì-->
                     </li>
                              <li onclick="location.href='single-page.html';">
                       
@@ -392,7 +403,7 @@
     <!---->
     <!---//End-content---->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src='main.js'></script>
+    <script src='../main/main.js'></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script>
@@ -400,10 +411,10 @@
     </script>
     <!----wookmark-scripts---->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="jquery.wookmark.js"></script>
-    <!--드롭다운 쓰고싶다-->
-    <script src="tagsly/tagsly.js"></script>
-    <!--팝업창 쓰고싶다-->
+    <script src="../main/jquery.wookmark.js"></script>
+
+    <script src="../main/tagsly/tagsly.js"></script>
+
     <script src="../node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
 </body>
 

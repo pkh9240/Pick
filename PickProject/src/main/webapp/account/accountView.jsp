@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 
 <head>
@@ -46,8 +47,8 @@
                     <div class="input-field col s6">
                         <select>
                             <option value="" disabled selected>Gender</option>
-                            <option value="1">여자</option>
-                            <option value="2">남자</option>
+                            <option value="1">male</option>
+                            <option value="2">female</option>
                         </select>
                         <label>Gender</label>
                     </div>

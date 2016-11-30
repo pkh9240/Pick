@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html lang="en">
 
 <head>
@@ -86,19 +87,19 @@
                                     <label for="image" style="margin-top:7px; margin-left:12px"> ADD IMAGE</label>
                                     <input type="file" name="image" id="image" /> </form>
                                 <div class="col-xs-4" id="image_preview"> <img src="#" class="img-circle" width="50px" height="50px">
-                                    <!--<a href='#'><button>사진삭제</button></a>--></div>
+                                    <!--<a href='#'><button>ì¬ì§ì­ì </button></a>--></div>
                             </div>
                         </div>
                     </form>
                 </div>
-                <!--객관식 종료 -->
-                <!-- vs 시작 -->
+                <!--ê°ê´ì ì¢ë£ -->
+                <!-- vs ìì -->
                 <div class='price-large js-select js-two js-hide'>
-                    <!-- 하나의 셋트(1번보기) 시작-->
+                    <!-- íëì ìí¸(1ë²ë³´ê¸°) ìì-->
                     <div class="col-xs-5">
                         <div class="row" id="filebox" style="height:100px; padding-top:0px;">
                             <div class="col-xs-12" id="image_preview1" style="padding-left:10px; display:none;"> <img src="#" class="img-circle" width="100px" height="100px">
-                                <!--<a href='#'><button>사진삭제</button></a>--></div>
+                                <!--<a href='#'><button>ì¬ì§ì­ì </button></a>--></div>
                             <div class="col-xs-12" style="padding-left:53px;">
                                 <label id="label1" for="image1" style="margin-left:18px;">ADD IMAGE</label>
                                 <input type="file" name="image1" id="image1" /> </div>
@@ -110,13 +111,13 @@
                                 <input type="text" class="form-control" id="vote" placeholder="CONTENT"> </div>
                         </div>
                     </div>
-                    <!-- 하나의 셋트(1번보기) 끝-->
+                    <!-- íëì ìí¸(1ë²ë³´ê¸°) ë-->
                     <div class="col-xs-1" style="margin-left:px; margin-top:20px; font-size:35px; text-align:center;"> vs </div>
-                    <!-- 하나의 셋트(2번보기) 시작 -->
+                    <!-- íëì ìí¸(2ë²ë³´ê¸°) ìì -->
                     <div class="col-xs-5">
                         <div class="row" id="filebox" style="height:100px; padding-top:0px;">
                             <div class="col-xs-12" id="image_preview2" style="padding-left:10px; display:none;"> <img src="#" class="img-circle" width="100px" height="100px">
-                                <!--<a href='#'><button>사진삭제</button></a>--></div>
+                                <!--<a href='#'><button>ì¬ì§ì­ì </button></a>--></div>
                             <div class="col-xs-12" style="padding-left:53px;">
                                 <label id="label2" for="image2" style="margin-left:18px;">ADD IMAGE</label>
                                 <input type="file" name="image2" id="image2" /> </div>
@@ -128,11 +129,11 @@
                                 <input type="text" class="form-control" id="vote" placeholder="CONTENT"> </div>
                         </div>
                     </div>
-                    <!-- 하나의 셋트 (2번보기) 끝 -->
+                    <!-- íëì ìí¸ (2ë²ë³´ê¸°) ë -->
                 </div>
                 <br> </div>
-            <!-- vs 끝 -->
-            <!-- yes or no 시작 -->
+            <!-- vs ë -->
+            <!-- yes or no ìì -->
             <div class='price-large js-select js-three js-hide'>
                 <div class="col-xs-4" style="margin-left:120px;">
                     <button type="button" class="btn btn-primary ">YES</button> <span style="font-size:15px;">OR</span>
@@ -151,21 +152,21 @@
                     </div>
                 </div>
             </div>
-            <!-- yes or no 끝 -->
+            <!-- yes or no ë -->
         </div>
     </div>
     <!-- end of container div-->
-    <!-- 권한설정 (선택사항) 버튼 -->
+    <!-- ê¶íì¤ì  (ì íì¬í­) ë²í¼ -->
     <div class="container" style="padding-toppx">
         <div class="row" id="detail" style="margin-top:15px;">
             <!--  <button type="button" id="showHide" aria-activedescendant=""class="btn btn-default btn-xs" style="left:300px;">--><span style="font-size:17px; margin-left:15px">
-         참여권한설정 (선택사항)
+       	상세설정
         </span>
             <button type="button" id="showHide"> <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> </button>
         </div>
         <br>
-        <!-- 상세설정 버튼 -->
-        <!-- 상세설정 Row (Default : hide) -->
+        <!-- ìì¸ì¤ì  ë²í¼ -->
+        <!-- ìì¸ì¤ì  Row (Default : hide) -->
         <form class="row" style="display:none;" id="optionalSelect">
             <div class="col-xs-1" style="margin-left:30px;"> <span style="font-size:15px;">GENDER</span>
                 <div class="checkbox">
@@ -205,7 +206,7 @@
             </div>
         </form>
     </div>
-    <!-- 상세설정  종료 -->
+    <!-- ìì¸ì¤ì   ì¢ë£ -->
     <div class="row">
         <button type="button" class="btn btn-success" style="margin-left:150px;"> REGISTER</button>
     </div>

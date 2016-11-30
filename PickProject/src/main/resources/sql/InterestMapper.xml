@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 					
+<mapper namespace="InterestMapper">
+
+	<resultMap type="interest" id="interestSelectMap">
+		<result property="content" column="USER_MAIL" jdbcType="VARCHAR"/>
+		<result property="interestPhoto" column="USER_NAME" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	
+	<select id="getInterest" parameterType="string" resultMap="interestSelectMap">
+		SELECT 
+		FROM INTR
+		WHERE USER_MAIL=#{value}
+	</select>
+	
+
+</mapper>
