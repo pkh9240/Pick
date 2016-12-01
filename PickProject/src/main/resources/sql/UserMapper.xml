@@ -17,7 +17,7 @@
 		<result property="userAge" column="USER_AGE" jdbcType="VARCHAR"/>
 		<result property="userPhoto" column="USER_PHOT" jdbcType="VARCHAR"/>
 		<result property="userType" column="USER_TYPE" jdbcType="VARCHAR"/>
-		<collection property="interestList" column="USER_NO" select="InterestMapper.getUserInterestListByUserNo" ofType="interest" javaType="ArrayList" />
+		<collection property="interestList" column="USER_NO" select="InterestMapper.getInterestListByUserNo" ofType="interest" javaType="ArrayList" />
 	</resultMap>
 	
 	<select id="getUserByUserEmail" parameterType="string" resultMap="userSelectMap">

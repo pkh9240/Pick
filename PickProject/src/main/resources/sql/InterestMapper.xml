@@ -34,7 +34,7 @@
 	</select>
 	
 	
-	<select id="getUserInterestListByUserNo" parameterType="Integer" resultMap="interestSelectMap" >
+	<select id="getInterestListByUserNo" parameterType="Integer" resultMap="interestSelectMap" >
 		SELECT i.* 
 		FROM USERS u,USER_INTR ui, INTR i
 		WHERE u.USER_NO=ui.USER_NO AND ui.INTR_NO = i.INTR_NO AND u.USER_NO=#{value}

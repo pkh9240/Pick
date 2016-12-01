@@ -92,7 +92,7 @@
                 	<img src="../image/background.png">
                  </div>
                 <a href="#!user">
-                	<img class="circle" src="../image/card6.jpg">
+                	<img class="circle" src="${user.userPhoto}">
                 </a> <a href="#!name"><span class="white-text name">${user.userName}</span></a>
                 <a href="#!email">
                 	 <span class="white-text email">${user.userEmail}</span> 

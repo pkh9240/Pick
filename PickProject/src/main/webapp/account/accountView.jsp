@@ -18,7 +18,7 @@
         <div id="myaccount">
             <h1 id="my">MY</h1>
             <h1 id="account"> A c c o u n t  </h1> </div>
-        <div class="preview img-wrapper"></div>
+        <div class="preview img-wrapper"><img src="${user.userPhoto}"></div>
         <div class="file-upload-wrapper">
             <input type="file" name="file" class="file-upload-native" accept="image/*" />
             <input type="text" disabled placeholder="upload" class="file-upload-text" /> </div>

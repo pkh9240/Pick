@@ -12,28 +12,11 @@
 		<result property="content" column="USER_NO" jdbcType="VARCHAR" />
 	</resultMap>
 
-
 	<insert id="addUserInterest" parameterType="hashmap">
 		INSERT
 		INTO USER_INTR(USER_NO,INTR_NO)
 		VALUES (#{userNo:INTEGER},
 				#{interestNo:INTEGER})
 	</insert>
-
-
-	<select id="getUserInterestByUserNo" parameterType="Integer" resultMap="userInterestSelectMap">
-		SELECT *
-		FROM USER_INTR
-		WHERE USER_NO=#{value}
-	</select>
-
-
-
-	<select id="getUserInterestByInterestNo" parameterType="Integer" resultMap="userInterestSelectMap">
-		SELECT *
-		FROM USER_INTR
-		WHERE INTR_NO=#{value}
-	</select>
-
 
 </mapper>
