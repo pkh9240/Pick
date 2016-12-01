@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="accountView.css"> </head>
+    <link rel="stylesheet" href="../account/accountView.css"> </head>
 
 <body>
     <div class="form">
@@ -25,21 +26,21 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="icon_prefix" type="text" class="validate">
+                        <input id="icon_prefix" type="text" class="validate" value="${user.userName}">
                         <label for="icon_prefix">Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input disabled value="syou099@naver.com" id="disabled" type="text" class="validate">
+                        <input disabled value="${user.userEmail}" id="disabled" type="text" class="validate">
                         <label for="disabled">E mail</label>
                     </div> 
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="password" type="password" class="validate">
+                        <input id="password" type="password" class="validate" value="${user.userPassword}">
                         <label for="password">Password</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="password" type="password" class="validate">
+                        <input id="passwordConfirm" type="password" class="validate" value="${user.userPassword}">
                         <label for="password">Password confirm</label>
                     </div>
                 </div>
@@ -47,38 +48,42 @@
                     <div class="input-field col s6">
                         <select>
                             <option value="" disabled selected>Gender</option>
-                            <option value="1">male</option>
-                            <option value="2">female</option>
+                            <option value="male" ${user.userGender=='male' ?'selected':''}>male</option>
+                            <option value="female" ${user.userGender=='male' ? 'selected':''}>female</option>
                         </select>
                         <label>Gender</label>
                     </div>
                     <div class="input-field col s6">
                         <select>
                             <option value="" disabled selected>Age</option>
-                            <option value="1">10</option>
-                            <option value="2">20</option>
-                            <option value="2">30</option>
-                            <option value="2">40</option>
-                            <option value="2">50</option>
-                            <option value="2">60~</option>
+                            <option value="10s" ${user.userAge=='10s' ? 'selected':''}>10대</option>
+                            <option value="20s"  ${user.userAge=='20s' ? 'selected':''}>20대</option>
+                            <option value="30s"  ${user.userAge=='30s' ? 'selected':''}>30대</option>
+                            <option value="30s"  ${user.userAge=='40s' ? 'selected':''}>40대</option>
+                            <option value="50s"  ${user.userAge=='50s' ? 'selected':''}>50대</option>
+                            <option value="60s"  ${user.userAge=='60s' ? 'selected':''}>60대 이상</option>
                         </select>
                         <label>Age</label>
                     </div>
                      <div class="input-field col s12">
                 <select multiple>
                     <option value="" disabled selected>Choose your Interest</option>
-                    <option value="2" data-icon="../image/card6.jpg" class="circle">Computer</option>
-                    <option value="3" data-icon="../image/card1.jpg" class="circle">Coding</option>
-                    <option value="3" data-icon="../image/card2.jpg" class="circle">job</option>
-                    <option value="1" data-icon="../image/card3.jpg" class="circle">Computer</option>
-                    <option value="2" data-icon="../image/card4.jpg" class="circle">Coding</option>
-                    <option value="3" data-icon="../image/card5.jpg" class="circle">job</option>
-                    <option value="1" data-icon="../image/card6.jpg" class="circle">Computer</option>
-                    <option value="2" data-icon="../image/card7.jpg" class="circle">Coding</option>
-                    <option value="3" data-icon="../image/card8.jpg" class="circle">job</option>
-                    <option value="1" data-icon="../image/card9.jpg" class="circle">Computer</option>
-                    <option value="2" data-icon="../image/card2.jpg" class="circle">Coding</option>
-                    <option value="3" data-icon="../image/card3.jpg" class="circle">job</option>
+                    	<c:set var="isSelected"/>
+                    	<c:forEach var="interest" items="${interestList}">
+                    		<c:forEach var="userInterest" items="${user.interestList}">
+                    				
+                    				<c:if test="${interest.interestNo==userInterest.interestNo}">
+ 											<c:set var="isSelected" value="true"/>
+                    				</c:if>
+                    				 <c:if test="${interest.interestNo != userInterest.interestNo}">
+                    					<c:set var="isSelected" value="false"/>
+                    				</c:if>
+                    			
+                  			</c:forEach>
+                  			<option value="${interest.interestNo}" data-icon="${interest.interestPhoto}" class="circle" ${isSelected==true?'selected':''}>${interest.content}</option>
+                  		 </c:forEach>
+                    
+ 
                 </select>
                 <label>Interest</label>
             </div>
@@ -94,9 +99,8 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="jquery.imageMask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script src="accountView.js"></script>
+    <script src="../account/accountView.js"></script>
    
 </body>
 

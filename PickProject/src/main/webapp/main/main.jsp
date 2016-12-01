@@ -469,9 +469,7 @@
     <script src='../main/main.js'></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script>
-        $(".button-collapse").sideNav();
-    </script>
+  
     <!----wookmark-scripts---->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
     <script src="../main/jquery.wookmark.js"></script>
@@ -479,6 +477,19 @@
     <script src="../main/tagsly/tagsly.js"></script>
 
     <script src="../node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+   	<script type="text/javascript">
+   		$("#myAccount_btn").on("click", function() {
+			$.colorbox({
+				iframe : "true",
+				href : "/user/getAccount",
+				width : "460px",
+				height : "900px",
+				scrolling: false
+			});
+	});
+   	
+   	
+   	</script>
 </body>
 
 </html>

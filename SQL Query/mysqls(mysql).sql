@@ -205,46 +205,46 @@ ALTER TABLE `USER_INTR`
 
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
-VALUES ('박광희',1234,'male','20s','pkh0452@naver.com','../images/card6.jpg','user'); 
+VALUES ('박광희',1234,'male','20s','pkh0452@naver.com','../image/profile/defaultProfileImage.jpg','admin'); 
 
 
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
-VALUES ('차병철',1234,'male','30s','bradcha85@naver.com','../images/card6.jpg','user'); 
+VALUES ('차병철',1234,'male','30s','bradcha85@naver.com','../images/profile/defaultProfileImage.jpg','user'); 
 
 
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
-VALUES ('유수영',1234,'female','40s','sooyoung@naver.com','../images/card6.jpg','user'); 
+VALUES ('유수영',1234,'female','40s','sooyoung@naver.com','../images/profile/defaultProfileImage.jpg','user'); 
 
 
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
-VALUES ('임다영',1234,'female','20s','imvely@naver.com','../images/card6.jpg','user'); 
+VALUES ('임다영',1234,'female','20s','imvely@naver.com','../images/profile/defaultProfileImage.jpg','user'); 
 
 
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('./images/card6.jpg','COMPUTER');
+VALUES ('../image/interest/computer.jpg','COMPUTER');
 
 
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../images/card2.jpg','COOK');
+VALUES ('../image/interest/food.jpg','FOOD');
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../images/card3.jpg','CODING');
+VALUES ('../image/interest/drawing.jpg','DRAWING');
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../images/card4.jpg','JAVA');
+VALUES ('../image/interest/cosmetic.jpg','COSMETIC');
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../images/card5.jpg','JAVSCRIPT');
+VALUES ('../image/interest/hair.jpg','HAIR');
 
 
 

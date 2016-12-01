@@ -15,44 +15,39 @@
     <div id="container">
         <div class="row">
             <div class="col s12"><span class="flow-text">Input your detail info</span></div>
+           <form id="detailInfo-form">
            <div class="input-field col s12">
-                        <select>
+                        <select name="userAge">
                             <option value="" disabled selected>Age</option>
-                            <option value="1">10</option>
-                            <option value="2">20</option>
-                            <option value="2">30</option>
-                            <option value="2">40</option>
-                            <option value="2">50</option>
-                            <option value="2">60~</option>
+                            <option value="10s">10</option>
+                            <option value="20s">20</option>
+                            <option value="30s">30</option>
+                            <option value="40s">40</option>
+                            <option value="50s">50</option>
+                            <option value="60s">60~</option>
                         </select>
                         <label>Age</label>
                     </div>
             <div class="input-field col s12">
-                <select>
+                <select name="userGender">
                     <option value="" disabled selected>Choose your gender</option>
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                 </select>
                 <label>gender</label>
             </div>
             <div class="input-field col s12">
-                <select multiple>
-                    <option value="" disabled selected>Choose your Interest</option>
-                    <option value="Computer" data-icon="../image/card6.jpg" class="circle">Computer</option>
-                    <option value="3" data-icon="../image/card1.jpg" class="circle">Coding</option>
-                    <option value="3" data-icon="../image/card2.jpg" class="circle">job</option>
-                    <option value="1" data-icon="../image/card3.jpg" class="circle">Computer</option>
-                    <option value="2" data-icon="../image/card4.jpg" class="circle">Coding</option>
-                    <option value="3" data-icon="../image/card5.jpg" class="circle">job</option>
-                    <option value="1" data-icon="../image/card6.jpg" class="circle">Computer</option>
-                    <option value="2" data-icon="../image/card7.jpg" class="circle">Coding</option>
-                    <option value="3" data-icon="../image/card8.jpg" class="circle">job</option>
-                    <option value="1" data-icon="../image/card9.jpg" class="circle">Computer</option>
-                    <option value="2" data-icon="../image/card2.jpg" class="circle">Coding</option>
-                    <option value="3" data-icon="../image/card3.jpg" class="circle">job</option>
-                </select>
+                <select name="interestList" multiple>
+                    <option value="" disabled>Choose your Interest</option>
+                    <c:forEach var="interest" items="${interestList}">
+                    	<option value="${interest.interestNo}" data-icon="${interest.interestPhoto}" class="circle">${interest.content}</option>
+                    	
+                    	
+                    </c:forEach>
+           		 </select>
                 <label>Interest</label>
             </div>
+            </form>
             <div class="col s6 offset-s6">
                 <button class="btn waves-effect waves-light" id="register_btn">Register
                  <i class="material-icons right">send</i> 
@@ -63,6 +58,28 @@
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
         <script src='../interest/interestView.js'></script>
+        
+        
+        <script type="text/javascript">
+        	$("#register_btn").on("click",function(){
+        		
+        		if($('select[name="userAge"] option:selected').val()==''){
+        			alert("연령대를 선택해주세요. ");
+        			return;
+        		}else if($('select[name="userGender"] option:selected').val()==''){
+        			alert("성별을 선택해주세요. ");
+        			return;
+        		}else if($('select[name="interestList"] option:selected').prevAll().size()<3){
+        			alert("관심사를 3개 이상 선택해주세요.");
+        			return;
+        		}else{
+        			
+        			$("#detailInfo-form").attr("target","_parent").attr("action", "/user/addUser").attr("method","post").submit();
+        	
+        		}
+        	});
+        
+        </script>
     </div>
 </body>
 

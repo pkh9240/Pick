@@ -8,16 +8,39 @@
 <mapper namespace="InterestMapper">
 
 	<resultMap type="interest" id="interestSelectMap">
-		<result property="content" column="USER_MAIL" jdbcType="VARCHAR"/>
-		<result property="interestPhoto" column="USER_NAME" jdbcType="VARCHAR"/>
+		<result property="interestNo" column="INTR_NO" jdbcType="INTEGER"/>
+		<result property="content" column="INTR_CONT" jdbcType="VARCHAR"/>
+		<result property="interestPhoto" column="INTR_PHOT" jdbcType="VARCHAR"/>
 	</resultMap>
 	
 	
-	<select id="getInterest" parameterType="string" resultMap="interestSelectMap">
-		SELECT 
+	<select id="getInterestByContent" parameterType="string" resultMap="interestSelectMap">
+		SELECT *
 		FROM INTR
-		WHERE USER_MAIL=#{value}
+		WHERE INTR_CONT=#{value}
 	</select>
 	
+	<select id="getInterestByInterestNo" parameterType="Integer" resultMap="interestSelectMap">
+		SELECT *
+		FROM INTR
+		WHERE INTR_NO=#{value}
+	</select>
+	
+	
+	
+	<select id="getInterestList" resultMap="interestSelectMap">
+		SELECT *
+		FROM INTR
+	</select>
+	
+	
+	<select id="getUserInterestListByUserNo" parameterType="Integer" resultMap="interestSelectMap" >
+		SELECT i.* 
+		FROM USERS u,USER_INTR ui, INTR i
+		WHERE u.USER_NO=ui.USER_NO AND ui.INTR_NO = i.INTR_NO AND u.USER_NO=#{value}
 
+	</select>
+	
+	
+	
 </mapper>

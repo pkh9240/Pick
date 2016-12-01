@@ -199,3 +199,28 @@ $(document).ready(function() {
     bAutoWidth: false
   });
 });
+
+
+$(document).ready(function() {
+$("#btn_one").on("click", function() {
+		
+		$.colorbox({
+			iframe : "true",
+			href : "../result/resultOne.jsp",
+			width : "100%",
+			height : "100%"
+		});
+	});
+	
+$("#btn_multi").on("click", function() {
+	
+	$.colorbox({
+		iframe : "true",
+		href : "../result/resultMulti.jsp",
+		width : "100%",
+		height : "100%"
+	});
+});
+
+
+});

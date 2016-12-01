@@ -3,7 +3,8 @@ package com.bitcamp.pick.domain;
 import java.util.List;
 
 public class User {
-		
+	
+	private int userNo;
 	private String userEmail;
 	private String userPassword;
 	private String userName;
@@ -16,18 +17,15 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(String userEmail, String userPassword, String userName, String userGender, String userAge,
-			String userPhoto, String userType, List<Interest> interestList) {
-		super();
-		this.userEmail = userEmail;
-		this.userPassword = userPassword;
-		this.userName = userName;
-		this.userGender = userGender;
-		this.userAge = userAge;
-		this.userPhoto = userPhoto;
-		this.userType = userType;
-		this.interestList = interestList;
+	
+	public int getUserNo() {
+		return userNo;
 	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
 	public String getUserEmail() {
 		return userEmail;
 	}
@@ -76,10 +74,12 @@ public class User {
 	public void setInterestList(List<Interest> interestList) {
 		this.interestList = interestList;
 	}
+
 	@Override
 	public String toString() {
-		return "User [userEmail=" + userEmail + ", userPassword=" + userPassword + ", userName=" + userName
-				+ ", userGender=" + userGender + ", userAge=" + userAge + ", userPhoto=" + userPhoto + ", userType="
-				+ userType + ", interestList=" + interestList + "]";
+		return "User [userNo=" + userNo + ", userEmail=" + userEmail + ", userPassword=" + userPassword + ", userName="
+				+ userName + ", userGender=" + userGender + ", userAge=" + userAge + ", userPhoto=" + userPhoto
+				+ ", userType=" + userType + ", interestList=" + interestList + "]";
 	}
+	
 }

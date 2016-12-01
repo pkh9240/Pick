@@ -41,6 +41,8 @@ $(function() {
 	$window.bind('scroll.wookmark', onScroll);
 });
 $(function() {
+
+	
 	$('.post-module').hover(function() {
 		$(this).find('.description').stop().animate({
 			height : "toggle",
@@ -101,22 +103,14 @@ $(function() {
 
 	});
 
-	$("#myAccount_btn").on("click", function() {
-		$.colorbox({
-			iframe : "true",
-			href : "../account/accountView.jsp",
-			width : "460px",
-			height : "900px",
-			scrolling: false
-		});
-	});
+	
 	
 	$("#myPick_btn").on("click", function() {
 		$.colorbox({
 			iframe : "true",
 			href : "../myPick/myPick.jsp",
-			width : "50%",
-			height : "50%"
+			width : "1000px",
+			height : "1000px"
 		});
 	});
 	$("#adminPage_btn").on("click", function() {

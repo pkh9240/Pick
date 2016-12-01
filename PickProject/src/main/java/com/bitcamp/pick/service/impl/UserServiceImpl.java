@@ -1,10 +1,17 @@
 package com.bitcamp.pick.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.bitcamp.pick.dao.InterestDao;
 import com.bitcamp.pick.dao.UserDao;
+import com.bitcamp.pick.dao.UserInterestDao;
+import com.bitcamp.pick.domain.Interest;
 import com.bitcamp.pick.domain.User;
 import com.bitcamp.pick.service.UserService;
 
@@ -18,39 +25,67 @@ public class UserServiceImpl implements UserService {
 	
 	
 	
+	@Autowired
+	@Qualifier("interestDaoImpl")
+	private InterestDao interestDao;
+	
+	
+	@Autowired
+	@Qualifier("userInterestDaoImpl")
+	private UserInterestDao userInterestDao;
+
+	
+	
+	
+	
 	public UserServiceImpl(){
-		System.out.println(" UserServiceImpl Constructor");
+		System.out.println(" UserServiceImpl Default Constructor");
 	}
 	@Override
-	public User loginUser(User user) throws Exception {
+	public Map<String,Object> loginUser(User user) throws Exception {
 		System.out.println(" UserServiceImpl-loginUser");
 		
-		User dbUser=userDao.getUser(user.getUserEmail());
-
-		if(dbUser==null){
-			System.out.println("해당하는 정보 없음 ");
-			throw new Exception("로그인에 실패했습니다.");
-		}
-		else{
-		if(! dbUser.getUserPassword().equals(user.getUserPassword())){
+		Map<String,Object> loginCheckMap = new HashMap<String,Object>();
+		
+		User dbUser=userDao.getUserByUserEmail(user.getUserEmail());
+		
+		if(dbUser==null){    //계정이  없을 경우 
+			loginCheckMap.put("loginCheck", "idNotFound");
+		}else if(!dbUser.getUserPassword().equals(user.getUserPassword())){ //계정은 있으나 비밀번호가 틀린 경우 
+			loginCheckMap.put("loginCheck", "passwordError");
+		}else{  //로그인에 성공하였을 경우 
 			
-			System.out.println("비밀번호 틀림 ");
-			throw new Exception("로그인에 실패했습니다.");
-			
+			loginCheckMap.put("user",dbUser);
+			loginCheckMap.put("loginCheck", "success");
 		}
-		}
-		System.out.println("DataBase에서 가져온 User"+user);
-		return dbUser;
+	
+		return loginCheckMap;
 	
 	}
 	@Override
 	public int addUser(User user) throws Exception {
-		return 0;
+		
+		
+		userDao.addUser(user);//userNo get하기위해 먼저 add
+		User dbUser = userDao.getUserByUserEmail(user.getUserEmail());
+		
+		List<Interest> userInterest = user.getInterestList();
+		
+		for(Interest interest : userInterest){
+			userInterestDao.addUserInterest(dbUser.getUserNo(), interest.getInterestNo());
+		}
+		
+		
+		return 1;
 	}
 
 	@Override
-	public User getUser(String userEmail) throws Exception {
-		return null;
+	public User getUserByUserEmail(String userEmail) throws Exception {
+		return userDao.getUserByUserEmail(userEmail);
+	}
+	@Override
+	public User getUserByUserNo(int userNo) throws Exception {
+		return userDao.getUserByUserNo(userNo);
 	}
 
 	

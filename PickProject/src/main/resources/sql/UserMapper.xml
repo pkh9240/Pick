@@ -9,6 +9,7 @@
 
 	
 	<resultMap type="user" id="userSelectMap">
+		<result property="userNo" column="USER_NO" jdbcType="INTEGER"/>
 		<result property="userEmail" column="USER_MAIL" jdbcType="VARCHAR"/>
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		<result property="userPassword" column="USER_PWD" jdbcType="VARCHAR"/>
@@ -16,13 +17,33 @@
 		<result property="userAge" column="USER_AGE" jdbcType="VARCHAR"/>
 		<result property="userPhoto" column="USER_PHOT" jdbcType="VARCHAR"/>
 		<result property="userType" column="USER_TYPE" jdbcType="VARCHAR"/>
+		<collection property="interestList" column="USER_NO" select="InterestMapper.getUserInterestListByUserNo" ofType="interest" javaType="ArrayList" />
 	</resultMap>
 	
-	<select id="getUser" parameterType="string" resultMap="userSelectMap">
-		SELECT USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE
+	<select id="getUserByUserEmail" parameterType="string" resultMap="userSelectMap">
+		SELECT *
 		FROM USERS
 		WHERE USER_MAIL=#{value}
 	</select>
+	
+	
+	<select id="getUserByUserNo" parameterType="integer" resultMap="userSelectMap">
+		SELECT *
+		FROM USERS
+		WHERE USER_NO=#{value}
+	</select>
+	
+	
+	<insert id="addUser" parameterType="user">
+		INSERT 
+		INTO USERS(USER_MAIL,USER_PWD,USER_GEND,USER_AGE,USER_TYPE,USER_PHOT)
+		VALUES (#{userEmail:VARCHAR},
+				#{userPassword:VARCHAR},
+				#{userGender:VARCHAR},
+				#{userAge:VARCHAR},
+				'user',
+				'../image/profile/defaultProfileImage.img')
+	</insert>
 
 	
 </mapper>

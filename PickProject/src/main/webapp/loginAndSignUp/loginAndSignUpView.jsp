@@ -36,46 +36,121 @@
 	</div>
 	<div class="form">
 		<div class="thumbnail">
-			<img
-				src="../image/W_pick.png" />
+			<img src="../image/W_pick.png" />
 		</div>
-		<form class="register-form">
-			<input name="userEmail" type="text" placeholder="email" />
-			 <input name="userPassword"  type="password" placeholder="password" />
-			  <input name="userPasswordConfirm"  type="password" placeholder="password confirm" />
-			  
+		<div class="register-form tog">
+			<input id="registerUserEmail" name="userEmail" type="text" placeholder="email" />
+			 <input id="registerUserPassword" name="userPassword" type="password" placeholder="password" />
+			  <input id="registerUserPasswordConfirm" name="userPasswordConfirm" type="password"
+				placeholder="password confirm">
+
 			<button id="register_btn">create</button>
 			<p class="message">
 				Already registered? <a href="#">Sign In</a>
 			</p>
-		</form>
-		<form class="login-form">
-			<input id="userEmail" name="userEmail" type="text" placeholder="email"  value=""/> 
-			<input id="userPassword" name="userPassword" type="password" placeholder="password" value="" />
+		</div>
+		<div class="login-form tog">
+			<input id="userEmail" name="userEmail" type="text"
+				placeholder="email" value="" /> <input id="userPassword"
+				name="userPassword" type="password" placeholder="password" value="" />
+
 			<button id="login_btn">login</button>
 			<p class="message">
 				Not registered? <a href="#">Create an account</a>
 			</p>
-		</form>
+		</div>
 	</div>
 
 	<script
 		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src="../node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
-	
+
 	<script src="loginAndSignUpView.js"></script>
 	<script type="text/javascript">
-	$(function(){
- 	$("#login_btn").on("click",function(){
-			$(".login-form").attr("method", "POST").attr("action","/user/login").submit();
-		}); 
-		
-		
-	
+		$(function() {
 			
-		
-	});
-		
+			$("#login_btn").on("click", function() {
+				var user = {
+					"userEmail" : $("#userEmail").val(),
+					"userPassword" : $("#userPassword").val()
+				};
+				$.ajax({
+					url : "/user/login",
+					type : 'POST',
+					accept : "application/json",
+					contentType : "application/json; charset=utf-8",
+					data : JSON.stringify(user),
+					dataType : "json",
+					success : function(data) {
+						var loginCheck = data.loginCheck;
+						if(loginCheck=='success'){
+							location.href="/user/loginSuccess";
+						
+						}else if(loginCheck=='passwordError') {
+							alert("Password Error");
+							$("#userPassword").val("");
+						
+						}else{
+							alert("Email Error");
+							$("#userEmail").val("");
+							$("#userPassword").val("");
+							
+						}
+						
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert("Error");
+					}
+				});
+
+			});
+			
+			/* 회원 가입 버튼 */
+			$("#register_btn").on("click",function(){
+				
+				if( $("#registerUserPassword").val()!=$("#registerUserPasswordConfirm").val()){
+					alert("비밀번호가 일치하지 않는다.");
+					return;
+				}
+				
+				var user = {
+						"userEmail" : $("#registerUserEmail").val(),
+						"userPassword" : $("#registerUserPassword").val()
+				};
+				
+				$.ajax({
+					url:"/user/checkDuplication",
+					type : 'POST',
+					accept : "application/json",
+					contentType : "application/json; charset=utf-8",
+					data : JSON.stringify(user),
+					dataType : "json",
+					success : function(data) {
+						if(data.isDuplicated==true){
+							alert("이메일 중복");
+							 $("#registerUserEmail").val("");
+						}else{
+							/*중복이 아닐 경우 상세 정보선택 창 팝업 */
+							 $.colorbox({
+						            iframe:true,
+						            scrolling: false,
+						            innerWidth:'500',
+						            innerHeight:'800',
+						            href:"/user/getDetailInfomationSelectView",
+						        	onClosed:function(){
+						              
+						            }
+						        });
+							
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert("Error");
+					}
+					
+				});
+			});
+		});
 	</script>
 
 </body>
