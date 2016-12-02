@@ -10,16 +10,13 @@ import org.springframework.stereotype.Repository;
 import com.bitcamp.pick.dao.InterestDao;
 import com.bitcamp.pick.domain.Interest;
 
-
 @Repository("interestDaoImpl")
 public class InterestDaoImpl implements InterestDao {
 
-	
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	public SqlSession sqlSession;
-	
-	
+
 	public InterestDaoImpl() {
 		System.out.println("InterestDaoImpl Default Constructor");
 	}
@@ -33,13 +30,13 @@ public class InterestDaoImpl implements InterestDao {
 	@Override
 	public Interest getInterestByContent(String content) throws Exception {
 		System.out.println("InterestDaoImpl - getInterestByContent");
-		return sqlSession.selectOne("InterestMapper.getInterestByContent",content);
+		return sqlSession.selectOne("InterestMapper.getInterestByContent", content);
 	}
 
 	@Override
 	public Interest getInterestByInterestNo(int interestNo) throws Exception {
 		System.out.println("InterestDaoImpl - getInterestByInterestNo");
-		return sqlSession.selectOne("InterestMapper.getInterestByInterestNo",interestNo);
+		return sqlSession.selectOne("InterestMapper.getInterestByInterestNo", interestNo);
 	}
 
 	@Override

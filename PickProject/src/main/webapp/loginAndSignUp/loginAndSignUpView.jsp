@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="loginAndSignUpView.css">
 <link rel="stylesheet"
 	href="../node_modules/jquery-colorbox/colorbox.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
 </head>
 
@@ -64,6 +65,7 @@
 	<script
 		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src="../node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 	<script src="loginAndSignUpView.js"></script>
 	<script type="text/javascript">
@@ -87,11 +89,11 @@
 							location.href="/user/loginSuccess";
 						
 						}else if(loginCheck=='passwordError') {
-							alert("Password Error");
+							swal({title:"비밀번호가 일치하지 않습니다.", confirmButtonColor: "#ED2553"});
 							$("#userPassword").val("");
 						
 						}else{
-							alert("Email Error");
+							swal({title:"해당 이메일이 존재하지 않습니다.", confirmButtonColor: "#ED2553"});
 							$("#userEmail").val("");
 							$("#userPassword").val("");
 							
@@ -109,7 +111,7 @@
 			$("#register_btn").on("click",function(){
 				
 				if( $("#registerUserPassword").val()!=$("#registerUserPasswordConfirm").val()){
-					alert("비밀번호가 일치하지 않는다.");
+					swal({title:"비밀번호가 일치하지 않습니다.", confirmButtonColor: "#ED2553"});
 					return;
 				}
 				
@@ -127,7 +129,7 @@
 					dataType : "json",
 					success : function(data) {
 						if(data.isDuplicated==true){
-							alert("이메일 중복");
+							swal({title:"이미 존재하는 이메일입니다.", confirmButtonColor: "#ED2553"});
 							 $("#registerUserEmail").val("");
 						}else{
 							/*중복이 아닐 경우 상세 정보선택 창 팝업 */
@@ -145,7 +147,7 @@
 						}
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
-						alert("Error");
+						swal("Error");
 					}
 					
 				});

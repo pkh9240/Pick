@@ -93,7 +93,7 @@
                  </div>
                 <a href="#!user">
                 	<img class="circle" src="${user.userPhoto}">
-                </a> <a href="#!name"><span class="white-text name">${user.userName}</span></a>
+                </a> <a href="#!name"><span class="white-text name"><%-- ${user.userName} --%></span></a>
                 <a href="#!email">
                 	 <span class="white-text email">${user.userEmail}</span> 
                 </a>
@@ -480,10 +480,12 @@
    	<script type="text/javascript">
    		$("#myAccount_btn").on("click", function() {
 			$.colorbox({
+			
+				top:true,
 				iframe : "true",
 				href : "/user/getAccount",
 				width : "460px",
-				height : "900px",
+				height : "850px",
 				scrolling: false
 			});
 	});

@@ -10,6 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> </head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
 <body>
     <div id="container">
@@ -57,6 +58,9 @@
         <!---->
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        
         <script src='../interest/interestView.js'></script>
         
         
@@ -64,13 +68,13 @@
         	$("#register_btn").on("click",function(){
         		
         		if($('select[name="userAge"] option:selected').val()==''){
-        			alert("연령대를 선택해주세요. ");
+        			swal({title:"연령대를 선택해주세요.", confirmButtonColor: "#ED2553"});
         			return;
         		}else if($('select[name="userGender"] option:selected').val()==''){
-        			alert("성별을 선택해주세요. ");
+        			swal({title:"성별을 선택해주세요.", confirmButtonColor: "#ED2553"});
         			return;
         		}else if($('select[name="interestList"] option:selected').prevAll().size()<3){
-        			alert("관심사를 3개 이상 선택해주세요.");
+        			swal({title:"관심사를 3개이상 선택해주세요.", confirmButtonColor: "#ED2553"});
         			return;
         		}else{
         			

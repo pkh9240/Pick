@@ -7,10 +7,6 @@
 
 <mapper namespace="UserInterestMapper">
 
-	<resultMap type="userInterest" id="userInterestSelectMap">
-		<result property="interestNo" column="INTR_NO" jdbcType="INTEGER" />
-		<result property="content" column="USER_NO" jdbcType="VARCHAR" />
-	</resultMap>
 
 	<insert id="addUserInterest" parameterType="hashmap">
 		INSERT
@@ -18,5 +14,12 @@
 		VALUES (#{userNo:INTEGER},
 				#{interestNo:INTEGER})
 	</insert>
+	<delete id="deleteUserInterest" parameterType="integer">
+			DELETE 
+			FROM USER_INTR
+			WHERE USER_NO = #{value}
+	</delete>
+	
+	
 
 </mapper>

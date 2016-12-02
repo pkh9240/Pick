@@ -87,6 +87,19 @@ public class UserServiceImpl implements UserService {
 	public User getUserByUserNo(int userNo) throws Exception {
 		return userDao.getUserByUserNo(userNo);
 	}
+	@Override
+	public void updateUser(User user) throws Exception {
+		
+		List<Interest> userInterest = user.getInterestList();
+		
+		userInterestDao.deleteUserInterest(user.getUserNo());		
+		
+		for(Interest interest : userInterest){
+			userInterestDao.addUserInterest(user.getUserNo(), interest.getInterestNo());
+		}
+		
+		userDao.updateUser(user);
+	}
 
 	
 
