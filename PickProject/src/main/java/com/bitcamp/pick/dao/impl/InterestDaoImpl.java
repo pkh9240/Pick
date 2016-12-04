@@ -23,8 +23,8 @@ public class InterestDaoImpl implements InterestDao {
 
 	@Override
 	public int addInterest(Interest interest) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("InterestDaoImpl-addInterest");
+		return sqlSession.insert("InterestMapper.addInterest", interest);
 	}
 
 	@Override

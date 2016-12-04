@@ -81,10 +81,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByUserEmail(String userEmail) throws Exception {
+		System.out.println(userDao.getUserByUserEmail(userEmail));
 		return userDao.getUserByUserEmail(userEmail);
 	}
 	@Override
 	public User getUserByUserNo(int userNo) throws Exception {
+		System.out.println(userDao.getUserByUserNo(userNo));
 		return userDao.getUserByUserNo(userNo);
 	}
 	@Override
@@ -99,6 +101,11 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		userDao.updateUser(user);
+	}
+	@Override
+	public List<User> getUserList() throws Exception {
+		
+		return userDao.getUserList();
 	}
 
 	

@@ -1,21 +1,29 @@
 package com.bitcamp.pick.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.pick.domain.Interest;
 import com.bitcamp.pick.domain.User;
@@ -34,9 +42,27 @@ public class UserController {
 	@Qualifier("interestServiceImpl")
 	private InterestService interestService;
 
+
+	@Value("#{commonProperties['profileImageUploadPath']}")
+	String profileImageUploadPath;
+	
+	@Value("#{commonProperties['interestImageUploadPath']}")
+	String interestImageUploadPath;
+	
+	
+	
 	public UserController() {
 		System.out.println("UserController Default Constructor");
 	}
+	
+	/* 단순 main View 로 이동 */
+	@RequestMapping(value = "main", method = RequestMethod.GET)
+	public String mainView() throws InterruptedException {
+
+		System.out.println("main - GET");
+		return "forward:/main/main.jsp";
+	}
+	
 
 	/* 단순 Login View 로 이동 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
@@ -68,7 +94,7 @@ public class UserController {
 	@RequestMapping(value = "loginSuccess", method = RequestMethod.GET)
 	public String loginSuccess() throws Exception {
 		System.out.println("loginSuccess - GET");
-		return "redirect:/main/main.jsp";
+		return "forward:/user/main";
 	}
 
 	/* 로그아웃 */
@@ -132,15 +158,17 @@ public class UserController {
 		user.setInterestList(userInterestList);
 
 		userService.addUser(user);
-
+		user = userService.getUserByUserEmail(user.getUserEmail());
+		session.setAttribute("user", user);
+		
 		return "forward:/main/main.jsp";
 	}
 
-	/* 회원 정보 보기 */
+	/* 나의 정보 보기 */
 	@RequestMapping(value = "getAccount", method = RequestMethod.GET)
 	public String getAccount(HttpSession session, Model model) throws Exception {
 		System.out.println("getAccount- GET");
-
+		
 		User user = userService.getUserByUserNo(((User) session.getAttribute("user")).getUserNo());
 
 		List<Interest> interestList = interestService.getInterestList();
@@ -151,39 +179,144 @@ public class UserController {
 		return "forward:/account/accountView.jsp";
 
 	}
-	
-	/*회원 정보 수정 */
-	/*@ModelAttribute 왜안먹지 */
-	@RequestMapping(value="updateUser", method =RequestMethod.POST)
-	public @ResponseBody Map<String, Object> updateUser(@RequestParam(value="interestList") List<Integer> interestList,
-			@RequestParam("userAge") String userAge, @RequestParam("userGender") String userGender ,
-			@RequestParam("userPassword") String userPassword,@RequestParam("userName") String userName,HttpSession session) throws Exception{
-		System.out.println("updateUser- POST");
-
-		Map<String,Object> map = new HashMap<String,Object>();
+	/* 관리자 -> 회원 정보 보기 */
+	@RequestMapping(value = "getUser/{userNo}", method = RequestMethod.GET)
+	public String getUser(@PathVariable("userNo") int userNo, Model model) throws Exception {
+		System.out.println("getUser- GET");
 		
-		User user = (User)session.getAttribute("user");
-		List<Interest> userInterestList = new ArrayList<Interest>();
+		User user = userService.getUserByUserNo(userNo);
+
+		List<Interest> interestList = interestService.getInterestList();
+
+		model.addAttribute("user", user);
+		model.addAttribute("interestList", interestList);
+
+		return "forward:/account/accountView.jsp";
+
+	}
+
+	/* 회원 정보 수정 */
+	/*
+	 * 메서드에 @ResponseBody Annotation이 되어 있으면 return되는 값은 View를 통해서 출력되는 것이 아니라
+	 * HTTP Response Body에 직접쓰여지게 된다.
+	 */
+	/*
+	 * @ResponseBody는 클라이언요청을 서버에서 처리 후 메소드가 리턴하는 오브젝트를 messageConverters를 통해
+	 * json 형태로 변환하여 리턴해주는 역활을 한다.
+	 */
+	/* passwordwordConfirm이라는 필드가 user에 없는데 날렸더니 bad Request..삽질 */
 	
-		for (int interestNo : interestList) {
+
+	@RequestMapping(value = "updateUser", method = RequestMethod.POST) 
+	public @ResponseBody User updateUser(@ModelAttribute User user,@RequestParam List<Integer> formInterestList,
+										MultipartFile profileImage,HttpServletRequest request, HttpSession session)
+			throws Exception {
+		System.out.println("updateUser- POST");
+	
+		User sessionUser = (User)session.getAttribute("user");
+		List<Interest> userInterestList = new ArrayList<Interest>();
+		
+		for(int interestNo : formInterestList){
 			userInterestList.add(new Interest(interestNo));
 		}
 		
-		user.setInterestList(userInterestList);
-		user.setUserAge(userAge);
-		user.setUserGender(userGender);
-		user.setUserName(userName);
-		user.setUserPassword(userPassword);
+		
+		sessionUser.setInterestList(userInterestList);
 		
 
-		userService.updateUser(user);
-		User dbUser = userService.getUserByUserEmail(user.getUserEmail());
+		String randomFileName=null;
 		
 		
-		session.setAttribute("user", dbUser);
+		 if ( !profileImage.isEmpty() ) {
+	            randomFileName = UUID.randomUUID().toString().replace("-","")+profileImage.getOriginalFilename().toLowerCase();
+	            File tempFile = new File(profileImageUploadPath,randomFileName);
+	            try {
+	            	profileImage.transferTo(tempFile);
+	       
+	            } catch (IllegalStateException | IOException e) {
+	                throw new RuntimeException(e.getMessage(), e);
+	            }
+	            
+	            //넘어온 이미지가 있을경우만 변경
+	            sessionUser.setUserPhoto(randomFileName);
+	            
+	     }
 		
-		map.put("user", user);
-		return map;
+		
+	
+		
+		sessionUser.setUserAge((String)user.getUserAge());
+		sessionUser.setUserGender((String) user.getUserGender());
+		sessionUser.setUserName((String) user.getUserName());
+		sessionUser.setUserPassword((String) user.getUserPassword());
+		
+		userService.updateUser(sessionUser);
+
+		session.setAttribute("user", sessionUser);
+	
+		
+		return sessionUser;
 	}
+	
+	
+	/*관리자 페이지 뷰 리턴 */
+	@RequestMapping(value="getAdminPageView", method=RequestMethod.GET)
+	public String getAdminPageView(Model model) throws Exception{
+		
+		
+		System.out.println("getAdminPageView GET");
+	
+		/*User Info Page Data*/
+		List<User> userList = userService.getUserList();
+		
+		
+		/*Interest Info Page Data*/
+		List<Interest> interestList  = interestService.getInterestList();
+		
+		
+		model.addAttribute("userList", userList);
+		model.addAttribute("interestList", interestList);
+		
+		
+		return "forward:/adminPage/adminPage.jsp";
+	}
+	
+	
+	
+	/*카테고리(Interest or Category) 추가 */
+	@RequestMapping(value = "addInterest", method = RequestMethod.POST) 
+	public @ResponseBody Interest addInterest(@ModelAttribute Interest interest, MultipartFile interestImage) throws Exception{
+		System.out.println("addInterest POST");
+		
+		/*Interest 중복 체크 */
+		if(interestService.getInterestByContent(interest.getContent())!=null){
+			return new Interest(0);
+		}
+		
+		
+		String randomFileName=null;
+		
+		
+		 if ( !interestImage.isEmpty() ) {
+	            randomFileName = UUID.randomUUID().toString().replace("-","")+interestImage.getOriginalFilename().toLowerCase();
+	            File tempFile = new File(interestImageUploadPath,randomFileName);
+	            try {
+	            	interestImage.transferTo(tempFile);
+	       
+	            } catch (IllegalStateException | IOException e) {
+	                throw new RuntimeException(e.getMessage(), e);
+	            }
+
+		 }
+		 interest.setInterestPhoto(randomFileName);
+		 interestService.addInterest(interest);
+		 interest = interestService.getInterestByContent(interest.getContent());
+		
+		//중복안되었을씨 content 리턴
+		return interest;
+	}
+	
+	
+	
 
 }

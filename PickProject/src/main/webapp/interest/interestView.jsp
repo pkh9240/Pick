@@ -5,8 +5,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../interest/interestView.css">
-    <link rel="stylesheet" href="../fontello-51c93eec/css/close.css">
+    <link rel="stylesheet" href="/interest/interestView.css">
+    <link rel="stylesheet" href="/fontello-51c93eec/css/close.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> </head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
@@ -41,7 +41,7 @@
                 <select name="interestList" multiple>
                     <option value="" disabled>Choose your Interest</option>
                     <c:forEach var="interest" items="${interestList}">
-                    	<option value="${interest.interestNo}" data-icon="${interest.interestPhoto}" class="circle">${interest.content}</option>
+                    	<option value="${interest.interestNo}" data-icon="/image/interest/${interest.interestPhoto}" class="circle">${interest.content}</option>
                     	
                     	
                     </c:forEach>
@@ -61,7 +61,7 @@
         
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         
-        <script src='../interest/interestView.js'></script>
+        <script src='/interest/interestView.js'></script>
         
         
         <script type="text/javascript">
@@ -70,17 +70,19 @@
         		if($('select[name="userAge"] option:selected').val()==''){
         			swal({title:"연령대를 선택해주세요.", confirmButtonColor: "#ED2553"});
         			return;
-        		}else if($('select[name="userGender"] option:selected').val()==''){
+        		}
+        		if($('select[name="userGender"] option:selected').val()==''){
         			swal({title:"성별을 선택해주세요.", confirmButtonColor: "#ED2553"});
         			return;
-        		}else if($('select[name="interestList"] option:selected').prevAll().size()<3){
+        		}
+        		if($('select[name="interestList"] option:selected').prevAll().size()<3){
         			swal({title:"관심사를 3개이상 선택해주세요.", confirmButtonColor: "#ED2553"});
         			return;
-        		}else{
+        		}
         			
         			$("#detailInfo-form").attr("target","_parent").attr("action", "/user/addUser").attr("method","post").submit();
         	
-        		}
+        		
         	});
         
         </script>

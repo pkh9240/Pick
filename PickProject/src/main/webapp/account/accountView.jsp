@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 
 <head>
@@ -17,7 +18,7 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<link rel="stylesheet" href="../account/accountView.css">
+<link rel="stylesheet" href="/account/accountView.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
@@ -32,16 +33,16 @@
 			<h1 id="my">MY</h1>
 			<h1 id="account">A c c o u n t</h1>
 		</div>
-		<div class="preview img-wrapper">
-			<img class="get_preview" src="${user.userPhoto}">
-		</div>
-		<div class="file-upload-wrapper">
-			<input type="file" name="file" class="file-upload-native"
-				accept="image/*" /> <input type="text" disabled
-				placeholder="upload" class="file-upload-text" />
-		</div>
+
 		<div class="row">
-			<form id="update_form" class="col s12">
+			<form id="update_form" class="col s12"  enctype="multipart/form-data">
+				<div class="preview img-wrapper">
+					<img class="get_preview" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
+				</div>
+				<div class="file-upload-wrapper">
+					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" />
+				    <input type="text" disabled placeholder="upload" class="file-upload-text" />
+				</div>
 				<div class="row">
 					<div class="input-field col s6">
 						<input name="userName" id="icon_prefix" type="text"
@@ -61,9 +62,9 @@
 							for="password">Password</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="userPasswordConfirm" id="passwordConfirm"
-							type="password" class="validate" value="${user.userPassword}">
-						<label for="password">Password confirm</label>
+						<input id="passwordConfirm" type="password" class="validate"
+							value="${user.userPassword}"> <label for="password">Password
+							confirm</label>
 					</div>
 				</div>
 				<div class="row">
@@ -88,15 +89,15 @@
 						</select> <label>Age</label>
 					</div>
 					<div class="input-field col s12">
-						<select name="interestList" multiple>
+						<select name="formInterestList" multiple>
 							<option value="" disabled selected>Choose your Interest</option>
 							<c:forEach var="interest" items="${interestList}">
 								<option value="${interest.interestNo}"
-									data-icon="${interest.interestPhoto}" class="circle"
+									data-icon="/image/interest/${interest.interestPhoto}" class="circle"
 									${user.interestList.contains(interest)?'selected':''}>${interest.content}</option>
 							</c:forEach>
 						</select><label>Interest</label>
-					</div>
+				</div>
 
 					<div id="save_btn"
 						class="btn waves-effect waves-light col offset-s4 s4">
@@ -117,38 +118,44 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-	<script src="../account/accountView.js"></script>
+	<script src="/account/accountView.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script type="text/javascript">
 	
-
-		
-		
-		$(document).ready(function(){
 			$("#save_btn").on("click", function() {
-						 if ($('select[name="interestList"] option:selected').prevAll().size() < 3) {
-							swal({title:"관심사를 3개 이상 선택해주세요.", confirmButtonColor: "#ED2553"});
-							return ;
-						} 
-						var updateformData = $("#update_form").serialize();
+				if($('select[name="formInterestList"] option:selected').prevAll().size()<3){
+        			swal({title:"관심사를 3개이상 선택해주세요.", confirmButtonColor: "#ED2553"});
+        			return;
+        		}
+				
+				
 
-						$.ajax({
-								type : "POST",
-								url : "/user/updateUser",
-								data : updateformData,
-								accept : "application/json",
-								dataType : "json", 
-								success : function(data) {
-									swal({title:"회원정보가 수정되었습니다.", confirmButtonColor: "#ED2553"});
-							
-								}
+				var form = new FormData($("#update_form")[0]);
+				
+				$.ajax({
+					type : "post",
+					url : "/user/updateUser",
+					processData: false,/*data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.*/
+					contentType: false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
+					data : form,
+					success : function(data) {
+						setTimeout(function() {
+						    swal({
+								title : data.userEmail + "님 정보가 수정되었습니다.",
+								confirmButtonColor : "#ED2553",
+								showLoaderOnConfirm:true
 							});
-						});
-						
+						  }, 2000);
+
+
+					}
 				});
-			
-			
+		
+
+		
+
+		});
 	</script>
 
 </body>

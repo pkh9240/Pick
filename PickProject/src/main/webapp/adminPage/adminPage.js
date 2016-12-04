@@ -181,7 +181,7 @@
 })(window, document);
 
 $(document).ready(function() {
-  $('#datatable').dataTable({
+  $('.datatable').dataTable({
     "oLanguage": {
       "sStripClasses": "",
       "sSearch": "",

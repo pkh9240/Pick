@@ -14,6 +14,14 @@
 	</resultMap>
 	
 	
+	<insert id="addInterest" parameterType="interest">
+		INSERT
+		INTO INTR(INTR_CONT,INTR_PHOT)
+		VALUES (#{content:VARCHAR},
+				#{interestPhoto:VARCHAR})
+	</insert>
+	
+	
 	<select id="getInterestByContent" parameterType="string" resultMap="interestSelectMap">
 		SELECT *
 		FROM INTR

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.pick.dao.InterestDao;
+import com.bitcamp.pick.dao.UserInterestDao;
 import com.bitcamp.pick.domain.Interest;
 import com.bitcamp.pick.service.InterestService;
 
@@ -18,17 +19,15 @@ public class InterestServiceImpl implements InterestService{
 	@Qualifier("interestDaoImpl")
 	public InterestDao interestDao;
 	
-	
+
 	
 	public InterestServiceImpl() {
 		System.out.println(" InterestServiceImpl Default Constructor");
 	}
 	@Override
 	public int addInterest(Interest interest) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return interestDao.addInterest(interest);
 	}
-
 	@Override
 	public Interest getInterestByContent(String content) throws Exception {
 		return interestDao.getInterestByContent(content);
@@ -41,5 +40,7 @@ public class InterestServiceImpl implements InterestService{
 	public List<Interest> getInterestList() throws Exception {
 		return interestDao.getInterestList();
 	}
+	
+	
 
 }

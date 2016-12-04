@@ -11,9 +11,10 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <!--     css        -->
-    <link rel="stylesheet" href="../main/main.css">
-    <link rel="stylesheet" href="../main/tagsly/tagsly.css">
-    <link rel="stylesheet" href="../node_modules/jquery-colorbox/colorbox.css">
+    <link rel="stylesheet" href="/main/main.css">
+    <link rel="stylesheet" href="/main/tagsly/tagsly.css">
+    <link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
+ 
    </head>
    
  
@@ -92,7 +93,7 @@
                 	<img src="../image/background.png">
                  </div>
                 <a href="#!user">
-                	<img class="circle" src="${user.userPhoto}">
+                	<img class="circle" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg' : user.userPhoto}">
                 </a> <a href="#!name"><span class="white-text name"><%-- ${user.userName} --%></span></a>
                 <a href="#!email">
                 	 <span class="white-text email">${user.userEmail}</span> 
@@ -466,18 +467,20 @@
     <!---->
     <!---//End-content---->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src='../main/main.js'></script>
+    <script src='/main/main.js'></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   
     <!----wookmark-scripts---->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="../main/jquery.wookmark.js"></script>
+    <script src="/main/jquery.wookmark.js"></script>
 
-    <script src="../main/tagsly/tagsly.js"></script>
+    <script src="/main/tagsly/tagsly.js"></script>
 
-    <script src="../node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+    <script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
    	<script type="text/javascript">
+   	
+   		/* 회원정보 뷰  */
    		$("#myAccount_btn").on("click", function() {
 			$.colorbox({
 			
@@ -486,9 +489,24 @@
 				href : "/user/getAccount",
 				width : "460px",
 				height : "850px",
-				scrolling: false
+				scrolling: false,
+				onClosed:function(){ 
+					 location.href="/user/main";
+				}
 			});
-	});
+		});
+   		
+   		/*관리자 페이지 */
+   		$("#adminPage_btn").on("click", function() {
+   			
+   			$.colorbox({
+   				iframe : "true",
+   				href : "/user/getAdminPageView",
+   				width : "90%",
+   				height : "90%",
+   				top:true
+   			});
+   		});
    	
    	
    	</script>

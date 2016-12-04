@@ -1,5 +1,7 @@
 package com.bitcamp.pick.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -46,6 +48,12 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("UserDaoImpl-updateUser");
 		sqlSession.update("UserMapper.updateUser",user); 
 		
+	}
+
+	@Override
+	public List<User> getUserList() throws Exception {
+		System.out.println("UserDaoImpl-getUserList");
+		return sqlSession.selectList("UserMapper.getUserList");
 	}
 
 }

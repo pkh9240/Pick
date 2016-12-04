@@ -19,7 +19,7 @@
 	href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,latin-ext'>
 <link rel="stylesheet" href="loginAndSignUpView.css">
 <link rel="stylesheet"
-	href="../node_modules/jquery-colorbox/colorbox.css">
+	href="/node_modules/jquery-colorbox/colorbox.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
 </head>
@@ -64,7 +64,7 @@
 
 	<script
 		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src="../node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 	<script src="loginAndSignUpView.js"></script>

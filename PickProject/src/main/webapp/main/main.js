@@ -113,15 +113,7 @@ $(function() {
 			height : "1000px"
 		});
 	});
-	$("#adminPage_btn").on("click", function() {
-		
-		$.colorbox({
-			iframe : "true",
-			href : "../adminPage/adminPage.jsp",
-			width : "85%",
-			height : "85%"
-		});
-	});
+	
 	
 	/*로그아웃 버튼 */
 	$("#logout_btn").on("click", function() {

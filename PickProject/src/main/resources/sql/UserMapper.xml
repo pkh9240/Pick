@@ -45,7 +45,7 @@
 				#{userGender:VARCHAR},
 				#{userAge:VARCHAR},
 				'user',
-				'../image/profile/defaultProfileImage.jpg')
+				'defaultProfileImage.jpg')
 	</insert>
 	
 	<update id="updateUser" parameterType="user">
@@ -57,5 +57,13 @@
 			USER_AGE=#{userAge:VARCHAR}
 		WHERE USER_NO=#{userNo}
 	</update>
+	
+	
+	<select id="getUserList"  resultMap="userSelectMap">
+			SELECT *
+		    FROM USERS
+	</select>
+	
+	
 
 </mapper>
