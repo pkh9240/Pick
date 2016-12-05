@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
@@ -7,20 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Account</title>
-<link
-	href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600'
-	rel='stylesheet' type='text/css'>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="/account/accountView.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
 </head>
 
@@ -35,36 +27,27 @@
 		</div>
 
 		<div class="row">
-			<form id="update_form" class="col s12"  enctype="multipart/form-data">
+			<form id="update_form" class="col s12" enctype="multipart/form-data">
 				<div class="preview img-wrapper">
 					<img class="get_preview" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
 				</div>
 				<div class="file-upload-wrapper">
-					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" />
-				    <input type="text" disabled placeholder="upload" class="file-upload-text" />
+					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" /> <input type="text" disabled placeholder="upload" class="file-upload-text" />
 				</div>
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="userName" id="icon_prefix" type="text"
-							class="validate" value="${user.userName}"> <label
-							for="icon_prefix">Name</label>
+						<input name="userName" id="icon_prefix" type="text" class="validate" value="${user.userName}"> <label for="icon_prefix">Name</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="userEmail" disabled value="${user.userEmail}"
-							id="disabled" type="text" class="validate"> <label
-							for="disabled">E mail</label>
+						<input name="userEmail" disabled value="${user.userEmail}" id="disabled" type="text" class="validate"> <label for="disabled">E mail</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="userPassword" id="password" type="password"
-							class="validate" value="${user.userPassword}"> <label
-							for="password">Password</label>
+						<input name="userPassword" id="password" type="password" class="validate" value="${user.userPassword}"> <label for="password">Password</label>
 					</div>
 					<div class="input-field col s6">
-						<input id="passwordConfirm" type="password" class="validate"
-							value="${user.userPassword}"> <label for="password">Password
-							confirm</label>
+						<input id="passwordConfirm" type="password" class="validate" value="${user.userPassword}"> <label for="password">Password confirm</label>
 					</div>
 				</div>
 				<div class="row">
@@ -72,8 +55,7 @@
 						<select name="userGender">
 							<option value="" disabled selected>Gender</option>
 							<option value="male" ${user.userGender=='male' ?'selected':''}>male</option>
-							<option value="female"
-								${user.userGender=='female' ? 'selected':''}>female</option>
+							<option value="female" ${user.userGender=='female' ? 'selected':''}>female</option>
 						</select> <label>Gender</label>
 					</div>
 					<div class="input-field col s6">
@@ -84,23 +66,19 @@
 							<option value="30s" ${user.userAge=='30s' ? 'selected':''}>30대</option>
 							<option value="40s" ${user.userAge=='40s' ? 'selected':''}>40대</option>
 							<option value="50s" ${user.userAge=='50s' ? 'selected':''}>50대</option>
-							<option value="60s" ${user.userAge=='60s' ? 'selected':''}>60대
-								이상</option>
+							<option value="60s" ${user.userAge=='60s' ? 'selected':''}>60대 이상</option>
 						</select> <label>Age</label>
 					</div>
 					<div class="input-field col s12">
 						<select name="formInterestList" multiple>
 							<option value="" disabled selected>Choose your Interest</option>
 							<c:forEach var="interest" items="${interestList}">
-								<option value="${interest.interestNo}"
-									data-icon="/image/interest/${interest.interestPhoto}" class="circle"
-									${user.interestList.contains(interest)?'selected':''}>${interest.content}</option>
+								<option value="${interest.interestNo}" data-icon="/image/interest/${interest.interestPhoto}" class="circle" ${user.interestList.contains(interest)?'selected':''}>${interest.content}</option>
 							</c:forEach>
 						</select><label>Interest</label>
-				</div>
+					</div>
 
-					<div id="save_btn"
-						class="btn waves-effect waves-light col offset-s4 s4">
+					<div id="save_btn" class="btn waves-effect waves-light col offset-s4 s4">
 						S A V E <i class="material-icons right">send</i>
 					</div>
 				</div>
@@ -112,15 +90,12 @@
 	</div>
 	<!--end of content-->
 	<!--start of javascript-->
-	<script
-		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script src="/account/accountView.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script type="text/javascript">
 	
 			$("#save_btn").on("click", function() {
@@ -146,11 +121,31 @@
 								confirmButtonColor : "#ED2553",
 								showLoaderOnConfirm:true
 							});
-						  }, 2000);
+						  }, 2500);
 
 
 					}
 				});
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 		
 
 		

@@ -16,41 +16,42 @@
 	<div id="container">
 		<div class="row">
 			<div class="col s12">
-				<span class="flow-text">Input your detail info</span>
+				<span class="flow-text">Filtering</span>
 			</div>
-			<form id="detailInfo-form">
+			<form id="filter-form">
 				<div class="input-field col s12">
-					<select name="userAge">
+					<select name="userAge" multiple>
 						<option value="" disabled selected>Age</option>
-						<option value="10s">10</option>
-						<option value="20s">20</option>
-						<option value="30s">30</option>
-						<option value="40s">40</option>
-						<option value="50s">50</option>
-						<option value="60s">60~</option>
+						<option value="10s">10대</option>
+						<option value="20s">20대</option>
+						<option value="30s">30대</option>
+						<option value="40s">40대</option>
+						<option value="50s">50대</option>
+						<option value="60s">60대</option>
 					</select> <label>Age</label>
 				</div>
 				<div class="input-field col s12">
 					<select name="userGender">
-						<option value="" disabled selected>Choose your gender</option>
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-					</select> <label>gender</label>
+						<option value="" disabled selected>Gender</option>
+						<option value="all">모두</option>
+						<option value="male">남자</option>
+						<option value="female">여자</option>
+					</select> <label>Gender</label>
 				</div>
 				<div class="input-field col s12">
 					<select name="interestList" multiple>
-						<option value="" disabled>Choose your Interest</option>
+						<option value="" disabled>Category</option>
 						<c:forEach var="interest" items="${interestList}">
 							<option value="${interest.interestNo}" data-icon="/image/interest/${interest.interestPhoto}" class="circle">${interest.content}</option>
 
 
 						</c:forEach>
-					</select> <label>Interest</label>
+					</select> <label>Category</label>
 				</div>
 			</form>
 			<div class="col s6 offset-s6">
-				<button class="btn waves-effect waves-light" id="register_btn">
-					Register <i class="material-icons right">send</i>
+				<button class="btn waves-effect waves-light" id="filter_btn">
+					Filtering <i class="material-icons right">send</i>
 				</button>
 			</div>
 		</div>
@@ -64,31 +65,17 @@
 
 
 		<script type="text/javascript">
-			$("#register_btn")
-					.on(
-							"click",
-							function() {
+			$("#filter_btn").on("click",function() {
 
-								if ($('select[name="userAge"] option:selected')
-										.val() == '') {
-									swal({
-										title : "연령대를 선택해주세요.",
-										confirmButtonColor : "#ED2553"
-									});
-									return;
-								}
-								if ($(
-										'select[name="userGender"] option:selected')
-										.val() == '') {
+								
+								if ($('select[name="userGender"] option:selected').val() == '') {
 									swal({
 										title : "성별을 선택해주세요.",
 										confirmButtonColor : "#ED2553"
 									});
 									return;
 								}
-								if ($(
-										'select[name="interestList"] option:selected')
-										.prevAll().size() < 3) {
+								if ($('select[name="interestList"] option:selected').prevAll().size() < 3) {
 									swal({
 										title : "관심사를 3개이상 선택해주세요.",
 										confirmButtonColor : "#ED2553"
@@ -96,9 +83,7 @@
 									return;
 								}
 
-								$("#detailInfo-form").attr("target", "_parent")
-										.attr("action", "/user/addUser").attr(
-												"method", "post").submit();
+						/* 		$("#filter-form").attr("target", "_parent").attr("action", "/user/addUser").attr("method", "post").submit(); */
 
 							});
 		</script>

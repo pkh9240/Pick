@@ -318,5 +318,21 @@ public class UserController {
 	
 	
 	
+	/*필터링 뷰 리턴 */
+	@RequestMapping(value="getFilter", method=RequestMethod.GET)
+	public String getFilter(Model model) throws Exception{
+		System.out.println("getFilter POST");
+		
+		
+		/*Interest Info Page Data*/
+		List<Interest> interestList  = interestService.getInterestList();
+		model.addAttribute("interestList", interestList);
+		
+		
+		return "forward:/filter/filter.jsp";
+	}
+	
+	
+	
 
 }

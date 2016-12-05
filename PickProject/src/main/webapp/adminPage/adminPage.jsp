@@ -1,19 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-<link rel='stylesheet prefetch'
-	href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 <link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
 <link rel="stylesheet" href="/adminPage/adminPage.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 <style>
 #modal1 {
 	width: 30% !important;
@@ -40,9 +36,9 @@
 						<div class="table-header">
 							<span class="table-title">USER</span>
 							<div class="actions">
-								<a href="#"
-									class="search-toggle waves-effect btn-flat nopadding"> <i
-									class="material-icons">search</i></a>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
+									<i class="material-icons">search</i>
+								</a>
 							</div>
 						</div>
 						<table class="datatable">
@@ -84,9 +80,9 @@
 						<div class="table-header">
 							<span class="table-title">Admin Pick</span>
 							<div class="actions">
-								<a href="#"
-									class="search-toggle waves-effect btn-flat nopadding"><i
-									class="material-icons">search</i></a>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
+									<i class="material-icons">search</i>
+								</a>
 							</div>
 						</div>
 						<table class="datatable">
@@ -220,9 +216,9 @@
 						<div class="table-header">
 							<span class="table-title">FEED</span>
 							<div class="actions">
-								<a href="#"
-									class="search-toggle waves-effect btn-flat nopadding"> <i
-									class="material-icons">search</i></a>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
+									<i class="material-icons">search</i>
+								</a>
 							</div>
 						</div>
 						<table class="datatable">
@@ -259,11 +255,12 @@
 						<div class="table-header">
 							<span class="table-title">Category</span>
 							<div class="actions">
-								<a href="#modal1"
-									class="modal-trigger waves-effect btn-flat nopadding"><i
-									class="material-icons" id="cat">person_add</i></a> <a href="#"
-									class="search-toggle waves-effect btn-flat nopadding"><i
-									class="material-icons">search</i></a>
+								<a href="#modal1" class="modal-trigger waves-effect btn-flat nopadding">
+									<i class="material-icons" id="cat">person_add</i>
+								</a>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
+									<i class="material-icons">search</i>
+								</a>
 							</div>
 						</div>
 						<table class="datatable">
@@ -271,8 +268,8 @@
 								<tr>
 
 									<th data-field="#">Content</th>
-									<th data-field="#">Count</th>
-									<th data-field="#"></th>
+									<th data-field="#">Image</th>
+
 								</tr>
 							</thead>
 							<tbody>
@@ -280,9 +277,7 @@
 									<tr style="cursor: pointer;">
 										<td>${interest.content}</td>
 										<td>개수 또는 이미지</td>
-										<td><button
-												class="btn waves-effect waves-light btn-small">Delete
-											</button></td>
+
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -303,23 +298,17 @@
 					<form id="add_interest_form">
 						<div class="preview img-wrapper"></div>
 						<div class="file-upload-wrapper">
-							<input type="file" name="interestImage" class="file-upload-native"
-								accept="image/*" /> <input type="text" disabled
-								placeholder="upload" class="file-upload-text" />
+							<input type="file" name="interestImage" class="file-upload-native" accept="image/*" /> <input type="text" disabled placeholder="upload" class="file-upload-text" />
 						</div>
 
 
 						<div class="row">
 							<div class="input-field col offset-s2 s8">
-								<input name="content" id="icon_prefix" type="text"
-									class="validate"> <label for="icon_prefix">Category
-									Name</label>
+								<input name="content" id="icon_prefix" type="text" class="validate"> <label for="icon_prefix">Category Name</label>
 							</div>
 						</div>
 
-						<div id="add_interest_btn"
-							class="btn waves-effect waves-light col offset-s6 s3">A D
-							D</div>
+						<div id="add_interest_btn" class="btn waves-effect waves-light col offset-s6 s3">A D D</div>
 
 
 					</form>
@@ -329,65 +318,54 @@
 
 		</div>
 	</div>
-	<script
-		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-	  <script src='http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+	<script src='http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
 	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
-		<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script src="/adminPage/adminPage.js"></script>
 	<script type="text/javascript">
-		$("tr[id^=getUser]").on("click",function() {
-			location.href = "/user/getUser/"+ $(this).attr("id").replace("getUser_", "")
-		});
-		
-		
-		$("#add_interest_btn").on("click",function(){
+		$("tr[id^=getUser]").on(
+				"click",
+				function() {
+					location.href = "/user/getUser/"
+							+ $(this).attr("id").replace("getUser_", "")
+				});
 
-		var form = new FormData($("#add_interest_form")[0]);
-		
-		$.ajax({
-			type : "post",
-			url : "/user/addInterest",
-			processData: false,
-			contentType: false,
-			data : form,
-			success : function(data) {
-		
-					if(data.interestNo==0){
+		$("#add_interest_btn").on("click", function() {
+
+			var form = new FormData($("#add_interest_form")[0]);
+
+			$.ajax({
+				type : "post",
+				url : "/user/addInterest",
+				processData : false,
+				contentType : false,
+				data : form,
+				success : function(data) {
+
+					if (data.interestNo == 0) {
 						swal({
-							title :"이미 해당 카데코리가 존재 합니다. ",
+							title : "이미 해당 카데코리가 존재 합니다. ",
 							confirmButtonColor : "#ED2553"
-						});	
-					}else{
-						
-						
-						swal({
-								title : data.content+ "카테고리가 추가되었습니다. ",
-								confirmButtonColor : "#ED2553",
-								//imageUrl: "/image/interest/"+data.interestPhoto
-							},function(){
-								 location.href="/user/getAdminPageView";
-							});
-						 
-				
-						
-					}
-					
-				
-			
-					
+						});
+					} else {
 
-			}
+						swal({
+							title : data.content + "카테고리가 추가되었습니다. ",
+							confirmButtonColor : "#ED2553",
+						//imageUrl: "/image/interest/"+data.interestPhoto
+						}, function() {
+							location.href = "/user/getAdminPageView";
+						});
+
+					}
+
+				}
+			});
 		});
-		});
-		
-		
-		
 	</script>
 </body>
 
