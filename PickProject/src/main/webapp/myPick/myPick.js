@@ -107,7 +107,7 @@
       };
 
       // IE9 throws an 'unknown error' if document.activeElement is used
-      // inside an iframe or frame. 
+      // inside an iframe or frame.
       var activeEl;
 
       try {
@@ -129,11 +129,11 @@
     };
 
     /*
-     * TableTools Bootstrap compatibility
-     * Required TableTools 2.1+
-     */
+	 * TableTools Bootstrap compatibility Required TableTools 2.1+
+	 */
     if (DataTable.TableTools) {
-      // Set the classes that TableTools uses to something suitable for Bootstrap
+      // Set the classes that TableTools uses to something suitable for
+		// Bootstrap
       $.extend(true, DataTable.TableTools.classes, {
         "container": "DTTT btn-group",
         "buttons": {
@@ -181,7 +181,7 @@
 })(window, document);
 
 $(document).ready(function() {
-  $('#datatable').dataTable({
+  $('.datatable').dataTable({
     "oLanguage": {
       "sStripClasses": "",
       "sSearch": "",
@@ -202,24 +202,17 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-$("#btn_one").on("click", function() {
+	$("#btn_one").on("click", function() {
+		location.href="../result/resultOne.jsp"
 		
-		$.colorbox({
-			iframe : "true",
-			href : "../result/resultOne.jsp",
-			width : "100%",
-			height : "100%"
-		});
+	
 	});
 	
 $("#btn_multi").on("click", function() {
 	
-	$.colorbox({
-		iframe : "true",
-		href : "../result/resultMulti.jsp",
-		width : "100%",
-		height : "100%"
-	});
+	
+	location.href="../result/resultMulti.jsp"
+	
 });
 
 

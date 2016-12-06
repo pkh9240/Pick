@@ -6,13 +6,13 @@
 <title>Material Sortable Datatable</title>
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css'>
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-<link rel="stylesheet" href="../node_modules/jquery-colorbox/colorbox.css">
-<link rel="stylesheet" href="myPick.css">
+<link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
+<link rel="stylesheet" href="/myPick/myPick.css">
 </head>
 
 <body>
 	<div class="row">
-		<div id="admin" class="col s12">
+		<div  class="col s12">
 			<div class="card material-table">
 				<div class="table-header">
 					<span class="table-title">My Pick</span>
@@ -23,7 +23,7 @@
 						</a>
 					</div>
 				</div>
-				<table id="datatable">
+				<table class="datatable">
 					<thead>
 						<tr>
 							<th>Writer</th>
@@ -84,9 +84,9 @@
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src='http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js'></script>
-
-	<script src="../node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
-	<script src="myPick.js"></script>
+	
+	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+	<script src="/myPick/myPick.js"></script>
 </body>
 
 </html>

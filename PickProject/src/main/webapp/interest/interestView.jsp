@@ -13,11 +13,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
 <body>
+	<div class="navbar-fixed">
+		<nav class="custom-nav">
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo left">Detail infomation</a>
+			</div>
+		</nav>
+	</div>
+
 	<div id="container">
 		<div class="row">
-			<div class="col s12">
-				<span class="flow-text">Input your detail info</span>
-			</div>
+			
 			<form id="detailInfo-form">
 				<div class="input-field col s12">
 					<select name="userAge">
@@ -28,14 +34,16 @@
 						<option value="40s">40</option>
 						<option value="50s">50</option>
 						<option value="60s">60~</option>
-					</select> <label>Age</label>
+					</select>
+					<label>Age</label>
 				</div>
 				<div class="input-field col s12">
 					<select name="userGender">
 						<option value="" disabled selected>Choose your gender</option>
 						<option value="male">Male</option>
 						<option value="female">Female</option>
-					</select> <label>gender</label>
+					</select>
+					<label>gender</label>
 				</div>
 				<div class="input-field col s12">
 					<select name="interestList" multiple>
@@ -45,7 +53,8 @@
 
 
 						</c:forEach>
-					</select> <label>Interest</label>
+					</select>
+					<label>Interest</label>
 				</div>
 			</form>
 			<div class="col s6 offset-s6">

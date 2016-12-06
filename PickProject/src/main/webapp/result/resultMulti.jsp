@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'>
-    <link rel="stylesheet" href="../result/resultMulti.css">
+    <link rel="stylesheet" href="/result/resultMulti.css">
     <!-- Fuentes de Google -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
     <!-- Iconos -->
@@ -91,7 +91,7 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script src="../result/resultMulti.js"></script>
+    <script src="/result/resultMulti.js"></script>
 </body>
 
 </html>

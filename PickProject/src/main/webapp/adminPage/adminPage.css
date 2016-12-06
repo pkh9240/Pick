@@ -418,3 +418,44 @@ input[type="file"]::-webkit-file-upload-button {
      box-shadow: 0 1px 0 0 #ED2553;
    }
 
+
+
+
+
+
+/*커스텀  */
+.thumb {
+   margin: auto;
+    overflow: hidden;
+    height: 80px;
+    width: 80px;
+    padding: 5px;
+    
+}
+
+.thumb img {
+    display: block; /* Otherwise it keeps some space around baseline */
+    max-width: 80px;    /* Scale up to fill container width */
+    height: auto;  /* Scale up to fill container height */
+    padding: 5px;
+      margin: auto;
+    overflow: hidden;
+ 
+}
+
+
+.custom-nav{
+	background-color: #ED2553;
+/* 	z-index:2;
+	position: fixed;
+	top:0px; */
+}
+.custom-btn{
+		background-color: #ED2553;
+}
+
+.custom-modal{
+	width: 35%;
+	height: 75%;
+}
+/*  */

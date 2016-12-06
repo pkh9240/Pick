@@ -21,9 +21,12 @@
 
 
 	<div class="form">
-		<div id="myaccount">
-			<h1 id="my">MY</h1>
-			<h1 id="account">A c c o u n t</h1>
+		<div class="navbar-fixed">
+			<nav class="custom-nav">
+				<div class="nav-wrapper">
+					<a href="#!" class="brand-logo left">My Account</a>
+				</div>
+			</nav>
 		</div>
 
 		<div class="row">
@@ -32,31 +35,47 @@
 					<img class="get_preview" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
 				</div>
 				<div class="file-upload-wrapper">
-					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" /> <input type="text" disabled placeholder="upload" class="file-upload-text" />
+					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" />
+					<input type="text" disabled placeholder="upload" class="file-upload-text" />
 				</div>
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="userName" id="icon_prefix" type="text" class="validate" value="${user.userName}"> <label for="icon_prefix">Name</label>
+						<input name="userName" id="icon_prefix" type="text" class="validate" value="${user.userName}">
+						<label for="icon_prefix">Name</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="userEmail" disabled value="${user.userEmail}" id="disabled" type="text" class="validate"> <label for="disabled">E mail</label>
+						<input name="userEmail" disabled value="${user.userEmail}" id="disabled" type="text" class="validate">
+						<label for="disabled">E mail</label>
+					</div>
+					<div class="input-field col s12">
+						<select name="formInterestList" multiple>
+							<option value="" disabled selected>Choose your Interest</option>
+							<c:forEach var="interest" items="${interestList}">
+								<option value="${interest.interestNo}" data-icon="/image/interest/${interest.interestPhoto}" class="circle" ${user.interestList.contains(interest)?'selected':''}>${interest.content}</option>
+							</c:forEach>
+						</select>
+						<label>Interest</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="userPassword" id="password" type="password" class="validate" value="${user.userPassword}"> <label for="password">Password</label>
+						<input name="userPassword" id="password" type="password" class="validate" value="${user.userPassword}">
+						<label for="password">Password</label>
 					</div>
 					<div class="input-field col s6">
-						<input id="passwordConfirm" type="password" class="validate" value="${user.userPassword}"> <label for="password">Password confirm</label>
+						<input id="passwordConfirm" type="password" class="validate" value="${user.userPassword}">
+						<label for="password">Password confirm</label>
 					</div>
 				</div>
 				<div class="row">
+
 					<div class="input-field col s6">
 						<select name="userGender">
 							<option value="" disabled selected>Gender</option>
 							<option value="male" ${user.userGender=='male' ?'selected':''}>male</option>
 							<option value="female" ${user.userGender=='female' ? 'selected':''}>female</option>
-						</select> <label>Gender</label>
+						</select>
+						<label>Gender</label>
 					</div>
 					<div class="input-field col s6">
 						<select name="userAge">
@@ -67,18 +86,12 @@
 							<option value="40s" ${user.userAge=='40s' ? 'selected':''}>40대</option>
 							<option value="50s" ${user.userAge=='50s' ? 'selected':''}>50대</option>
 							<option value="60s" ${user.userAge=='60s' ? 'selected':''}>60대 이상</option>
-						</select> <label>Age</label>
-					</div>
-					<div class="input-field col s12">
-						<select name="formInterestList" multiple>
-							<option value="" disabled selected>Choose your Interest</option>
-							<c:forEach var="interest" items="${interestList}">
-								<option value="${interest.interestNo}" data-icon="/image/interest/${interest.interestPhoto}" class="circle" ${user.interestList.contains(interest)?'selected':''}>${interest.content}</option>
-							</c:forEach>
-						</select><label>Interest</label>
+						</select>
+						<label>Age</label>
 					</div>
 
-					<div id="save_btn" class="btn waves-effect waves-light col offset-s4 s4">
+					<div class="col s12"></div>
+					<div id="save_btn" class="btn waves-effect waves-light col offset-s6 s6">
 						S A V E <i class="material-icons right">send</i>
 					</div>
 				</div>
@@ -97,60 +110,52 @@
 	<script src="/account/accountView.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script type="text/javascript">
-	
-			$("#save_btn").on("click", function() {
-				if($('select[name="formInterestList"] option:selected').prevAll().size()<3){
-        			swal({title:"관심사를 3개이상 선택해주세요.", confirmButtonColor: "#ED2553"});
-        			return;
-        		}
-				
-				
-
-				var form = new FormData($("#update_form")[0]);
-				
-				$.ajax({
-					type : "post",
-					url : "/user/updateUser",
-					processData: false,/*data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.*/
-					contentType: false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
-					data : form,
-					success : function(data) {
-						setTimeout(function() {
-						    swal({
-								title : data.userEmail + "님 정보가 수정되었습니다.",
-								confirmButtonColor : "#ED2553",
-								showLoaderOnConfirm:true
-							});
-						  }, 2500);
-
-
+		$("#save_btn").on(
+				"click",
+				function() {
+					if ($('select[name="formInterestList"] option:selected')
+							.prevAll().size() < 3) {
+						swal({
+							title : "관심사를 3개이상 선택해주세요.",
+							confirmButtonColor : "#ED2553"
+						});
+						return;
 					}
+
+					var form = new FormData($("#update_form")[0]);
+
+					swal({
+						title : "회원 정보를 수정 하시겠습니까?",
+						type : "info",
+						confirmButtonColor : "#ED2553",
+						showCancelButton : true,
+						closeOnConfirm : false,
+						showLoaderOnConfirm : true,
+
+					}, function(isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type : "post",
+								url : "/user/updateUser",
+								processData : false,/*data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.*/
+								contentType : false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
+								data : form,
+								success : function(data) {
+									setTimeout(function() {
+										swal({
+											title : data.userEmail
+													+ "님 정보가 수정되었습니다.",
+											confirmButtonColor : "#ED2553",
+											showLoaderOnConfirm : true
+										});
+									}, 2500);
+								}
+							});
+						}
+
+					});
+
 				});
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-		
-
-		
-
-		});
 	</script>
 
 </body>

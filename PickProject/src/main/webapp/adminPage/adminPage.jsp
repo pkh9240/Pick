@@ -10,34 +10,28 @@
 <link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
 <link rel="stylesheet" href="/adminPage/adminPage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-<style>
-#modal1 {
-	width: 30% !important;
-	height: 80% !important;
-}
-</style>
+
 </head>
 
 <body>
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3"><a href="#AdminPick">Admin Pick</a></li>
-				<li class="tab col s3"><a href="#Feed">Feed</a></li>
-				<li class="tab col s2"><a href="#UserInfo">UserInfo</a></li>
-				<li class="tab col s3"><a href="#Category">Category</a></li>
+				<li class="tab col s3"><a class="${path=='pick'? 'active':''}" href="#pick">Admin Pick</a></li>
+				<li class="tab col s3"><a class="${path=='feed'? 'active':''}" href="#feed">Feed</a></li>
+				<li class="tab col s2"><a class="${path=='user'? 'active':''}" href="#user">UserInfo</a></li>
+				<li class="tab col s3"><a class="${path=='category'? 'active':''}" href="#category">Category</a></li>
 			</ul>
 		</div>
 		<!--    User Info-->
-		<div id="UserInfo" class="col s12">
+		<div id="user" class="col s12">
 			<div class="row">
 				<div class="col s12">
 					<div class="card material-table">
 						<div class="table-header">
 							<span class="table-title">USER</span>
 							<div class="actions">
-								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
-									<i class="material-icons">search</i>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
 								</a>
 							</div>
 						</div>
@@ -72,7 +66,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="AdminPick" class="col s12">
+		<div id="pick" class="col s12">
 			<!--   AdminPick     -->
 			<div class="row">
 				<div class="col s12">
@@ -80,8 +74,7 @@
 						<div class="table-header">
 							<span class="table-title">Admin Pick</span>
 							<div class="actions">
-								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
-									<i class="material-icons">search</i>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
 								</a>
 							</div>
 						</div>
@@ -209,15 +202,14 @@
 		</div>
 
 		<!--  Message      -->
-		<div id="Feed" class="col s12">
+		<div id="feed" class="col s12">
 			<div class="row">
 				<div class="col s12">
 					<div class="card material-table">
 						<div class="table-header">
 							<span class="table-title">FEED</span>
 							<div class="actions">
-								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
-									<i class="material-icons">search</i>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
 								</a>
 							</div>
 						</div>
@@ -248,18 +240,15 @@
 		</div>
 
 		<!--Catrgory Info -->
-		<div id="Category" class="col s12">
+		<div id="category" class="col s12">
 			<div class="row">
-				<div class="col offset-s2 s8">
+				<div class="col offset-s4 s4">
 					<div class="card material-table">
 						<div class="table-header">
 							<span class="table-title">Category</span>
 							<div class="actions">
-								<a href="#modal1" class="modal-trigger waves-effect btn-flat nopadding">
-									<i class="material-icons" id="cat">person_add</i>
-								</a>
-								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
-									<i class="material-icons">search</i>
+								<a href="#modal1" class="modal-trigger waves-effect btn-flat nopadding"> <i class="material-icons" id="cat">person_add</i>
+								</a> <a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
 								</a>
 							</div>
 						</div>
@@ -276,7 +265,9 @@
 								<c:forEach var="interest" items="${interestList}">
 									<tr style="cursor: pointer;">
 										<td>${interest.content}</td>
-										<td>개수 또는 이미지</td>
+										<td><div class="thumb">
+												<img src="/image/interest/${interest.interestPhoto}" />
+											</div></td>
 
 									</tr>
 								</c:forEach>
@@ -288,27 +279,33 @@
 		</div>
 		<!-- Modal Trigger -->
 		<!-- Modal Structure -->
-		<div id="modal1" class="modal">
+		<div id="modal1" class="modal custom-modal">
+			<div class="navbar-fixed">
+				<nav class="custom-nav">
+					<div class="nav-wrapper">
+						<a href="#!" class="brand-logo left">&nbsp; Add Category </a>
+					</div>
+				</nav>
+			</div>
 			<div class="modal-content">
 				<div class="form">
-					<div>
-						<h1 id="my">ADD</h1>
-						<h1 id="account">Category</h1>
-					</div>
+
 					<form id="add_interest_form">
 						<div class="preview img-wrapper"></div>
 						<div class="file-upload-wrapper">
-							<input type="file" name="interestImage" class="file-upload-native" accept="image/*" /> <input type="text" disabled placeholder="upload" class="file-upload-text" />
+							<input type="file" name="interestImage" class="file-upload-native" accept="image/*" />
+							<input type="text" disabled placeholder="upload" class="file-upload-text" />
 						</div>
 
 
 						<div class="row">
 							<div class="input-field col offset-s2 s8">
-								<input name="content" id="icon_prefix" type="text" class="validate"> <label for="icon_prefix">Category Name</label>
+								<input name="content" id="content" type="text" class="validate">
+								<label for="icon_prefix">Category Name</label>
 							</div>
 						</div>
 
-						<div id="add_interest_btn" class="btn waves-effect waves-light col offset-s6 s3">A D D</div>
+						<div id="add_interest_btn" class="btn waves-effect waves-light col offset-s6 s3 custom-btn ">A D D</div>
 
 
 					</form>
@@ -327,45 +324,50 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script src="/adminPage/adminPage.js"></script>
 	<script type="text/javascript">
-		$("tr[id^=getUser]").on(
+		$("#add_interest_btn").on(
 				"click",
 				function() {
-					location.href = "/user/getUser/"
-							+ $(this).attr("id").replace("getUser_", "")
+					var form = new FormData($("#add_interest_form")[0]);
+
+					swal({
+						title : $("#content").val() + "카테고리를 추가 하시겠습니까?",
+						type : "info",
+						confirmButtonColor : "#ED2553",
+						showCancelButton : true,
+						closeOnConfirm : false,
+						showLoaderOnConfirm : true,
+					}, function(isConfirm) {
+						if (isConfirm) {
+							$.ajax({
+								type : "post",
+								url : "/user/addInterest",
+								processData : false,
+								contentType : false,
+								data : form,
+								success : function(data) {
+									if (data.interestNo == 0) {
+										swal({
+											title : "이미 해당 카데코리가 존재 합니다. ",
+											confirmButtonColor : "#ED2553"
+										});
+									} else {
+
+										setTimeout(function() {
+											swal({
+												title : data.content+ "카테고리가 추가되었습니다. ",
+												confirmButtonColor : "#ED2553",
+												imageUrl : "/image/interest/"+data.interestPhoto
+											},function(isConfirm) {
+												location.href="/user/getAdminPageView/category";
+											});
+										}, 5000);
+
+									}
+								}
+							});
+						}
+					});
 				});
-
-		$("#add_interest_btn").on("click", function() {
-
-			var form = new FormData($("#add_interest_form")[0]);
-
-			$.ajax({
-				type : "post",
-				url : "/user/addInterest",
-				processData : false,
-				contentType : false,
-				data : form,
-				success : function(data) {
-
-					if (data.interestNo == 0) {
-						swal({
-							title : "이미 해당 카데코리가 존재 합니다. ",
-							confirmButtonColor : "#ED2553"
-						});
-					} else {
-
-						swal({
-							title : data.content + "카테고리가 추가되었습니다. ",
-							confirmButtonColor : "#ED2553",
-						//imageUrl: "/image/interest/"+data.interestPhoto
-						}, function() {
-							location.href = "/user/getAdminPageView";
-						});
-
-					}
-
-				}
-			});
-		});
 	</script>
 </body>
 

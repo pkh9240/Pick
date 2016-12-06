@@ -260,8 +260,8 @@ public class UserController {
 	
 	
 	/*관리자 페이지 뷰 리턴 */
-	@RequestMapping(value="getAdminPageView", method=RequestMethod.GET)
-	public String getAdminPageView(Model model) throws Exception{
+	@RequestMapping(value="getAdminPageView/{path}", method=RequestMethod.GET)
+	public String getAdminPageView(@PathVariable("path") String path,Model model) throws Exception{
 		
 		
 		System.out.println("getAdminPageView GET");
@@ -276,6 +276,9 @@ public class UserController {
 		
 		model.addAttribute("userList", userList);
 		model.addAttribute("interestList", interestList);
+		
+		/*path는 AdminPage에서 어느 탭을 보여줄지 결정함 user,category,pick*/
+		model.addAttribute("path",path);
 		
 		
 		return "forward:/adminPage/adminPage.jsp";
@@ -321,7 +324,7 @@ public class UserController {
 	/*필터링 뷰 리턴 */
 	@RequestMapping(value="getFilter", method=RequestMethod.GET)
 	public String getFilter(Model model) throws Exception{
-		System.out.println("getFilter POST");
+		System.out.println("getFilter GET");
 		
 		
 		/*Interest Info Page Data*/
@@ -330,6 +333,13 @@ public class UserController {
 		
 		
 		return "forward:/filter/filter.jsp";
+	}
+	
+	/*나의 투표 리스트  뷰 리턴 */
+	@RequestMapping(value="getMyPickView", method=RequestMethod.GET)
+	public String getMyPickView(Model model) throws Exception{
+		System.out.println("getMyPickView GET");
+		return "forward:/myPick/myPick.jsp";
 	}
 	
 	
