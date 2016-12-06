@@ -1,7 +1,7 @@
 
 
 body {
-   background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
+   background-image: url("/image/mainBackground4.png");
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
@@ -34,7 +34,7 @@ html {
   z-index: 1;
   background: #FFFFFF;
   max-width: 300px;
-  margin: 0 auto 100px;
+   margin: 0 auto 100px; 
   padding: 30px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;

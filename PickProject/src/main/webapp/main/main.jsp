@@ -43,8 +43,8 @@
 	<ul id="slide-out" class="side-nav">
 		<li>
 			<div class="userView">
-				<div class="background">
-					<img src="../image/background.png">
+				<div class="background" style="width:360px">
+					<img src="/image/mainBackground3.png" style="width:100%; height:auto" >
 				</div>
 				<a href="#!user"> <img class="circle" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg' : user.userPhoto}">
 				</a> <a href="#!name"> <span class="white-text name"> ${user.userName}</span>
