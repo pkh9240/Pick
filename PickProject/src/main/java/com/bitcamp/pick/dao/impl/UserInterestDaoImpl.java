@@ -16,7 +16,7 @@ public class UserInterestDaoImpl implements UserInterestDao {
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	public SqlSession sqlSession;
-
+ 
 	public UserInterestDaoImpl() {
 		System.out.println("UserInterestDaoImpl Default Constructor");
 	}

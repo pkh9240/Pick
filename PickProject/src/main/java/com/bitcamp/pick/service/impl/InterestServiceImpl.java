@@ -19,7 +19,7 @@ public class InterestServiceImpl implements InterestService{
 	@Qualifier("interestDaoImpl")
 	public InterestDao interestDao;
 	
-
+ 
 	
 	public InterestServiceImpl() {
 		System.out.println(" InterestServiceImpl Default Constructor");

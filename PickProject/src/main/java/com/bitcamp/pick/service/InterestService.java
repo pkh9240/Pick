@@ -9,4 +9,4 @@ public interface InterestService {
 	public Interest getInterestByContent(String content) throws Exception;
 	public Interest getInterestByInterestNo(int interestNo) throws Exception;
 	public List<Interest> getInterestList() throws Exception;
-}
+} 

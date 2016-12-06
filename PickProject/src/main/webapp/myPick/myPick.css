@@ -18,7 +18,7 @@ div.material-table .hiddensearch input {
 div.material-table .hiddensearch input:active {
   border: transparent 0 !important;
 }
-
+ 
 div.material-table table {
   table-layout: fixed;
 }

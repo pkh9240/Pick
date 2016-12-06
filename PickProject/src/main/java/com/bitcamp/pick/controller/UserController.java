@@ -242,7 +242,7 @@ public class UserController {
 	            
 	     }
 		
-		
+		 
 	
 		
 		sessionUser.setUserAge((String)user.getUserAge());

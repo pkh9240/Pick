@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
 <link rel="stylesheet" href="/myPick/myPick.css">
 </head>
-
+ 
 <body>
 	<div class="row">
 		<div  class="col s12">

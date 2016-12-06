@@ -19,7 +19,7 @@
 				<a href="#!" class="brand-logo left">Detail infomation</a>
 			</div>
 		</nav>
-	</div>
+	</div> 
 
 	<div id="container">
 		<div class="row">

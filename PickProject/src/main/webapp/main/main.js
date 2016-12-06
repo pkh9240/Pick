@@ -18,7 +18,7 @@ $(function() {
 			$handler = $('li', $tiles);
 			$handler.wookmark(options);
 		});
-	}
+	} 
 	/**
 	 * When scrolled all the way to the bottom, add more tiles
 	 */

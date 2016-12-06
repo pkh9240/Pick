@@ -12,5 +12,5 @@ public interface UserService {
 	public User getUserByUserNo(int userNo) throws Exception;
 	public Map<String,Object> loginUser(User user) throws Exception;
 	public List<User> getUserList() throws Exception;
-	
+	 
 }

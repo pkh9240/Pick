@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 	@Qualifier("userDaoImpl")
 	private UserDao userDao;
 	
-	
+	 
 	
 	@Autowired
 	@Qualifier("interestDaoImpl")

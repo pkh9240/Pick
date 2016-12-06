@@ -210,7 +210,7 @@ input[type="file"]::-webkit-file-upload-button {
    .input-field .prefix.active {
      color: #ED2553;
    }
-
+ 
  /* valid color */
    .input-field input[type=text].valid {
      border-bottom: 1px solid #ED2553;

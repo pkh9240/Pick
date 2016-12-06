@@ -12,7 +12,7 @@ function dashboard(id,id1, fData,fData1){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
         hGDim.w = 350 - hGDim.l - hGDim.r, 
         hGDim.h = 400 - hGDim.t - hGDim.b;
-            
+             
         //create svg for histogram.
         var hGsvg = d3.select(id).append("svg")
             .attr("width", hGDim.w + hGDim.l + hGDim.r).attr("id","histogram")

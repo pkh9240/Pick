@@ -16,7 +16,7 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
-
+ 
 	public UserDaoImpl() {
 		System.out.println(" UserDaoImpl Default Constructor");
 	}

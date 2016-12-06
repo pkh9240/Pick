@@ -17,7 +17,7 @@
         "<'table-footer'lip'>",
       renderer: 'material'
     });
-
+ 
     /* Default class modification */
     $.extend(DataTable.ext.classes, {
       sWrapper: "dataTables_wrapper",
