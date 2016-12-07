@@ -2,8 +2,8 @@ $(function() {
 	var $tiles = $('#tiles'), $handler = $('li', $tiles), $main = $('#main'), $window = $(window), $document = $(document), options = {
 		autoResize : true, // This will auto-update the layout when the browser window is resized.
 		container : $main, // Optional, used for some extra CSS styling
-		offset : 20, // Optional, the distance between grid items
-		itemWidth : 330, // Optional, the width of a grid item
+		offset : 15, // Optional, the distance between grid items
+		itemWidth : 200, // Optional, the width of a grid item
 	};
 	/**
 	 * Reinitializes the wookmark handler after all images have loaded
@@ -19,9 +19,9 @@ $(function() {
 			$handler.wookmark(options);
 		});
 	} 
-	/**
+/*	*//**
 	 * When scrolled all the way to the bottom, add more tiles
-	 */
+	 *//*
 	function onScroll() {
 		// Check if we're within 100 pixels of the bottom edge of the broser window.
 		var winHeight = window.innerHeight ? window.innerHeight : $window
@@ -34,11 +34,11 @@ $(function() {
 			applyLayout();
 		}
 	}
-	;
+	;*/
 	// Call the layout function for the first time
 	applyLayout();
 	// Capture scroll event.
-	$window.bind('scroll.wookmark', onScroll);
+	/*$window.bind('scroll.wookmark', onScroll);*/
 });
 $(function() {
 
@@ -47,12 +47,13 @@ $(function() {
 		$(this).find('.description').stop().animate({
 			height : "toggle",
 			opacity : "toggle"
-		}, 300);
+		}, 230);
 	});
 	$('.button-collapse').sideNav({
-		menuWidth : 350, // Default is 240
-		closeOnClick : true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+		menuWidth : 250, // Default is 240
+		clorseOnClick : tue, // Closes side-nav on <a> clicks, useful for Angular/Meteor
 		draggable : true
+	
 	// Choose whether you can drag to open on touch screens
 	});
 	$('.modal').modal();

@@ -16,15 +16,18 @@ body {
 .form {
  
   background:#ffffff;
-  width: 490px;
-  height: 770px;
+  width: 100%;
+  height: auto;
 /*   margin: 40px auto; */
  /* border-radius: 4px;*/
  /* box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); */
 }
 
 #update_form{
-	padding-top: 50px
+	padding:30px;
+
+
+	
 }
 
 #my {
@@ -114,8 +117,8 @@ body {
 
 .preview {
 		display: block;
-		width: 120px;
-		height: 120px;
+		width: 80px;
+		height: 80px;
 		margin: 15px auto;
 		border: 2px solid #ED2553;
 		border-radius: 50%;
@@ -124,8 +127,8 @@ body {
 
 .get_preview {
 		display: block !important;
-		width: 120px !important;
-		height: 120px !important;
+		width: 80px !important;
+		height: 80px !important;
 		border-radius: 50% !important;
 		overflow: hidden !important;
 }
@@ -137,7 +140,7 @@ body {
 		width: 100px;
 		height: 30px;
 		margin: 5px auto;
-    margin-bottom: 30px;
+  		  margin-bottom: 30px;
 }
 
 .file-upload-native,

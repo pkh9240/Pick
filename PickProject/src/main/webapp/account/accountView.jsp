@@ -24,7 +24,7 @@
 		<div class="navbar-fixed">
 			<nav class="custom-nav">
 				<div class="nav-wrapper">
-					<a href="#!" class="brand-logo left">My Account</a>
+					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;My Account</a>
 				</div>
 			</nav>
 		</div>
@@ -57,16 +57,7 @@
 						<label>Interest</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="input-field col s6">
-						<input name="userPassword" id="password" type="password" class="validate" value="${user.userPassword}">
-						<label for="password">Password</label>
-					</div>
-					<div class="input-field col s6">
-						<input id="passwordConfirm" type="password" class="validate" value="${user.userPassword}">
-						<label for="password">Password confirm</label>
-					</div>
-				</div>
+			
 				<div class="row">
 
 					<div class="input-field col s6">

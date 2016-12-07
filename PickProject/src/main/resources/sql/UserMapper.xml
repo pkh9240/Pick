@@ -17,9 +17,7 @@
 		<result property="userAge" column="USER_AGE" jdbcType="VARCHAR" />
 		<result property="userPhoto" column="USER_PHOT" jdbcType="VARCHAR" />
 		<result property="userType" column="USER_TYPE" jdbcType="VARCHAR" />
-		<collection property="interestList" column="USER_NO"
-			select="InterestMapper.getInterestListByUserNo" ofType="interest"
-			javaType="ArrayList" />
+		<collection property="interestList" column="USER_NO" select="InterestMapper.getInterestListByUserNo" ofType="interest" javaType="ArrayList" />
 	</resultMap>
 
 	<select id="getUserByUserEmail" parameterType="string"
@@ -51,7 +49,6 @@
 	<update id="updateUser" parameterType="user">
 		UPDATE USERS
 		SET USER_NAME=#{userName:VARCHAR},
-			USER_PWD=#{userPassword:VARCHAR},
 			USER_GEND=#{userGender:VARCHAR},
 			USER_PHOT=#{userPhoto:VARCHAR},
 			USER_AGE=#{userAge:VARCHAR}

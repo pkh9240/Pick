@@ -139,7 +139,7 @@ public class UserController {
 		return "forward:/interest/interestView.jsp";
 	}
 
-	/* 회궝 등록 */
+	/* 회원 등록 */
 	@RequestMapping(value = "addUser", method = RequestMethod.POST)
 	public String addUser(@RequestParam("interestList") List<Integer> interestList,
 			@RequestParam("userAge") String userAge, @RequestParam("userGender") String userGender, HttpSession session)

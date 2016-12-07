@@ -242,7 +242,7 @@
 		<!--Catrgory Info -->
 		<div id="category" class="col s12">
 			<div class="row">
-				<div class="col offset-s4 s4">
+				<div class="col  s12">
 					<div class="card material-table">
 						<div class="table-header">
 							<span class="table-title">Category</span>
@@ -277,18 +277,20 @@
 				</div>
 			</div>
 		</div>
-		<!-- Modal Trigger -->
+		
+	</div>
+	<!-- Modal Trigger -->
 		<!-- Modal Structure -->
-		<div id="modal1" class="modal custom-modal">
+	<div id="modal1" class="modal custom-modal">
 			<div class="navbar-fixed">
 				<nav class="custom-nav">
 					<div class="nav-wrapper">
-						<a href="#!" class="brand-logo left">&nbsp; Add Category </a>
+						<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Add Category </a>
 					</div>
 				</nav>
 			</div>
-			<div class="modal-content">
-				<div class="form">
+			<div class="modal-content" id="catemodal">
+		
 
 					<form id="add_interest_form">
 						<div class="preview img-wrapper"></div>
@@ -303,18 +305,17 @@
 								<input name="content" id="content" type="text" class="validate">
 								<label for="icon_prefix">Category Name</label>
 							</div>
+						
+
+						<div id="add_interest_btn" class="btn waves-effect waves-light col offset-s7 s4 custom-btn ">A D D</div>
+						
 						</div>
-
-						<div id="add_interest_btn" class="btn waves-effect waves-light col offset-s6 s3 custom-btn ">A D D</div>
-
-
 					</form>
 				</div>
 
-			</div>
+
 
 		</div>
-	</div>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
 
@@ -354,7 +355,7 @@
 
 										setTimeout(function() {
 											swal({
-												title : data.content+ "카테고리가 추가되었습니다. ",
+												title : data.content+ " 카테고리가 추가되었습니다. ",
 												confirmButtonColor : "#ED2553",
 												imageUrl : "/image/interest/"+data.interestPhoto
 											},function(isConfirm) {

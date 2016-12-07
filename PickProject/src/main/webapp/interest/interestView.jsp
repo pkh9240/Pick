@@ -16,7 +16,7 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left">Detail infomation</a>
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Detail infomation</a>
 			</div>
 		</nav>
 	</div> 

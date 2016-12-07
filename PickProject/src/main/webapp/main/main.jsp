@@ -52,26 +52,28 @@
 				</a>
 			</div>
 		</li>
+			<li ><a class="subheader">My Menu</a></li>
+			<li><div class="divider"></div></li>
 		<li><a href="#" id="myAccount_btn"><i class="material-icons">account_circle</i>My Account</a></li>
 		<li><a href="#" id="myPick_btn"><i class="material-icons">playlist_add_check</i>My Pick</a></li>
-		<li><a href="#" id="logout_btn"><i class="material-icons">exit_to_app</i>Logout</a></li>
-		<li><div class="divider"></div></li>
+		
+	<!-- 	<li><div class="divider"></div></li>
 
 
 		<li><a class="subheader">Filtering</a></li>
 		<li><a href="#" id="filter_btn"><i class="material-icons">filter_list</i>Filtering</a></li>
+ -->
+	
+			<li><div class="divider"></div></li>
+		
 
-
-		<li><div class="divider"></div></li>
-		<li><a class="subheader">Add Pick</a></li>
-		<li><a href="#" id="addPick_btn"><i class="material-icons">add_circle_outline</i>Add Pick</a></li>
-
-
-		<li><div class="divider"></div></li>
-		<li><a class="subheader">Admin Menu</a></li>
+		<li ><a class="subheader">Admin Menu</a></li>
+		<li ><a href="#" id="addPick_btn" ><i class="material-icons">add_circle_outline</i>Add Pick</a></li>
 		<li><a href="#" id="adminPage_btn_user"><i class="material-icons">people</i>User</a></li>
 		<li><a href="#" id="adminPage_btn_pick"><i class="material-icons">playlist_add_check</i>Pick</a></li>
 		<li><a href="#" id="adminPage_btn_category"><i class="material-icons">list</i>Category</a></li>
+			<li><div class="divider"></div></li>
+		<li><a href="#" id="logout_btn"><i class="material-icons">exit_to_app</i>Logout</a></li>
 	</ul>
 
 
@@ -456,15 +458,15 @@
    		/* 회원정보 뷰  */
    		$("#myAccount_btn").on("click", function() {
 			$.colorbox({
-			
+				closeButton:"false",
+				
 				fixed:"true",
    				top: "true",
 				iframe : "true",
 				href : "/user/getAccount",
-				width : "510px",
-				height : "800px",
+				width : "360px",
+				height : "600px",
 				scrolling: false,
-				closeButton:false,
 				onClosed:function(){ 
 					 location.href="/user/main";
 				}
@@ -498,7 +500,7 @@
    				iframe : "true",
    				href : "/user/getAdminPageView/"+path,
    				width : "90%",
-   				height : "90%",
+   				height : "95%",
    				top:true
    			});
    		});

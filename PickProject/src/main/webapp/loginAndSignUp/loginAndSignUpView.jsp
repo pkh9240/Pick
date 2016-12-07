@@ -147,8 +147,8 @@
 															.colorbox({
 																iframe : true,
 																scrolling : false,
-																innerWidth : '500',
-																innerHeight : '800',
+																innerWidth : '280',
+																innerHeight : '450',
 																href : "/user/getDetailInfomationSelectView",
 																onClosed : function() {
 

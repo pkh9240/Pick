@@ -16,7 +16,7 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left">Filter</a>
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Filter</a>
 			</div>
 		</nav>
 	</div>
@@ -29,9 +29,7 @@
 					<div class="col s12">Gender</div>
 					<div class="col s12">
 
-						<input type="checkbox" name="gender" class="filled-in" id="all" checked="checked" />
-						<label for="all">All</label>
-
+					
 						<input type="checkbox" name="gender" class="filled-in" id="male" />
 						<label for="male">Male</label>
 
@@ -43,8 +41,6 @@
 					<div class="col s12">Age</div>
 					<div class="col s12">
 
-						<input type="checkbox" name="age" class="filled-in" id="age_all" checked="checked" />
-						<label for="age_all">All</label>
 
 						<input type="checkbox" name="age" class="filled-in" id="s10" />
 						<label for="s10">10대</label>
