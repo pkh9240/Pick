@@ -205,46 +205,97 @@ ALTER TABLE `USER_INTR`
 
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
-VALUES ('박광희',1234,'male','20s','pkh0452@naver.com','../image/profile/kwanghee.jpg','admin'); 
+VALUES ('박광희',1234,'male','20s','pkh0452@naver.com','kwanghee.jpg','admin'); 
 
 
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
-VALUES ('차병철',1234,'male','30s','bradcha85@naver.com','../image/profile/kwanghee.jpg','user'); 
+VALUES ('차병철',1234,'male','30s','bradcha85@naver.com','kwanghee.jpg','user'); 
 
 
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
-VALUES ('유수영',1234,'female','40s','sooyoung@naver.com','../image/profile/defaultProfileImage.jpg','user'); 
+VALUES ('유수영',1234,'female','40s','sooyoung@naver.com','defaultProfileImage.jpg','user'); 
 
 
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
-VALUES ('임다영',1234,'female','20s','imvely@naver.com','../image/profile/defaultProfileImage.jpg','user'); 
+VALUES ('이승기',1234,'male','20s','sg1234@naver.com','defaultProfileImage.jpg','user'); 
+
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('이효섭',1234,'male','20s','hs1234@naver.com','defaultProfileImage.jpg','user'); 
+
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('김한샘',1234,'male','50s','hs2222@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('김지희',1234,'male','30s','imvely@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('김량한',1234,'male','20s','rh2222@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('손철준',1234,'male','60s','cj222@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('이민기',1234,'female','20s','mk222@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('조성기',1234,'female','20s','sg2232@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('이충선',1234,'female','20s','cs2332@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('이민옥',1234,'female','20s','mo6531@naver.com','defaultProfileImage.jpg','user'); 
+
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('강요셉',1234,'male','20s','ys2222@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('남채민',1234,'male','60s','cm2442@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('이정원',1234,'female','30s','jw2222@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('이재현',1234,'female','30s','jh223342@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('백대현',1234,'female','40s','dh2332@naver.com','defaultProfileImage.jpg','user'); 
+INSERT 
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('김창민',1234,'female','10s','cm654531@naver.com','defaultProfileImage.jpg','user'); 
+
+INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
+VALUES ('김효준',1234,'female','30s','hj6523@naver.com','defaultProfileImage.jpg','user'); 
+
 
 
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../image/interest/computer.jpg','COMPUTER');
+VALUES ('computer.jpg','COMPUTER');
 
 
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../image/interest/food.jpg','FOOD');
+VALUES ('food.jpg','FOOD');
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../image/interest/drawing.jpg','DRAWING');
+VALUES ('drawing.jpg','DRAWING');
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../image/interest/cosmetic.jpg','COSMETIC');
+VALUES ('cosmetic.jpg','COSMETIC');
 
 INSERT
 INTO INTR(INTR_PHOT,INTR_CONT)
-VALUES ('../image/interest/hair.jpg','HAIR');
+VALUES ('hair.jpg','HAIR');
 
 
 

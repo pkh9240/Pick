@@ -14,6 +14,16 @@
 </head>
  
 <body>
+
+
+<div class="navbar-fixed">
+			<nav class="custom-nav">
+				<div class="nav-wrapper">
+					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Admin Page</a>
+				</div>
+			</nav>
+		</div>
+
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
@@ -247,7 +257,7 @@
 						<div class="table-header">
 							<span class="table-title">Category</span>
 							<div class="actions">
-								<a href="#modal1" class="modal-trigger waves-effect btn-flat nopadding"> <i class="material-icons" id="cat">person_add</i>
+								<a href="#modal1" class="modal-trigger waves-effect btn-flat nopadding"> <i class="material-icons">add_circle_outline</i>
 								</a> <a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
 								</a>
 							</div>

@@ -32,7 +32,7 @@
 		<div class="row">
 			<form id="update_form" class="col s12" enctype="multipart/form-data">
 				<div class="preview img-wrapper">
-					<img class="get_preview" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
+					 <img class="get_preview" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
 				</div>
 				<div class="file-upload-wrapper">
 					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" />
@@ -97,6 +97,7 @@
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script src="/account/accountView.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>

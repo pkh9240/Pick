@@ -445,6 +445,18 @@ input[type="file"]::-webkit-file-upload-button {
 	position:relative !improtant;
 	bottom:30px !improtant;
 }
+.custom-nav{
+	background-color: #ED2553;
 
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: #ed2553 !important;
+}
+
+.tabs .tab a {
+    color:#ed2552 !important;
+
+ 
+}
 
 /*  */

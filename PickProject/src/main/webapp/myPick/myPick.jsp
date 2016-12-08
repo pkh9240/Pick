@@ -11,11 +11,17 @@
 </head>
  
 <body>
+	<div class="navbar-fixed">
+			<nav class="custom-nav">
+				<div class="nav-wrapper">
+					<a href="#!" class="brand-logo left">My Pick</a>
+				</div>
+			</nav>
+		</div>
 	<div class="row">
 		<div  class="col s12">
 			<div class="card material-table">
 				<div class="table-header">
-					<span class="table-title">My Pick</span>
 					<div class="actions">
 						<a href="#add_users" class="modal-trigger waves-effect btn-flat nopadding"></a>
 						<a href="#" class="search-toggle waves-effect btn-flat nopadding">
@@ -40,7 +46,7 @@
 							<td>2323</td>
 							<td>2011/04/25</td>
 							<td>
-								<button class="btn waves-effect waves-light btn-small" type="submit" name="action" id="btn_one">result</button>
+								<button class="btn waves-effect waves-light btn-small custom-btn" type="submit" name="action" id="btn_one">result</button>
 							</td>
 						</tr>
 					</tbody>
@@ -51,7 +57,7 @@
 							<td>2323</td>
 							<td>2011/04/25</td>
 							<td>
-								<button class="btn waves-effect waves-light btn-small" type="submit" name="action" id="btn_multi">result</button>
+								<button class="btn waves-effect waves-light btn-small custom-btn" type="submit" name="action" id="btn_multi">result</button>
 							</td>
 						</tr>
 					</tbody>
@@ -62,7 +68,7 @@
 							<td>2323</td>
 							<td>2011/04/25</td>
 							<td>
-								<button class="btn waves-effect waves-light btn-small" type="submit" name="action">result</button>
+								<button class="btn waves-effect waves-light btn-small custom-btn" type="submit" name="action">result</button>
 							</td>
 						</tr>
 					</tbody>
@@ -73,7 +79,7 @@
 							<td>2323</td>
 							<td>2011/04/25</td>
 							<td>
-								<button class="btn waves-effect waves-light btn-small" type="submit" name="action">result</button>
+								<button class="btn waves-effect waves-light btn-small custom-btn" type="submit" name="action">result</button>
 							</td>
 						</tr>
 					</tbody>

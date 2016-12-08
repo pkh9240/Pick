@@ -7,8 +7,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="pickMulti.css">
     <link rel="stylesheet" href="../fontello-51c93eec/css/close.css">
+    		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     </head>
 <body>
+	<div class="navbar-fixed">
+			<nav class="custom-nav">
+				<div class="nav-wrapper">
+					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Admin Page</a>
+				</div>
+			</nav>
+		</div>
     <div id="container">
         <div class="info">Category : computer</div>
         <div class="info">Type : Multi</div>

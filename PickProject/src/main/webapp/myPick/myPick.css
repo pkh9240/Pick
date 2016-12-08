@@ -233,3 +233,20 @@ div.material-table table th:last-child,
 div.material-table table td:last-child {
   padding: 0 14px 0 0;
 }
+
+
+
+
+.custom-nav{
+	background-color: #ED2553;
+
+}
+
+.custom-btn{
+	background-color: #ED2553;
+}
+
+
+.custom-btn:hover{
+	background-color: #ED2553;
+}

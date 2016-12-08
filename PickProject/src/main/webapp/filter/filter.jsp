@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-</head> 
+</head>
 <body>
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
@@ -25,19 +25,19 @@
 		<div class="row">
 			<form id="filter-form">
 				<div class="row">
-				<div class="filter-custom">
+					<div class="col s12 emp1"></div>
 					<div class="col s12">Gender</div>
 					<div class="col s12">
 
-					
+
 						<input type="checkbox" name="gender" class="filled-in" id="male" />
 						<label for="male">Male</label>
 
 						<input type="checkbox" name="gender" class="filled-in" id="female" />
 						<label for="female">Female</label>
 					</div>
-				</div>
-				<div class="filter-custom">
+
+					<div class="col s12 emp1"></div>
 					<div class="col s12">Age</div>
 					<div class="col s12">
 
@@ -62,22 +62,21 @@
 
 
 					</div>
-				</div>
-				<div class="filter-custom">
+
+
+					<div class="col s12 emp1"></div>
 					<div class="input-field col s12">
 						<select name="interestList" multiple>
 							<option value="" disabled>Category</option>
 							<c:forEach var="interest" items="${interestList}">
 								<option value="${interest.interestNo}" data-icon="/image/interest/${interest.interestPhoto}" class="circle">${interest.content}</option>
 							</c:forEach>
-						</select>
-						<label>Category</label>
+						</select> <label>Category</label>
+
+
 					</div>
-				</div>
 					<div class="col s6 offset-s6">
-						<button class="btn waves-effect waves-light" id="filter_btn">
-							Filtering <i class="material-icons right">send</i>
-						</button>
+						<button class="btn waves-effect waves-light" id="filter_btn">Filtering</button>
 					</div>
 
 				</div>
