@@ -276,7 +276,7 @@
 									<tr style="cursor: pointer;">
 										<td>${interest.content}</td>
 										<td><div class="thumb">
-												<img src="/image/interest/${interest.interestPhoto}" />
+												<img src="/image/interest/thumbnail/${interest.interestPhoto}" />
 											</div></td>
 
 									</tr>

@@ -32,7 +32,7 @@
 		<div class="row">
 			<form id="update_form" class="col s12" enctype="multipart/form-data">
 				<div class="preview img-wrapper">
-					 <img class="get_preview" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
+					 <img class="get_preview" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
 				</div>
 				<div class="file-upload-wrapper">
 					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" />
@@ -51,7 +51,7 @@
 						<select name="formInterestList" multiple>
 							<option value="" disabled selected>Choose your Interest</option>
 							<c:forEach var="interest" items="${interestList}">
-								<option value="${interest.interestNo}" data-icon="/image/interest/${interest.interestPhoto}" class="circle" ${user.interestList.contains(interest)?'selected':''}>${interest.content}</option>
+								<option value="${interest.interestNo}" data-icon="/image/interest/thumbnail/${interest.interestPhoto}" class="circle" ${user.interestList.contains(interest)?'selected':''}>${interest.content}</option>
 							</c:forEach>
 						</select>
 						<label>Interest</label>

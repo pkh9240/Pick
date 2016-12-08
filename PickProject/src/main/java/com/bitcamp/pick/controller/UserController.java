@@ -30,6 +30,9 @@ import com.bitcamp.pick.domain.User;
 import com.bitcamp.pick.service.InterestService;
 import com.bitcamp.pick.service.UserService;
 
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
+
 @Controller
 @RequestMapping("/user/*")
 public class UserController {
@@ -42,19 +45,22 @@ public class UserController {
 	@Qualifier("interestServiceImpl")
 	private InterestService interestService;
 
+	@Value("#{commonProperties['profileThumbnailImageUploadPath']}")
+	String profileThumbnailImageUploadPath;
 
-	@Value("#{commonProperties['profileImageUploadPath']}")
-	String profileImageUploadPath;
-	
-	@Value("#{commonProperties['interestImageUploadPath']}")
-	String interestImageUploadPath;
-	
-	
-	
+	@Value("#{commonProperties['profileOriginalImageUploadPath']}")
+	String profileOriginalImageUploadPath;
+
+	@Value("#{commonProperties['interestThumbnailImageUploadPath']}")
+	String interestThumbnailImageUploadPath;
+
+	@Value("#{commonProperties['interestOriginalImageUploadPath']}")
+	String interestOriginalImageUploadPath;
+
 	public UserController() {
 		System.out.println("UserController Default Constructor");
 	}
-	
+
 	/* 단순 main View 로 이동 */
 	@RequestMapping(value = "main", method = RequestMethod.GET)
 	public String mainView() throws InterruptedException {
@@ -62,7 +68,6 @@ public class UserController {
 		System.out.println("main - GET");
 		return "forward:/main/main.jsp";
 	}
-	
 
 	/* 단순 Login View 로 이동 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
@@ -160,7 +165,7 @@ public class UserController {
 		userService.addUser(user);
 		user = userService.getUserByUserEmail(user.getUserEmail());
 		session.setAttribute("user", user);
-		
+
 		return "forward:/main/main.jsp";
 	}
 
@@ -168,7 +173,7 @@ public class UserController {
 	@RequestMapping(value = "getAccount", method = RequestMethod.GET)
 	public String getAccount(HttpSession session, Model model) throws Exception {
 		System.out.println("getAccount- GET");
-		
+
 		User user = userService.getUserByUserNo(((User) session.getAttribute("user")).getUserNo());
 
 		List<Interest> interestList = interestService.getInterestList();
@@ -179,11 +184,12 @@ public class UserController {
 		return "forward:/account/accountView.jsp";
 
 	}
+
 	/* 관리자 -> 회원 정보 보기 */
 	@RequestMapping(value = "getUser/{userNo}", method = RequestMethod.GET)
 	public String getUser(@PathVariable("userNo") int userNo, Model model) throws Exception {
 		System.out.println("getUser- GET");
-		
+
 		User user = userService.getUserByUserNo(userNo);
 
 		List<Interest> interestList = interestService.getInterestList();
@@ -205,144 +211,145 @@ public class UserController {
 	 * json 형태로 변환하여 리턴해주는 역활을 한다.
 	 */
 	/* passwordwordConfirm이라는 필드가 user에 없는데 날렸더니 bad Request..삽질 */
-	
 
-	@RequestMapping(value = "updateUser", method = RequestMethod.POST) 
-	public @ResponseBody User updateUser(@ModelAttribute User user,@RequestParam List<Integer> formInterestList,
-										MultipartFile profileImage,HttpServletRequest request, HttpSession session)
-			throws Exception {
-		System.out.println("updateUser- POST");
-	
-		User sessionUser = (User)session.getAttribute("user");
-		List<Interest> userInterestList = new ArrayList<Interest>();
+	@RequestMapping(value = "updateUser", method = RequestMethod.POST)
+	public @ResponseBody User updateUser(@ModelAttribute User user, @RequestParam List<Integer> formInterestList,
+			MultipartFile profileImage, HttpServletRequest request, HttpSession session) throws Exception {
 		
-		for(int interestNo : formInterestList){
+		
+		System.out.println("updateUser- POST");
+
+		User sessionUser = (User) session.getAttribute("user");
+		List<Interest> userInterestList = new ArrayList<Interest>();
+
+		for (int interestNo : formInterestList) {
 			userInterestList.add(new Interest(interestNo));
 		}
-		
-		
-		sessionUser.setInterestList(userInterestList);
-		
 
-		String randomFileName=null;
+		sessionUser.setInterestList(userInterestList);
+
+		String randomFileName = null;
+
 		
 		
-		 if ( !profileImage.isEmpty() ) {
-	            randomFileName = UUID.randomUUID().toString().replace("-","")+profileImage.getOriginalFilename().toLowerCase();
-	            File tempFile = new File(profileImageUploadPath,randomFileName);
-	            try {
-	            	profileImage.transferTo(tempFile);
-	       
-	            } catch (IllegalStateException | IOException e) {
-	                throw new RuntimeException(e.getMessage(), e);
-	            }
-	            
-	            //넘어온 이미지가 있을경우만 변경
-	            sessionUser.setUserPhoto(randomFileName);
-	            
-	     }
-		
-		 
 	
-		
-		sessionUser.setUserAge((String)user.getUserAge());
+
+		if (!profileImage.isEmpty()) {
+			 randomFileName = UUID.randomUUID().toString().replace("-", "")+ 
+						profileImage.getOriginalFilename().toLowerCase();
+			 
+			/*오리지널 이미지와 썸네일 이미지 경로 */
+			File originalFile = new File(profileOriginalImageUploadPath, randomFileName);
+			File thumbnailFile = new File(profileThumbnailImageUploadPath, randomFileName);
+			
+			
+			try {
+				profileImage.transferTo(originalFile);
+				/*센터를 기준으로 80,80으로 자른다. */
+				Thumbnails.of(originalFile).crop(Positions.CENTER).size(80, 80).toFile(thumbnailFile);
+
+			} catch (IllegalStateException | IOException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+
+			// 넘어온 이미지가 있을경우만 변경
+			sessionUser.setUserPhoto(randomFileName);
+
+		}
+
+		sessionUser.setUserAge((String) user.getUserAge());
 		sessionUser.setUserGender((String) user.getUserGender());
 		sessionUser.setUserName((String) user.getUserName());
 		sessionUser.setUserPassword((String) user.getUserPassword());
-		
+
 		userService.updateUser(sessionUser);
 
 		session.setAttribute("user", sessionUser);
-	
-		
+
 		return sessionUser;
 	}
-	
-	
-	/*관리자 페이지 뷰 리턴 */
-	@RequestMapping(value="getAdminPageView/{path}", method=RequestMethod.GET)
-	public String getAdminPageView(@PathVariable("path") String path,Model model) throws Exception{
-		
-		
+
+	/* 관리자 페이지 뷰 리턴 */
+	@RequestMapping(value = "getAdminPageView/{path}", method = RequestMethod.GET)
+	public String getAdminPageView(@PathVariable("path") String path, Model model) throws Exception {
+
 		System.out.println("getAdminPageView GET");
-	
-		/*User Info Page Data*/
+
+		/* User Info Page Data */
 		List<User> userList = userService.getUserList();
-		
-		
-		/*Interest Info Page Data*/
-		List<Interest> interestList  = interestService.getInterestList();
-		
-		
+
+		/* Interest Info Page Data */
+		List<Interest> interestList = interestService.getInterestList();
+
 		model.addAttribute("userList", userList);
 		model.addAttribute("interestList", interestList);
-		
-		/*path는 AdminPage에서 어느 탭을 보여줄지 결정함 user,category,pick*/
-		model.addAttribute("path",path);
-		
-		
+
+		/* path는 AdminPage에서 어느 탭을 보여줄지 결정함 user,category,pick */
+		model.addAttribute("path", path);
+
 		return "forward:/adminPage/adminPage.jsp";
 	}
-	
-	
-	
-	/*카테고리(Interest or Category) 추가 */
-	@RequestMapping(value = "addInterest", method = RequestMethod.POST) 
-	public @ResponseBody Interest addInterest(@ModelAttribute Interest interest, MultipartFile interestImage) throws Exception{
+
+	/* 카테고리(Interest or Category) 추가 */
+	@RequestMapping(value = "addInterest", method = RequestMethod.POST)
+	public @ResponseBody Interest addInterest(@ModelAttribute Interest interest, MultipartFile interestImage)
+			throws Exception {
 		System.out.println("addInterest POST");
-		
-		/*Interest 중복 체크 */
-		if(interestService.getInterestByContent(interest.getContent())!=null){
+
+		/* Interest 중복 체크 */
+		if (interestService.getInterestByContent(interest.getContent()) != null) {
 			return new Interest(0);
 		}
-		
-		
+
 		String randomFileName=null;
 		
 		
-		 if ( !interestImage.isEmpty() ) {
-	            randomFileName = UUID.randomUUID().toString().replace("-","")+interestImage.getOriginalFilename().toLowerCase();
-	            File tempFile = new File(interestImageUploadPath,randomFileName);
-	            try {
-	            	interestImage.transferTo(tempFile);
-	       
-	            } catch (IllegalStateException | IOException e) {
-	                throw new RuntimeException(e.getMessage(), e);
-	            }
-
-		 }
-		 interest.setInterestPhoto(randomFileName);
-		 interestService.addInterest(interest);
-		 interest = interestService.getInterestByContent(interest.getContent());
 		
-		//중복안되었을씨 content 리턴
+
+		if (!interestImage.isEmpty()) {
+			
+			
+			
+			randomFileName= UUID.randomUUID().toString().replace("-", "")+ interestImage.getOriginalFilename().toLowerCase();
+			
+			/*오리지널 이미지와 썸네일 이미지 경로 */
+			File originalFile = new File(interestOriginalImageUploadPath, randomFileName);
+			File thumbnailFile = new File(interestThumbnailImageUploadPath, randomFileName);
+			
+			try {
+				interestImage.transferTo(originalFile);
+				Thumbnails.of(originalFile).crop(Positions.CENTER).size(50,50).toFile(thumbnailFile);
+
+			} catch (IllegalStateException | IOException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+
+		}
+		interest.setInterestPhoto(randomFileName);
+		interestService.addInterest(interest);
+		interest = interestService.getInterestByContent(interest.getContent());
+
+		// 중복안되었을씨 content 리턴
 		return interest;
 	}
-	
-	
-	
-	/*필터링 뷰 리턴 */
-	@RequestMapping(value="getFilter", method=RequestMethod.GET)
-	public String getFilter(Model model) throws Exception{
+
+	/* 필터링 뷰 리턴 */
+	@RequestMapping(value = "getFilter", method = RequestMethod.GET)
+	public String getFilter(Model model) throws Exception {
 		System.out.println("getFilter GET");
-		
-		
-		/*Interest Info Page Data*/
-		List<Interest> interestList  = interestService.getInterestList();
+
+		/* Interest Info Page Data */
+		List<Interest> interestList = interestService.getInterestList();
 		model.addAttribute("interestList", interestList);
-		
-		
+
 		return "forward:/filter/filter.jsp";
 	}
-	
-	/*나의 투표 리스트  뷰 리턴 */
-	@RequestMapping(value="getMyPickView", method=RequestMethod.GET)
-	public String getMyPickView(Model model) throws Exception{
+
+	/* 나의 투표 리스트 뷰 리턴 */
+	@RequestMapping(value = "getMyPickView", method = RequestMethod.GET)
+	public String getMyPickView(Model model) throws Exception {
 		System.out.println("getMyPickView GET");
 		return "forward:/myPick/myPick.jsp";
 	}
-	
-	
-	
 
 }

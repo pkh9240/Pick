@@ -29,7 +29,7 @@
 	</div>
 	<div class="form">
 		<div class="thumbnail">
-			<img src="../image/W_pick.png" />
+			<img src="/image/main/W_pick.png" />
 		</div>
 		<div class="register-form tog">
 			<input id="registerUserEmail" name="userEmail" type="text" placeholder="email" />

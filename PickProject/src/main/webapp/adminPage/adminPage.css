@@ -403,9 +403,7 @@ input[type="file"]::-webkit-file-upload-button {
 .thumb {
    margin: auto;
     overflow: hidden;
-    height: 80px;
-    width: 80px;
-    padding: 5px;
+	 padding: 5px;
     
 }
 

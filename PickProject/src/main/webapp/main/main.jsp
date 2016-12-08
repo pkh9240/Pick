@@ -48,10 +48,10 @@
 		<li>
 			<div class="userView">
 				<div class="background" style="width: 360px">
-					<img src="/image/mainBackground3.png" style="width: 100%; height: auto">
+					<img src="/image/main/mainBackground3.png" style="width: 100%; height: auto">
 				</div>
 
-				<img class="circle" src="/image/profile/${empty user.userPhoto?'defaultProfileImage.jpg' : user.userPhoto}"> <span class="white-text name"> ${user.userName}</span> <span class="white-text email">${user.userEmail}</span>
+				<img class="circle" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg' : user.userPhoto}"> <span class="white-text name"> ${user.userName}</span> <span class="white-text email">${user.userEmail}</span>
 
 			</div>
 		</li>
@@ -116,7 +116,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card6.jpg'>
+								<img src='/image/vote/thumbnail/card6.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>star</div>
@@ -146,7 +146,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card1.jpg'>
+								<img src='/image/vote/thumbnail/card1.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>HOME</div>
@@ -176,7 +176,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card2.jpg'>
+								<img src='/image/vote/thumbnail/card2.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>STUDY</div>
@@ -205,7 +205,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card8.jpg'>
+								<img src='/image/vote/thumbnail/card8.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>shopping</div>
@@ -236,7 +236,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card3.jpg'>
+								<img src='/image/vote/thumbnail/card3.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>Ent</div>
@@ -266,7 +266,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card4.jpg'>
+								<img src='/image/vote/thumbnail/card4.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>food</div>
@@ -296,7 +296,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card6.jpg'>
+								<img src='/image/vote/thumbnail/card6.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>star</div>
@@ -325,7 +325,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card5.jpg'>
+								<img src='/image/vote/thumbnail/card5.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>car</div>
@@ -356,7 +356,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card7.jpg'>
+								<img src='/image/vote/thumbnail/card7.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>travel</div>
@@ -386,7 +386,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card8.jpg'>
+								<img src='/image/vote/thumbnail/card8.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>shopping</div>
@@ -417,7 +417,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card6.jpg'>
+								<img src='/image/vote/thumbnail/card6.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>star</div>
@@ -447,7 +447,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card1.jpg'>
+								<img src='/image/vote/thumbnail/card1.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>home</div>
@@ -477,7 +477,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card2.jpg'>
+								<img src='/image/vote/thumbnail/card2.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>study</div>
@@ -507,7 +507,7 @@
 									<div class='day'>27</div>
 									<div class='month'>Mar</div>
 								</div>
-								<img src='../image/card3.jpg'>
+								<img src='/image/vote/thumbnail/card3.jpg'>
 							</div>
 							<div class='post-content'>
 								<div class='category'>ent</div>
