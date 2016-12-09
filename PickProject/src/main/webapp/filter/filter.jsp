@@ -69,7 +69,7 @@
 						<select name="interestList" multiple>
 							<option value="" disabled>Category</option>
 							<c:forEach var="interest" items="${interestList}">
-								<option value="${interest.interestNo}" data-icon="/image/interest/${interest.interestPhoto}" class="circle">${interest.content}</option>
+								<option value="${interest.interestNo}" data-icon="/image/interest/thumbnail/${interest.interestPhoto}" class="circle">${interest.content}</option>
 							</c:forEach>
 						</select> <label>Category</label>
 

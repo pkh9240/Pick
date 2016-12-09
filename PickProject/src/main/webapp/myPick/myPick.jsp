@@ -14,7 +14,7 @@
 	<div class="navbar-fixed">
 			<nav class="custom-nav">
 				<div class="nav-wrapper">
-					<a href="#!" class="brand-logo left">My Pick</a>
+					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;My Pick</a>
 				</div>
 			</nav>
 		</div>
