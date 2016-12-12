@@ -8,8 +8,11 @@
 
 	 <typeAliases>
 	 	<typeAlias alias="user" type="com.bitcamp.pick.domain.User"/>
+	 	<typeAlias alias="choice" type="com.bitcamp.pick.domain.Choice"/>
+	 	<typeAlias alias="vote" type="com.bitcamp.pick.domain.Vote"/>
 	 	<typeAlias alias="interest" type="com.bitcamp.pick.domain.Interest"/>
 	 	<typeAlias alias="userInterest" type="com.bitcamp.pick.domain.UserInterest"/>
+	 	<typeAlias alias="voteAuthority" type="com.bitcamp.pick.domain.VoteA​uthority"/>
 	 </typeAliases>
 	 
   
@@ -17,8 +20,11 @@
   <mappers>
 	<mapper resource="sql/UserMapper.xml"/>
 	<mapper resource="sql/InterestMapper.xml"/>
+	<mapper resource="sql/VoteMapper.xml"/>
 	<mapper resource="sql/UserInterestMapper.xml"/>
-
+	<mapper resource="sql/ChoiceMapper.xml"/>
+	<mapper resource="sql/VoteA​uthorityMapper.xml"/>
+						  
   </mappers>
 
 </configuration>

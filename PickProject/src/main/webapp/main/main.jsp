@@ -26,7 +26,10 @@
 				<form>
 					<div class="input-field">
 						<input id="search" type="search" required>
-						<label for="search"><i class="material-icons">search</i></label> <i class="material-icons">close</i>
+						<label for="search">
+							<i class="material-icons">search</i>
+						</label>
+						<i class="material-icons">close</i>
 					</div>
 				</form>
 			</div>
@@ -39,8 +42,7 @@
 				<li class="line"></li>
 				<li class="line"></li>
 				<li class="line"></li>
-			</ul>
-			<!--            <div class="menu-txt">menu</div>-->
+			</ul> <!--            <div class="menu-txt">menu</div>-->
 		</a>
 	</div>
 
@@ -63,16 +65,14 @@
 
 
 
-		<li><a href="#" id="myAccount_btn">
-				<i class="material-icons">account_circle</i>My Account
-			</a></li>
-		<li><a href="#" id="myPick_btn">
-				<i class="material-icons">playlist_add_check</i>My Pick
-			</a></li>
-		<li><a href="#" id="filter_btn">
-				<i class="material-icons">filter_list</i>Filtering
-			</a></li>
-
+		<li><a href="#" id="myAccount_btn"> <i class="material-icons">account_circle</i>My Account
+		</a></li>
+		<li><a href="#" id="myPick_btn"> <i class="material-icons">playlist_add_check</i>My Pick
+		</a></li>
+		<li><a href="#" id="filter_btn"> <i class="material-icons">filter_list</i>Filtering
+		</a></li>
+		<li><a href="#" id="addPick_btn"> <i class="material-icons">add_circle_outline</i>Add Pick
+		</a></li>
 
 		<!-- 관리자 메뉴 -->
 
@@ -81,24 +81,18 @@
 
 			<li><a class="subheader">Admin Menu</a></li>
 			<li><div class="divider"></div></li>
-			<li><a href="#" id="addPick_btn">
-					<i class="material-icons">add_circle_outline</i>Add Pick
-				</a></li>
-			<li><a href="#" id="adminPage_btn_user">
-					<i class="material-icons">people</i>User
-				</a></li>
-			<li><a href="#" id="adminPage_btn_pick">
-					<i class="material-icons">playlist_add_check</i>Pick
-				</a></li>
-			<li><a href="#" id="adminPage_btn_category">
-					<i class="material-icons">list</i>Category
-				</a></li>
+
+			<li><a href="#" id="adminPage_btn_user"> <i class="material-icons">people</i>User
+			</a></li>
+			<li><a href="#" id="adminPage_btn_pick"> <i class="material-icons">playlist_add_check</i>Pick
+			</a></li>
+			<li><a href="#" id="adminPage_btn_category"> <i class="material-icons">list</i>Category
+			</a></li>
 			<li><div class="divider"></div></li>
 		</c:if>
 
-		<li><a href="#" id="logout_btn">
-				<i class="material-icons">exit_to_app</i>Logout
-			</a></li>
+		<li><a href="#" id="logout_btn"> <i class="material-icons">exit_to_app</i>Logout
+		</a></li>
 	</ul>
 
 
@@ -107,10 +101,39 @@
 		<div class="wrap">
 			<div id="main" role="main">
 				<ul id="tiles">
-					<!-- These are our grid blocks -->
-					<li>
+						<c:forEach var="vote" items="${voteList}">
+							<li><div class='post-module'>
+							<div class='thumbnail'>
+								<div class='date'>
+									<div class='day'>${vote.endDate.toString().split(' ')[2]}</div>
+									<div class='month'>${vote.endDate.toString().split(' ')[1]}</div>
+								</div>
+								<img src='/image/vote/original/card6.jpg'>
+							</div>
+							<div class='post-content'>
+								<div class='category'>${vote.voteCategory}</div>
+								<h1 class='title'>${vote.voteTitle}</h1>
+								<h2 class='sub_title'>${vote.voteContent}</h2>
+								<p class='description'>
+									<a class="detailsub">PICK Detail</a> <br /> 
+										<a class="detailcon"> AGE : 10s, 20s, 30s <br />
+															 GENDER : Female
+									</a>
+								</p>
+								<div class='post-meta'>
+									<!-- <span class='timestamp'> <i class='fa fa-clock-o'></i> 6 mins ago -->
+									<!-- </span> --> <span class='comments'> <i class='fa fa-comments'></i> <a href='#'>204 PICK</a>
+									</span>
+								</div>
+							</div>
+						</div>
 
-						<div class='post-module'>
+					</li>
+
+
+						</c:forEach>
+					<!-- These are our grid blocks -->
+					<li><div class='post-module'>
 							<div class='thumbnail'>
 								<div class='date'>
 									<div class='day'>27</div>
@@ -123,10 +146,7 @@
 								<h1 class='title'>누가 잘생겼나요?</h1>
 								<h2 class='sub_title'>누가 제일 잘생겼는지 투표해 주세요.</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -138,8 +158,8 @@
 						</div>
 
 					</li>
-					<li id="pick10000">
-						<!--하나의 컨텐츠 시작-->
+			<!-- 		<li id="pick10000">
+						하나의 컨텐츠 시작
 						<div class='post-module'>
 							<div class='thumbnail'>
 								<div class='date'>
@@ -153,10 +173,7 @@
 								<h1 class='title'>어떤게 더 예뻐요?!</h1>
 								<h2 class='sub_title'>인테리어 바꾸려는데 추천 해 주세요!</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -165,11 +182,11 @@
 									</span>
 								</div>
 							</div>
-						</div> <!--하나의 컨텐츠 시작-->
+						</div> 하나의 컨텐츠 시작
 					</li>
-					
+
 					<li id="pick10001">
-						<!--하나의 컨텐츠 시작-->
+						하나의 컨텐츠 시작
 						<div class='post-module'>
 							<div class='thumbnail'>
 								<div class='date'>
@@ -183,10 +200,7 @@
 								<h1 class='title'>토익책 추천</h1>
 								<h2 class='sub_title'>토익을 처음 준비해 보는데 어떤 책이 좋아요?!</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -195,7 +209,7 @@
 									</span>
 								</div>
 							</div>
-						</div> <!--하나의 컨텐츠 시작-->
+						</div> 하나의 컨텐츠 시작
 					</li>
 					<li>
 
@@ -212,10 +226,7 @@
 								<h1 class='title'>생일선물 추천</h1>
 								<h2 class='sub_title'>친구 생일선물로 운동화를 고르려는데 추천해 주세요</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -227,7 +238,7 @@
 						</div>
 
 					</li>
-					
+
 					<li>
 
 						<div class='post-module'>
@@ -243,10 +254,7 @@
 								<h1 class='title'>재미있는 공연 추천!</h1>
 								<h2 class='sub_title'>친구들이랑 공연보러 가려는데 요즘 뭐가 재밌어요?</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -273,10 +281,7 @@
 								<h1 class='title'>합정역 맛집 추천요!</h1>
 								<h2 class='sub_title'>이따 합정에 점심 약속 있는데 맛집 좀 추천요!</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -303,10 +308,7 @@
 								<h1 class='title'>누가 잘생겼나요?</h1>
 								<h2 class='sub_title'>누가 제일 잘생겼는지 투표해 주세요.</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -332,10 +334,7 @@
 								<h1 class='title'>자동차 추천!</h1>
 								<h2 class='sub_title'>차 뽑으려는데 추천해 주세요.</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -347,7 +346,7 @@
 						</div>
 
 					</li>
-					
+
 					<li>
 
 						<div class='post-module'>
@@ -363,10 +362,7 @@
 								<h1 class='title'>여름 휴양지 추천</h1>
 								<h2 class='sub_title'>여름휴가 계획 중인데 추천해 주세요!</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -393,10 +389,7 @@
 								<h1 class='title'>생일선물 추천</h1>
 								<h2 class='sub_title'>친구 생일선물로 운동화를 고르려는데 추천해 주세요</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -424,10 +417,7 @@
 								<h1 class='title'>누가 잘생겼나요?</h1>
 								<h2 class='sub_title'>누가 제일 잘생겼는지 투표해 주세요.</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -454,10 +444,7 @@
 								<h1 class='title'>어떤게 더 예뻐요?</h1>
 								<h2 class='sub_title'>인테리어 바꾸려는데 추천해 주세요!</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -484,10 +471,7 @@
 								<h1 class='title'>토익책 추천</h1>
 								<h2 class='sub_title'>토익을 처음 준비해 보는데 어떤 책이 좋아요?!</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -514,10 +498,7 @@
 								<h1 class='title'>재미있는 공연 추천!</h1>
 								<h2 class='sub_title'>친구들이랑 공연보러 가려는데 요즘 뭐가 재미있어요?</h2>
 								<p class='description'>
-									<a class="detailsub">PICK Detail</a>
-									<br />
-									<a class="detailcon">
-										AGE : 10s, 20s, 30s<br />GENDER : Female
+									<a class="detailsub">PICK Detail</a> <br /> <a class="detailcon"> AGE : 10s, 20s, 30s<br />GENDER : Female
 									</a>
 								</p>
 								<div class='post-meta'>
@@ -528,7 +509,7 @@
 							</div>
 						</div>
 
-					</li>
+					</li> -->
 					<!-- End of grid blocks -->
 				</ul>
 			</div>
@@ -610,6 +591,19 @@
 				href : "/user/getMyPickView",
 				width : "63%",
 				height : "90%"
+			});
+		});
+		
+		/*투표 추가 버튼*/
+		
+		$("#addPick_btn").on("click",function(){
+			$.colorbox({
+				fixed : "true",
+				top : "true",
+				iframe : "true",
+				href : "/vote/addVote",
+				width : "580px",
+				height : "600px"
 			});
 		});
 	

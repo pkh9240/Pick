@@ -27,8 +27,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bitcamp.pick.domain.Interest;
 import com.bitcamp.pick.domain.User;
+import com.bitcamp.pick.domain.Vote;
 import com.bitcamp.pick.service.InterestService;
 import com.bitcamp.pick.service.UserService;
+import com.bitcamp.pick.service.VoteService;
 
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
@@ -41,6 +43,11 @@ public class UserController {
 	@Qualifier("userServiceImpl")
 	private UserService userService;
 
+	@Autowired
+	@Qualifier("voteServiceImpl")
+	private VoteService voteService;
+	
+	
 	@Autowired
 	@Qualifier("interestServiceImpl")
 	private InterestService interestService;
@@ -63,9 +70,14 @@ public class UserController {
 
 	/* 단순 main View 로 이동 */
 	@RequestMapping(value = "main", method = RequestMethod.GET)
-	public String mainView() throws InterruptedException {
+	public String mainView(Model model) throws Exception {
 
 		System.out.println("main - GET");
+		
+		List<Vote> voteList = voteService.getVoteList();
+		model.addAttribute("voteList", voteList);
+		System.out.println("main 에넘겾ㄹ리스트"+voteList);
+		
 		return "forward:/main/main.jsp";
 	}
 
@@ -125,7 +137,6 @@ public class UserController {
 			result.put("isDuplicated", true);
 		} else {
 			// 중복이 아닐경우 session에 id,password 정보 저장
-			System.out.println("세션에 저장");
 			session.setAttribute("user", user);
 			result.put("isDuplicated", false);
 		}

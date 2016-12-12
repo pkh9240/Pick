@@ -32,14 +32,14 @@ alter table COMT AUTO_INCREMENT=10000;
 CREATE TABLE `VOTE_AUTH` (
 	`AUTH_NO` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '투표권한일련번호', -- 투표권한일련번호
 	`VOTE_NO` INTEGER NOT NULL COMMENT '투표일련번호', -- 투표일련번호
-	`MALE`    CHAR(1) NOT NULL COMMENT '남자', -- 남자
-	`F_MALE`  CHAR(1) NOT NULL COMMENT '여자', -- 여자
-	`ONE`     CHAR(1) NOT NULL COMMENT '10대', -- 10대
-	`TWO`     CHAR(1) NOT NULL COMMENT '20대', -- 20대
-	`THRE`    CHAR(1) NOT NULL COMMENT '30대', -- 30대
-	`FOUR`    CHAR(1) NOT NULL COMMENT '40대', -- 40대
-	`FIVE`    CHAR(1) NOT NULL COMMENT '50대', -- 50대
-	`SIX`     CHAR(1) NOT NULL COMMENT '60대' -- 60대
+	`MALE`    BOOLEAN NOT NULL COMMENT '남자', -- 남자
+	`F_MALE`  BOOLEAN NOT NULL COMMENT '여자', -- 여자
+	`ONE`     BOOLEAN NOT NULL COMMENT '10대', -- 10대
+	`TWO`     BOOLEAN NOT NULL COMMENT '20대', -- 20대
+	`THRE`    BOOLEAN NOT NULL COMMENT '30대', -- 30대
+	`FOUR`    BOOLEAN NOT NULL COMMENT '40대', -- 40대
+	`FIVE`    BOOLEAN NOT NULL COMMENT '50대', -- 50대
+	`SIX`     BOOLEAN NOT NULL COMMENT '60대' -- 60대
 )
 COMMENT '투표권한';
 alter table VOTE_AUTH AUTO_INCREMENT=10000;
@@ -76,8 +76,8 @@ CREATE TABLE `CHOI` (
 	`CHOI_NO`   INTEGER      NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '선택지일련번호', -- 선택지일련번호
 	`VOTE_NO`   INTEGER      NOT NULL COMMENT '투표일련번호', -- 투표일련번호
 	`CHOI_PHOT` VARCHAR(255) NOT NULL COMMENT '사진', -- 사진
-	`CHOT_CONT` VARCHAR(255) NOT NULL COMMENT '글', -- 글
-	`CHOT_CNT`  INTEGER      NOT NULL COMMENT '득표수' -- 득표수
+	`CHOI_CONT` VARCHAR(255) NOT NULL COMMENT '글', -- 글
+	`CHOI_CNT`  INTEGER      NOT NULL COMMENT '득표수' -- 득표수
 )
 COMMENT '선택지';
 alter table CHOI AUTO_INCREMENT=10000;
@@ -250,7 +250,7 @@ VALUES ('이충선',1234,'female','20s','cs2332@naver.com','defaultProfileImage.
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
 VALUES ('이민옥',1234,'female','20s','mo6531@naver.com','defaultProfileImage.jpg','user'); 
-
+INSERT
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
 VALUES ('강요셉',1234,'male','20s','ys2222@naver.com','defaultProfileImage.jpg','user'); 
 INSERT 
@@ -268,7 +268,7 @@ VALUES ('백대현',1234,'female','40s','dh2332@naver.com','defaultProfileImage.
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
 VALUES ('김창민',1234,'female','10s','cm654531@naver.com','defaultProfileImage.jpg','user'); 
-
+INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
 VALUES ('김효준',1234,'female','30s','hj6523@naver.com','defaultProfileImage.jpg','user'); 
 
