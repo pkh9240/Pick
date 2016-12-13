@@ -30,23 +30,19 @@ public class ChoiceDaoImpl implements ChoiceDao{
 
 //	///Method
 	public void addChoice(Choice choice) throws Exception {
-		System.out.println("여기는 choiceDaoImple의 addChoice, 파라미터  확인"+choice);
 		sqlSession.insert("ChoiceMapper.addChoice", choice);
 	}	
 
 	public List<Choice> getChoice(int voteNo)throws Exception {
-		System.out.println("여기는 choiceDaoImpl의 getChoice, 파라미터 확인" + voteNo );
 		return sqlSession.selectList("ChoiceMapper.getChoice", voteNo);
 	}
 	
 	public Choice getChoiceByChoiceNo(int choiceNo)throws Exception {
-		System.out.println("여기는 choiceDaoImpl의 getChoiceByChoiceNo, 파라미터 확인 " + choiceNo );
         return sqlSession.selectOne("ChoiceMapper.getChoiceByChoiceNo", choiceNo);
 	}
 	
 	public void updateChoiceCount(Choice choice)throws Exception {
-		System.out.println("여기는 choiceDaoImpl의 updateChoiceCnt, 파라미터 확인" + choice);
-		sqlSession.update("ChoiceMapper.updateChoiceCnt", choice);
+		sqlSession.update("ChoiceMapper.updateChoiceCount", choice);
 	}
 	
 }

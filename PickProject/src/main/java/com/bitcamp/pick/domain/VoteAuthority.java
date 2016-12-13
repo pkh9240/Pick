@@ -1,6 +1,6 @@
 package com.bitcamp.pick.domain;
 
-public class VoteA​uthority {
+public class VoteAuthority {
 	int voteAuthorityNo;
 	int voteNo;
 	boolean male;
@@ -12,10 +12,24 @@ public class VoteA​uthority {
 	boolean five;
 	boolean six;
 	
-	public VoteA​uthority(){
-		
+	public VoteAuthority() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
+	public VoteAuthority(int voteAuthorityNo, int voteNo, boolean male, boolean female, boolean one, boolean two,
+			boolean three, boolean four, boolean five, boolean six) {
+		super();
+		this.voteAuthorityNo = voteAuthorityNo;
+		this.voteNo = voteNo;
+		this.male = male;
+		this.female = female;
+		this.one = one;
+		this.two = two;
+		this.three = three;
+		this.four = four;
+		this.five = five;
+		this.six = six;
+	}
 	public int getVoteAuthorityNo() {
 		return voteAuthorityNo;
 	}
@@ -61,11 +75,9 @@ public class VoteA​uthority {
 	public boolean isFour() {
 		return four;
 	}
-
 	public void setFour(boolean four) {
 		this.four = four;
 	}
-
 	public boolean isFive() {
 		return five;
 	}
@@ -75,16 +87,15 @@ public class VoteA​uthority {
 	public boolean isSix() {
 		return six;
 	}
+	@Override
+	public String toString() {
+		return "VoteAuthority3 [voteAuthorityNo=" + voteAuthorityNo + ", voteNo=" + voteNo + ", male=" + male
+				+ ", female=" + female + ", one=" + one + ", two=" + two + ", three=" + three + ", four=" + four
+				+ ", five=" + five + ", six=" + six + "]";
+	}
 	public void setSix(boolean six) {
 		this.six = six;
 	}
 	
-	@Override
-	public String toString() {
-		return "VoteA​uthority [voteAuthorityNo=" + voteAuthorityNo + ", voteNo=" + voteNo + ", male=" + male
-				+ ", female=" + female + ", one=" + one + ", two=" + two + ", three=" + three + ", five=" + five
-				+ ", six=" + six + "]";
-	}
 	
-
 }

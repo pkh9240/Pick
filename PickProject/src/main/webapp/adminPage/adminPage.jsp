@@ -367,7 +367,7 @@
 											swal({
 												title : data.content+ " 카테고리가 추가되었습니다. ",
 												confirmButtonColor : "#ED2553",
-												imageUrl : "/image/interest/"+data.interestPhoto
+												imageUrl : "/image/interest/thumbnail/"+data.interestPhoto
 											},function(isConfirm) {
 												location.href="/user/getAdminPageView/category";
 											});

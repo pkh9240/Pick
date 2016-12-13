@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="pickOne.css">
-    <link rel="stylesheet" href="../fontello-51c93eec/css/close.css">
+
     
     </head>
 

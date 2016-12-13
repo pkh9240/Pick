@@ -57,8 +57,7 @@
 						<c:forEach var="interest" items="${interestList}">
 							<option value="${interest.content}" data-icon="/image/interest/thumbnail/${interest.interestPhoto}" class="circle">${interest.content}</option>
 						</c:forEach>
-					</select>
-					<label>Category</label>
+					</select> <label>Category</label>
 				</div>
 
 
@@ -75,7 +74,7 @@
 							<input type="button" class="btn js-select-button btn-link" value="VERSUS" />
 						</div>
 					</div>
-					<div class="custom-voteType" style="display: none;">
+					<div class="custom-voteType"  style="display: none;">
 						<select name="voteType" id="voteType-select">
 							<option value="">-</option>
 							<option value="MULTI-CHOICE" selected="selected">MULTI-CHOICE</option>
@@ -94,16 +93,18 @@
 								<input id="voteMax" name="voteMax" type="text" class="validate" value="1">
 								<label for="voteMax">input max vote</label>
 							</div>
-							<a id="addExample" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+							<a id="addExample" class="btn-floating btn-large waves-effect waves-light red">
+								<i class="material-icons">add</i>
+							</a>
 						</div>
 						<div class="row">
 							<div class="col s6">
 
-								<input type="text" name="content1" placeholder="ENTER CONTENT">
+								<input type="text" class="input_content" name="content1" placeholder="ENTER CONTENT">
 							</div>
 							<div class="col s4" id="filebox">
 								<label for="image1">ADD IMAGE</label>
-								<input type="file" name="photo1" id="image1" style="display: none;" />
+								<input type="file" class="input_img" name="photo1" id="image1"  accept="image/*" />
 								<div id="image_preview1" style="display: none">
 									<img src="#" class="circle" width="50px" height="50px">
 								</div>
@@ -113,11 +114,11 @@
 						<div class="row">
 							<div class="col s6">
 
-								<input type="text" name="content2" placeholder="ENTER CONTENT">
+								<input type="text"  class="input_content" name="content2" placeholder="ENTER CONTENT">
 							</div>
 							<div class="col s4" id="filebox">
 								<label for="image2">ADD IMAGE</label>
-								<input type="file" name="photo2" id="image2" style="display: none;" />
+								<input type="file" class="input_img" name="photo2" id="image2"  accept="image/*" />
 								<div id="image_preview2" style="display: none">
 									<img src="#" class="circle" width="50px" height="50px">
 								</div>
@@ -140,15 +141,15 @@
 										<img src="#" class="circle" width="80px" height="80px">
 									</div>
 									<div style="padding-left: 50px;">
-										<label id="label1" for="image100" style="text-align: center">ADD IMAGE</label>
-										<input type="file" name="left_photo" id="image100" />
+										<label for="image100" style="text-align: center">ADD IMAGE</label>
+										<input type="file" class="input_img" accept="image/*"  name="left_photo" id="image100" />
 									</div>
 								</div>
 								<br>
 								<div class="row" style="padding-left: 30px; padding-top: 25px;">
 									<label for="vote">EXAMPLE1 </label>
 									<div>
-										<input type="text" name="left_content" placeholder="CONTENT">
+										<input type="text"  class="input_content" name="left_content" placeholder="CONTENT">
 									</div>
 								</div>
 
@@ -160,15 +161,15 @@
 										<img src="#" class="circle" width="80px" height="80px">
 									</div>
 									<div style="padding-left: 50px;">
-										<label id="label1" for="image101" style="text-align: center">ADD IMAGE</label>
-										<input type="file" name="right_photo" id="image101" />
+										<label  for="image101" style="text-align: center">ADD IMAGE</label>
+										<input type="file" class="input_img"  accept="image/*" name="right_photo" id="image101" />
 									</div>
 								</div>
 								<br>
 								<div class="row" style="padding-left: 30px; padding-top: 25px;">
-									<label for="vote">EXAMPLE1 </label>
-									<div>
-										<input type="text" name="right_content" placeholder="CONTENT">
+									<label for="vote">EXAMPLE2 </label>
+								<div>
+										<input type="text"  class="input_content" name="right_content" placeholder="CONTENT">
 									</div>
 								</div>
 
@@ -183,7 +184,10 @@
 
 				<div class="col s12">
 					<input type="button" id="showHide" aria-activedescendant="" class="btn" style="left: 300px;">
-					<span id="optional1"> Detail setting </span>&nbsp; <span id="optional2"> (Optional)</span>&nbsp; <a><span class="glyphicon glyphicon-menu-down" id="showHide" aria-hidden="true"></span> </a>
+					<span id="optional1"> Detail setting </span>&nbsp; <span id="optional2"> (Optional)</span>&nbsp;
+					<a>
+						<span class="glyphicon glyphicon-menu-down" id="showHide" aria-hidden="true"></span>
+					</a>
 				</div>
 
 
@@ -191,32 +195,24 @@
 					<div class="col offset-s2 s4">
 						GENDER<br> <br>
 						<input name="gender" type="checkbox" id="male" />
-						<label for="male">Male</label>
-						<br>
+						<label for="male">Male</label> <br>
 						<input name="gender" type="checkbox" id="female" />
-						<label for="female">Female</label>
-						<br>
+						<label for="female">Female</label> <br>
 					</div>
 					<div class="col s6">
 						AGE<br> <br>
 						<input name="age" type="checkbox" id="one" value="" />
-						<label for="one">10s</label>
-						<br>
+						<label for="one">10s</label> <br>
 						<input name="age" type="checkbox" id="two" />
-						<label for="two">20s</label>
-						<br>
+						<label for="two">20s</label> <br>
 						<input name="age" type="checkbox" id="three" />
-						<label for="three">30s</label>
-						<br>
+						<label for="three">30s</label> <br>
 						<input name="age" type="checkbox" id="four" />
-						<label for="four">40s</label>
-						<br>
+						<label for="four">40s</label> <br>
 						<input name="age" type="checkbox" id="five" />
-						<label for="five">50s</label>
-						<br>
+						<label for="five">50s</label> <br>
 						<input name="age" type="checkbox" id="six" />
-						<label for="six">More than 60</label>
-						<br>
+						<label for="six">More than 60</label> <br>
 					</div>
 					<div id='hidden_authority'>
 						<input type="hidden" name="one" value="false" />
@@ -254,20 +250,75 @@
     $("#register_btn").click(function () {
     	
     	if($("input[name='voteTitle']").val()==''){
-    		swal("투표 제목을 입력하세요.");
+    		swal({
+    			title:"투표 제목을 입력하세요. ",
+    			confirmButtonColor : "#ED2553"
+    		});
     		return;
     	}
      	if($("textarea[name='voteContent']").val()==''){
-    		swal("투표 내용을 입력하세요.");
+    		swal({
+    			title:"투표 내용을 입력하세요. ",
+    			confirmButtonColor : "#ED2553"
+    		});
     		return;
     	}
     	
     	if($("input[name='endDate']").val()==''){
-    		swal("투표 종료일을 선택 해주세요. ");
+    		swal({
+    			title:"투표 종료일을 선택하세요.",
+    			confirmButtonColor : "#ED2553"
+    		});
     		return;
     	}
-  
-    	
+    	/*=============================  */
+     	var hasContent = true;
+    		 $(".input_content").each(function(){
+ 		 	if($(this).attr("disabled") != 'disabled'){
+     			if($(this).val()==''){
+     			
+     				swal({
+         				title:"선택지 내용을 추가해주세요.",
+         				confirmButtonColor : "#ED2553"
+      				}); 
+     				hasContent=false;
+     				
+     				return false;
+     				
+     		}
+    		 }
+ 		}); 
+    		 
+    		 if(hasContent==false){
+    			 return;
+    		 }
+    	/*=============================  */
+    	/*=============================  */
+    	var hasFile = true;
+   		 $(".input_img").each(function(){
+		 	if($(this).attr("disabled") != 'disabled'){
+    			if($(this).val()==''){
+    			
+    				swal({
+        				title:"사진을 추가해주세요.",
+        				confirmButtonColor : "#ED2553"
+     				}); 
+    				hasFile=false;
+    				
+    				return false;
+    				
+    		}
+   		 }
+		}); 
+   		 
+   		 if(hasFile==false){
+   			 return;
+   		 }
+   		/*=============================  */
+   	
+   		
+   		
+    
     	// MultiChoice 일경우 선택지 갯수 전송하기 위함	
     	if($("#voteType-select").val()=='MULTI-CHOICE'){
     		var choiceCount = $("input[name^=content]").length;
@@ -285,8 +336,43 @@
 				$("div>input[name='"+$(this).attr("id")+"']").val("true");
 			});
 		}
-	    $("#vote_reg_form").attr("method" , "POST").attr("action" , "/vote/addVote").submit();
-	    
+    
+    	var form = new FormData($("#vote_reg_form")[0]);
+
+		swal({
+			title : "투표를 등록 하시겠습니까?",
+			type : "info",
+			confirmButtonColor : "#ED2553",
+			showCancelButton : true,
+			closeOnConfirm : false,
+			showLoaderOnConfirm : true,
+
+		}, function(isConfirm) {
+			if (isConfirm) {
+				$.ajax({
+					type : "post",
+					url : "/vote/addVote",
+					processData : false,/*data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.*/
+					contentType : false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
+					data : form,
+					success : function(data) {
+						setTimeout(function() {
+							swal({
+								title : data.voteTitle + " 투표가 등록되었습니다.",
+								confirmButtonColor : "#ED2553",
+								showLoaderOnConfirm : true
+							},function(isConfirm){
+								/* color 박스 닫기   */
+								parent.$.colorbox.close();
+								
+							});
+						}, 2500);
+					}
+				});
+			}
+
+		});
+    
     });
 		
 	</script>

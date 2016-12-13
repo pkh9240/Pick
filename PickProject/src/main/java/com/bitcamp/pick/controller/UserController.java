@@ -76,7 +76,6 @@ public class UserController {
 		
 		List<Vote> voteList = voteService.getVoteList();
 		model.addAttribute("voteList", voteList);
-		System.out.println("main 에넘겾ㄹ리스트"+voteList);
 		
 		return "forward:/main/main.jsp";
 	}

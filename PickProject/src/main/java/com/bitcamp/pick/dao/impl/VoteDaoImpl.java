@@ -29,21 +29,17 @@ public class VoteDaoImpl implements VoteDao{
 		System.out.println(this.getClass());
 	}
 
-//	///Method
+	///Method
 	public void addVote(Vote vote) throws Exception {
-		System.out.println("여기는 VoteDaoImple의 addVote, 도메인객체값 확인 :"+vote);
 		sqlSession.insert("VoteMapper.addVote", vote);
 	}
 
     public Vote getVote(int voteNo)throws Exception {
-    	
-    	System.out.println("여기는 VoteDaoImpl의 getVote, 메소드 인자값 확인 :" + voteNo);
     	return sqlSession.selectOne("VoteMapper.getVote", voteNo);
     }
 
 	@Override
 	public List<Vote> getVoteList() throws Exception {
-	
 		return sqlSession.selectList("VoteMapper.getVoteList");
 	}
 	

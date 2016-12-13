@@ -1,7 +1,6 @@
 package com.bitcamp.pick.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -24,7 +24,7 @@ import com.bitcamp.pick.domain.Choice;
 import com.bitcamp.pick.domain.Interest;
 import com.bitcamp.pick.domain.User;
 import com.bitcamp.pick.domain.Vote;
-import com.bitcamp.pick.domain.VoteA​uthority;
+import com.bitcamp.pick.domain.VoteAuthority;
 import com.bitcamp.pick.service.ChoiceService;
 import com.bitcamp.pick.service.InterestService;
 import com.bitcamp.pick.service.VoteService;
@@ -73,17 +73,18 @@ public class VoteController {
 
 	/* 투표 등록 */
 	@RequestMapping(value = "addVote", method = RequestMethod.POST)
-	public String addVote(@ModelAttribute("vote") Vote vote, MultipartHttpServletRequest multipartHttpServletRequest,
-			Model model, HttpSession session, @ModelAttribute VoteA​uthority voteA​uthority) throws Exception {
+	public @ResponseBody Vote addVote(@ModelAttribute("vote") Vote vote, MultipartHttpServletRequest multipartHttpServletRequest,
+			Model model, HttpSession session, @ModelAttribute VoteAuthority voteA​uthority) throws Exception {
 		System.out.println("addVote-POST");
 
 		vote.setVoteA​uthority(voteA​uthority);
 		vote.setUserNo(((User) session.getAttribute("user")).getUserNo());
 		voteService.addVote(vote);
-
+		System.out.println("Vote Information :"+vote);
+		System.out.println("Vote A​uthority :"+voteA​uthority);
 		/* VERSUS */
 		if (vote.getVoteType().equals("VERSUS")) {
-
+			System.out.println("Vote Type is VERSUS");
 			Choice leftChoice = new Choice();
 			leftChoice.setVoteNo(vote.getVoteNo());
 			leftChoice.setContent(multipartHttpServletRequest.getParameter("left_content"));
@@ -124,14 +125,14 @@ public class VoteController {
 			rightChoice.setPhoto(rightRandomPhotoName);
 
 			
-			
-			
+			System.out.println("left choice info :"+leftChoice);
+			System.out.println("right choice info:"+rightChoice);
 			choiceService.addChoice(leftChoice);
 			choiceService.addChoice(rightChoice);
 
 		} else {/* MULTI */
 			// 선택지 갯수
-
+			System.out.println("Vote Type is MULTI");
 			int choiceCount = Integer.parseInt(multipartHttpServletRequest.getParameter("choiceCount"));
 			Map<String, MultipartFile> map = multipartHttpServletRequest.getFileMap();
 
@@ -160,12 +161,13 @@ public class VoteController {
 				choice.setPhoto(randomPhotoName);
 
 				choiceService.addChoice(choice);
+				System.out.println("choice info "+i+":"+choice);
 
 			}
 
 		}
 
-		return "forward:/main/main.jsp";
+		return vote;
 
 	}
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.bitcamp.pick.dao.VoteAuthorityDao;
-import com.bitcamp.pick.domain.VoteA​uthority;
+import com.bitcamp.pick.domain.VoteAuthority;
 
 
 @Repository("voteAuthorityDaoImpl")
@@ -19,7 +19,7 @@ public class VoteAuthorityDaoImpl implements VoteAuthorityDao{
 	public VoteAuthorityDaoImpl() {
 		System.out.println("VoteAuthorityDaoImpl Default Constructor");
 	}
-	public int addVoteAuthority(VoteA​uthority voteAuthority){
+	public int addVoteAuthority(VoteAuthority voteAuthority){
 
 		return sqlSession.insert("VoteAuthorityMapper.addVoteAuthority",voteAuthority);
 	}

@@ -89,6 +89,8 @@ CREATE TABLE `USER_VOTE` (
 )
 COMMENT '투표자';
 
+
+
 -- 투표자
 ALTER TABLE `USER_VOTE`
 	ADD CONSTRAINT `PK_USER_VOTE` -- 투표자 기본키
@@ -103,6 +105,15 @@ CREATE TABLE `USER_INTR` (
 	`INTR_NO` INTEGER NOT NULL COMMENT '관심사일련번호' -- 관심사일련번호
 )
 COMMENT '회원관심사';
+
+-- 선택지 회원정보
+CREATE TABLE `CHOI_USER` (
+	`CHOI_NO` INTEGER NOT NULL COMMENT '선택지일련번호', -- 선택지일련번호
+	`USER_NO` INTEGER NOT NULL COMMENT '회원일련번호' -- 회원일련번호
+)
+COMMENT '선택지 회원정보';
+
+
 
 -- 회원관심사
 ALTER TABLE `USER_INTR`
@@ -202,7 +213,25 @@ ALTER TABLE `USER_INTR`
 			`INTR_NO` -- 관심사일련번호
 		);
 
+-- 선택지 회원정보
+ALTER TABLE `CHOI_USER`
+	ADD CONSTRAINT `FK_CHOI_TO_CHOI_USER` -- 선택지 -> 선택지 회원정보
+		FOREIGN KEY (
+			`CHOI_NO` -- 선택지일련번호
+		)
+		REFERENCES `CHOI` ( -- 선택지
+			`CHOI_NO` -- 선택지일련번호
+		);
 
+-- 선택지 회원정보
+ALTER TABLE `CHOI_USER`
+	ADD CONSTRAINT `FK_USERS_TO_CHOI_USER` -- 회원정보 -> 선택지 회원정보
+		FOREIGN KEY (
+			`USER_NO` -- 회원일련번호
+		)
+		REFERENCES `USERS` ( -- 회원정보
+			`USER_NO` -- 회원일련번호
+		);
 INSERT 
 INTO users (USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_MAIL,USER_PHOT,USER_TYPE)
 VALUES ('박광희',1234,'male','20s','pkh0452@naver.com','kwanghee.jpg','admin'); 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.pick.dao.VoteAuthorityDao;
 import com.bitcamp.pick.dao.VoteDao;
 import com.bitcamp.pick.domain.Vote;
-import com.bitcamp.pick.domain.VoteA​uthority;
+import com.bitcamp.pick.domain.VoteAuthority;
 import com.bitcamp.pick.service.VoteService;
 
 
@@ -44,9 +44,8 @@ public class VoteServiceImpl implements VoteService{
 		 
 	      voteDao.addVote(vote);
 	     
-	      VoteA​uthority voteA​uthority = vote.getVoteA​uthority();
+	      VoteAuthority voteA​uthority = vote.getVoteA​uthority();
 	      voteA​uthority.setVoteNo(vote.getVoteNo());
-	      System.out.println("서비스단에서 :"+vote);
 	      voteAuthorityDao.addVoteAuthority(voteA​uthority);
 	}
 	

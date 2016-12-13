@@ -17,7 +17,7 @@ public class Vote {
 	private String voteType;
 	private int voteMax;
     private List<Choice> choiceList;	
-    private VoteA​uthority voteA​uthority;
+    private VoteAuthority voteA​uthority;
 	
 	public Vote() {
 		super();
@@ -25,15 +25,6 @@ public class Vote {
 	}
 
 	
-	public VoteA​uthority getVoteA​uthority() {
-		return voteA​uthority;
-	}
-
-
-	public void setVoteA​uthority(VoteA​uthority voteA​uthority) {
-		this.voteA​uthority = voteA​uthority;
-	}
-
 
 	public int getVoteNo() {
 		return voteNo;
@@ -117,13 +108,21 @@ public class Vote {
 	public void setChoiceList(List<Choice> choiceList) {
 		this.choiceList = choiceList;
 	}
+
 	
-	@Override
-	public String toString() {
-		return "Vote [voteNo=" + voteNo + ", userNo=" + userNo + ", voteCategory=" + voteCategory + ", voteTitle="
-				+ voteTitle + ", voteContent=" + voteContent + ", voteHits=" + voteHits + ", endDate=" + endDate
-				+ ", voteType=" + voteType + ", voteMax=" + voteMax + ", choiceList=" + choiceList + "]"+voteA​uthority;
+
+	
+	public VoteAuthority getVoteA​uthority() {
+		return voteA​uthority;
 	}
+
+
+
+	public void setVoteA​uthority(VoteAuthority voteA​uthority) {
+		this.voteA​uthority = voteA​uthority;
+	}
+
+
 
 	
 }
