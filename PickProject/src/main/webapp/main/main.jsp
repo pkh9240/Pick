@@ -113,7 +113,6 @@
 						<li><div class='post-module'>
 								<div class='thumbnail'>
 									<div class='date'>
-															
 										<div class='day'>${vote.endDate.toString().split(' ')[2]}</div>
 										<div class='month'>${vote.endDate.toString().split(' ')[1]}</div>
 									</div>

@@ -77,7 +77,7 @@ public class VoteController {
 			Model model, HttpSession session, @ModelAttribute VoteAuthority voteA​uthority) throws Exception {
 		System.out.println("addVote-POST");
 
-		vote.setVoteA​uthority(voteA​uthority);
+		vote.setVoteAuthority(voteA​uthority);
 		vote.setUserNo(((User) session.getAttribute("user")).getUserNo());
 		voteService.addVote(vote);
 		System.out.println("Vote Information :"+vote);

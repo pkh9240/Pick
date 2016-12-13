@@ -44,7 +44,7 @@ public class VoteServiceImpl implements VoteService{
 		 
 	      voteDao.addVote(vote);
 	     
-	      VoteAuthority voteA​uthority = vote.getVoteA​uthority();
+	      VoteAuthority voteA​uthority = vote.getVoteAuthority();
 	      voteA​uthority.setVoteNo(vote.getVoteNo());
 	      voteAuthorityDao.addVoteAuthority(voteA​uthority);
 	}

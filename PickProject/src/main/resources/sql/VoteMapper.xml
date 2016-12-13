@@ -16,7 +16,7 @@
 		<result property="endDate" column="END_DATE" jdbcType="DATE" />
 		<result property="voteType" column="VOTE_TYPE" jdbcType="VARCHAR" />
 		<result property="voteMax" column="VOTE_MAX" jdbcType="INTEGER" />
-		<association property="voteA​uthority" column="VOTE_NO" select="VoteAuthorityMapper.getVoteAuthority" javaType="voteAuthority"/>
+		<association property="voteAuthority" column="VOTE_NO" select="VoteAuthorityMapper.getVoteAuthority" javaType="voteAuthority"/>
 		<collection property="choiceList" column="VOTE_NO" select="ChoiceMapper.getChoiceListByVoteNo" ofType="choice" javaType="ArrayList" />
 	</resultMap>
 	
