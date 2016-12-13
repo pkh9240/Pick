@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.bitcamp.pick.dao.ChoiceDao;
 import com.bitcamp.pick.dao.VoteAuthorityDao;
 import com.bitcamp.pick.dao.VoteDao;
+import com.bitcamp.pick.domain.Choice;
 import com.bitcamp.pick.domain.Vote;
 import com.bitcamp.pick.domain.VoteAuthority;
 import com.bitcamp.pick.service.VoteService;
@@ -28,6 +30,13 @@ public class VoteServiceImpl implements VoteService{
 	@Autowired
 	@Qualifier("voteAuthorityDaoImpl")
 	private VoteAuthorityDao voteAuthorityDao;
+	
+	
+	
+	@Autowired
+	@Qualifier("choiceDaoImpl")
+	private ChoiceDao choiceDao;
+	
 	
 	public void setVoteDao(VoteDao voteDao) { 
 		this.voteDao = voteDao;
@@ -51,7 +60,12 @@ public class VoteServiceImpl implements VoteService{
 	
 	public Vote getVote(int voteNo) throws Exception {
 		
-		return voteDao.getVote(voteNo);
+		Vote vote = voteDao.getVote(voteNo);
+		List<Choice> choiceList = choiceDao.getChoiceListByVoteNo(voteNo);
+		vote.setChoiceList(choiceList);
+		
+		
+		return vote;
 	}
 
 	@Override

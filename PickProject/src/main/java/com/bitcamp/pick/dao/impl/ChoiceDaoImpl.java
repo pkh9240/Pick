@@ -33,8 +33,8 @@ public class ChoiceDaoImpl implements ChoiceDao{
 		sqlSession.insert("ChoiceMapper.addChoice", choice);
 	}	
 
-	public List<Choice> getChoice(int voteNo)throws Exception {
-		return sqlSession.selectList("ChoiceMapper.getChoice", voteNo);
+	public List<Choice> getChoiceListByVoteNo(int voteNo)throws Exception {
+		return sqlSession.selectList("ChoiceMapper.getChoiceListByVoteNo", voteNo);
 	}
 	
 	public Choice getChoiceByChoiceNo(int choiceNo)throws Exception {

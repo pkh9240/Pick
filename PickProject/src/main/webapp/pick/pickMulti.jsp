@@ -1,76 +1,96 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="pickMulti.css">
-    <link rel="stylesheet" href="../fontello-51c93eec/css/close.css">
-    		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    </head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/pick/pickMulti.css">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+</head>
 <body>
-	<div class="navbar-fixed">
-			<nav class="custom-nav">
-				<div class="nav-wrapper">
-					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Admin Page</a>
-				</div>
-			</nav>
-		</div>
-    <div id="container">
-        <div class="info">Category : computer</div>
-        <div class="info">Type : Multi</div>
-        <div class="info">End Date : 2019/12/12</div>
-        <div class="info">age : 10s,20s,30s</div>
-        <div class="info">gender : man</div>
-        <div class="info">count : 240</div>
-        <div id="title"> ì¼êµ´ ìì  </div>
-        <div id="content"> ëê° ì ì¼ ììê²¼ëì?</div>
-        <div id="mainContent">
-            <ul>
-                <a class="image-tooltip" title="ì¼ìª½êº¼">
-                    <li>
-                        <input type="checkbox" id="cb1" name="a1" />
-                        <label for="cb1"><img src="http://lorempixel.com/100/100" /></label>
-                    </li>
-                </a>
-                
-                <a class="image-tooltip" title="ì¤ë¥¸ìª½êº¼">
-                    <li>
-                        <input type="checkbox" id="cb2" name="a2" />
-                        <label for="cb2"><img src="http://lorempixel.com/101/101" /></label>
-                    </li>
-                </a>
-                <a class="image-tooltip" title="ì¤ë¥¸ìª½êº¼">
-                    <li>
-                        <input type="checkbox" id="cb3" name="a3" />
-                        <label for="cb3"><img src="http://lorempixel.com/101/101" /></label>
-                    </li>
-                </a>
-                <a class="image-tooltip" title="ì¤ë¥¸ìª½êº¼">
-                    <li>
-                        <input type="checkbox" id="cb4" name="a4" />
-                        <label for="cb4"><img src="http://lorempixel.com/101/101" /></label>
-                    </li>
-                </a>
-                <a class="image-tooltip" title="ì¤ë¥¸ìª½êº¼">
-                    <li>
-                        <input type="checkbox" id="cb5" name="a5" />
-                        <label for="cb5"><img src="http://lorempixel.com/101/101" /></label>
-                    </li>
-                </a>
-            </ul>
-        </div>
-        <div id="bottom">  <a class="iconBtn" href="#pick" id="pick-btn">PICK!</a> </div>
-        
-        </div>   
-        
-        <!---->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-  
 
-   
-    </body>
+	<div class="navbar-fixed">
+		<nav class="custom-nav">
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Pick</a>
+			</div>
+		</nav>
+	</div>
+	<div id="container">
+		<div class="section">
+			<h5>Category >${vote.voteCategory}</h5>
+			<div id="detail">
+				AGE : 10s, 20s, 30s<br /> GENDER : male
+			</div>
+		</div>
+		<div class="row">
+			<div id="voteTitle" class="col offset-s4 s4">${vote.voteTitle}</div>
+			<br />
+			<div id="voteContent" class="col offset-s4 s4" id="voteContent">
+				<span class="flow-text">${vote.voteContent}</span>
+			</div>
+
+		</div>
+		<div class="row">
+			<form id="updateChoiceCnt" method="POST">
+				<c:forEach var="choice" items="${vote.choiceList}">
+					<div class="col s4">
+						<input type="checkbox" id="cb_${choice.choiceNo}" name="choiceNo" value="${choice.choiceNo}" />
+						<label for="cb_${choice.choiceNo}"><img src="/image/vote/thumbnail/${choice.photo}" /></label>
+					</div>
+				</c:forEach>
+
+
+			</form>
+		</div>
+		<div class="row">
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+			<div class="col offset-s6 s6">
+				<span class="label"></span>
+				<a class="iconBtn" href="#pick" id="pick-btn">PICK!</a>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$("#pick-btn").click(
+									function() {
+										alert("서버로 보내기!");
+										$("#updateChoiceCnt").attr("method",
+												"POST").attr("action",
+												"/vote/updateChoiceCnt")
+												.submit();
+									});
+
+							$("input[name=choiceNo]:checkbox")
+									.change(
+											function() {// 체크박스들이 변경됬을때
+												var cnt = $
+												{
+													vote.voteMax
+												}
+												if (cnt == $("input[name=choiceNo]:checkbox:checked").length) {
+													$(":checkbox:not(:checked)")
+															.attr("disabled",
+																	"disabled");
+												} else {
+													$(
+															"input[name=choiceNo]:checkbox")
+															.removeAttr(
+																	"disabled");
+												}
+											});
+						});
+	</script>
+
+
+</body>
 
 </html>

@@ -35,8 +35,8 @@ public class ChoiceServiceImpl implements ChoiceService{
 	      choiceDao.addChoice(choice);
 	}
 	
-	public List<Choice> getChoiceList(int voteNo) throws Exception {
-		 return choiceDao.getChoice(voteNo);
+	public List<Choice> getChoiceListByVoteNo(int voteNo) throws Exception {
+		 return choiceDao.getChoiceListByVoteNo(voteNo);
 	}
 	
 	public Choice getChoiceByChoiceNo(int choiceNo)throws Exception {

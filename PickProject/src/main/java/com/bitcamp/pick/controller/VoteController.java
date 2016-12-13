@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,15 +74,16 @@ public class VoteController {
 
 	/* 투표 등록 */
 	@RequestMapping(value = "addVote", method = RequestMethod.POST)
-	public @ResponseBody Vote addVote(@ModelAttribute("vote") Vote vote, MultipartHttpServletRequest multipartHttpServletRequest,
-			Model model, HttpSession session, @ModelAttribute VoteAuthority voteA​uthority) throws Exception {
+	public @ResponseBody Vote addVote(@ModelAttribute("vote") Vote vote,
+			MultipartHttpServletRequest multipartHttpServletRequest, Model model, HttpSession session,
+			@ModelAttribute VoteAuthority voteA​uthority) throws Exception {
 		System.out.println("addVote-POST");
 
 		vote.setVoteAuthority(voteA​uthority);
 		vote.setUserNo(((User) session.getAttribute("user")).getUserNo());
 		voteService.addVote(vote);
-		System.out.println("Vote Information :"+vote);
-		System.out.println("Vote A​uthority :"+voteA​uthority);
+		System.out.println("Vote Information :" + vote);
+		System.out.println("Vote A​uthority :" + voteA​uthority);
 		/* VERSUS */
 		if (vote.getVoteType().equals("VERSUS")) {
 			System.out.println("Vote Type is VERSUS");
@@ -98,11 +100,6 @@ public class VoteController {
 			MultipartFile leftPhoto = multiFileMap.get("left_photo");
 			MultipartFile rightPhoto = multiFileMap.get("right_photo");
 
-			
-			
-			
-			
-			
 			String leftRandomPhotoName = UUID.randomUUID().toString().replace("-", "")
 					+ leftPhoto.getOriginalFilename().toLowerCase();
 			File originalLeftFile = new File(voteOriginalImageUploadPath, leftRandomPhotoName);
@@ -112,9 +109,6 @@ public class VoteController {
 			Thumbnails.of(originalLeftFile).crop(Positions.CENTER).size(100, 100).toFile(thumbnaiLeftlFile);
 			leftChoice.setPhoto(leftRandomPhotoName);
 
-			
-			
-			
 			String rightRandomPhotoName = UUID.randomUUID().toString().replace("-", "")
 					+ rightPhoto.getOriginalFilename().toLowerCase();
 			File originalRightFile = new File(voteOriginalImageUploadPath, rightRandomPhotoName);
@@ -124,9 +118,8 @@ public class VoteController {
 			Thumbnails.of(originalRightFile).crop(Positions.CENTER).size(100, 100).toFile(thumbnaiRightlFile);
 			rightChoice.setPhoto(rightRandomPhotoName);
 
-			
-			System.out.println("left choice info :"+leftChoice);
-			System.out.println("right choice info:"+rightChoice);
+			System.out.println("left choice info :" + leftChoice);
+			System.out.println("right choice info:" + rightChoice);
 			choiceService.addChoice(leftChoice);
 			choiceService.addChoice(rightChoice);
 
@@ -161,7 +154,7 @@ public class VoteController {
 				choice.setPhoto(randomPhotoName);
 
 				choiceService.addChoice(choice);
-				System.out.println("choice info "+i+":"+choice);
+				System.out.println("choice info " + i + ":" + choice);
 
 			}
 
@@ -171,28 +164,19 @@ public class VoteController {
 
 	}
 
-	@RequestMapping(value = "getVote", method = RequestMethod.GET)
-	public String getVote(@RequestParam("voteNo") int voteNo, Model model) throws Exception {
+	@RequestMapping(value = "getVote/{voteNo}", method = RequestMethod.GET)
+	public String getVote(@PathVariable("voteNo") int voteNo, Model model) throws Exception {
 
 		Vote vote = voteService.getVote(voteNo);
-		System.out.println("db에서 온 vote객체 : " + vote);
-		List<Choice> choiceList = choiceService.getChoiceList(voteNo);
-		vote.setChoiceList(choiceList);
-		System.out.println("choice 객체 셋팅 후  vote객체 : " + vote);
-		System.out.println("vote에서 list만 뽑아내보자.. " + vote.getChoiceList());
 
 		model.addAttribute("vote", vote);
 
 		if (vote.getVoteType().equals("MULTI-CHOICE")) {
-
 			return "forward:/pick/pickMulti.jsp";
-
-		} else if (vote.getVoteType().equals("VERSUS")) {
-
+		} else {
 			return "forward:/pick/pickOne.jsp";
 		}
 
-		return "forword:/pick/pickMulti.jsp";
 	}
 
 	@RequestMapping(value = "updateChoiceCnt", method = RequestMethod.POST)

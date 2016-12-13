@@ -758,7 +758,7 @@ body {
     bottom: 0;
     background: #ffffff;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     -webkti-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -803,7 +803,7 @@ body {
 .post-module .post-content .description {
     display: none;
     color: #333333 !important;
-    height:80px;
+    height:90px;
     padding-top:8px;
     font-size: 14px;
     line-height: 1.8em;

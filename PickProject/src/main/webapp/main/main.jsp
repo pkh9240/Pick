@@ -110,7 +110,8 @@
 					<c:forEach var="vote" items="${voteList}">
 					
 							
-						<li><div class='post-module'>
+						<li id="getVote_${vote.voteNo}">
+						<div class='post-module'>
 								<div class='thumbnail'>
 									<div class='date'>
 										<div class='day'>${vote.endDate.toString().split(' ')[2]}</div>
@@ -127,8 +128,33 @@
 										<a class="detailsub">PICK Detail</a>
 										<br />
 										<div class="detailcon">
-											AGE : <span id="age"></span> <br /> 
-											GENDER :<span id="gender"> Female </span><br/>
+											AGE :<c:if test="${vote.voteAuthority.one==true &&vote.voteAuthority.two==true &&
+															   vote.voteAuthority.three==true &&vote.voteAuthority.four==true &&
+															   vote.voteAuthority.five==true &&vote.voteAuthority.six==true }">
+												 All<br /> 
+												 </c:if>
+												 <c:if test="${vote.voteAuthority.one!=true || vote.voteAuthority.two!=true ||
+															   vote.voteAuthority.three!=true || vote.voteAuthority.four!=true ||
+															   vote.voteAuthority.five!=true || vote.voteAuthority.six!=true }">
+												
+												     ${vote.voteAuthority.one==true?'10대 ':''}
+													 ${vote.voteAuthority.two==true?'20대 ':''}
+													 ${vote.voteAuthority.three==true?'30대 ':''}
+													 ${vote.voteAuthority.four==true?'40대 ':''}
+													 ${vote.voteAuthority.five==true?'50대 ':''}
+													 ${vote.voteAuthority.six==true?'60대 ':''} <br /> 
+												
+												 </c:if>
+												
+											GENDER : <c:if test="${vote.voteAuthority.male==true && vote.voteAuthority.female==true}">
+													All<br /> 
+													</c:if>
+													<c:if test="${vote.voteAuthority.male!=true || vote.voteAuthority.female!=true}">
+														 ${vote.voteAuthority.male==true?'여자 ':''}
+														  ${vote.voteAuthority.female==true?'남자 ':''}<br/>
+													</c:if>
+											
+									
 											TYPE :${vote.voteType}
 										</div>
 									</div>
@@ -165,7 +191,21 @@
 	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
 	<script type="text/javascript">
 
+		/*투표 창 */
 		
+		$("li[id^=getVote]").on("click",function(){
+			var voteNo = $(this).attr("id").replace("getVote_","");
+			
+			$.colorbox({
+				closeButton : "false",
+				fixed : "true",
+				top : "true",
+				iframe : "true",
+				href : "/vote/getVote/"+voteNo,
+				width : "550px",
+				height : "600px"
+			});
+		});
 	
 		
 		/* 회원정보 뷰  */
@@ -257,7 +297,7 @@
 				var mok =  realWidth/200; //가로 크기로 나눔 
 				var resizedWidth = realWidth/mok;
 				var resizedHeight = realHeight/mok;
-				$(this).parent().parent().height(resizedHeight+170);
+				$(this).parent().parent().height(resizedHeight+150);
 			});
 			
 
