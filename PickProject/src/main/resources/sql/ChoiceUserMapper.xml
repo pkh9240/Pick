@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="ChoiceUserMapper">
+
+
+	<insert id="addChoiceUser" parameterType="choiceUser">
+		INSERT
+		INTO CHOI_USER(CHOI_NO,USER_NO)
+		VALUES (#{choiceNo:INTEGER},
+				#{userNo:INTEGER})
+	</insert>
+</mapper>

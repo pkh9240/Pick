@@ -13,6 +13,7 @@
 	 	<typeAlias alias="interest" type="com.bitcamp.pick.domain.Interest"/>
 	 	<typeAlias alias="userInterest" type="com.bitcamp.pick.domain.UserInterest"/>
 	 	<typeAlias alias="voteAuthority" type="com.bitcamp.pick.domain.VoteAuthority"/>
+	 	<typeAlias alias="choiceUser" type="com.bitcamp.pick.domain.ChoiceUser"/>
 	 </typeAliases>
 	 
   
@@ -24,6 +25,7 @@
 	<mapper resource="sql/UserInterestMapper.xml"/>
 	<mapper resource="sql/ChoiceMapper.xml"/>
 	<mapper resource="sql/VoteA​uthorityMapper.xml"/>
+	<mapper resource="sql/ChoiceUserMapper.xml"/>
 
 						  
   </mappers>

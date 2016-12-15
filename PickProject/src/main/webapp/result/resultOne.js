@@ -10,8 +10,8 @@ function dashboard(id,id1, fData,fData1){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 170 - hGDim.l - hGDim.r, 
-        hGDim.h = 400 - hGDim.t - hGDim.b;
+        hGDim.w = 250 - hGDim.l - hGDim.r, 
+        hGDim.h = 300 - hGDim.t - hGDim.b;
             
         //create svg for histogram.
         var hGsvg = d3.select(id).append("svg")
@@ -99,7 +99,7 @@ function dashboard(id,id1, fData,fData1){
     
     // function to handle pieChart.
     function pieChart(pD){
-        var pC ={},    pieDim ={w:200, h: 200};
+        var pC ={},    pieDim ={w:150, h: 150};
         pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
                 
         // create svg for pie chart.
@@ -146,7 +146,7 @@ function dashboard(id,id1, fData,fData1){
         return pC;
     }
     function pieChart1(pD){
-        var pC ={},    pieDim ={w:200, h: 200};
+        var pC ={},    pieDim ={w:150, h: 150};
         pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
                 
         // create svg for pie chart.
@@ -310,25 +310,4 @@ function dashboard(id,id1, fData,fData1){
     	
 }
 
-var genderData=[
-{State:'Yes',freq:{male:23, female:32}}
-,{State:'No',freq:{male:53, female:22}}
-/*,{State:'차병철',freq:{male:22, female:44}}
-,{State:'김량한',freq:{male:31, female:67}}
-,{State:'손철준',freq:{male:76, female:20}}
-,{State:'태양',freq:{male:8, female:23}}
-,{State:'쥐디',freq:{male:9, female:75}}*/
-];
-
-var ageData=[
- {State:'Yes',freq:{ s10:11, s20:12,s30:11,s40:11,s50:1,s60:22}}
-,{State:'No',freq:{s10:23, s20:11,s30:11,s40:1,s50:2,s60:27}}
-/*,{State:'차병철',freq:{s10:1, s20:1,s30:1,s40:3,s50:4,s60:0}}
-,{State:'김량한',freq:{s10:1, s20:3,s30:2,s40:2,s50:1,s60:1}}
-,{State:'손철준',freq:{s10:4, s20:1,s30:1,s40:1,s50:2,s60:1}}
-,{State:'태양',freq:{s10:2, s20:2,s30:1,s40:1,s50:1,s60:3}}
-,{State:'쥐디',freq:{s10:1, s20:4,s30:1,s40:2,s50:1,s60:1}}*/
-];
-
-dashboard('#gender_dashboard','#age_dashboard',genderData,ageData);
 

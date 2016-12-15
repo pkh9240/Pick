@@ -12,22 +12,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
 </head>
- 
+
 <body>
 
 
-<div class="navbar-fixed">
-			<nav class="custom-nav">
-				<div class="nav-wrapper">
-					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Admin Page</a>
-				</div>
-			</nav>
-		</div>
+	<div class="navbar-fixed">
+		<nav class="custom-nav">
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Admin Page</a>
+			</div>
+		</nav>
+	</div>
 
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3"><a class="${path=='pick'? 'active':''}" href="#pick">Admin Pick</a></li>
+				<li class="tab col s3"><a class="${path=='pick'? 'active':''}" href="#pick">Pick</a></li>
 				<li class="tab col s3"><a class="${path=='feed'? 'active':''}" href="#feed">Feed</a></li>
 				<li class="tab col s2"><a class="${path=='user'? 'active':''}" href="#user">UserInfo</a></li>
 				<li class="tab col s3"><a class="${path=='category'? 'active':''}" href="#category">Category</a></li>
@@ -41,7 +41,8 @@
 						<div class="table-header">
 							<span class="table-title">USER</span>
 							<div class="actions">
-								<a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
+									<i class="material-icons">search</i>
 								</a>
 							</div>
 						</div>
@@ -82,127 +83,53 @@
 				<div class="col s12">
 					<div class="card material-table">
 						<div class="table-header">
-							<span class="table-title">Admin Pick</span>
+							<span class="table-title">PICK</span>
 							<div class="actions">
-								<a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
+									<i class="material-icons">search</i>
 								</a>
 							</div>
 						</div>
 						<table class="datatable">
 							<thead>
+
 								<tr>
-									<th data-field="UserName">UserName</th>
-									<th data-field="Age">Age</th>
+									<th data-field="UserEmail">UserEmail</th>
 									<th data-field="Category">Category</th>
-									<th data-field="Subject">Subject</th>
-									<th data-field="PickType">PickType</th>
-									<th data-field="StartDate">StartDate</th>
-									<th data-field="EndDate">EndDate</th>
-									<th data-field="PicnNum">PickNum</th>
-									<th data-field="Count">Count</th>
+									<th data-field="Title">Title</th>
+									<th data-field="VoteType">VoteType</th>
+									<th data-field="EndDate">End Date</th>
+									<th data-field="PicnNum">Pick Count</th>
+									<th data-field="Result">Result</th>
 								</tr>
 							</thead>
+							
 							<tbody>
-								<tr>
-									<td>Alvin</td>
-									<td>13</td>
-									<td>Computer</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>VS</td>
-									<td>16.08.03</td>
-									<td>16.12.04</td>
-									<td>239</td>
-									<td>1923</td>
-								</tr>
-								<tr>
-									<td>Kevin</td>
-									<td>53</td>
-									<td>Culture</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>MULTI</td>
-									<td>16.06.02</td>
-									<td>16.12.31</td>
-									<td>912</td>
-									<td>9348</td>
-								</tr>
-								<tr>
-									<td>Lisa</td>
-									<td>26</td>
-									<td>Society</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>YN</td>
-									<td>16.02.03</td>
-									<td>16.12.13</td>
-									<td>573</td>
-									<td>3958</td>
-								</tr>
-								<tr>
-									<td>GD</td>
-									<td>94</td>
-									<td>IT</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>YN</td>
-									<td>16.03.01</td>
-									<td>17.02.10</td>
-									<td>459</td>
-									<td>928</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>25</td>
-									<td>Computer</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>VS</td>
-									<td>16.08.03</td>
-									<td>16.12.04</td>
-									<td>239</td>
-									<td>1923</td>
-								</tr>
-								<tr>
-									<td>Kevin</td>
-									<td>84</td>
-									<td>Culture</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>MULTI</td>
-									<td>16.06.02</td>
-									<td>16.12.31</td>
-									<td>912</td>
-									<td>9348</td>
-								</tr>
-								<tr>
-									<td>Lisa</td>
-									<td>64</td>
-									<td>Society</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>YN</td>
-									<td>16.02.03</td>
-									<td>16.12.13</td>
-									<td>573</td>
-									<td>3958</td>
-								</tr>
-								<tr>
-									<td>GD</td>
-									<td>39</td>
-									<td>IT</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>YN</td>
-									<td>16.03.01</td>
-									<td>17.02.10</td>
-									<td>459</td>
-									<td>928</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>45</td>
-									<td>Computer</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>VS</td>
-									<td>16.08.03</td>
-									<td>16.12.04</td>
-									<td>239</td>
-									<td>1923</td>
-								</tr>
-
+								<c:forEach var="vote" items="${voteList}">
+									
+									<!-- UserNo로 UserEmail 가져오기 -->
+									<c:set var="userEmail"/>
+									<c:forEach var="user" items="${userList}">
+										<c:if test="${user.userNo==vote.userNo}">
+											<c:set var="userEmail" value="${user.userEmail}"/>
+										</c:if>
+									</c:forEach>
+									<!-- 투표의 선택지에서 총 투표수 가져오기   -->
+									<c:set var="totalCount" value="0"/>
+									<c:forEach var="choice" items="${vote.choiceList}">
+											<c:set var="totalCount" value="${totalCount+choice.choiceCount}"/>
+									</c:forEach>
+									
+									<tr>
+										<td>${userEmail}</td>
+										<td>${vote.voteCategory}</td>
+										<td>${vote.voteTitle}</td>
+										<td>${vote.voteType}</td>
+										<td>${vote.endDate}</td>
+										<td>${totalCount}</td>
+										<td><div id="result_btn_${vote.voteNo}" class="btn waves-effect waves-light btn-small custom-btn">result</div></td>
+									</tr>
+								</c:forEach>
 
 							</tbody>
 						</table>
@@ -217,9 +144,10 @@
 				<div class="col s12">
 					<div class="card material-table">
 						<div class="table-header">
-							<span class="table-title">FEED</span>
+							<span class="table-title">FEEDBACK</span>
 							<div class="actions">
-								<a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
+									<i class="material-icons">search</i>
 								</a>
 							</div>
 						</div>
@@ -255,10 +183,13 @@
 				<div class="col  s12">
 					<div class="card material-table">
 						<div class="table-header">
-							<span class="table-title">Category</span>
+							<span class="table-title">CATEGORY</span>
 							<div class="actions">
-								<a href="#modal1" class="modal-trigger waves-effect btn-flat nopadding"> <i class="material-icons">add_circle_outline</i>
-								</a> <a href="#" class="search-toggle waves-effect btn-flat nopadding"> <i class="material-icons">search</i>
+								<a href="#modal1" class="modal-trigger waves-effect btn-flat nopadding">
+									<i class="material-icons">add_circle_outline</i>
+								</a>
+								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
+									<i class="material-icons">search</i>
 								</a>
 							</div>
 						</div>
@@ -287,45 +218,45 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 	<!-- Modal Trigger -->
-		<!-- Modal Structure -->
+	<!-- Modal Structure -->
 	<div id="modal1" class="modal custom-modal">
-			<div class="navbar-fixed">
-				<nav class="custom-nav">
-					<div class="nav-wrapper">
-						<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Add Category </a>
-					</div>
-				</nav>
-			</div>
-			<div class="modal-content" id="catemodal">
-		
-
-					<form id="add_interest_form">
-						<div class="preview img-wrapper"></div>
-						<div class="file-upload-wrapper">
-							<input type="file" name="interestImage" class="file-upload-native" accept="image/*" />
-							<input type="text" disabled placeholder="upload" class="file-upload-text" />
-						</div>
+		<div class="navbar-fixed">
+			<nav class="custom-nav">
+				<div class="nav-wrapper">
+					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Add Category </a>
+				</div>
+			</nav>
+		</div>
+		<div class="modal-content" id="catemodal">
 
 
-						<div class="row">
-							<div class="input-field col offset-s2 s8">
-								<input name="content" id="content" type="text" class="validate">
-								<label for="icon_prefix">Category Name</label>
-							</div>
-						
-
-						<div id="add_interest_btn" class="btn waves-effect waves-light col offset-s7 s4 custom-btn ">A D D</div>
-						
-						</div>
-					</form>
+			<form id="add_interest_form">
+				<div class="preview img-wrapper"></div>
+				<div class="file-upload-wrapper">
+					<input type="file" name="interestImage" class="file-upload-native" accept="image/*" />
+					<input type="text" disabled placeholder="upload" class="file-upload-text" />
 				</div>
 
 
+				<div class="row">
+					<div class="input-field col offset-s2 s8">
+						<input name="content" id="content" type="text" class="validate">
+						<label for="icon_prefix">Category Name</label>
+					</div>
 
+
+					<div id="add_interest_btn" class="btn waves-effect waves-light col offset-s7 s4 custom-btn ">A D D</div>
+
+				</div>
+			</form>
 		</div>
+
+
+
+	</div>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
 
@@ -335,6 +266,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script src="/adminPage/adminPage.js"></script>
 	<script type="text/javascript">
+		$("div[id^=result_btn]").on("click",function(){
+			location.href="/result/resultOne.jsp";
+			
+		});
+	
 		$("#add_interest_btn").on(
 				"click",
 				function() {

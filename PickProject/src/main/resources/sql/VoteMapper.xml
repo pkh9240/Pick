@@ -22,7 +22,7 @@
 	
 	
 
-	<!-- SQL : INSERT --> <!-- seq_product_prod_no.NEXTVAL --> <!-- #{ssn:VARCHAR} , -->
+	<!-- SQL : INSERT --> 
 	<insert id="addVote" parameterType="vote" useGeneratedKeys="true" keyProperty="voteNo" keyColumn="VOTE_NO">
 		INSERT
 		INTO VOTE(USER_NO , VOTE_CATG , VOTE_TITL , VOTE_CONT,

@@ -2,15 +2,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
 
-#pick-btn{
-    margin: 39%;
-    position: relative;
-    bottom: 50px;
-    
-    
-
-}
-
 
 
 
@@ -41,16 +32,15 @@ label {
 }
 
 label:before {
-  background-color: rgba(16, 65, 99, 0.32 ) !important;
+
+ background-image:url("/image/main/pick100.png");
   text-align:center !important;
   color: white !important;
-  content: " " !important;
   display: block !important;
   border-radius: 3px !important;
-/*   border: 1px solid grey; */
   position: absolute !important;
-  top:10px !important;
-  left: 10px !important;
+  top:2px !important;
+  left: 2px !important;
   z-index:1 !important;
   width:100px  !important;
   height: 100px  !important;
@@ -68,14 +58,10 @@ label img {
   border-radius: 3px !important;
 }
 
-:checked + label {
-  border-color: #eee !important;
-}
+
 
 :checked + label:before {
-  content: "\2713" !important;
-
-  transform: scale(1.2) !important;
+	 transform: scale(1.2) !important;
 }
 
 :checked + label img {
@@ -88,41 +74,25 @@ label img {
 
 
 
+[type="checkbox"]:checked+label:before {
 
-.iconBtn{
-    
-    font-size: 3rem;
-    color: #333333;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-decoration: none;
-    transition:all 0.2s;
-
-    
-    
+    border-top: 2px solid transparent !important;
+    border-left: 2px solid transparent !important;
+    border-right: 2px solid transparent !important;
+    border-bottom: 2px solid transparent !important;
+    transform-origin: 10% 10% !important;
+}
+.custom-nav{
+	background-color: #ED2553;
 }
 
 
 
-
-.iconBtn:active{
-    color: #80bbff;
-    transform: translateY(2px) translateX(2px);
-    
+#pick_btn{
+	background-color: #ED2553;
 }
 
-#bottom{
-    padding: 50px;
-}
-
-
-#count{
-    position: relative;
-    left: 525px;
-    display: inline-block;
-    color: #333333;
-    letter-spacing: 1px;
-    font-size: 1rem;
-    font-weight: 300;
-    
+/*툴팁  */
+.backdrop{
+       background-color:#ED2553  !important;
 }

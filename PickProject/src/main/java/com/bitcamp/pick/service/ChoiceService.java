@@ -15,7 +15,7 @@ public interface ChoiceService {
 
 	public Choice getChoiceByChoiceNo(int choiceNo)throws Exception;
 	
-	public void updateChoiceCount(Choice choice)throws Exception;
+	public void updateChoiceCount(Choice choice,int userNo)throws Exception;
 
 	
 }

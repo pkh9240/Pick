@@ -35,13 +35,13 @@
 		WHERE VOTE_NO = #{voteNo}
 	</select>
 
-  <!--   <select id="getChoiceByChoiceNo" parameterType="int" resultMap="choiceSelectMap">
+  <select id="getChoiceByChoiceNo" parameterType="int" resultMap="choiceSelectMap">
        	SELECT
 		CHOI_NO, VOTE_NO, CHOI_PHOT, CHOI_CONT, CHOI_CNT 
 		FROM CHOI
 		WHERE CHOI_NO = #{choiceNo}
     </select>
- -->
+
 
 
   	 <!-- SQL : UPDATE -->

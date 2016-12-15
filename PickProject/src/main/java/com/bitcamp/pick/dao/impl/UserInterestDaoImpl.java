@@ -21,6 +21,8 @@ public class UserInterestDaoImpl implements UserInterestDao {
 		System.out.println("UserInterestDaoImpl Default Constructor");
 	}
 
+	
+	/*도메인으로 변경예정*/
 	@Override
 	public int addUserInterest(int userNo, int interestNo) throws Exception {
 		System.out.println("UserInterestDaoImpl addUserInterest");

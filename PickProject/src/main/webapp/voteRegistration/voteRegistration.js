@@ -57,13 +57,13 @@ $(document).on("click","#addExample",function(){
     row+="<input type='text'  class='input_content' name='content" +(choiceCount+ 1) + "' placeholder='ENTER CONTENT'>";
     row+="</div>";
     row+="<div class='col s4' id='filebox'>";
-    row+="<label for='image"+(choiceCount+ 1) +"'>ADD IMAGE</label>";
+    row+="<label for='image"+(choiceCount+ 1) +"' id='addaddadd'>ADD IMAGE</label>";
     row+="<input type='file' class='input_img'  accept='image/*' name='photo" + (choiceCount+ 1)  + "' id='image" + (choiceCount+ 1)  + "'style='display: none;' />";
     row+="<div id='image_preview" +(choiceCount+ 1)  + "' style='display:none'>"
     row+="<img src='#' class='circle' width='50px' height='50px'>";
     row+="</div>";
     row+="</div>";
-    row+="<div class='col s2'><a id='remove_btn' class='btn-floating btn-large waves-effect waves-light red'><i class='material-icons'>remove</i></a></div>";
+    row+="<div class='col s2'><a id='remove_btn' class='btn-floating btn-large waves-effect waves-light red'><i id='removemeterial' class='material-icons'>remove</i></a></div>";
     row+="</div>";
     $("#multiChoice").append(row);
    

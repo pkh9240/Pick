@@ -1,5 +1,6 @@
 package com.bitcamp.pick.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,7 @@ import com.bitcamp.pick.service.VoteService;
 
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
+
 
 @Controller
 @RequestMapping("/vote/*") //
@@ -106,7 +108,7 @@ public class VoteController {
 			File thumbnaiLeftlFile = new File(voteThumbnailImageUploadPath, leftRandomPhotoName);
 
 			leftPhoto.transferTo(originalLeftFile);
-			Thumbnails.of(originalLeftFile).crop(Positions.CENTER).size(100, 100).toFile(thumbnaiLeftlFile);
+			Thumbnails.of(originalLeftFile).crop(Positions.CENTER).size(160, 160).imageType(BufferedImage.TYPE_INT_ARGB).toFile(thumbnaiLeftlFile);
 			leftChoice.setPhoto(leftRandomPhotoName);
 
 			String rightRandomPhotoName = UUID.randomUUID().toString().replace("-", "")
@@ -115,14 +117,16 @@ public class VoteController {
 			File thumbnaiRightlFile = new File(voteThumbnailImageUploadPath, rightRandomPhotoName);
 
 			rightPhoto.transferTo(originalRightFile);
-			Thumbnails.of(originalRightFile).crop(Positions.CENTER).size(100, 100).toFile(thumbnaiRightlFile);
+			Thumbnails.of(originalRightFile).crop(Positions.CENTER).size(160, 160).imageType(BufferedImage.TYPE_INT_ARGB).toFile(thumbnaiRightlFile);
 			rightChoice.setPhoto(rightRandomPhotoName);
 
 			System.out.println("left choice info :" + leftChoice);
 			System.out.println("right choice info:" + rightChoice);
 			choiceService.addChoice(leftChoice);
 			choiceService.addChoice(rightChoice);
-
+			
+		
+			
 		} else {/* MULTI */
 			// 선택지 갯수
 			System.out.println("Vote Type is MULTI");
@@ -178,41 +182,41 @@ public class VoteController {
 		}
 
 	}
-
-	@RequestMapping(value = "updateChoiceCnt", method = RequestMethod.POST)
-	public String updateChoiceCnt(@RequestParam("choiceNo") List<Integer> choiceNo, Model model) throws Exception {
-
-		System.out.println("updateChoiceCnt 시작.. 파라미터확인 : " + choiceNo);
-		String voteType = voteService.getVote((choiceService.getChoiceByChoiceNo(choiceNo.get(0)).getVoteNo()))
-				.getVoteType();
-		System.out.println("voteType은 ? : " + voteType);
-		for (int i = 0; i < choiceNo.size(); i++) {
-			System.out.println((i + 1) + "번째 choiceNo : " + choiceNo.get(i));
-			Choice choice = new Choice();
-			choice = choiceService.getChoiceByChoiceNo(choiceNo.get(i));
-			System.out.println("update실행전 " + (i + 1) + "번째 choice객체의 Count : " + choice.getChoiceCount());
-			choice.setChoiceCount(choice.getChoiceCount() + 1);
-			choiceService.updateChoiceCount(choice);
-			System.out.println("update실행후 " + (i + 1) + "번째 choice객체의 Count : " + choice.getChoiceCount());
-		}
-		// 1 choiceNo 를 받아서 choice 도메인객체 가져오기 (getChoiceByChoiceNo)
-		// --> multiSelect의 경우 여러 선택지가 있으니 여러개의 choiceNo 를 가져올 수 있도록 메소드의 파라미터를
-		// List형태로 받는다.
-		// 2 도메인객체의 choiceCnt(득표수)를 DB에서 get한 후 1을 더한 다음 upDate 쿼리를 실행한다.
-		// (upDateChoiceCnt)
-		// 3. 위의 과정을 List 의 size만큼 반복실행한다. (for문 이용)
-
-		if (voteType.equals("VERSUS")) {
-
-			return "forward:/result/result.html";
-
-		} else if (voteType.equals("MULTI-CHOICE")) {
-
-			return "forward:/result/result_multi.html";
-		}
-
-		return "forward:/result/result_multi.html";
+	
+	@RequestMapping(value="voteVersus", method=RequestMethod.POST)
+	public void voteVersus(@RequestParam int choiceNo,HttpSession session) throws Exception{
+		System.out.println("voteVersus -POST");
+		
+		User user = (User)session.getAttribute("user");
+		Choice dbChoice = choiceService.getChoiceByChoiceNo(choiceNo);
+		
+		int choiceCount = dbChoice.getChoiceCount();
+		
+		choiceCount++;
+		
+		dbChoice.setChoiceCount(choiceCount);
+		
+		choiceService.updateChoiceCount(dbChoice,user.getUserNo());
 
 	}
+	
+	@RequestMapping(value="voteMultiChoice",method=RequestMethod.POST)
+	public void voteMultiChoice(@RequestParam("choiceNo") List<Integer> choiceNoList,HttpSession session) throws Exception{
+		System.out.println("voteMultiChoice -POST");
+		User user = (User)session.getAttribute("user");
+		
+		for(int choiceNo : choiceNoList){
+			
+			Choice dbChoice = choiceService.getChoiceByChoiceNo(choiceNo);
+			int choiceCount = dbChoice.getChoiceCount();
+			choiceCount++;
+			dbChoice.setChoiceCount(choiceCount);
+			choiceService.updateChoiceCount(dbChoice,user.getUserNo());
+		
+		}
+	
+	}
+
+	
 
 }

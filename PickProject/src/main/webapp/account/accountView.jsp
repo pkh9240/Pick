@@ -103,6 +103,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 	<script type="text/javascript">
+		
+		
 		$("#save_btn").on(
 				"click",
 				function() {
@@ -140,8 +142,12 @@
 													+ "님 정보가 수정되었습니다.",
 											confirmButtonColor : "#ED2553",
 											showLoaderOnConfirm : true
+										},function(isConfirm){
+											parent.$.colorbox.close();
+											parent.location.href = "/user/main";
 										});
 									}, 2500);
+									
 								}
 							});
 						}

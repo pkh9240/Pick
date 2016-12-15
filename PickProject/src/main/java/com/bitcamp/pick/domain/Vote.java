@@ -18,7 +18,6 @@ public class Vote {
 	private int voteMax;
     private List<Choice> choiceList;	
     private VoteAuthority voteAuthority;
-	
 	public Vote() {
 		super();
 		// TODO Auto-generated constructor stub

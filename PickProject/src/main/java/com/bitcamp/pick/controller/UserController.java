@@ -1,5 +1,6 @@
 package com.bitcamp.pick.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -256,7 +257,7 @@ public class UserController {
 			try {
 				profileImage.transferTo(originalFile);
 				/*센터를 기준으로 80,80으로 자른다. */
-				Thumbnails.of(originalFile).crop(Positions.CENTER).size(80, 80).toFile(thumbnailFile);
+				Thumbnails.of(originalFile).crop(Positions.CENTER).imageType(BufferedImage.TYPE_INT_ARGB).size(80, 80).toFile(thumbnailFile);
 
 			} catch (IllegalStateException | IOException e) {
 				throw new RuntimeException(e.getMessage(), e);
@@ -290,10 +291,13 @@ public class UserController {
 
 		/* Interest Info Page Data */
 		List<Interest> interestList = interestService.getInterestList();
+		
+		/* Vote Info Page Data */
+		List<Vote> voteList = voteService.getVoteList();
 
 		model.addAttribute("userList", userList);
 		model.addAttribute("interestList", interestList);
-
+		model.addAttribute("voteList", voteList);
 		/* path는 AdminPage에서 어느 탭을 보여줄지 결정함 user,category,pick */
 		model.addAttribute("path", path);
 
@@ -328,8 +332,8 @@ public class UserController {
 			
 			try {
 				interestImage.transferTo(originalFile);
-				Thumbnails.of(originalFile).crop(Positions.CENTER).size(50,50).toFile(thumbnailFile);
-
+				Thumbnails.of(originalFile).crop(Positions.CENTER).imageType(BufferedImage.TYPE_INT_ARGB).size(50,50).toFile(thumbnailFile);
+				
 			} catch (IllegalStateException | IOException e) {
 				throw new RuntimeException(e.getMessage(), e);
 			}

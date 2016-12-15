@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.pick.dao.ChoiceDao;
+import com.bitcamp.pick.dao.ChoiceUserDao;
 import com.bitcamp.pick.domain.Choice;
+import com.bitcamp.pick.domain.ChoiceUser;
 import com.bitcamp.pick.service.ChoiceService;
 
 
@@ -19,6 +21,11 @@ public class ChoiceServiceImpl implements ChoiceService{
 	@Autowired
 	@Qualifier("choiceDaoImpl")
 	private ChoiceDao choiceDao;
+	
+	
+	@Autowired
+	@Qualifier("choiceUserDaoImpl")
+	private ChoiceUserDao choiceUserDao;
 	
 	public void setChoiceDao(ChoiceDao choiceDao) { 
 		this.choiceDao = choiceDao;
@@ -43,7 +50,14 @@ public class ChoiceServiceImpl implements ChoiceService{
 		return choiceDao.getChoiceByChoiceNo(choiceNo);
 	}
 	
-	public void updateChoiceCount(Choice choice)throws Exception {
+	public void updateChoiceCount(Choice choice,int userNo)throws Exception {
+		
+		ChoiceUser choiceUser = new ChoiceUser();
+		
+		choiceUser.setChoiceNo(choice.getChoiceNo());
+		choiceUser.setUserNo(userNo);
+		
+		choiceUserDao.addChoiceUser(choiceUser);
 		
 		choiceDao.updateChoiceCount(choice);
 	}

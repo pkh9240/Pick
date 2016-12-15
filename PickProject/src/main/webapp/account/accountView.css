@@ -128,7 +128,7 @@ body {
 .get_preview {
 		display: block !important;
 		width: 80px !important;
-		height: 80px !important;
+		height: auto !important;
 		overflow: hidden !important;
 }
 

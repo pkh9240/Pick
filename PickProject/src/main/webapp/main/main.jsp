@@ -51,10 +51,13 @@
 					<img src="/image/main/mainBackground3.png" style="width: 100%; height: auto">
 				</div>
 
+
 				<img class="circle" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg' : user.userPhoto}"> <span class="white-text name"> ${user.userName}</span> <span class="white-text email">${user.userEmail}</span>
+
 
 			</div>
 		</li>
+
 
 		<!--관리자 및 일반 유저  -->
 
@@ -108,10 +111,10 @@
 			<div id="main" role="main">
 				<ul id="tiles">
 					<c:forEach var="vote" items="${voteList}">
-					
-							
+
+
 						<li id="getVote_${vote.voteNo}">
-						<div class='post-module'>
+							<div class='post-module'>
 								<div class='thumbnail'>
 									<div class='date'>
 										<div class='day'>${vote.endDate.toString().split(' ')[2]}</div>
@@ -122,18 +125,18 @@
 								</div>
 								<div class='post-content'>
 									<div class='category'>${vote.voteCategory}</div>
-									<h1 class='title'>${vote.voteTitle}</h1>
-									<h2 class='sub_title'>${vote.voteContent}</h2>
+									<div class='title'>${vote.voteTitle}</div>
 									<div class='description'>
 										<a class="detailsub">PICK Detail</a>
 										<br />
 										<div class="detailcon">
-											AGE :<c:if test="${vote.voteAuthority.one==true &&vote.voteAuthority.two==true &&
+											AGE :
+											<c:if test="${vote.voteAuthority.one==true &&vote.voteAuthority.two==true &&
 															   vote.voteAuthority.three==true &&vote.voteAuthority.four==true &&
 															   vote.voteAuthority.five==true &&vote.voteAuthority.six==true }">
-												 All<br /> 
-												 </c:if>
-												 <c:if test="${vote.voteAuthority.one!=true || vote.voteAuthority.two!=true ||
+												 All<br />
+											</c:if>
+											<c:if test="${vote.voteAuthority.one!=true || vote.voteAuthority.two!=true ||
 															   vote.voteAuthority.three!=true || vote.voteAuthority.four!=true ||
 															   vote.voteAuthority.five!=true || vote.voteAuthority.six!=true }">
 												
@@ -142,30 +145,33 @@
 													 ${vote.voteAuthority.three==true?'30대 ':''}
 													 ${vote.voteAuthority.four==true?'40대 ':''}
 													 ${vote.voteAuthority.five==true?'50대 ':''}
-													 ${vote.voteAuthority.six==true?'60대 ':''} <br /> 
-												
-												 </c:if>
-												
-											GENDER : <c:if test="${vote.voteAuthority.male==true && vote.voteAuthority.female==true}">
-													All<br /> 
-													</c:if>
-													<c:if test="${vote.voteAuthority.male!=true || vote.voteAuthority.female!=true}">
+													 ${vote.voteAuthority.six==true?'60대 ':''} <br />
+
+											</c:if>
+
+											GENDER :
+											<c:if test="${vote.voteAuthority.male==true && vote.voteAuthority.female==true}">
+													All<br />
+											</c:if>
+											<c:if test="${vote.voteAuthority.male!=true || vote.voteAuthority.female!=true}">
 														 ${vote.voteAuthority.male==true?'여자 ':''}
-														  ${vote.voteAuthority.female==true?'남자 ':''}<br/>
-													</c:if>
-											
-									
+														  ${vote.voteAuthority.female==true?'남자 ':''}<br />
+											</c:if>
+
+
 											TYPE :${vote.voteType}
 										</div>
 									</div>
-									<div class='post-meta'>
-										<!-- <span class='timestamp'> <i class='fa fa-clock-o'></i> 6 mins ago -->
-										<!-- </span> -->
-										<span class='comments'> <i class='fa fa-comments'></i> <a href='#'>204 PICK</a>
-										</span>
-									</div>
+									<!-- 투표의 선택지에서 총 투표수 가져오기   -->
+									<c:set var="totalCount" value="0"/>
+									<c:forEach var="choice" items="${vote.choiceList}">
+											<c:set var="totalCount" value="${totalCount+choice.choiceCount}"/>
+									</c:forEach>
+									
+									<div class='post-meta'>${totalCount} PICK</div>
 								</div>
-							</div></li>
+							</div>
+						</li>
 
 
 					</c:forEach>
@@ -198,12 +204,11 @@
 			
 			$.colorbox({
 				closeButton : "false",
-				fixed : "true",
 				top : "true",
 				iframe : "true",
 				href : "/vote/getVote/"+voteNo,
 				width : "550px",
-				height : "600px"
+				height : "550px"
 			});
 		});
 	
@@ -212,17 +217,12 @@
 		$("#myAccount_btn").on("click", function() {
 			$.colorbox({
 				closeButton : "false",
-
-				fixed : "true",
 				top : "true",
 				iframe : "true",
 				href : "/user/getAccount",
 				width : "360px",
 				height : "600px",
-				scrolling : false,
-				onClosed : function() {
-					location.href = "/user/main";
-				}
+				scrolling : false
 			});
 		});
 
@@ -245,7 +245,6 @@
 			var path = $(this).attr("id").replace("adminPage_btn_", "");
 
 			$.colorbox({
-				fixed : "true",
 				top : "true",
 				iframe : "true",
 				href : "/user/getAdminPageView/" + path,
@@ -275,7 +274,7 @@
 		
 		$("#addPick_btn").on("click",function(){
 			$.colorbox({
-				fixed : "true",
+			
 				top : "true",
 				iframe : "true",
 				href : "/vote/addVote",
@@ -295,9 +294,11 @@
 				var realHeight = item.height;
 				
 				var mok =  realWidth/200; //가로 크기로 나눔 
+			
 				var resizedWidth = realWidth/mok;
 				var resizedHeight = realHeight/mok;
-				$(this).parent().parent().height(resizedHeight+150);
+			
+				$(this).parent().parent().height(resizedHeight+75);
 			});
 			
 

@@ -5,15 +5,6 @@
 
 
 
-#pick-btn{
-    margin: 41%;
-    position: relative;
-    bottom: 50px;
-
-}
-
-
-
 
 ul {
   list-style-type: none !important;
@@ -32,6 +23,8 @@ input[type="radio"][id^="cb"] {
 }
 
 label {
+  width:160px !important;
+  height:160px   !important;
   border: 1px solid #fff !important;
   padding: 10px !important;
   border-radius: 30x !important;
@@ -42,32 +35,38 @@ label {
 }
 
 label:before {
-  background-color: rgba(16, 65, 99, 0.32 ) !important;
+
+ background-image:url("/image/main/pick160.png");
   text-align:center !important;
   color: white !important;
-  content: " " !important;
   display: block !important;
   border-radius: 3px !important;
-
   position: absolute !important;
-  top:10px !important;
-  left: 10px !important;
   z-index:1 !important;
-  width: 150px !important;
-  height: 150px !important;
+  width:160px  !important;
+  height: 160px  !important;
   text-align: center !important;
   line-height: 100px !important;
   transition-duration: 0.4s !important;
   transform: scale(0) !important;
 }
 
+
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+     background-color:transparent !important; 
+}
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+     border: 0px !important;
+}
+
 label img {
-  height: 150px !important;
-  width: 150px !important;
+  height: auto !important;
+  width: 160px !important;
   transition-duration: 0.1s !important;
   transform-origin: 50% 50% !important;
   border-radius: 3px !important;
-  margin: auto;
+  margin: auto !important;
 }
 
 :checked + label {
@@ -75,7 +74,6 @@ label img {
 }
 
 :checked + label:before {
-  content: "\2713" !important;
 
   transform: scale(1.2) !important;
 }
@@ -86,55 +84,50 @@ label img {
   z-index: -1 !important;
 }
 
-
-
-
-
-
-.iconBtn{
-    
-    font-size: 3rem;
-    color: #333333;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-decoration: none;
-    transition:all 0.2s;
-
-    
-    
+[type="checkbox"]:checked+label:before {
+	top: -4px !important;
+    left: -5px !important;
+    width: 12px !important;
+    height: 22px !important;
+    border-top: 2px solid transparent !important;
+    border-left: 2px solid transparent !important;
+    border-right: 2px solid #26a69a !important;
+    border-bottom: 2px solid #26a69a !important;
+    -webkit-transform: rotate(40deg) !important;
+    transform: rotate(40deg) !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    -webkit-transform-origin: 100% 100% !important;
+    transform-origin: 0% 0% !important;
 }
 
 
 
 
-.iconBtn:active{
-    color: #80bbff;
-    transform: translateY(2px) translateX(2px);
-    
-}
-
-#bottom{
-    padding: 50px;
-}
-
-#count{
-    position: relative;
-    left: 593px;
-    display: inline-block;
-    color: #333333;
-    letter-spacing: 1px;
-    font-size: 1rem;
-    font-weight: 300;
-    top: -10px;
-    
-}
 #center_vs{
     padding-top:50px;
     font-weight: 800;
     font-size: 4rem;
-    color: #333333;
+    color: #ED2553;
  }
 
 
 
+.custom-nav{
+	background-color: #ED2553;
+}
 
+[type="radio"]+label:before, [type="radio"]+label:after {
+   
+ 
+     position:relative; !important;
+}
+
+
+#pick_btn{
+	background-color: #ED2553;
+}
+/*툴팁  */
+.backdrop{
+       background-color:#ED2553  !important;
+}

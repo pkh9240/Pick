@@ -39,42 +39,44 @@
 		<div class="row">
 			<form id="vote_reg_form" enctype="multipart/form-data">
 
-				<div class="input-field col s12">
+				<div id="subsub" class="input-field col s12">
+
 					<input name="voteTitle" id="voteTitle" type="text" class="validate">
 					<label for="voteTitle">SUBJECT</label>
 				</div>
-				<div class="input-field col s12">
+				<div id="concon" class="input-field col s12">
 					<textarea name="voteContent" id="voteContent" class="materialize-textarea"></textarea>
 					<label for="voteContent">CONTENT</label>
 				</div>
-				<div class="input-field col s12">
+				<div class="input-field col s12" id="endend">
+
 					<input name="endDate" id="endDate" type="date" class="datepicker">
 					<label for="endDate">END DATE</label>
 				</div>
 
-				<div class="input-field col s12">
+				<div class="input-field col s12" id="catecate">
 					<select name="voteCategory" id="voteCategory">
 						<c:forEach var="interest" items="${interestList}">
 							<option value="${interest.content}" data-icon="/image/interest/thumbnail/${interest.interestPhoto}" class="circle">${interest.content}</option>
 						</c:forEach>
-					</select> <label>Category</label>
+					</select> <label id="cate">CATEGORY</label>
 				</div>
 
 
 
-				<div class="col offset-s3" style="font-size: 20px;">Select the type of PICK!</div>
+				<div class="col offset-s3" id="selectsub">Select the type of PICK!</div>
 
 
 				<div class="col s12">
 					<div class="row">
 						<div class="col s6">
-							<input type="button" class="btn js-select-button btn--active btn-link no-js right" value="MULTI-CHOICE" />
+							<input type="button" class="btn js-select-button btn--active btn-link no-js right" id="multichoice1" value="MULTI-CHOICE" />
 						</div>
 						<div class="col s6">
-							<input type="button" class="btn js-select-button btn-link" value="VERSUS" />
+							<input type="button" class="btn js-select-button btn-link" id="versus" value="VERSUS" />
 						</div>
 					</div>
-					<div class="custom-voteType"  style="display: none;">
+					<div class="custom-voteType" style="display: none;">
 						<select name="voteType" id="voteType-select">
 							<option value="">-</option>
 							<option value="MULTI-CHOICE" selected="selected">MULTI-CHOICE</option>
@@ -86,39 +88,39 @@
 
 				<div class="col s12">
 					<div id="multiChoice" class='js-select js-MULTI-CHOICE'>
-						MULTI-CHOICE<br>
-						<div class="col s12">
+
+						<div class="col s12" id="limitdiv">
 							Limit of Selection :
 							<div class="input-field inline">
-								<input id="voteMax" name="voteMax" type="text" class="validate" value="1">
-								<label for="voteMax">input max vote</label>
+								<input id="voteMax" name="voteMax" type="text" class="validate" placeholder="   INPUT MAX VOTE">
+
 							</div>
 							<a id="addExample" class="btn-floating btn-large waves-effect waves-light red">
-								<i class="material-icons">add</i>
+								<i class="material-icons" id="addmeterial">add</i>
 							</a>
 						</div>
-						<div class="row">
+						<div class="row" id="addpic1">
 							<div class="col s6">
 
 								<input type="text" class="input_content" name="content1" placeholder="ENTER CONTENT">
 							</div>
 							<div class="col s4" id="filebox">
-								<label for="image1">ADD IMAGE</label>
-								<input type="file" class="input_img" name="photo1" id="image1"  accept="image/*" />
+								<label for="image1" id="addimg11">ADD IMAGE</label>
+								<input type="file" class="input_img" name="photo1" id="image1" accept="image/*" />
 								<div id="image_preview1" style="display: none">
 									<img src="#" class="circle" width="50px" height="50px">
 								</div>
 
 							</div>
 						</div>
-						<div class="row">
+						<div class="row" id="addpic2">
 							<div class="col s6">
 
-								<input type="text"  class="input_content" name="content2" placeholder="ENTER CONTENT">
+								<input type="text" class="input_content" name="content2" placeholder="ENTER CONTENT">
 							</div>
 							<div class="col s4" id="filebox">
-								<label for="image2">ADD IMAGE</label>
-								<input type="file" class="input_img" name="photo2" id="image2"  accept="image/*" />
+								<label for="image2" id="addimg22">ADD IMAGE</label>
+								<input type="file" class="input_img" name="photo2" id="image2" accept="image/*" />
 								<div id="image_preview2" style="display: none">
 									<img src="#" class="circle" width="50px" height="50px">
 								</div>
@@ -133,43 +135,43 @@
 				<div class="col s12">
 					<!-- vs시작 -->
 					<div id="singleChoice" class='price-large js-select js-VERSUS  js-hide'>
-						VERSUS<br> <br> <br>
+
 						<div class="row">
-							<div class="col s5">
+							<div id="vs1" class="col s5">
 								<div class="row" id="filebox">
 									<div id="image_preview100" style="padding-left: 10px; display: none;">
 										<img src="#" class="circle" width="80px" height="80px">
 									</div>
 									<div style="padding-left: 50px;">
-										<label for="image100" style="text-align: center">ADD IMAGE</label>
-										<input type="file" class="input_img" accept="image/*"  name="left_photo" id="image100" />
+										<label id="addimg11" for="image100" style="text-align: center">ADD IMAGE</label>
+										<input type="file" class="input_img" accept="image/*" name="left_photo" id="image100" />
 									</div>
 								</div>
 								<br>
-								<div class="row" style="padding-left: 30px; padding-top: 25px;">
+								<div id="versustext1" class="row" style="padding-left: 30px; padding-top: 25px;">
 									<label for="vote">EXAMPLE1 </label>
 									<div>
-										<input type="text"  class="input_content" name="left_content" placeholder="CONTENT">
+										<input type="text" class="input_content" name="left_content" placeholder="CONTENT">
 									</div>
 								</div>
 
 							</div>
-							<div class="col s2">VS</div>
-							<div class="col s5">
+							<div id="vsvsvs" class="col s2">VS</div>
+							<div id="vs2" class="col s5">
 								<div class="row" id="filebox">
 									<div id="image_preview101" style="padding-left: 10px; display: none;">
 										<img src="#" class="circle" width="80px" height="80px">
 									</div>
 									<div style="padding-left: 50px;">
-										<label  for="image101" style="text-align: center">ADD IMAGE</label>
-										<input type="file" class="input_img"  accept="image/*" name="right_photo" id="image101" />
+										<label for="image101" style="text-align: center">ADD IMAGE</label>
+										<input type="file" class="input_img" accept="image/*" name="right_photo" id="image101" />
 									</div>
 								</div>
 								<br>
-								<div class="row" style="padding-left: 30px; padding-top: 25px;">
+								<div id="versustext2" class="row" style="padding-left: 30px; padding-top: 25px;">
 									<label for="vote">EXAMPLE2 </label>
-								<div>
-										<input type="text"  class="input_content" name="right_content" placeholder="CONTENT">
+									<div>
+										<input type="text" class="input_content" name="right_content" placeholder="CONTENT">
 									</div>
 								</div>
 
@@ -182,8 +184,8 @@
 					</div>
 				</div>
 
-				<div class="col s12">
-					<input type="button" id="showHide" aria-activedescendant="" class="btn" style="left: 300px;">
+				<div class="col s12" id="detailop">
+					<input type="button" id="showHide" aria-activedescendant="" class="btn" value="😍">
 					<span id="optional1"> Detail setting </span>&nbsp; <span id="optional2"> (Optional)</span>&nbsp;
 					<a>
 						<span class="glyphicon glyphicon-menu-down" id="showHide" aria-hidden="true"></span>
@@ -192,14 +194,14 @@
 
 
 				<div class="row" style="display: none;" id="optionalSelect">
-					<div class="col offset-s2 s4">
+					<div id="genderdiv" class="col offset-s2 s4">
 						GENDER<br> <br>
 						<input name="gender" type="checkbox" id="male" />
 						<label for="male">Male</label> <br>
 						<input name="gender" type="checkbox" id="female" />
 						<label for="female">Female</label> <br>
 					</div>
-					<div class="col s6">
+					<div id="agediv" class="col s6">
 						AGE<br> <br>
 						<input name="age" type="checkbox" id="one" value="" />
 						<label for="one">10s</label> <br>
@@ -230,7 +232,7 @@
 
 
 			</form>
-			<div class="col offset-s6 s6" style="margin-left: 290px;">
+			<div id="regibtn" class="col offset-s6 s6" style="margin-left: 290px;">
 				<input type="button" value="REGISTER" id="register_btn" class="btn btn-link left" style="font-size: 23px;" />
 
 			</div>
@@ -248,6 +250,7 @@
 	<script type="text/javascript">
 
     $("#register_btn").click(function () {
+    	
     	
     	if($("input[name='voteTitle']").val()==''){
     		swal({
@@ -271,6 +274,25 @@
     		});
     		return;
     	}
+    	/* 멀티 쵸이스 인경우만 최대 선택개수 */
+    	if($("#voteType-select").val()=='MULTI-CHOICE'){
+    		if($("input[name='voteMax']").val()==''){
+    			swal({
+    				title:"선택 할수 있는 최대 개수를 입력해주세요.",
+    				confirmButtonColor : "#ED2553"
+    			});
+    			return;
+    	}
+    	
+    	if($("input[name='voteMax']").val() > $("input[name^=content]").length){
+    		swal({
+    			title:"최대 선택 개수가 선택지 개수를 넘을 수 없습니다.  ",
+    			confirmButtonColor : "#ED2553"
+    		});
+    		return;
+    		}
+    	}
+    	
     	/*=============================  */
      	var hasContent = true;
     		 $(".input_content").each(function(){
