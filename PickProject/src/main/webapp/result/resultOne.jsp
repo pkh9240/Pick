@@ -17,7 +17,8 @@
 </head>
 
 <body>
-
+	
+	
 
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
@@ -32,9 +33,96 @@
 	<div id="container">
 		<div class="row">
 
-			<div class="col s8">
-				<div id='gender_dashboard'></div>
-				<div id='age_dashboard'></div>
+			<div class="col s7">
+				<div class="row">
+					<div class="col s12 center">
+
+						<div class="card-panel">
+
+							<div id="voteTitle">제목</div>
+							<br />
+							<div id="voteContent" id="voteContent">내용</div>
+						</div>
+					</div>
+					<div class="col s12">
+						<div id='dashboard'></div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col s5">
+				<div class="detailBox">
+					<div class="titleBox">
+						<label>너의 의견을 달아봐 </label>
+					</div>
+					<div class="actionBox">
+						<ul class="commentList">
+							<li>
+								<div class="commenterImage">
+									<img src="/image/profile/original/kwanghee.jpg" />
+								</div>
+								<div class="commentText">
+									<p class="">Hello this is a test comment.</p>
+									<span class="date sub-text">on March 5th, 2014</span>
+
+								</div>
+							</li>
+							<li>
+								<div class="commenterImage">
+									<img src="/image/profile/original/kwanghee.jpg" />
+								</div>
+								<div class="commentText">
+									<p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p>
+									<span class="date sub-text">on March 5th, 2014</span>
+
+								</div>
+							</li>
+							<li>
+								<div class="commenterImage">
+									<img src="/image/profile/original/kwanghee.jpg" />
+								</div>
+								<div class="commentText">
+									<p class="">Hello this is a test comment.</p>
+									<span class="date sub-text">on March 5th, 2014</span>
+
+								</div>
+							</li>
+							<li>
+								<div class="commenterImage">
+									<img src="/image/profile/original/kwanghee.jpg" />
+								</div>
+								<div class="commentText">
+									<p class="">Hello this is a test comment.</p>
+									<span class="date sub-text">on March 5th, 2014</span>
+
+								</div>
+							</li>
+							<li>
+								<div class="commenterImage">
+									<img src="/image/profile/original/kwanghee.jpg" />
+								</div>
+								<div class="commentText">
+									<p class="">Hello this is a test comment.</p>
+									<span class="date sub-text">on March 5th, 2014</span>
+
+								</div>
+							</li>
+						</ul>
+
+						<div class="row">
+							<div class="input-field col s8">
+								<i class="material-icons prefix">account_circle</i>
+								<input id="icon_prefix" type="text" class="validate">
+								<label for="icon_prefix">댓글</label>
+							</div>
+
+							<div class="col s4">
+								<div  id="add_btn" class="btn btn-default">Add</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
 			</div>
 
 		</div>
@@ -45,21 +133,30 @@
 	<script src="/result/resultOne.js"></script>
 
 	<script type="text/javascript">
-	var genderData=[
-		{State:'Yes',freq:{male:23, female:32}}
-		,{State:'No',freq:{male:53, female:22}}
 
-	];
+		 var genderData = [ { State : '${contentByChoiceNoMap.get(mapList.get(0).get("choiceNo"))}',freq : { male : ${mapList.get(0).get("male")}, female : ${mapList.get(0).get("female")}}}, 
+						    { State : '${contentByChoiceNoMap.get(mapList.get(1).get("choiceNo"))}',freq : { male : ${mapList.get(1).get("male")}, female : ${mapList.get(1).get("female")}}}
+		
+						 ];
 
-	var ageData=[
- 		{State:'Yes',freq:{ s10:11, s20:12,s30:11,s40:11,s50:1,s60:22}}
-		,{State:'No',freq:{s10:23, s20:11,s30:11,s40:1,s50:2,s60:27}}
+		var ageData = [{ State : '${contentByChoiceNoMap.get(mapList.get(0).get("choiceNo"))}',
+					     freq : { s10 : ${mapList.get(0).get("s10")},
+								  s20 : ${mapList.get(0).get("s20")},
+			   					  s30 : ${mapList.get(0).get("s30")},
+								  s40 : ${mapList.get(0).get("s40")},
+							      s50 : ${mapList.get(0).get("s50")},
+								  s60 : ${mapList.get(0).get("s60")}
+						}}
+						, { State : '${contentByChoiceNoMap.get(mapList.get(1).get("choiceNo"))}',
+							freq :{ s10 : ${mapList.get(1).get("s10")},
+									s20 : ${mapList.get(1).get("s20")},
+									s30 : ${mapList.get(1).get("s30")},
+									s40 : ${mapList.get(1).get("s40")},
+									s50 : ${mapList.get(1).get("s50")},
+									s60 : ${mapList.get(1).get("s60")}
+								 }}];
 
-];
-
-dashboard('#gender_dashboard','#age_dashboard',genderData,ageData);
-
-	
+		dashboard('#dashboard', genderData, ageData);
 	</script>
 </body>
 

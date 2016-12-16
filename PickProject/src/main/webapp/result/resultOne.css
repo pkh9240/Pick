@@ -39,9 +39,6 @@ rect:hover {  fill:#D9F3F2; }
     width:50px;
 }
 
-.pieChart{
-	margin-left: 20px;
-}
 
 
 .custom-nav{
@@ -49,4 +46,106 @@ rect:hover {  fill:#D9F3F2; }
 
 }
 
+#age_pie{
+	    position: relative;
+       top: -150px;
+    left: 40px
 
+}
+
+#gender_pie{
+	position: relative;
+	      top: -365px;
+    left: 460px;
+
+}
+#gender_legend{
+	position: relative;
+	top:-140px;
+    left: 195px;
+	
+}
+#age_legend{
+		position: relative;
+	       top: -351px;
+    left: 420px;
+	
+}
+#dashboard{
+	height: 370px;	
+}
+
+
+
+/**/
+/*comment  */
+.detailBox {
+    width:430px;
+    border-top:1px solid #bbb;
+    border-bottom:1px solid #bbb;
+    margin:15px;
+    margin-top: 30px;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:300px;
+    overflow:auto;
+        margin-left: 5px;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+        padding-left: 10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    float:left;
+}
+.commenterImage img {
+    width:30px;
+    height:30px;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+}
+
+.commentText{
+	    padding-left: 10px;
+}
+
+#add_btn{
+	position: relative;
+    top: 20px;
+    left: -15px;
+}
+/*  */

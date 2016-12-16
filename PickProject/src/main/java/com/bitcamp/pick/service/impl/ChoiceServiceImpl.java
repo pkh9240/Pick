@@ -62,6 +62,15 @@ public class ChoiceServiceImpl implements ChoiceService{
 		choiceDao.updateChoiceCount(choice);
 	}
 
+	@Override
+	public List<Integer> getUserNoListByChoiceNo(int choiceNo) throws Exception {
+		
+		return choiceUserDao.getUserNoListByChoiceNo(choiceNo);
+	}
+	
+	
+	
+
 
 
 }

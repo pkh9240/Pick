@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bitcamp.pick.domain.Choice;
 import com.bitcamp.pick.domain.Interest;
 import com.bitcamp.pick.domain.User;
 import com.bitcamp.pick.domain.Vote;
@@ -74,6 +75,7 @@ public class UserController {
 	public String mainView(Model model) throws Exception {
 
 		System.out.println("main - GET");
+		
 		
 		List<Vote> voteList = voteService.getVoteList();
 		model.addAttribute("voteList", voteList);
@@ -294,7 +296,27 @@ public class UserController {
 		
 		/* Vote Info Page Data */
 		List<Vote> voteList = voteService.getVoteList();
-
+		
+		
+		Map<Integer,String> userEmailMapByUserNoMap = new HashMap<Integer,String>();
+		Map<Integer,Integer> totalCountByVoteNoMap = new HashMap<Integer,Integer>();
+		for(User user : userList){
+			userEmailMapByUserNoMap.put(user.getUserNo(), user.getUserEmail());
+		}
+		
+		int totalCount = 0;
+		for(Vote vote : voteList){
+			
+			totalCount=0;
+			
+			for(Choice choice : vote.getChoiceList()){
+				totalCount+=choice.getChoiceCount();
+			}
+			
+			totalCountByVoteNoMap.put(vote.getVoteNo(), totalCount);
+		}
+		model.addAttribute("totalCountByVoteNoMap", totalCountByVoteNoMap);
+		model.addAttribute("userEmailMapByUserNoMap", userEmailMapByUserNoMap);
 		model.addAttribute("userList", userList);
 		model.addAttribute("interestList", interestList);
 		model.addAttribute("voteList", voteList);
@@ -359,11 +381,6 @@ public class UserController {
 		return "forward:/filter/filter.jsp";
 	}
 
-	/* 나의 투표 리스트 뷰 리턴 */
-	@RequestMapping(value = "getMyPickView", method = RequestMethod.GET)
-	public String getMyPickView(Model model) throws Exception {
-		System.out.println("getMyPickView GET");
-		return "forward:/myPick/myPick.jsp";
-	}
+
 
 }

@@ -1,4 +1,4 @@
-function dashboard(id,id1, fData,fData1){
+function dashboard(id,fData,fData1){
     var barColor = '#b3c9d6';
     function segColor(c){ return {male:"#81ae9c", female:"#fb9b99"}[c]; }
     function segColor1(c){ return {s10:"#f54763", s20:"#fb9b99",s30:"#ffceae",s40:"#c8c7a9",s50:"#81ae9c",s60:"#b3c9d6"}[c]; }
@@ -10,7 +10,7 @@ function dashboard(id,id1, fData,fData1){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 250 - hGDim.l - hGDim.r, 
+        hGDim.w = 200 - hGDim.l - hGDim.r, 
         hGDim.h = 300 - hGDim.t - hGDim.b;
             
         //create svg for histogram.

@@ -1,5 +1,7 @@
 package com.bitcamp.pick.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,6 +23,12 @@ public class ChoiceUserDaoImpl implements ChoiceUserDao {
 	@Override
 	public int addChoiceUser(ChoiceUser choiceUser) throws Exception {
 		return sqlSession.insert("ChoiceUserMapper.addChoiceUser",choiceUser);
+	}
+
+
+	@Override
+	public List<Integer> getUserNoListByChoiceNo(int choiceNo) throws Exception {
+		return sqlSession.selectList("ChoiceUserMapper.getUserNoListByChoiceNo", choiceNo);
 	}
 
 }

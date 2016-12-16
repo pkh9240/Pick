@@ -18,8 +18,6 @@
 
 
 <body>
-
-
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
@@ -248,8 +246,8 @@
 				top : "true",
 				iframe : "true",
 				href : "/user/getAdminPageView/" + path,
-				width : "90%",
-				height : "95%",
+				width : "1150px",
+				height : "600px",
 				top : true
 			});
 		});
@@ -258,15 +256,15 @@
 		$("#logout_btn").on("click", function() {
 			location.href = "/user/logout";
 		});
-
+		
+		/* 투표한 리스트 */
 		$("#myPick_btn").on("click", function() {
 			$.colorbox({
-				fixed : "true",
 				top : "true",
 				iframe : "true",
-				href : "/user/getMyPickView",
-				width : "63%",
-				height : "90%"
+				href : "/vote/getVoteList",
+				width : "95%",
+				height : "95%"
 			});
 		});
 		

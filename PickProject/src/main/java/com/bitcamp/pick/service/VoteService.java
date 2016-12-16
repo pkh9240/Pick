@@ -12,6 +12,7 @@ public interface VoteService {
 	
 	public Vote getVote(int voteNo)throws Exception;
 	public List<Vote> getVoteList() throws Exception;
+	public List<Vote> getVoteListByUserNo(int userNo) throws Exception;
 
 	
 

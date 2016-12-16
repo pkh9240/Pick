@@ -146,7 +146,7 @@
 											parent.$.colorbox.close();
 											parent.location.href = "/user/main";
 										});
-									}, 2500);
+									}, 3000);
 									
 								}
 							});

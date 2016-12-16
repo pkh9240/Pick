@@ -73,6 +73,11 @@ public class VoteServiceImpl implements VoteService{
 		
 		return voteDao.getVoteList();
 	}
+
+	@Override
+	public List<Vote> getVoteListByUserNo(int userNo) throws Exception {
+		return voteDao.getVoteListByUserNo(userNo);
+	}
 	
 
 

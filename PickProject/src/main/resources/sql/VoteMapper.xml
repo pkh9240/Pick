@@ -55,6 +55,15 @@
 		SELECT *
 		FROM VOTE
 	</select>
+	
+	
+	<select id="getVoteListByUserNo" parameterType="int" resultMap="voteSelectMap">
+	SELECT DISTINCT v.*
+	FROM CHOI c,choi_user cu ,vote v
+	WHERE c.CHOI_NO=cu.CHOI_NO 
+			AND v.VOTE_NO=c.VOTE_NO
+			AND cu.USER_NO=#{voteNo}
+	</select>
 
 
 </mapper>

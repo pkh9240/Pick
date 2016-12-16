@@ -103,30 +103,16 @@
 									<th data-field="Result">Result</th>
 								</tr>
 							</thead>
-							
+
 							<tbody>
 								<c:forEach var="vote" items="${voteList}">
-									
-									<!-- UserNo로 UserEmail 가져오기 -->
-									<c:set var="userEmail"/>
-									<c:forEach var="user" items="${userList}">
-										<c:if test="${user.userNo==vote.userNo}">
-											<c:set var="userEmail" value="${user.userEmail}"/>
-										</c:if>
-									</c:forEach>
-									<!-- 투표의 선택지에서 총 투표수 가져오기   -->
-									<c:set var="totalCount" value="0"/>
-									<c:forEach var="choice" items="${vote.choiceList}">
-											<c:set var="totalCount" value="${totalCount+choice.choiceCount}"/>
-									</c:forEach>
-									
 									<tr>
-										<td>${userEmail}</td>
+										<td>${userEmailMapByUserNoMap.get(vote.userNo)}</td>
 										<td>${vote.voteCategory}</td>
 										<td>${vote.voteTitle}</td>
 										<td>${vote.voteType}</td>
 										<td>${vote.endDate}</td>
-										<td>${totalCount}</td>
+										<td>${totalCountByVoteNoMap.get(vote.voteNo)}</td>
 										<td><div id="result_btn_${vote.voteNo}" class="btn waves-effect waves-light btn-small custom-btn">result</div></td>
 									</tr>
 								</c:forEach>
@@ -266,55 +252,66 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script src="/adminPage/adminPage.js"></script>
 	<script type="text/javascript">
-		$("div[id^=result_btn]").on("click",function(){
-			location.href="/result/resultOne.jsp";
-			
+		$("div[id^=result_btn]").on("click", function() {
+			location.href = "/result/resultOne.jsp";
+
 		});
-	
-		$("#add_interest_btn").on(
-				"click",
-				function() {
-					var form = new FormData($("#add_interest_form")[0]);
 
-					swal({
-						title : $("#content").val() + "카테고리를 추가 하시겠습니까?",
-						type : "info",
-						confirmButtonColor : "#ED2553",
-						showCancelButton : true,
-						closeOnConfirm : false,
-						showLoaderOnConfirm : true,
-					}, function(isConfirm) {
-						if (isConfirm) {
-							$.ajax({
-								type : "post",
-								url : "/user/addInterest",
-								processData : false,
-								contentType : false,
-								data : form,
-								success : function(data) {
-									if (data.interestNo == 0) {
-										swal({
-											title : "이미 해당 카데코리가 존재 합니다. ",
-											confirmButtonColor : "#ED2553"
-										});
-									} else {
+		$("#add_interest_btn")
+				.on(
+						"click",
+						function() {
+							var form = new FormData($("#add_interest_form")[0]);
 
-										setTimeout(function() {
-											swal({
-												title : data.content+ " 카테고리가 추가되었습니다. ",
-												confirmButtonColor : "#ED2553",
-												imageUrl : "/image/interest/thumbnail/"+data.interestPhoto
-											},function(isConfirm) {
-												location.href="/user/getAdminPageView/category";
-											});
-										}, 5000);
+							swal(
+									{
+										title : $("#content").val()
+												+ "카테고리를 추가 하시겠습니까?",
+										type : "info",
+										confirmButtonColor : "#ED2553",
+										showCancelButton : true,
+										closeOnConfirm : false,
+										showLoaderOnConfirm : true,
+									},
+									function(isConfirm) {
+										if (isConfirm) {
+											$
+													.ajax({
+														type : "post",
+														url : "/user/addInterest",
+														processData : false,
+														contentType : false,
+														data : form,
+														success : function(data) {
+															if (data.interestNo == 0) {
+																swal({
+																	title : "이미 해당 카데코리가 존재 합니다. ",
+																	confirmButtonColor : "#ED2553"
+																});
+															} else {
 
-									}
-								}
-							});
-						}
-					});
-				});
+																setTimeout(
+																		function() {
+																			swal(
+																					{
+																						title : data.content
+																								+ " 카테고리가 추가되었습니다. ",
+																						confirmButtonColor : "#ED2553",
+																						imageUrl : "/image/interest/thumbnail/"
+																								+ data.interestPhoto
+																					},
+																					function(
+																							isConfirm) {
+																						location.href = "/user/getAdminPageView/category";
+																					});
+																		}, 5000);
+
+															}
+														}
+													});
+										}
+									});
+						});
 	</script>
 </body>
 
