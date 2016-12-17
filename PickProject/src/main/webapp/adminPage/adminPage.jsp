@@ -113,7 +113,7 @@
 										<td>${vote.voteType}</td>
 										<td>${vote.endDate}</td>
 										<td>${totalCountByVoteNoMap.get(vote.voteNo)}</td>
-										<td><div id="result_btn_${vote.voteNo}" class="btn waves-effect waves-light btn-small custom-btn">result</div></td>
+										<td><div id="get_result_${vote.voteNo}" class="btn waves-effect waves-light btn-small custom-btn">result</div></td>
 									</tr>
 								</c:forEach>
 
@@ -252,10 +252,13 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script src="/adminPage/adminPage.js"></script>
 	<script type="text/javascript">
-		$("div[id^=result_btn]").on("click", function() {
-			location.href = "/result/resultOne.jsp";
-
-		});
+	
+	$("div[id^=get_result]").on("click",function(){
+			
+		var voteNo = $(this).attr("id").replace("get_result_","");
+		location.href="/vote/getResult/"+voteNo;
+		
+	});
 
 		$("#add_interest_btn")
 				.on(

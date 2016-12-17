@@ -10,7 +10,7 @@ function dashboard(id,fData,fData1){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 200 - hGDim.l - hGDim.r, 
+        hGDim.w = 150 - hGDim.l - hGDim.r, 
         hGDim.h = 300 - hGDim.t - hGDim.b;
             
         //create svg for histogram.
