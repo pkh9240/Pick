@@ -1,6 +1,7 @@
 package com.bitcamp.pick.domain;
 
-import java.util.Date;
+import java.sql.Timestamp;
+
 
 public class Comment {
 	
@@ -8,7 +9,7 @@ public class Comment {
 	private int voteNo;
 	private int userNo;
 	private String commentContent;
-	private Date regDate;
+	private Timestamp regDate;
 	public Comment() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -37,10 +38,10 @@ public class Comment {
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
 	}
-	public Date getRegDate() {
+	public Timestamp getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
 	@Override

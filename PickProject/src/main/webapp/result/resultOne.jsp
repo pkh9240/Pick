@@ -70,8 +70,12 @@
 								<div class="commentText">
 									<p class="">${comment.commentContent}</p>
 									<span class="date sub-text">${comment.regDate}</span>
-
+									
 								</div>
+								<c:if test="${comment.userNo==user.userNo}">
+										<div id="delete_comment_${comment.commentNo}" class="delete_btn_custom"><i class="material-icons">remove_circle_outline</i></div>
+								</c:if>
+						
 							</li>
 							</c:forEach>
 							<!-- 댓글 들어가는곳 -->
@@ -104,9 +108,18 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script src="/result/resultOne.js"></script>
 	<script type="text/javascript">
-			
+		
+	
+			$("#commentList").scrollTop($("#commentList")[0].scrollHeight);
 	
 			$("#add_comment_btn").on("click",function(){
+			
+				if($("#comment").val()==''){
+					  Materialize.toast('댓글을 입력하세요. ', 3000,'pink accent-3')	
+					  return;
+				}
+				
+				
 				var form = new FormData($("#comment_form")[0]);
 				
 				$.ajax({
@@ -115,17 +128,22 @@
 					processData : false,/*data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.*/
 					contentType : false,/*contentType 은 default 값이 "application/x-www-form-urlencoded; charset=UTF-8" 인데, "multipart/form-data" 로 전송이 되게 false 로 넣어준다. */
 					data : form,
-					success : function(data) {
+					success : function(data){
+						var parsedDate = new Date(parseInt(data.comment.regDate))
+						var jsDate = new Date(parsedDate);
+						var convertedDate= jsDate.getFullYear()+"-"+(jsDate.getMonth()+1)+"-"+jsDate.getDate()+" "+jsDate.getHours()+":"+jsDate.getMinutes()+":"+jsDate.getSeconds()+"."+jsDate.getMilliseconds();
 						var row ="";
 						row +=  "<li><div class='commenterImage'>";
 						row +="<img src='/image/profile/thumbnail/"+data.user.userPhoto+"'/></div>"
 						row +="<div class='commentText'>";
 						row +="<p class=''>"+data.comment.commentContent+"</p>";
-						row +="<span class='date sub-text'>"+data.comment.regDate+"</span></div></li>";
+						row +="<span class='date sub-text'>"+convertedDate+"</span></div>";
+						row +="<div id='delete_comment_"+data.comment.commentNo+"' class='delete_btn_custom'><i class='material-icons'>remove_circle_outline</i></div></li>";
+					
 						
 						$("#commentList").append(row);
 						$("#comment").val("");
-						
+						$("#commentList").scrollTop($("#commentList")[0].scrollHeight);
 					}
 				});
 			});
@@ -177,6 +195,21 @@
 			$(this).text(content);
 
 		});
+		
+		
+		/*댓글 삭제*/
+		
+		$(document).on("click","div[id^='delete_comment_']",function(){
+			var commentNo = $(this).attr("id").replace("delete_comment_","");
+			$.ajax({
+				type : "get",
+				url : "/comment/deleteComment/"+commentNo
+			});
+			$(this).parent().remove();
+		});
+
+		
+		
 	</script>
 </body>
 

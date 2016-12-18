@@ -93,6 +93,17 @@
 		<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script type="text/javascript">
+			$('#pick_btn').attr("disabled","disabled");
+			$("input:radio[name='choiceNo']").on("change",function(){
+				var checkedBoxCount = $("input:radio[name='choiceNo']:checked").length;
+				
+				if(checkedBoxCount<1){
+					$('#pick_btn').attr("disabled","disabled");
+				}else{
+					$('#pick_btn').removeAttr("disabled");
+				}
+			});
+			/*  */	
 			var authorityCheck=0;
 		
 			var userAge = $("#userAge").val();

@@ -1,138 +1,36 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
 
+main {
+	flex: 1 0 auto;
+}
 
 body {
-   background-image: url("/image/main/mainBackground4.png");
-   background-position: center;
-   background-size: cover;
-   background-repeat: no-repeat;
-   min-height: 80vh;
-   font-family: 'Roboto', sans-serif;
+	background: #fff;
 }
 
-body,
-html {
-   overflow: hidden;
-}
- 
-
-*,
-*:after,
-*::before {
-   -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   text-decoration: none;
-   list-style-type: none;
-   outline: none;
+.input-field input[type=date]:focus+label, .input-field input[type=text]:focus+label,
+	.input-field input[type=email]:focus+label, .input-field input[type=password]:focus+label
+	{
+	color: #e91e63;
 }
 
-/* Form */
-.form {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 250px;
-   margin: 0 auto 80px; 
-  padding: 30px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  text-align: center;
+.input-field input[type=date]:focus, .input-field input[type=text]:focus,
+	.input-field input[type=email]:focus, .input-field input[type=password]:focus
+	{
+	border-bottom: 2px solid #e91e63;
+	box-shadow: none;
 }
-.form .thumbnail {
-  background: #ED2553;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 30px;
-  padding: 33px 23px;
-  border-top-left-radius: 100%;
-  border-top-right-radius: 100%;
-  border-bottom-left-radius: 100%;
-  border-bottom-right-radius: 100%;
-  box-sizing: border-box;
-}
-.form .thumbnail img {
-  display: block;
-  width: 50px;
-}
-.form input {
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-.form button {
-  outline: 0;
-  background: #ED2553;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-.form .message a {
-  color: #ED2553;
-  text-decoration: none;
-}
-.form .register-form {
-  display: none;
+#register_btn{
+	background-color: #ED2553 !important;
 }
 
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
+#login_btn{
+	background-color: #ED2553 !important;
 }
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
+.indigo-text {
+    color: #ED2553 !important;
 }
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #ED2553;
-}
-
-

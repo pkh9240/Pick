@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,7 +45,17 @@ public class CommentController {
 		Comment dbComment = commentService.getComment(comment.getCommentNo());
 		commentMap.put("comment", dbComment);
 		commentMap.put("user", user);
+		
 		return commentMap;
 	}
+	
+	/*댓글 삭제*/
+	@RequestMapping(value="deleteComment/{commentNo}",method=RequestMethod.GET)
+	public void deleteComment(@PathVariable("commentNo") int commentNo) throws Exception{
+		System.out.println("deleteComment - GET");
+		
+		commentService.deleteCommnet(commentNo);
+	}
+	
 	
 }

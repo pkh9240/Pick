@@ -45,6 +45,11 @@ public class CommentServiceImpl implements CommentService{
 		return commentDao.getCommentListByVoteNo(voteNo);
 	}
 
+	@Override
+	public int deleteCommnet(int commentNo) throws Exception {
+		return commentDao.deleteCommnet(commentNo);
+	}
+
 
 	
 }

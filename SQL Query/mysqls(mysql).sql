@@ -21,7 +21,7 @@ CREATE TABLE `COMT` (
 	`VOTE_NO`   INTEGER      NOT NULL COMMENT '투표일련번호', -- 투표일련번호
 	`USER_NO`   INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
 	`COMT_CONT` VARCHAR(255) NOT NULL COMMENT '댓글내용', -- 댓글내용
-	`REG_DATE`  DATE         NOT NULL COMMENT '댓글작성일자' -- 댓글작성일자
+	`REG_DATE`  DATETIME         NOT NULL COMMENT '댓글작성일자' -- 댓글작성일자
 )
 COMMENT '댓글';
 alter table COMT AUTO_INCREMENT=10000;

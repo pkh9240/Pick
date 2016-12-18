@@ -303,10 +303,11 @@ public class VoteController {
 	}
 
 	@RequestMapping(value = "getResult/{voteNo}", method = RequestMethod.GET)
-	public String getResult(@PathVariable("voteNo") int voteNo, Model model) throws Exception {
+	public String getResult(@PathVariable("voteNo") int voteNo, Model model,HttpSession session) throws Exception {
 		System.out.println("getResult GET");
 		
 		Vote vote = voteService.getVote(voteNo);
+		User sessionUser =(User)session.getAttribute("user");
 		List<Choice> choiceList = vote.getChoiceList();
 		List<Comment> commentList = commentService.getCommentListByVoteNo(voteNo);
 		List<Object> mapList = new ArrayList<Object>();
@@ -369,6 +370,7 @@ public class VoteController {
 		model.addAttribute("choiceList", choiceList);
 		model.addAttribute("mapList", mapList);
 		model.addAttribute("vote",vote);
+		model.addAttribute("user", sessionUser);
 
 		if(vote.getVoteType().equals("VERSUS"))	
 			return "forward:/result/resultOne.jsp";

@@ -41,4 +41,11 @@
 	</select>
 	
 	
+	<delete id="deleteComment" parameterType="integer">
+			DELETE 
+			FROM COMT
+			WHERE COMT_NO = #{value}
+	</delete>
+	
+	
 </mapper>

@@ -36,6 +36,10 @@ public class CommentDaoImpl implements CommentDao {
 	public List<Comment> getCommentListByVoteNo(int voteNo) throws Exception{
 		return sqlSession.selectList("CommentMapper.getCommentListByVoteNo",voteNo);
 	}
+	@Override
+	public int deleteCommnet(int commentNo) throws Exception {
+		return sqlSession.delete("CommentMapper.deleteComment", commentNo);
+	}
 	
 	
 }

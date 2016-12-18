@@ -10,7 +10,7 @@ public interface CommentService {
 		public Comment getComment(int commentNo) throws Exception;
 		//CommentList
 		public List<Comment> getCommentListByVoteNo(int voteNo) throws Exception;
-		
+		public int deleteCommnet(int commentNo) throws Exception;
 	
 		
 	}

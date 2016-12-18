@@ -93,7 +93,7 @@
 		<div class="col s6">
 			<i id="info_btn" class="material-icons right tooltipped" data-position="top" data-delay="50" data-tooltip="상세 정보">info_outline</i> <i id="share_btn" class="material-icons right tooltipped" data-position="top" data-delay="50" data-tooltip="투표 공유 하기 ">share</i>
 		</div>
-		<div id="pick_btn" class="btn waves-effect waves-light col offset-s1 s4 left">
+		<div id="pick_btn" class="btn waves-effect waves-light col offset-s1 s4 left" >
 			P I C K <i class="material-icons right">done</i>
 		</div>
 		<div></div>
@@ -106,9 +106,18 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 	<script type="text/javascript">
+		$('#pick_btn').attr("disabled","disabled");
 		/*선택 개수 제한 */
 		$("input:checkbox[name='choiceNo']").on("change",function(){
 			var checkedBoxCount = $("input:checkbox[name='choiceNo']:checked").length;
+			
+			if(checkedBoxCount<1){
+				$('#pick_btn').attr("disabled","disabled");
+			}else{
+				$('#pick_btn').removeAttr("disabled");
+			}
+			
+		
 			var voteMax = $("#voteMax").val();
 			if(checkedBoxCount > voteMax){
 				this.checked=false;

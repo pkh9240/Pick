@@ -104,7 +104,7 @@ public class UserController {
 		if (loginCheck.equals("success")) {
 			session.setAttribute("user", loginCheckMap.get("user"));
 		}
-
+		
 		return loginCheckMap;
 
 	}
@@ -179,7 +179,7 @@ public class UserController {
 		user = userService.getUserByUserEmail(user.getUserEmail());
 		session.setAttribute("user", user);
 
-		return "forward:/main/main.jsp";
+		return "forward:/user/main";
 	}
 
 	/* 나의 정보 보기 */
