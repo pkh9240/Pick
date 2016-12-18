@@ -179,7 +179,7 @@ public class UserController {
 		user = userService.getUserByUserEmail(user.getUserEmail());
 		session.setAttribute("user", user);
 
-		return "forward:/user/main";
+		return "redirect:/user/main";
 	}
 
 	/* 나의 정보 보기 */
