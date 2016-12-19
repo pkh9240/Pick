@@ -22,6 +22,7 @@
 
 		<c:forEach items="${choiceList}" var="choice">
 			<input type="hidden" id="getText_${choice.choiceNo}" value="${choice.content}">
+			<input type="hidden" id="getPhoto_${choice.choiceNo}" value="${choice.photo}">
 		</c:forEach>
 	
 	
@@ -103,7 +104,7 @@
 		</div>
 	</div>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js'></script>
-	<script src="https://code.jquery.com/jquery-latest.js"></script>
+	<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script src="/result/resultMulti.js"></script>
 
@@ -179,10 +180,14 @@ var ageData = [];
 
 
 
+		$('#histogram .tick').each(function(){
+					$(this).css("font-size","10px");
+		});
 
  $('#histogram .tick>text').each(function(){
 	  var choiceNo = $(this).text();
 	  var content=''; 
+	  var photo ='';
  	 $('input[id^=getText_]').each(function(){
  		var no = $(this).attr("id").replace("getText_",'');
  		if(choiceNo == no){
@@ -191,12 +196,24 @@ var ageData = [];
  		}
 		
 	 });
- 	
+ 	$('input[id^=getPhoto_]').each(function() {
+		var no = $(this).attr("id").replace("getPhoto_", '');
+		if (choiceNo == no) {
+			var id = '#getPhoto_'+no;
+			photo = $(id).val();
+			
+			
+		}
+
+	});
+	$(this).addClass("tooltipped").attr("data-position",'bottom').
+	attr("data-delay","50").attr('data-tooltip',"<img src='/image/vote/thumbnail/"+photo+"'>").
+		attr('data-html','true');
  	$(this).text(content);
 	
 
 });    
- 
+ $('.tooltipped').tooltip({delay: 50});
 	/*댓글 삭제*/
 	
 	$(document).on("click","div[id^='delete_comment_']",function(){

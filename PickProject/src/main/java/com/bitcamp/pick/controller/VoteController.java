@@ -377,5 +377,22 @@ public class VoteController {
 		else
 			return "forward:/result/resultMulti.jsp";
 	}
+	
+	
+	
+	@RequestMapping(value="search/{word}",method=RequestMethod.GET)
+	public String search(@PathVariable("word") String word ,Model model) throws Exception{
+		System.out.println("search -GET ");
+		
+		List<Vote> voteList = voteService.search(word);
+		/*검색 결과가 없을 경우 */
+		if(voteList.size()==0){
+			return "forward:/user/main";
+		}
+		
+		model.addAttribute("voteList", voteList);
+		
+		return "forward:/main/main.jsp";
+	}
 
 }

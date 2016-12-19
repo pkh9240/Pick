@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/filter/filter.css">
-<link rel="stylesheet" href="/fontello-51c93eec/css/close.css">
+
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

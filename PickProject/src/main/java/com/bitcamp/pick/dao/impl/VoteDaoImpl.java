@@ -47,6 +47,11 @@ public class VoteDaoImpl implements VoteDao{
 	public List<Vote> getVoteListByUserNo(int userNo) throws Exception {
 		return sqlSession.selectList("VoteMapper.getVoteListByUserNo",userNo);
 	}
+
+	@Override
+	public List<Vote> search(String word) throws Exception {
+		return sqlSession.selectList("VoteMapper.search", word);
+	}
 	
 	
 }

@@ -396,7 +396,24 @@
 		});
     
     });
-		
+    
+    var now = new Date();
+	var todayAtMidn = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+	
+	
+	$('#endDate').on("change",function(){
+		if(todayAtMidn > new Date($(this).val())){
+			swal({
+				title : "오늘 이후의 날짜를 선택하세요. ",
+				type : "info",
+				confirmButtonColor : "#ED2553",
+				closeOnConfirm : false,
+			});
+			$(this).val('');	
+		}
+	});
+	  
+  
 	</script>
 </body>
 </html>

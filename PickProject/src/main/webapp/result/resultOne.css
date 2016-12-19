@@ -189,5 +189,8 @@ rect:hover {
 	cursor: pointer;
 }
 
-
+/*툴팁  */
+.backdrop{
+       background-color:#ED2553  !important;
+}
 /*  */

@@ -78,6 +78,11 @@ public class VoteServiceImpl implements VoteService{
 	public List<Vote> getVoteListByUserNo(int userNo) throws Exception {
 		return voteDao.getVoteListByUserNo(userNo);
 	}
+
+	@Override
+	public List<Vote> search(String word) throws Exception {
+		return voteDao.search(word);
+	}
 	
 
 

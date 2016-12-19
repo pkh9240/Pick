@@ -64,6 +64,18 @@
 			AND v.VOTE_NO=c.VOTE_NO
 			AND cu.USER_NO=#{voteNo}
 	</select>
+	
+	
+		
+	<select id="search" parameterType="string" resultMap="voteSelectMap">
+	SELECT * 
+	FROM VOTE
+	WHERE VOTE_CATG LIKE CONCAT('%',#{word},'%') OR 
+	 	  VOTE_TITL LIKE CONCAT('%',#{word},'%') OR
+      	  VOTE_CONT LIKE CONCAT('%',#{word},'%') OR 
+	      VOTE_TYPE LIKE CONCAT('%',#{word},'%')
+	</select>
+	
 
 
 </mapper>

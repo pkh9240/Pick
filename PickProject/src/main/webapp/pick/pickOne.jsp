@@ -59,7 +59,7 @@
 				<div class="col s5">
 					<input type="radio" id="cb1" name="choiceNo" value="${vote.choiceList.get(0).choiceNo}" />
 					<label for="cb1" class="tooltipped" data-position="top" data-delay="50" data-tooltip="${vote.choiceList.get(0).content}"> <img src="/image/vote/thumbnail/${vote.choiceList.get(0).photo}" />
-
+		
 
 					</label>
 				</div>
@@ -206,10 +206,11 @@
 					});
 				});
 					
-					
+		    $('.tooltipped').tooltip({delay: 50});
 		
-		     $('.tooltipped').tooltip({delay: 50});
-	
+		 
+		     
+		     
 		
 	</script>
 </body>

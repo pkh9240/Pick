@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="/main/tagsly/tagsly.css">
 <link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
 
+
+
 </head>
 
 
@@ -182,10 +184,12 @@
 	<!---->
 	<!---//End-content---->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src='/main/main.js'></script>
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
+	
 	<!----wookmark-scripts---->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
 	<script src="/main/jquery.wookmark.js"></script>
@@ -299,12 +303,16 @@
 				$(this).parent().parent().height(resizedHeight+75);
 			});
 			
-
-	        
+		/* 검색  */
+		$("#search").on("search",function(){
+			var word= $(this).val();
+			
+			if(word!=''){
+				location.href="/vote/search/"+word;	
+			}
+			
+		});
 	   
-
-
-		
 	</script>
 </body>
 

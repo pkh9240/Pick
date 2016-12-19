@@ -21,9 +21,10 @@
 	
 	
 	
-		<c:forEach items="${choiceList}" var="choice">
-			<input type="hidden" id="getText_${choice.choiceNo}" value="${choice.content}">
-		</c:forEach>
+	<c:forEach items="${choiceList}" var="choice">
+		<input type="hidden" id="getText_${choice.choiceNo}" value="${choice.content}">
+		<input type="hidden" id="getPhoto_${choice.choiceNo}" value="${choice.photo}">
+	</c:forEach>
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
@@ -178,11 +179,16 @@
 				dashboard('#dashboard', genderData, ageData);  
 
 
-
+		$('#histogram .tick').each(function(){
+					$(this).css("font-size","10px");
+		});
 
 		$('#histogram .tick>text').each(function() {
+			
 			var choiceNo = $(this).text();
 			var content = '';
+			var photo = '';
+			
 			$('input[id^=getText_]').each(function() {
 				var no = $(this).attr("id").replace("getText_", '');
 				if (choiceNo == no) {
@@ -191,11 +197,24 @@
 				}
 
 			});
+			$('input[id^=getPhoto_]').each(function() {
+				var no = $(this).attr("id").replace("getPhoto_", '');
+				if (choiceNo == no) {
+					var id = '#getPhoto_' + no;
+					photo = $(id).val();
+				
+					
+				}
 
+			});
+			
+			$(this).addClass("tooltipped").attr("data-position",'bottom').
+					attr("data-delay","50").attr('data-tooltip',"<img src='/image/vote/thumbnail/"+photo+"'>").
+						attr('data-html','true');
 			$(this).text(content);
 
 		});
-		
+		  $('.tooltipped').tooltip({delay: 50});
 		
 		/*댓글 삭제*/
 		

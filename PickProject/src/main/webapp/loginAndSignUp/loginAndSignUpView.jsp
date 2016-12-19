@@ -19,10 +19,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col offset-s4 s4 center">
-				<img class="responsive-img" style="width: 250px;" src="/image/main/pick160.png" />
-				<div class="section"></div>
-
-				<h5 class="indigo-text">Please, login into your account</h5>
+				<img class="responsive-img" style="width: 100px;" src="/image/main/pick160.png" />
+			
+					<h5 class="indigo-text">Please, login into your account</h5>
 				<div class="section"></div>
 			</div>
 			<div class="col offset-s4 s4 z-depth-1 grey lighten-4" style="padding: 30px 30px 0px 30px; border: 1px solid #EEE;"">
@@ -47,7 +46,7 @@
 							<label for='password'>Enter your password</label>
 						</div>
 
-					</div>
+					</div> 
 
 					<br />
 
