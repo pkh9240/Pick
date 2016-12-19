@@ -118,7 +118,7 @@
 			}
 	    	
 	    	
-	    	$("#filter-form").attr("method","post").attr("action","/vote/filter").submit();
+	    	$("#filter-form").attr("method","post").attr("action","/vote/filter").attr("target","_parent").submit();
 	    	
 		});
 		
