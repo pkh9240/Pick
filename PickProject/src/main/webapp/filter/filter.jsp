@@ -43,31 +43,40 @@
 					<div class="col s12">
 
 
-						<input type="checkbox" name="age" class="filled-in" id="s10" />
-						<label for="s10">10대</label>
+						<input type="checkbox" name="age" class="filled-in" id="one" />
+						<label for="one">10대</label>
 
-						<input type="checkbox" name="age" class="filled-in" id="s20" />
-						<label for="s20">20대</label>
+						<input type="checkbox" name="age" class="filled-in" id="two" />
+						<label for="two">20대</label>
 
-						<input type="checkbox" name="age" class="filled-in" id="s30" />
-						<label for="s30">30대</label>
+						<input type="checkbox" name="age" class="filled-in" id="three" />
+						<label for="three">30대</label>
 
-						<input type="checkbox" name="age" class="filled-in" id="s40" />
-						<label for="s40">40대</label>
+						<input type="checkbox" name="age" class="filled-in" id="four" />
+						<label for="four">40대</label>
 
-						<input type="checkbox" name="age" class="filled-in" id="s50" />
-						<label for="s50">50대</label>
+						<input type="checkbox" name="age" class="filled-in" id="five" />
+						<label for="five">50대</label>
 
-						<input type="checkbox" name="age" class="filled-in" id="s60" />
-						<label for="s60">60대</label>
-
+						<input type="checkbox" name="age" class="filled-in" id="six" />
+						<label for="six">60대</label>
+						<div id='hidden_authority'>
+						<input type="hidden" name="one" value="false" />
+						<input type="hidden" name="two" value="false" />
+						<input type="hidden" name="three" value="false" />
+						<input type="hidden" name="four" value="false" />
+						<input type="hidden" name="five" value="false" />
+						<input type="hidden" name="six" value="false" />
+						<input type="hidden" name="male" value="false" />
+						<input type="hidden" name="female" value="false" />
+					</div>
 
 					</div>
 
 
 					<div class="col s12 emp1"></div>
 					<div class="input-field col s12">
-						<select name="interestList" multiple>
+						<select name="interestNoList" multiple>
 							<option value="" disabled>Category</option>
 							<c:forEach var="interest" items="${interestList}">
 								<option value="${interest.interestNo}" data-icon="/image/interest/thumbnail/${interest.interestPhoto}" class="circle">${interest.content}</option>
@@ -77,31 +86,11 @@
 
 					</div>
 					<div class="col s6 offset-s6">
-						<button class="btn waves-effect waves-light" id="filter_btn">Filtering</button>
+						<div class="btn waves-effect waves-light" id="filter_btn">Filtering</div>
 					</div>
 
 				</div>
-
-				<!-- 	<div class="input-field col offset-s3 s6">
-					<select name="userAge" multiple>
-						<option value="" disabled selected>Age</option>
-						<option value="10s">10대</option>
-						<option value="20s">20대</option>
-						<option value="30s">30대</option>
-						<option value="40s">40대</option>
-						<option value="50s">50대</option>
-						<option value="60s">60대</option>
-					</select> <label>Age</label>
-				</div>
-				<div class="input-field col offset-s3 s6">
-					<select name="userGender">
-						<option value="" disabled selected>Gender</option>
-						<option value="all">모두</option>
-						<option value="male">남자</option>
-						<option value="female">여자</option>
-					</select> <label>Gender</label>
-				</div> -->
-
+				
 			</form>
 
 		</div>
@@ -111,34 +100,29 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 		
-		<script src='/interest/interestView.js'></script>
+		<script src='/filter/filter.js'></script>
 
 
 		<script type="text/javascript">
-			$("#filter_btn").on(
-					"click",
-					function() {
-
-						if ($('select[name="userGender"] option:selected')
-								.val() == '') {
-							swal({
-								title : "성별을 선택해주세요.",
-								confirmButtonColor : "#ED2553"
-							});
-							return;
-						}
-						if ($('select[name="interestList"] option:selected')
-								.prevAll().size() < 3) {
-							swal({
-								title : "관심사를 3개이상 선택해주세요.",
-								confirmButtonColor : "#ED2553"
-							});
-							return;
-						}
-
-						/* 		$("#filter-form").attr("target", "_parent").attr("action", "/user/addUser").attr("method", "post").submit(); */
-
-					});
+		
+		
+		$("#filter_btn").on("click",function(){
+			/* 아무것도 선택하지 않았을 경우 권한 선택하지 않은것으로 간주함 */
+	    	var count =  $("input[name='age']:checkbox:checked").length+$("input[name='gender']:checkbox:checked").length;
+	    	if(count==0){
+				$("#hidden_authority > input").val("true");
+			}else{
+				$("input:checkbox:checked").each(function(){
+					$("div>input[name='"+$(this).attr("id")+"']").val("true");
+				});
+			}
+	    	
+	    	
+	    	$("#filter-form").attr("method","post").attr("action","/vote/filter").submit();
+	    	
+		});
+		
+		
 		</script>
 	</div>
 </body>

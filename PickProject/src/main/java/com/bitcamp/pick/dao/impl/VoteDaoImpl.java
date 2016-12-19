@@ -1,6 +1,7 @@
 package com.bitcamp.pick.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,11 @@ public class VoteDaoImpl implements VoteDao{
 	@Override
 	public List<Vote> search(String word) throws Exception {
 		return sqlSession.selectList("VoteMapper.search", word);
+	}
+
+	@Override
+	public List<Vote> filter(Map<String, Object> filterMap) throws Exception {
+		return sqlSession.selectList("VoteMapper.filter", filterMap);
 	}
 	
 	

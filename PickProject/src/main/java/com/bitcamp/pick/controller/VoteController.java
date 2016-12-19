@@ -59,14 +59,10 @@ public class VoteController {
 	@Autowired
 	@Qualifier("interestServiceImpl")
 	private InterestService interestService;
-	
-	
+
 	@Autowired
 	@Qualifier("commentServiceImpl")
 	private CommentService commentService;
-	
-	
-	
 
 	@Value("#{commonProperties['voteThumbnailImageUploadPath']}")
 	String voteThumbnailImageUploadPath;
@@ -185,10 +181,10 @@ public class VoteController {
 	}
 
 	@RequestMapping(value = "getVote/{voteNo}", method = RequestMethod.GET)
-	public String getVote(@PathVariable("voteNo") int voteNo, Model model,HttpSession session) throws Exception {
+	public String getVote(@PathVariable("voteNo") int voteNo, Model model, HttpSession session) throws Exception {
 		System.out.println("getVote-GET");
 		Vote vote = voteService.getVote(voteNo);
-		User user = (User)session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 		model.addAttribute("vote", vote);
 		model.addAttribute("user", user);
 		if (vote.getVoteType().equals("MULTI-CHOICE")) {
@@ -205,18 +201,18 @@ public class VoteController {
 
 		User user = (User) session.getAttribute("user");
 		Choice dbChoice = choiceService.getChoiceByChoiceNo(choiceNo);
-		
+
 		Vote vote = voteService.getVote(dbChoice.getVoteNo());
 		List<Choice> choiceList = vote.getChoiceList();
 		List<Integer> userNoList = null;
-		String isParticipated  = "false";
-		
-		for(Choice choice : choiceList){
+		String isParticipated = "false";
+
+		for (Choice choice : choiceList) {
 			userNoList = choiceService.getUserNoListByChoiceNo(choice.getChoiceNo());
-			for(int userNo : userNoList){
-				if(userNo==user.getUserNo()){
+			for (int userNo : userNoList) {
+				if (userNo == user.getUserNo()) {
 					System.out.println("투표 중복");
-					isParticipated="true";
+					isParticipated = "true";
 					return isParticipated;
 				}
 			}
@@ -228,36 +224,35 @@ public class VoteController {
 		dbChoice.setChoiceCount(choiceCount);
 
 		choiceService.updateChoiceCount(dbChoice, user.getUserNo());
-		
+
 		return isParticipated;
 
 	}
 
 	@RequestMapping(value = "voteMultiChoice", method = RequestMethod.POST)
-	public @ResponseBody String voteMultiChoice(@RequestParam("choiceNo") List<Integer> choiceNoList, HttpSession session)
-			throws Exception {
+	public @ResponseBody String voteMultiChoice(@RequestParam("choiceNo") List<Integer> choiceNoList,
+			HttpSession session) throws Exception {
 		System.out.println("voteMultiChoice -POST");
 		User user = (User) session.getAttribute("user");
-		
-		
-		Choice choiceForCheck  = choiceService.getChoiceByChoiceNo(choiceNoList.get(0));
+
+		Choice choiceForCheck = choiceService.getChoiceByChoiceNo(choiceNoList.get(0));
 		Vote vote = voteService.getVote(choiceForCheck.getVoteNo());
 		List<Choice> choiceList = vote.getChoiceList();
 		List<Integer> userNoList = null;
-		String isParticipated  = "false";
-		
-		for(Choice choice : choiceList){
+		String isParticipated = "false";
+
+		for (Choice choice : choiceList) {
 			userNoList = choiceService.getUserNoListByChoiceNo(choice.getChoiceNo());
-			for(int userNo : userNoList){
-				if(userNo==user.getUserNo()){
+			for (int userNo : userNoList) {
+				if (userNo == user.getUserNo()) {
 					System.out.println("투표 중복");
-					isParticipated="true";
+					isParticipated = "true";
 					return isParticipated;
 				}
 			}
 		}
-		
-		Choice dbChoice= null;
+
+		Choice dbChoice = null;
 		for (int choiceNo : choiceNoList) {
 
 			dbChoice = choiceService.getChoiceByChoiceNo(choiceNo);
@@ -303,24 +298,23 @@ public class VoteController {
 	}
 
 	@RequestMapping(value = "getResult/{voteNo}", method = RequestMethod.GET)
-	public String getResult(@PathVariable("voteNo") int voteNo, Model model,HttpSession session) throws Exception {
+	public String getResult(@PathVariable("voteNo") int voteNo, Model model, HttpSession session) throws Exception {
 		System.out.println("getResult GET");
-		
+
 		Vote vote = voteService.getVote(voteNo);
-		User sessionUser =(User)session.getAttribute("user");
+		User sessionUser = (User) session.getAttribute("user");
 		List<Choice> choiceList = vote.getChoiceList();
 		List<Comment> commentList = commentService.getCommentListByVoteNo(voteNo);
 		List<Object> mapList = new ArrayList<Object>();
-		Map<Integer,String> userPhotoByCommentNoMap = new HashMap<Integer,String>();
-		
-		for(Comment comment : commentList){
+		Map<Integer, String> userPhotoByCommentNoMap = new HashMap<Integer, String>();
+
+		for (Comment comment : commentList) {
 			User user = userService.getUserByUserNo(comment.getUserNo());
 			userPhotoByCommentNoMap.put(comment.getCommentNo(), user.getUserPhoto());
 		}
-		
+
 		for (Choice choice : choiceList) {
 
-		
 			int s10 = 0;
 			int s20 = 0;
 			int s30 = 0;
@@ -329,27 +323,35 @@ public class VoteController {
 			int s60 = 0;
 			int male = 0;
 			int female = 0;
-		
+
 			List<Integer> userNoList = choiceService.getUserNoListByChoiceNo(choice.getChoiceNo());
 			System.out.println(userNoList);
-		
-			Map<String,Object> choiceInfoMap = new HashMap<String,Object>();
-			for(int userNo : userNoList){
-				
+
+			Map<String, Object> choiceInfoMap = new HashMap<String, Object>();
+			for (int userNo : userNoList) {
+
 				User user = userService.getUserByUserNo(userNo);
-				if(user.getUserAge().equals("10s")) s10++;
-				if(user.getUserAge().equals("20s")) s20++;
-				if(user.getUserAge().equals("30s")) s30++;
-				if(user.getUserAge().equals("40s")) s40++;
-				if(user.getUserAge().equals("50s")) s50++;
-				if(user.getUserAge().equals("60s")) s60++;
-				if(user.getUserGender().equals("male")) male++;
-				if(user.getUserGender().equals("female")) female++;
-			
+				if (user.getUserAge().equals("10s"))
+					s10++;
+				if (user.getUserAge().equals("20s"))
+					s20++;
+				if (user.getUserAge().equals("30s"))
+					s30++;
+				if (user.getUserAge().equals("40s"))
+					s40++;
+				if (user.getUserAge().equals("50s"))
+					s50++;
+				if (user.getUserAge().equals("60s"))
+					s60++;
+				if (user.getUserGender().equals("male"))
+					male++;
+				if (user.getUserGender().equals("female"))
+					female++;
+
 			}
-			
-			choiceInfoMap.put("content",choice.getContent());
-			choiceInfoMap.put("choiceNo",choice.getChoiceNo());
+
+			choiceInfoMap.put("content", choice.getContent());
+			choiceInfoMap.put("choiceNo", choice.getChoiceNo());
 			choiceInfoMap.put("s10", s10);
 			choiceInfoMap.put("s20", s20);
 			choiceInfoMap.put("s30", s30);
@@ -358,41 +360,67 @@ public class VoteController {
 			choiceInfoMap.put("s60", s60);
 			choiceInfoMap.put("male", male);
 			choiceInfoMap.put("female", female);
-			
+
 			mapList.add(choiceInfoMap);
-			
-		
-			
+
 		}
 		System.out.println(commentList);
 		model.addAttribute("userPhotoByCommentNoMap", userPhotoByCommentNoMap);
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("choiceList", choiceList);
 		model.addAttribute("mapList", mapList);
-		model.addAttribute("vote",vote);
+		model.addAttribute("vote", vote);
 		model.addAttribute("user", sessionUser);
 
-		if(vote.getVoteType().equals("VERSUS"))	
+		if (vote.getVoteType().equals("VERSUS"))
 			return "forward:/result/resultOne.jsp";
 		else
 			return "forward:/result/resultMulti.jsp";
 	}
-	
-	
-	
-	@RequestMapping(value="search/{word}",method=RequestMethod.GET)
-	public String search(@PathVariable("word") String word ,Model model) throws Exception{
+
+	@RequestMapping(value = "search/{word}", method = RequestMethod.GET)
+	public String search(@PathVariable("word") String word, Model model) throws Exception {
 		System.out.println("search -GET ");
-		
+
 		List<Vote> voteList = voteService.search(word);
-		/*검색 결과가 없을 경우 */
-		if(voteList.size()==0){
+		/* 검색 결과가 없을 경우 */
+		if (voteList.size() == 0) {
 			return "forward:/user/main";
 		}
-		
+
 		model.addAttribute("voteList", voteList);
-		
+
 		return "forward:/main/main.jsp";
+	}
+
+	@RequestMapping(value = "vote/filter", method = RequestMethod.POST)
+	public String filter(@ModelAttribute VoteAuthority voteA​uthority,
+			@RequestParam(value = "interestNoList", required = false) List<Integer> interestNoList, Model model)
+			throws Exception {
+		System.out.println("filter -POST");
+
+		System.out.println("권한 :" + voteA​uthority);
+		System.out.println("카테고리 리스트 " + interestNoList);
+
+		Map<String, Object> filterMap = new HashMap<String, Object>();
+		filterMap.put("voteA​uthority", voteA​uthority);
+		List<Interest> interestList = new ArrayList<Interest>();
+		
+		if (interestNoList != null) {
+			for (int interestNo : interestNoList) {
+				interestList.add(interestService.getInterestByInterestNo(interestNo));
+			}
+
+			if (interestList.size() != 0) {
+				filterMap.put("interestList", interestList);
+			}
+		}
+		List<Vote> voteList = voteService.filter(filterMap);
+
+		model.addAttribute("voteList", voteList);
+
+		return "forward:/main/main.jsp";
+
 	}
 
 }

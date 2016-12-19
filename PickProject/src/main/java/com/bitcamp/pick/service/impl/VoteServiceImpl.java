@@ -1,6 +1,7 @@
 package com.bitcamp.pick.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -82,6 +83,12 @@ public class VoteServiceImpl implements VoteService{
 	@Override
 	public List<Vote> search(String word) throws Exception {
 		return voteDao.search(word);
+	}
+
+	@Override
+	public List<Vote> filter(Map<String, Object> filterMap) throws Exception {
+
+		return voteDao.filter(filterMap);
 	}
 	
 

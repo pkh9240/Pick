@@ -76,6 +76,26 @@
 	      VOTE_TYPE LIKE CONCAT('%',#{word},'%')
 	</select>
 	
+	
+	<select id="filter" parameterType="map" resultMap="voteSelectMap">
+	SELECT V.*
+	FROM VOTE_AUTH VA,VOTE V
+	WHERE VA.VOTE_NO = V.VOTE_NO 
+	  AND ( VA.MALE=#{voteA​uthority.male}
+	  OR  VA.F_MALE=#{voteA​uthority.female}
+	  OR  VA.ONE=#{voteA​uthority.one}
+	  OR  VA.TWO=#{voteA​uthority.two}
+	  OR  VA.THRE=#{voteA​uthority.three}
+      OR  VA.FOUR=#{voteA​uthority.four}
+      OR  VA.FIVE=#{voteA​uthority.five}
+      OR  VA.SIX=#{voteA​uthority.six})
+      AND
+	 <foreach collection="interestList" item="interest"  open="(" close=")" separator="or">
+            V.VOTE_CATG = #{interest.content}
+      </foreach>
+	  
+	</select>
+	
 
 
 </mapper>
