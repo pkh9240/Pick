@@ -263,8 +263,8 @@
 				top : "true",
 				iframe : "true",
 				href : "/vote/getVoteList",
-				width : "95%",
-				height : "95%"
+				width : "1150px",
+				height : "600px"
 			});
 		});
 		
