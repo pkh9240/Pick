@@ -116,9 +116,7 @@
 						});
 						return;
 					}
-
 					var form = new FormData($("#update_form")[0]);
-
 					swal({
 						title : "회원 정보를 수정 하시겠습니까?",
 						type : "info",
@@ -126,7 +124,6 @@
 						showCancelButton : true,
 						closeOnConfirm : false,
 						showLoaderOnConfirm : true,
-
 					}, function(isConfirm) {
 						if (isConfirm) {
 							$.ajax({
@@ -151,9 +148,7 @@
 								}
 							});
 						}
-
 					});
-
 				});
 	</script>
 

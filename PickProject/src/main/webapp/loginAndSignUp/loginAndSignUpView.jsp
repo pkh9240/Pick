@@ -1,66 +1,144 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Material Compact Login Animation</title>
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
-<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
-<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
-<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,latin-ext'>
-<link rel="stylesheet" href="loginAndSignUpView.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<link rel="stylesheet" href="/loginAndSignUp/loginAndSignUpView.css">
+
 
 </head>
 
 <body>
- 
+	<div class="section"></div>
+
 
 
 	<div class="container">
-		<div class="info">
-			<h1>Welcome</h1>
-			<span>Made with <i class="fa fa-heart"></i> by <a href="http://andytran.me">brad cha</a></span>
+		<div class="row">
+			<div class="col offset-s4 s4 center">
+				<img class="responsive-img" style="width: 250px;" src="/image/main/pick160.png" />
+				<div class="section"></div>
+
+				<h5 class="indigo-text">Please, login into your account</h5>
+				<div class="section"></div>
+			</div>
+			<div class="col offset-s4 s4 z-depth-1 grey lighten-4" style="padding: 30px 30px 0px 30px; border: 1px solid #EEE;"">
+
+
+
+				<form id="login_form" class="col s12" method="post">
+					<div class='row'>
+						<div class='col s12'></div>
+					</div>
+
+					<div class='row'>
+						<div class='input-field col s12'>
+							<input class='validate' type='email' name='userEmail' id='userEmail' />
+							<label for='email'>Enter your email</label>
+						</div>
+					</div>
+
+					<div class='row'>
+						<div class='input-field col s12'>
+							<input class='validate' type='password' name='userPassword' id='userPassword' />
+							<label for='password'>Enter your password</label>
+						</div>
+
+					</div>
+
+					<br />
+
+					<div class='row'>
+						<div id="login_btn"  name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</div>
+					</div>
+			<!-- 		<div class='row'>
+						<div id="fb_login_btn"  name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Facebook login</div>
+					</div> -->
+					
+
+				</form>
+
+				<form id="register_form" class="col s12" method="post" style="display: none">
+					<div class='row'>
+						<div class='col s12'></div>
+					</div>
+
+					<div class='row'>
+						<div class='input-field col s12'>
+							<input class='validate' type='email' name='userEmail' id='registerUserEmail' />
+							<label for='email'>Enter your email</label>
+						</div>
+					</div>
+
+					<div class='row'>
+						<div class='input-field col s12'>
+							<input class='validate' type='password' name='userPassword' id='registerUserPassword' />
+							<label for='password'>Enter your password</label>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='input-field col s12'>
+							<input class='validate' type='password' name='userPasswordConfirm' id='registerUserPasswordConfirm' />
+							<label for='password'>Enter your password Confirm</label>
+						</div>
+					</div>
+
+					<br />
+
+					<div class='row'>
+						<div id="register_btn" name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Register</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="col offset-s4 s4 center">
+				<br />
+				<div id="change_register_form" style="cursor: pointer;">Create account</div>
+				<div id="change_login_form" style="cursor: pointer; display: none;">login</div>
+			</div>
+
 		</div>
 	</div>
-	<div class="form">
-		<div class="thumbnail">
-			<img src="/image/main/W_pick.png" />
-		</div>
-		<div class="register-form tog">
-			<input id="registerUserEmail" name="userEmail" type="text" placeholder="email" />
-			<input id="registerUserPassword" name="userPassword" type="password" placeholder="password" />
-			<input id="registerUserPasswordConfirm" name="userPasswordConfirm" type="password" placeholder="password confirm">
 
-			<button id="register_btn">create</button>
-			<p class="message">
-				Already registered?
-				<a href="#">Sign In</a>
-			</p>
-		</div>
-		<div class="login-form tog">
-			<input id="userEmail" name="userEmail" type="text" placeholder="email" value="" />
-			<input id="userPassword" name="userPassword" type="password" placeholder="password" value="" />
 
-			<button id="login_btn">login</button>
-			<p class="message">
-				Not registered?
-				<a href="#">Create an account</a>
-			</p>
-		</div>
-	</div>
 
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+
+	<div class="section"></div>
+	<div class="section"></div>
+
+
+    
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+	<script src="/loginAndSignUp/loginAndSignUpView.js"></script>
 
-	<script src="loginAndSignUpView.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
+		 $("#change_login_form").on("click", function() {
+			$(this).css("display", "none");
+			$(this).removeAttr("disabled");
+			$("#register_form").css("display", "none");
+			$("#register_form").attr("disabled", "disabled");
+
+			$("#login_form").css("display", "inline");
+			$("#change_register_form").css("display", "inline");
+		});
+
+		$("#change_register_form").on("click", function() {
+			$(this).css("display", "none");
+			$(this).removeAttr("disabled");
+			$("#login_form").css("display", "none");
+			$("#login_form").attr("disabled", "disabled");
+
+			$("#register_form").css("display", "inline");
+			$("#change_login_form").css("display", "inline");
+		}); 
+
+
 
 			$("#login_btn").on("click", function() {
 				var user = {
@@ -74,12 +152,12 @@
 					contentType : "application/json; charset=utf-8",
 					data : JSON.stringify(user),
 					dataType : "json",
-					success : function(data) {
+					success : function(data) {	
 						var loginCheck = data.loginCheck;
-						if (loginCheck == 'success') {
+						if (loginCheck=='success') {
 							location.href = "/user/loginSuccess";
 
-						} else if (loginCheck == 'passwordError') {
+						} else if (loginCheck=='passwordError') {
 							swal({
 								title : "비밀번호가 일치하지 않습니다.",
 								confirmButtonColor : "#ED2553"
@@ -125,8 +203,7 @@
 											.val()
 								};
 
-								$
-										.ajax({
+								$.ajax({
 											url : "/user/checkDuplication",
 											type : 'POST',
 											accept : "application/json",
@@ -143,8 +220,7 @@
 															.val("");
 												} else {
 													/*중복이 아닐 경우 상세 정보선택 창 팝업 */
-													$
-															.colorbox({
+													$.colorbox({
 																iframe : true,
 																scrolling : false,
 																innerWidth : '280',
@@ -164,8 +240,8 @@
 
 										});
 							});
-		});
 	</script>
-
+	
 </body>
+
 </html>

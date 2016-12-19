@@ -25,11 +25,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.bitcamp.pick.domain.Choice;
+import com.bitcamp.pick.domain.Comment;
 import com.bitcamp.pick.domain.Interest;
 import com.bitcamp.pick.domain.User;
 import com.bitcamp.pick.domain.Vote;
 import com.bitcamp.pick.domain.VoteAuthority;
 import com.bitcamp.pick.service.ChoiceService;
+import com.bitcamp.pick.service.CommentService;
 import com.bitcamp.pick.service.InterestService;
 import com.bitcamp.pick.service.UserService;
 import com.bitcamp.pick.service.VoteService;
@@ -57,6 +59,14 @@ public class VoteController {
 	@Autowired
 	@Qualifier("interestServiceImpl")
 	private InterestService interestService;
+	
+	
+	@Autowired
+	@Qualifier("commentServiceImpl")
+	private CommentService commentService;
+	
+	
+	
 
 	@Value("#{commonProperties['voteThumbnailImageUploadPath']}")
 	String voteThumbnailImageUploadPath;
@@ -175,12 +185,12 @@ public class VoteController {
 	}
 
 	@RequestMapping(value = "getVote/{voteNo}", method = RequestMethod.GET)
-	public String getVote(@PathVariable("voteNo") int voteNo, Model model) throws Exception {
-
+	public String getVote(@PathVariable("voteNo") int voteNo, Model model,HttpSession session) throws Exception {
+		System.out.println("getVote-GET");
 		Vote vote = voteService.getVote(voteNo);
-
+		User user = (User)session.getAttribute("user");
 		model.addAttribute("vote", vote);
-
+		model.addAttribute("user", user);
 		if (vote.getVoteType().equals("MULTI-CHOICE")) {
 			return "forward:/pick/pickMulti.jsp";
 		} else {
@@ -190,12 +200,27 @@ public class VoteController {
 	}
 
 	@RequestMapping(value = "voteVersus", method = RequestMethod.POST)
-	public void voteVersus(@RequestParam int choiceNo, HttpSession session) throws Exception {
+	public @ResponseBody String voteVersus(@RequestParam int choiceNo, HttpSession session) throws Exception {
 		System.out.println("voteVersus -POST");
 
 		User user = (User) session.getAttribute("user");
 		Choice dbChoice = choiceService.getChoiceByChoiceNo(choiceNo);
-
+		
+		Vote vote = voteService.getVote(dbChoice.getVoteNo());
+		List<Choice> choiceList = vote.getChoiceList();
+		List<Integer> userNoList = null;
+		String isParticipated  = "false";
+		
+		for(Choice choice : choiceList){
+			userNoList = choiceService.getUserNoListByChoiceNo(choice.getChoiceNo());
+			for(int userNo : userNoList){
+				if(userNo==user.getUserNo()){
+					System.out.println("투표 중복");
+					isParticipated="true";
+					return isParticipated;
+				}
+			}
+		}
 		int choiceCount = dbChoice.getChoiceCount();
 
 		choiceCount++;
@@ -203,25 +228,46 @@ public class VoteController {
 		dbChoice.setChoiceCount(choiceCount);
 
 		choiceService.updateChoiceCount(dbChoice, user.getUserNo());
+		
+		return isParticipated;
 
 	}
 
 	@RequestMapping(value = "voteMultiChoice", method = RequestMethod.POST)
-	public void voteMultiChoice(@RequestParam("choiceNo") List<Integer> choiceNoList, HttpSession session)
+	public @ResponseBody String voteMultiChoice(@RequestParam("choiceNo") List<Integer> choiceNoList, HttpSession session)
 			throws Exception {
 		System.out.println("voteMultiChoice -POST");
 		User user = (User) session.getAttribute("user");
-
+		
+		
+		Choice choiceForCheck  = choiceService.getChoiceByChoiceNo(choiceNoList.get(0));
+		Vote vote = voteService.getVote(choiceForCheck.getVoteNo());
+		List<Choice> choiceList = vote.getChoiceList();
+		List<Integer> userNoList = null;
+		String isParticipated  = "false";
+		
+		for(Choice choice : choiceList){
+			userNoList = choiceService.getUserNoListByChoiceNo(choice.getChoiceNo());
+			for(int userNo : userNoList){
+				if(userNo==user.getUserNo()){
+					System.out.println("투표 중복");
+					isParticipated="true";
+					return isParticipated;
+				}
+			}
+		}
+		
+		Choice dbChoice= null;
 		for (int choiceNo : choiceNoList) {
 
-			Choice dbChoice = choiceService.getChoiceByChoiceNo(choiceNo);
+			dbChoice = choiceService.getChoiceByChoiceNo(choiceNo);
 			int choiceCount = dbChoice.getChoiceCount();
 			choiceCount++;
 			dbChoice.setChoiceCount(choiceCount);
 			choiceService.updateChoiceCount(dbChoice, user.getUserNo());
 
 		}
-
+		return isParticipated;
 	}
 
 	/* 나의 투표 리스트 뷰 리턴 */
@@ -257,19 +303,23 @@ public class VoteController {
 	}
 
 	@RequestMapping(value = "getResult/{voteNo}", method = RequestMethod.GET)
-	public String getResult(@PathVariable("voteNo") int voteNo, Model model) throws Exception {
+	public String getResult(@PathVariable("voteNo") int voteNo, Model model,HttpSession session) throws Exception {
 		System.out.println("getResult GET");
+		
 		Vote vote = voteService.getVote(voteNo);
+		User sessionUser =(User)session.getAttribute("user");
 		List<Choice> choiceList = vote.getChoiceList();
-		
-		
+		List<Comment> commentList = commentService.getCommentListByVoteNo(voteNo);
 		List<Object> mapList = new ArrayList<Object>();
-		Map<Integer,String> contentByChoiceNoMap = new HashMap<Integer,String>();
-		int totalCount = 0;
+		Map<Integer,String> userPhotoByCommentNoMap = new HashMap<Integer,String>();
+		
+		for(Comment comment : commentList){
+			User user = userService.getUserByUserNo(comment.getUserNo());
+			userPhotoByCommentNoMap.put(comment.getCommentNo(), user.getUserPhoto());
+		}
 		
 		for (Choice choice : choiceList) {
-			
-			totalCount += choice.getChoiceCount();
+
 		
 			int s10 = 0;
 			int s20 = 0;
@@ -282,7 +332,8 @@ public class VoteController {
 		
 			List<Integer> userNoList = choiceService.getUserNoListByChoiceNo(choice.getChoiceNo());
 			System.out.println(userNoList);
-			Map<String,Integer> choiceInfoMap = new HashMap<String,Integer>();
+		
+			Map<String,Object> choiceInfoMap = new HashMap<String,Object>();
 			for(int userNo : userNoList){
 				
 				User user = userService.getUserByUserNo(userNo);
@@ -297,7 +348,7 @@ public class VoteController {
 			
 			}
 			
-			
+			choiceInfoMap.put("content",choice.getContent());
 			choiceInfoMap.put("choiceNo",choice.getChoiceNo());
 			choiceInfoMap.put("s10", s10);
 			choiceInfoMap.put("s20", s20);
@@ -311,17 +362,20 @@ public class VoteController {
 			mapList.add(choiceInfoMap);
 			
 		
-			contentByChoiceNoMap.put(choice.getChoiceNo(), choice.getContent());
+			
 		}
-		
-
-		System.out.println("totalCount :" + totalCount);
-		System.out.println("mapList:"+mapList);
-		model.addAttribute("contentByChoiceNoMap", contentByChoiceNoMap);
+		System.out.println(commentList);
+		model.addAttribute("userPhotoByCommentNoMap", userPhotoByCommentNoMap);
+		model.addAttribute("commentList", commentList);
+		model.addAttribute("choiceList", choiceList);
 		model.addAttribute("mapList", mapList);
+		model.addAttribute("vote",vote);
+		model.addAttribute("user", sessionUser);
 
-
-		return "forward:/result/resultOne.jsp";
+		if(vote.getVoteType().equals("VERSUS"))	
+			return "forward:/result/resultOne.jsp";
+		else
+			return "forward:/result/resultMulti.jsp";
 	}
 
 }

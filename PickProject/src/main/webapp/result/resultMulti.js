@@ -1,4 +1,4 @@
-function dashboard(id,id1, fData,fData1){
+function dashboard(id,fData,fData1){
     var barColor = '#b3c9d6';
     function segColor(c){ return {male:"#81ae9c", female:"#fb9b99"}[c]; }
     function segColor1(c){ return {s10:"#f54763", s20:"#fb9b99",s30:"#ffceae",s40:"#c8c7a9",s50:"#81ae9c",s60:"#b3c9d6"}[c]; }
@@ -10,9 +10,9 @@ function dashboard(id,id1, fData,fData1){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 250 - hGDim.l - hGDim.r, 
+        hGDim.w = 150 - hGDim.l - hGDim.r, 
         hGDim.h = 300 - hGDim.t - hGDim.b;
-             
+            
         //create svg for histogram.
         var hGsvg = d3.select(id).append("svg")
             .attr("width", hGDim.w + hGDim.l + hGDim.r).attr("id","histogram")
@@ -47,7 +47,10 @@ function dashboard(id,id1, fData,fData1){
             .on("mouseout",mouseout);// mouseout is defined bemale.
             
         //Create the frequency labels above the rectangles.
-        bars.append("text").text(function(d){ return d3.format(",")(d[1])})
+        bars.append("text").text(function(d){ 
+        	return d3.format(",")(d[1])
+        	}
+        )
             .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
             .attr("y", function(d) { return y(d[1])-5; })
             .attr("text-anchor", "middle");
@@ -97,14 +100,13 @@ function dashboard(id,id1, fData,fData1){
         return hG;
     }
     
-    
     // function to handle pieChart.
     function pieChart(pD){
         var pC ={},    pieDim ={w:150, h: 150};
         pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
                 
         // create svg for pie chart.
-        var piesvg = d3.select(id).append("svg").attr("class","pieChart").attr("id","gender_pie")
+        var piesvg = d3.select(id).append("svg").attr("class","pieChart").attr("id","age_pie")
             .attr("width", pieDim.w).attr("height", pieDim.h).append("g")
             .attr("transform", "translate("+pieDim.w/2+","+pieDim.h/2+")");
         
@@ -122,7 +124,7 @@ function dashboard(id,id1, fData,fData1){
 
         // create function to update pie-chart. This will be used by histogram.
         pC.update = function(nD){
-            piesvg.selectAll("path").data(pie(nD)).transition().duration(300)
+            piesvg.selectAll("path").data(pie(nD)).transition().duration(500)
                 .attrTween("d", arcTween);
         }        
         // Utility function to be called on mouseover a pie slice.
@@ -151,7 +153,7 @@ function dashboard(id,id1, fData,fData1){
         pieDim.r = Math.min(pieDim.w, pieDim.h) / 2;
                 
         // create svg for pie chart.
-        var piesvg = d3.select(id).append("svg").attr("class","pieChart").attr("id","age_pie")
+        var piesvg = d3.select(id).append("svg").attr("class","pieChart").attr("id","gender_pie")
             .attr("width", pieDim.w).attr("height", pieDim.h).append("g")
             .attr("transform", "translate("+pieDim.w/2+","+pieDim.h/2+")");
         
@@ -205,8 +207,8 @@ function dashboard(id,id1, fData,fData1){
         var tr = legend.append("tbody").selectAll("tr").data(lD).enter().append("tr");
             
         // create the first column for each segment.
-        tr.append("td").append("svg").attr("width", '10').attr("height", '10').append("rect")
-            .attr("width", '10').attr("height", '10')
+        tr.append("td").append("svg").attr("width", '16').attr("height", '16').append("rect")
+            .attr("width", '16').attr("height", '16')
 			.attr("fill",function(d){ return segColor(d.type); });
             
         // create the second column for each segment.
@@ -310,26 +312,3 @@ function dashboard(id,id1, fData,fData1){
     	leg1= legend1(tF1);  
     	
 }
-
-var genderData=[
-{State:'박광희',freq:{male:23, female:32}}
-,{State:'홍길동',freq:{male:53, female:22}}
-,{State:'차병철',freq:{male:22, female:44}}
-,{State:'김량한',freq:{male:31, female:67}}
-,{State:'손철준',freq:{male:76, female:20}}
-,{State:'태양',freq:{male:8, female:23}}
-,{State:'쥐디',freq:{male:9, female:75}}
-];
-
-var ageData=[
- {State:'박광희',freq:{ s10:11, s20:12,s30:11,s40:11,s50:1,s60:22}}
-,{State:'홍길',freq:{s10:23, s20:11,s30:11,s40:1,s50:2,s60:27}}
-,{State:'차병철',freq:{s10:1, s20:1,s30:1,s40:3,s50:4,s60:0}}
-,{State:'김량한',freq:{s10:1, s20:3,s30:2,s40:2,s50:1,s60:1}}
-,{State:'손철준',freq:{s10:4, s20:1,s30:1,s40:1,s50:2,s60:1}}
-,{State:'태양',freq:{s10:2, s20:2,s30:1,s40:1,s50:1,s60:3}}
-,{State:'쥐디',freq:{s10:1, s20:4,s30:1,s40:2,s50:1,s60:1}}
-];
-
-dashboard('#gender_dashboard','#age_dashboard',genderData,ageData);
-

@@ -34,7 +34,8 @@ dependencies {
  
      compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'
     
-   
+  
+   	
     compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8' //썸네일 이미지 생성 라이브러리 
 
      compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.40'

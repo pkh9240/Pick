@@ -152,8 +152,8 @@
 													All<br />
 											</c:if>
 											<c:if test="${vote.voteAuthority.male!=true || vote.voteAuthority.female!=true}">
-														 ${vote.voteAuthority.male==true?'여자 ':''}
-														  ${vote.voteAuthority.female==true?'남자 ':''}<br />
+														 ${vote.voteAuthority.male==true?'남자 ':''}
+														  ${vote.voteAuthority.female==true?'여자 ':''}<br />
 											</c:if>
 
 
@@ -246,7 +246,7 @@
 				top : "true",
 				iframe : "true",
 				href : "/user/getAdminPageView/" + path,
-				width : "1150px",
+				width : "1000px",
 				height : "600px",
 				top : true
 			});
@@ -263,7 +263,7 @@
 				top : "true",
 				iframe : "true",
 				href : "/vote/getVoteList",
-				width : "1150px",
+				width : "1000px",
 				height : "600px"
 			});
 		});

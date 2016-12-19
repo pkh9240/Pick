@@ -28,7 +28,6 @@
 		<div class="col s12">
 			<ul class="tabs">
 				<li class="tab col s3"><a class="${path=='pick'? 'active':''}" href="#pick">Pick</a></li>
-				<li class="tab col s3"><a class="${path=='feed'? 'active':''}" href="#feed">Feed</a></li>
 				<li class="tab col s2"><a class="${path=='user'? 'active':''}" href="#user">UserInfo</a></li>
 				<li class="tab col s3"><a class="${path=='category'? 'active':''}" href="#category">Category</a></li>
 			</ul>
@@ -113,48 +112,9 @@
 										<td>${vote.voteType}</td>
 										<td>${vote.endDate}</td>
 										<td>${totalCountByVoteNoMap.get(vote.voteNo)}</td>
-										<td><div id="result_btn_${vote.voteNo}" class="btn waves-effect waves-light btn-small custom-btn">result</div></td>
+										<td><div id="get_result_${vote.voteNo}" class="btn waves-effect waves-light btn-small custom-btn">result</div></td>
 									</tr>
 								</c:forEach>
-
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--  Message      -->
-		<div id="feed" class="col s12">
-			<div class="row">
-				<div class="col s12">
-					<div class="card material-table">
-						<div class="table-header">
-							<span class="table-title">FEEDBACK</span>
-							<div class="actions">
-								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
-									<i class="material-icons">search</i>
-								</a>
-							</div>
-						</div>
-						<table class="datatable">
-							<thead>
-								<tr>
-									<th data-field="UserName">UserName</th>
-									<th data-field="FeedSubject">FeedSubject</th>
-									<th data-field="Content">Content</th>
-									<th data-field="Date">Date</th>
-									<th data-field="Check">Check</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Alvin</td>
-									<td>PickFormError</td>
-									<td>iMac vs SAMSUNG PC</td>
-									<td>16.11.01</td>
-									<td>NO</td>
-								</tr>
 
 							</tbody>
 						</table>
@@ -252,10 +212,13 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 	<script src="/adminPage/adminPage.js"></script>
 	<script type="text/javascript">
-		$("div[id^=result_btn]").on("click", function() {
-			location.href = "/result/resultOne.jsp";
-
-		});
+	
+	$("div[id^=get_result]").on("click",function(){
+			
+		var voteNo = $(this).attr("id").replace("get_result_","");
+		location.href="/vote/getResult/"+voteNo;
+		
+	});
 
 		$("#add_interest_btn")
 				.on(
