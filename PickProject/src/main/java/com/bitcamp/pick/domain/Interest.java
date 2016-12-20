@@ -6,7 +6,6 @@ public class Interest {
 	private int interestNo;
 	private String content;
 	private String interestPhoto;
-	private List<User> userList;
 	
 	
 	public Interest(int interestNo) {
@@ -41,12 +40,7 @@ public class Interest {
 	public void setInterestPhoto(String interestPhoto) {
 		this.interestPhoto = interestPhoto;
 	}
-	public List<User> getUserList() {
-		return userList;
-	}
-	public void setUserList(List<User> userList) {
-		this.userList = userList;
-	}
+	
 	@Override
 	public String toString() {
 		return "Interest [interestNo=" + interestNo + ", content=" + content + ", interestPhoto=" + interestPhoto + "]";
