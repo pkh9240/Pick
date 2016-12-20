@@ -53,9 +53,9 @@
 					<div class='row'>
 						<div id="login_btn"  name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</div>
 					</div>
-			<!-- 		<div class='row'>
+			 		<div class='row'>
 						<div id="fb_login_btn"  name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Facebook login</div>
-					</div> -->
+					</div> 
 					
 
 				</form>
@@ -182,13 +182,33 @@
 			});
 
 			/* 회원 가입 버튼 */
-			$("#register_btn")
-					.on(
-							"click",
-							function() {
-
-								if ($("#registerUserPassword").val() != $(
-										"#registerUserPasswordConfirm").val()) {
+			$("#register_btn").on("click",function() {
+								if($("#registerUserEmail").val()==''){
+									swal({
+										title : "이메일을 입력 하세요.",
+										confirmButtonColor : "#ED2553"
+									});
+									return;
+								}
+								
+								if($("#registerUserPassword").val()==''){
+									swal({
+										title : "패스워드를 입력 하세요.",
+										confirmButtonColor : "#ED2553"
+									});
+									return;
+								}
+								
+								
+								if($("#registerUserPasswordConfirm").val()==''){
+									swal({
+										title : "패스워드(확인)을 입력 하세요.",
+										confirmButtonColor : "#ED2553"
+									});
+									return;
+								}
+									
+								if ($("#registerUserPassword").val() != $("#registerUserPasswordConfirm").val()) {
 									swal({
 										title : "비밀번호가 일치하지 않습니다.",
 										confirmButtonColor : "#ED2553"
@@ -198,8 +218,7 @@
 
 								var user = {
 									"userEmail" : $("#registerUserEmail").val(),
-									"userPassword" : $("#registerUserPassword")
-											.val()
+									"userPassword" : $("#registerUserPassword").val()
 								};
 
 								$.ajax({
