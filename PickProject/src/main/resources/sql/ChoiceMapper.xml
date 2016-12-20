@@ -15,43 +15,47 @@
 	</resultMap>
 
 	<!-- SQL : INSERT --> <!-- seq_product_prod_no.NEXTVAL --> <!-- #{ssn:VARCHAR} , -->
-	<insert id="addChoice" parameterType="choice"  useGeneratedKeys="true" keyProperty="choiceNo" keyColumn="CHOI_NO">
+	<insert id="addChoice" parameterType="choice" useGeneratedKeys="true"
+		keyProperty="choiceNo" keyColumn="CHOI_NO">
 		INSERT
 		INTO CHOI( VOTE_NO , CHOI_PHOT, CHOI_CONT, CHOI_CNT )
-		VALUES (#{voteNo:INTEGER},
-			    #{photo:VARCHAR},
-			    #{content:VARCHAR},
-			    #{choiceCount:INTEGER}) 
-		<selectKey keyProperty="choiceNo" resultType="Integer" order="AFTER">
+		VALUES
+		(#{voteNo:INTEGER},
+		#{photo:VARCHAR},
+		#{content:VARCHAR},
+		#{choiceCount:INTEGER})
+		<selectKey keyProperty="choiceNo" resultType="Integer"
+			order="AFTER">
 			select LAST_INSERT_ID()
 		</selectKey>
 	</insert>
 
 
-	<select id="getChoiceListByVoteNo" parameterType="int" resultMap="choiceSelectMap">
+	<select id="getChoiceListByVoteNo" parameterType="int"
+		resultMap="choiceSelectMap">
 		SELECT
-		CHOI_NO, VOTE_NO, CHOI_PHOT, CHOI_CONT, CHOI_CNT 
+		CHOI_NO, VOTE_NO, CHOI_PHOT, CHOI_CONT, CHOI_CNT
 		FROM CHOI
 		WHERE VOTE_NO = #{voteNo}
 	</select>
 
-  <select id="getChoiceByChoiceNo" parameterType="int" resultMap="choiceSelectMap">
-       	SELECT
-		CHOI_NO, VOTE_NO, CHOI_PHOT, CHOI_CONT, CHOI_CNT 
+	<select id="getChoiceByChoiceNo" parameterType="int" resultMap="choiceSelectMap">
+		SELECT
+		CHOI_NO, VOTE_NO, CHOI_PHOT, CHOI_CONT, CHOI_CNT
 		FROM CHOI
 		WHERE CHOI_NO = #{choiceNo}
-    </select>
+	</select>
 
 
 
-  	 <!-- SQL : UPDATE -->
-	 <update id="updateChoiceCount"	parameterType="choice" >
-	   	UPDATE CHOI
-	   	<set>
+	<!-- SQL : UPDATE -->
+	<update id="updateChoiceCount" parameterType="choice">
+		UPDATE CHOI
+		<set>
 			CHOI_CNT = #{choiceCount}
-	   	</set>
-	   	WHERE CHOI_NO = #{choiceNo}
-	 </update>
+		</set>
+		WHERE CHOI_NO = #{choiceNo}
+	</update>
 
 
 </mapper>

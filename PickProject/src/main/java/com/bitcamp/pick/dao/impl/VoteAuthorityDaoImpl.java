@@ -20,7 +20,7 @@ public class VoteAuthorityDaoImpl implements VoteAuthorityDao{
 		System.out.println("VoteAuthorityDaoImpl Default Constructor");
 	}
 	public int addVoteAuthority(VoteAuthority voteAuthority){
-
+		System.out.println("VoteAuthorityDaoImpl-addVoteAuthority");
 		return sqlSession.insert("VoteAuthorityMapper.addVoteAuthority",voteAuthority);
 	}
 }

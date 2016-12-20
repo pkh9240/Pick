@@ -61,14 +61,14 @@
 						<input type="checkbox" name="age" class="filled-in" id="six" />
 						<label for="six">60대</label>
 						<div id='hidden_authority'>
-						<input type="hidden" name="one" value="false" />
-						<input type="hidden" name="two" value="false" />
-						<input type="hidden" name="three" value="false" />
-						<input type="hidden" name="four" value="false" />
-						<input type="hidden" name="five" value="false" />
-						<input type="hidden" name="six" value="false" />
-						<input type="hidden" name="male" value="false" />
-						<input type="hidden" name="female" value="false" />
+						<input id="hidden_age_one" type="hidden" name="one" value="false" />
+						<input id="hidden_age_two" type="hidden" name="two" value="false" />
+						<input id="hidden_age_three" type="hidden" name="three" value="false" />
+						<input id="hidden_age_four" type="hidden" name="four" value="false" />
+						<input id="hidden_age_five" type="hidden" name="five" value="false" />
+						<input id="hidden_age_six" type="hidden" name="six" value="false" />
+						<input id="hidden_gender_male" type="hidden" name="male" value="false" />
+						<input id="hidden_gender_female" type="hidden" name="female" value="false" />
 					</div>
 
 					</div>
@@ -108,12 +108,21 @@
 		
 		$("#filter_btn").on("click",function(){
 			/* 아무것도 선택하지 않았을 경우 권한 선택하지 않은것으로 간주함 */
-	    	var count =  $("input[name='age']:checkbox:checked").length+$("input[name='gender']:checkbox:checked").length;
-	    	if(count==0){
-				$("#hidden_authority > input").val("true");
+	    	var ageCount =  $("input[name='age']:checkbox:checked").length;
+	    	if(ageCount==0){
+				$("#hidden_authority > input[id^=hidden_age]").val("true");
 			}else{
 				$("input:checkbox:checked").each(function(){
-					$("div>input[name='"+$(this).attr("id")+"']").val("true");
+					$("div>input[id^='hidden_age_"+$(this).attr("id")+"']").val("true");
+				});
+			}
+	    	
+	    	var genderCount= $("input[name='gender']:checkbox:checked").length;
+	    	if(genderCount==0){
+				$("#hidden_authority > input[id^=hidden_gender]").val("true");
+			}else{
+				$("input:checkbox:checked").each(function(){
+					$("div>input[id^='hidden_gender_"+$(this).attr("id")+"']").val("true");
 				});
 			}
 	    	

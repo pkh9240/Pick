@@ -30,23 +30,25 @@ public class CommentServiceImpl implements CommentService{
 	
 	@Override
 	public int addComment(Comment comment) throws Exception{
-		// TODO Auto-generated method stub
+		System.out.println("CommentServiceImpl-addComment");
 		return commentDao.addComment(comment);
 	}
 
 	@Override
 	public Comment getComment(int commentNo) throws Exception {
-		// TODO Auto-generated method stub
+		System.out.println("CommentServiceImpl-getComment");
 		return commentDao.getComment(commentNo);
 	}
 
 	@Override
 	public List<Comment> getCommentListByVoteNo(int voteNo) throws Exception {
+		System.out.println("CommentServiceImpl-getCommentListByVoteNo");
 		return commentDao.getCommentListByVoteNo(voteNo);
 	}
 
 	@Override
 	public int deleteCommnet(int commentNo) throws Exception {
+		System.out.println("CommentServiceImpl-deleteCommnet");
 		return commentDao.deleteCommnet(commentNo);
 	}
 

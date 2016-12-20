@@ -24,20 +24,21 @@ public class CommentDaoImpl implements CommentDao {
 	}
 	@Override
 	public int addComment(Comment comment) throws Exception{
-	
-		System.out.println("Approch addComment DAO , parameter Check.. : " + comment);
+		System.out.println("CommentDaoImpl-addComment");
 		return sqlSession.insert("CommentMapper.addComment",comment);
-		
 	}
 	@Override
 	public Comment getComment(int commentNo) throws Exception{
+		System.out.println("CommentDaoImpl-getComment");
 		return sqlSession.selectOne("CommentMapper.getComment",commentNo);
 	}
 	public List<Comment> getCommentListByVoteNo(int voteNo) throws Exception{
+		System.out.println("CommentDaoImpl-getCommentListByVoteNo");
 		return sqlSession.selectList("CommentMapper.getCommentListByVoteNo",voteNo);
 	}
 	@Override
 	public int deleteCommnet(int commentNo) throws Exception {
+		System.out.println("CommentDaoImpl-deleteCommnet");
 		return sqlSession.delete("CommentMapper.deleteComment", commentNo);
 	}
 	

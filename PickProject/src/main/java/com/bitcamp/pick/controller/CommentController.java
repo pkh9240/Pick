@@ -34,12 +34,11 @@ public class CommentController {
 	@RequestMapping(value = "addComment", method = RequestMethod.POST)
 	public @ResponseBody Map<String,Object> addComment (@ModelAttribute("comment") Comment comment, HttpSession session) throws Exception {
 
-		System.out.println("/comment/addcomment : POST");
+		System.out.println("addcomment : POST");
 		
 		User user = (User)session.getAttribute("user");
 		comment.setUserNo(user.getUserNo());
 		Map<String,Object> commentMap = new HashMap<String,Object>();
-		// Business Logic
 		commentService.addComment(comment);
 		
 		Comment dbComment = commentService.getComment(comment.getCommentNo());

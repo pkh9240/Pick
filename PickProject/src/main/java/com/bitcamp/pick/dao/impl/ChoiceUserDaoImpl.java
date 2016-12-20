@@ -19,15 +19,22 @@ public class ChoiceUserDaoImpl implements ChoiceUserDao {
 	@Qualifier("sqlSessionTemplate")
 	public SqlSession sqlSession;
 	
+	///Constructor
+	public ChoiceUserDaoImpl() {
+			System.out.println("ChoiceUserImpl Default Constructor");
+	}
+	
 	
 	@Override
 	public int addChoiceUser(ChoiceUser choiceUser) throws Exception {
+		System.out.println("ChoiceUserDaoImpl-addChoiceUser");
 		return sqlSession.insert("ChoiceUserMapper.addChoiceUser",choiceUser);
 	}
 
 
 	@Override
 	public List<Integer> getUserNoListByChoiceNo(int choiceNo) throws Exception {
+		System.out.println("ChoiceUserDaoImpl-getUserNoListByChoiceNo");
 		return sqlSession.selectList("ChoiceUserMapper.getUserNoListByChoiceNo", choiceNo);
 	}
 

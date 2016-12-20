@@ -26,18 +26,22 @@ public class InterestServiceImpl implements InterestService{
 	}
 	@Override
 	public int addInterest(Interest interest) throws Exception {
+		System.out.println("InterestServiceImpl-addInterest");
 		return interestDao.addInterest(interest);
 	}
 	@Override
 	public Interest getInterestByContent(String content) throws Exception {
+		System.out.println("InterestServiceImpl-getInterestByContent");
 		return interestDao.getInterestByContent(content);
 	}
 	@Override
 	public Interest getInterestByInterestNo(int interestNo) throws Exception {
+		System.out.println("InterestServiceImpl-getInterestByInterestNo");
 		return interestDao.getInterestByInterestNo(interestNo);
 	}
 	@Override
 	public List<Interest> getInterestList() throws Exception {
+		System.out.println("InterestServiceImpl-getInterestList");
 		return interestDao.getInterestList();
 	}
 	

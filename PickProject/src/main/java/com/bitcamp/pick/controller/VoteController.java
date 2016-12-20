@@ -179,7 +179,7 @@ public class VoteController {
 		return vote;
 
 	}
-
+	/*투표 하기 뷰 리턴 */
 	@RequestMapping(value = "getVote/{voteNo}", method = RequestMethod.GET)
 	public String getVote(@PathVariable("voteNo") int voteNo, Model model, HttpSession session) throws Exception {
 		System.out.println("getVote-GET");
@@ -194,7 +194,7 @@ public class VoteController {
 		}
 
 	}
-
+	/*투표 하기  VERSUS  */
 	@RequestMapping(value = "voteVersus", method = RequestMethod.POST)
 	public @ResponseBody String voteVersus(@RequestParam int choiceNo, HttpSession session) throws Exception {
 		System.out.println("voteVersus -POST");
@@ -206,12 +206,12 @@ public class VoteController {
 		List<Choice> choiceList = vote.getChoiceList();
 		List<Integer> userNoList = null;
 		String isParticipated = "false";
-
+		
+		/* 투표 참가 여부 판단  */
 		for (Choice choice : choiceList) {
 			userNoList = choiceService.getUserNoListByChoiceNo(choice.getChoiceNo());
 			for (int userNo : userNoList) {
 				if (userNo == user.getUserNo()) {
-					System.out.println("투표 중복");
 					isParticipated = "true";
 					return isParticipated;
 				}
@@ -228,7 +228,7 @@ public class VoteController {
 		return isParticipated;
 
 	}
-
+	/*투표 하기  MultiChoice  */
 	@RequestMapping(value = "voteMultiChoice", method = RequestMethod.POST)
 	public @ResponseBody String voteMultiChoice(@RequestParam("choiceNo") List<Integer> choiceNoList,
 			HttpSession session) throws Exception {
@@ -241,11 +241,12 @@ public class VoteController {
 		List<Integer> userNoList = null;
 		String isParticipated = "false";
 
+		
+		/* 투표 참가 여부 판단  */
 		for (Choice choice : choiceList) {
 			userNoList = choiceService.getUserNoListByChoiceNo(choice.getChoiceNo());
 			for (int userNo : userNoList) {
 				if (userNo == user.getUserNo()) {
-					System.out.println("투표 중복");
 					isParticipated = "true";
 					return isParticipated;
 				}
@@ -296,7 +297,7 @@ public class VoteController {
 
 		return "forward:/myPick/myPick.jsp";
 	}
-
+	/* 결과  */
 	@RequestMapping(value = "getResult/{voteNo}", method = RequestMethod.GET)
 	public String getResult(@PathVariable("voteNo") int voteNo, Model model, HttpSession session) throws Exception {
 		System.out.println("getResult GET");
@@ -306,13 +307,14 @@ public class VoteController {
 		List<Choice> choiceList = vote.getChoiceList();
 		List<Comment> commentList = commentService.getCommentListByVoteNo(voteNo);
 		List<Object> mapList = new ArrayList<Object>();
+		/*댓글에 User 이미지 넣기 위함 */
 		Map<Integer, String> userPhotoByCommentNoMap = new HashMap<Integer, String>();
-
+		
 		for (Comment comment : commentList) {
 			User user = userService.getUserByUserNo(comment.getUserNo());
 			userPhotoByCommentNoMap.put(comment.getCommentNo(), user.getUserPhoto());
 		}
-
+		/*선택지별 연령대별 ,성별 데이터 종합 */
 		for (Choice choice : choiceList) {
 
 			int s10 = 0;
@@ -377,7 +379,7 @@ public class VoteController {
 		else
 			return "forward:/result/resultMulti.jsp";
 	}
-
+	/*상단바 검색 */
 	@RequestMapping(value = "search/{word}", method = RequestMethod.GET)
 	public String search(@PathVariable("word") String word, Model model) throws Exception {
 		System.out.println("search -GET ");
@@ -392,20 +394,17 @@ public class VoteController {
 
 		return "forward:/main/main.jsp";
 	}
-
+	/* 필터링 */
 	@RequestMapping(value = "vote/filter", method = RequestMethod.POST)
 	public String filter(@ModelAttribute VoteAuthority voteA​uthority,
 			@RequestParam(value = "interestNoList", required = false) List<Integer> interestNoList, Model model)
 			throws Exception {
 		System.out.println("filter -POST");
 
-		System.out.println("권한 :" + voteA​uthority);
-		System.out.println("카테고리 리스트 " + interestNoList);
-
 		Map<String, Object> filterMap = new HashMap<String, Object>();
 		filterMap.put("voteA​uthority", voteA​uthority);
 		List<Interest> interestList = new ArrayList<Interest>();
-		
+			
 		if (interestNoList != null) {
 			for (int interestNo : interestNoList) {
 				interestList.add(interestService.getInterestByInterestNo(interestNo));

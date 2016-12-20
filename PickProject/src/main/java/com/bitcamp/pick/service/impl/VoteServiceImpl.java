@@ -38,19 +38,15 @@ public class VoteServiceImpl implements VoteService{
 	@Qualifier("choiceDaoImpl")
 	private ChoiceDao choiceDao;
 	
-	
-	public void setVoteDao(VoteDao voteDao) { 
-		this.voteDao = voteDao;
-	}
-	
+
 	///Constructor
 	public VoteServiceImpl() {
-		System.out.println(this.getClass());
+		System.out.println(" VoteServiceImpl Default Constructor");
 	}
 
 	///Method
 	public void addVote(Vote vote) throws Exception {
-			System.out.println("voteServiceImpl addVote");
+		System.out.println("VoteServiceImpl-addVote");
 		 
 	      voteDao.addVote(vote);
 	     
@@ -60,7 +56,7 @@ public class VoteServiceImpl implements VoteService{
 	}
 	
 	public Vote getVote(int voteNo) throws Exception {
-		
+		System.out.println("VoteServiceImpl-getVote");
 		Vote vote = voteDao.getVote(voteNo);
 		List<Choice> choiceList = choiceDao.getChoiceListByVoteNo(voteNo);
 		vote.setChoiceList(choiceList);
@@ -71,23 +67,25 @@ public class VoteServiceImpl implements VoteService{
 
 	@Override
 	public List<Vote> getVoteList() throws Exception {
-		
+		System.out.println("VoteServiceImpl-getVoteList");
 		return voteDao.getVoteList();
 	}
 
 	@Override
 	public List<Vote> getVoteListByUserNo(int userNo) throws Exception {
+		System.out.println("VoteServiceImpl-getVoteListByUserNo");
 		return voteDao.getVoteListByUserNo(userNo);
 	}
 
 	@Override
 	public List<Vote> search(String word) throws Exception {
+		System.out.println("VoteServiceImpl-search");
 		return voteDao.search(word);
 	}
 
 	@Override
 	public List<Vote> filter(Map<String, Object> filterMap) throws Exception {
-
+		System.out.println("VoteServiceImpl-filter");
 		return voteDao.filter(filterMap);
 	}
 	

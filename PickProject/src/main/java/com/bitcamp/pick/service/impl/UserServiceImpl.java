@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
 	}
 	@Override
 	public int addUser(User user) throws Exception {
-		
+		System.out.println(" UserServiceImpl-addUser");
 		
 		userDao.addUser(user);//userNo get하기위해 먼저 add
 		User dbUser = userDao.getUserByUserEmail(user.getUserEmail());
@@ -81,17 +81,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByUserEmail(String userEmail) throws Exception {
-		System.out.println(userDao.getUserByUserEmail(userEmail));
+		System.out.println(" UserServiceImpl-getUserByUserEmail");
 		return userDao.getUserByUserEmail(userEmail);
 	}
 	@Override
 	public User getUserByUserNo(int userNo) throws Exception {
-		System.out.println(userDao.getUserByUserNo(userNo));
+		System.out.println(" UserServiceImpl-getUserByUserNo");
 		return userDao.getUserByUserNo(userNo);
 	}
 	@Override
 	public void updateUser(User user) throws Exception {
-		
+		System.out.println(" UserServiceImpl-updateUser");
 		List<Interest> userInterest = user.getInterestList();
 		
 		userInterestDao.deleteUserInterest(user.getUserNo());		
@@ -104,7 +104,7 @@ public class UserServiceImpl implements UserService {
 	}
 	@Override
 	public List<User> getUserList() throws Exception {
-		
+		System.out.println(" UserServiceImpl-getUserList");
 		return userDao.getUserList();
 	}
 

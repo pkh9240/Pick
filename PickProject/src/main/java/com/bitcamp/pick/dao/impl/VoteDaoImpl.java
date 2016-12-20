@@ -27,20 +27,23 @@ public class VoteDaoImpl implements VoteDao{
 	
 	///Constructor
 	public VoteDaoImpl() {
-		System.out.println(this.getClass());
+		System.out.println("VoteDaoImpl Default Constructor");
 	}
 
 	///Method
 	public void addVote(Vote vote) throws Exception {
+		System.out.println("VoteDaoImpl-addVote");
 		sqlSession.insert("VoteMapper.addVote", vote);
 	}
 
     public Vote getVote(int voteNo)throws Exception {
+    	System.out.println("VoteDaoImpl-getVote");
     	return sqlSession.selectOne("VoteMapper.getVote", voteNo);
     }
 
 	@Override
 	public List<Vote> getVoteList() throws Exception {
+		System.out.println("VoteDaoImpl-getVoteList");
 		return sqlSession.selectList("VoteMapper.getVoteList");
 	}
 

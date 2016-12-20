@@ -25,23 +25,27 @@ public class ChoiceDaoImpl implements ChoiceDao{
 	
 	///Constructor
 	public ChoiceDaoImpl() {
-		System.out.println(this.getClass());
+		System.out.println("ChoiceDaoImpl Default Constructor");
 	}
 
-//	///Method
+	///Method
 	public void addChoice(Choice choice) throws Exception {
+		System.out.println("ChoiceDaoImpl-addChoice");
 		sqlSession.insert("ChoiceMapper.addChoice", choice);
 	}	
 
 	public List<Choice> getChoiceListByVoteNo(int voteNo)throws Exception {
+		System.out.println("ChoiceDaoImpl-getChoiceListByVoteNo");
 		return sqlSession.selectList("ChoiceMapper.getChoiceListByVoteNo", voteNo);
 	}
 	
 	public Choice getChoiceByChoiceNo(int choiceNo)throws Exception {
+		System.out.println("ChoiceDaoImpl-getChoiceByChoiceNo");
         return sqlSession.selectOne("ChoiceMapper.getChoiceByChoiceNo", choiceNo);
 	}
 	
 	public void updateChoiceCount(Choice choice)throws Exception {
+		System.out.println("ChoiceDaoImpl-updateChoiceCount");
 		sqlSession.update("ChoiceMapper.updateChoiceCount", choice);
 	}
 	
