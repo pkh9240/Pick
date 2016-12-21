@@ -309,10 +309,12 @@ public class VoteController {
 		List<Object> mapList = new ArrayList<Object>();
 		/*댓글에 User 이미지 넣기 위함 */
 		Map<Integer, String> userPhotoByCommentNoMap = new HashMap<Integer, String>();
+		Map<Integer, String> userNameByCommentNoMap = new HashMap<Integer, String>();
 		
 		for (Comment comment : commentList) {
 			User user = userService.getUserByUserNo(comment.getUserNo());
 			userPhotoByCommentNoMap.put(comment.getCommentNo(), user.getUserPhoto());
+			userNameByCommentNoMap.put(comment.getCommentNo(), user.getUserName());
 		}
 		/*선택지별 연령대별 ,성별 데이터 종합 */
 		for (Choice choice : choiceList) {
@@ -367,6 +369,7 @@ public class VoteController {
 
 		}
 		System.out.println(commentList);
+		model.addAttribute("userNameByCommentNoMap", userNameByCommentNoMap);
 		model.addAttribute("userPhotoByCommentNoMap", userPhotoByCommentNoMap);
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("choiceList", choiceList);

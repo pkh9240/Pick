@@ -38,6 +38,12 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public User getUserByUserName(String userName) throws Exception {
+		System.out.println("UserDaoImpl-getUserByUserName");
+		return sqlSession.selectOne("UserMapper.getUserByUserName", userName);
+	}
+
+	@Override
 	public User getUserByUserNo(int userNo) throws Exception {
 		System.out.println("UserDaoImpl-getUserByUserNo");
 		return sqlSession.selectOne("UserMapper.getUserByUserNo", userNo);

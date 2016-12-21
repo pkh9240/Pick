@@ -156,7 +156,7 @@
 								success : function(data) {
 									if(data=='true'){/*이미 참여한 경우 */
 										swal({
-											title :"이미 투표에 참여하셨습니다.결과창으로 이동 하시겠습니까?",
+											title :"이미 투표에 참여하셨습니다.\n결과창으로 이동 하시겠습니까?",
 											confirmButtonColor : "#ED2553",
 											showCancelButton: true,
 											showLoaderOnConfirm : true
@@ -179,7 +179,7 @@
 									else{
 									setTimeout(function() {
 										swal({
-											title :" 투표 되었습니다.결과를 확인 하시겠습니까 ?",
+											title :" 투표 되었습니다.\n결과를 확인 하시겠습니까 ?",
 											confirmButtonColor : "#ED2553",
 											showCancelButton: true,
 											showLoaderOnConfirm : true

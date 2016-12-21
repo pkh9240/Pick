@@ -123,6 +123,26 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/user/login";
 	}
+	
+	/* 닉네임 중복 체크 */
+
+	@RequestMapping(value = "checkNickNameDuplication/{userName}", method = RequestMethod.GET)
+	public @ResponseBody Map<String, Object> checkNickNameDuplication(@PathVariable("userName") String userName, HttpSession sessionPa)
+			throws Exception {
+
+		System.out.println("checkNickNameDuplication - POST");
+
+		User dbUser = userService.getUserByUserName(userName);
+		Map<String, Object> result = new HashMap<String, Object>();
+		System.out.println("dUser"+dbUser);
+		if (dbUser != null) {
+			result.put("isDuplicated", true);
+		} else {
+			result.put("isDuplicated", false);
+		}
+		return result;
+	}
+	
 
 	/* Email 중복 체크 */
 
@@ -156,17 +176,20 @@ public class UserController {
 
 		return "forward:/interest/interestView.jsp";
 	}
+	
+	
 
 	/* 회원 등록 */
 	@RequestMapping(value = "addUser", method = RequestMethod.POST)
 	public String addUser(@RequestParam("interestList") List<Integer> interestList,
-			@RequestParam("userAge") String userAge, @RequestParam("userGender") String userGender, HttpSession session)
+			@RequestParam("userAge") String userAge, @RequestParam("userGender") String userGender, @RequestParam("userName") String userName,HttpSession session)
 			throws Exception {
 		System.out.println("addUser - POST");
 
 		User user = (User) session.getAttribute("user");
 		user.setUserAge(userAge);
 		user.setUserGender(userGender);
+		user.setUserName(userName);
 
 		List<Interest> userInterestList = new ArrayList<Interest>();
 

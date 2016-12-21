@@ -26,6 +26,13 @@
 		FROM USERS
 		WHERE USER_MAIL=#{value}
 	</select>
+	
+	<select id="getUserByUserName" parameterType="string"
+		resultMap="userSelectMap">
+		SELECT *
+		FROM USERS
+		WHERE USER_NAME=#{value}
+	</select>
 
 
 	<select id="getUserByUserNo" parameterType="integer" resultMap="userSelectMap">
@@ -37,8 +44,9 @@
 
 	<insert id="addUser" parameterType="user">
 		INSERT
-		INTO USERS(USER_MAIL,USER_PWD,USER_GEND,USER_AGE,USER_TYPE,USER_PHOT)
+		INTO USERS(USER_MAIL,USER_NAME,USER_PWD,USER_GEND,USER_AGE,USER_TYPE,USER_PHOT)
 		VALUES (#{userEmail:VARCHAR},
+				#{userName:VARCHAR},
 				#{userPassword:VARCHAR},
 				#{userGender:VARCHAR},
 				#{userAge:VARCHAR},

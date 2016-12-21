@@ -89,6 +89,14 @@ public class UserServiceImpl implements UserService {
 		System.out.println(" UserServiceImpl-getUserByUserNo");
 		return userDao.getUserByUserNo(userNo);
 	}
+	
+	@Override
+	public User getUserByUserName(String userName) throws Exception {
+		System.out.println(" UserServiceImpl-getUserByUserName");
+		return userDao.getUserByUserName(userName);
+	}
+
+	
 	@Override
 	public void updateUser(User user) throws Exception {
 		System.out.println(" UserServiceImpl-updateUser");

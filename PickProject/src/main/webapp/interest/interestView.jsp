@@ -25,6 +25,12 @@
 			
 			<form id="detailInfo-form">
 				<div class="input-field col s12">
+						<input name="userName" id="icon_prefix" type="text" class="validate">
+						<label for="icon_prefix">Nick Name</label>
+				</div>
+			
+				<div class="input-field col s12">
+					
 					<select name="userAge">
 						<option value="" disabled selected>Age</option>
 						<option value="10s">10</option>
@@ -72,12 +78,20 @@
 
 
 		<script type="text/javascript">
-			$("#register_btn")
-					.on(
-							"click",
-							function() {
+			
+			$("#register_btn").on("click",function() {
+				
+							var nickName = $('input[name="userName"]').val();
+							if(nickName==''){
+								swal({
+									title : "닉네임을 입력 해주세요.",
+									confirmButtonColor : "#ED2553"
+								});
+								return;
+							}
 
-								if ($('select[name="userAge"] option:selected')
+							
+							 if ($('select[name="userAge"] option:selected')
 										.val() == '') {
 									swal({
 										title : "연령대를 선택해주세요.",
@@ -85,8 +99,7 @@
 									});
 									return;
 								}
-								if ($(
-										'select[name="userGender"] option:selected')
+								if ($('select[name="userGender"] option:selected')
 										.val() == '') {
 									swal({
 										title : "성별을 선택해주세요.",
@@ -94,8 +107,7 @@
 									});
 									return;
 								}
-								if ($(
-										'select[name="interestList"] option:selected')
+								if ($('select[name="interestList"] option:selected')
 										.prevAll().size() < 3) {
 									swal({
 										title : "관심사를 3개이상 선택해주세요.",
@@ -104,9 +116,36 @@
 									return;
 								}
 
-								$("#detailInfo-form").attr("target", "_parent")
+							
+							
+							$.ajax({
+								url : "/user/checkNickNameDuplication/"+nickName,
+								type : 'GET',
+						
+								success : function(data) {
+									if (data.isDuplicated == true) {
+										swal({
+											title : "이미 존재하는 닉네임입니다.",
+											confirmButtonColor : "#ED2553"
+										});
+										$('input[name="userName"]').val(""); 
+									
+									} else{
+										
+										$("#detailInfo-form").attr("target", "_parent")
 										.attr("action", "/user/addUser").attr(
 												"method", "post").submit();
+										
+										
+									}
+								}
+								
+							});
+							
+						
+							
+							
+							
 
 							});
 		</script>
