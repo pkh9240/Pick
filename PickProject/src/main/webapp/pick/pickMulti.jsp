@@ -91,7 +91,7 @@
 		<br /> <br /> <br />
 
 		<div class="col s6">
-			<i id="info_btn" class="material-icons right tooltipped" data-position="top" data-delay="50" data-tooltip="상세 정보">info_outline</i> <i id="share_btn" class="material-icons right tooltipped" data-position="top" data-delay="50" data-tooltip="투표 공유 하기 ">share</i>
+			<i id="info_btn" class="material-icons right tooltipped"  data-html="true" data-position="top" data-delay="50" data-tooltip=" <div>상세정보 <br/>종료일 : ${vote.endDate}</div><br/>">info_outline</i> <i id="share_btn" class="material-icons right tooltipped" data-position="top" data-delay="50" data-tooltip="투표 공유 하기 ">share</i>
 		</div>
 		<div id="pick_btn" class="btn waves-effect waves-light col offset-s1 s4 left" >
 			P I C K <i class="material-icons right">done</i>

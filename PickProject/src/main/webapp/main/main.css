@@ -1,3 +1,11 @@
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+.post-module{
+	font-family: 'Hanna', serif !important;
+	
+}
+
+
 body{
 /* 	background-image: url("/image/main/main10.jpg"); */
 	background-size: 100%;
@@ -797,7 +805,7 @@ body {
     font-weight: 700;
     letter-spacing: 0.8px;
 	word-break: break-all;
-	margin-bottom: 10px;
+
 }
 
 

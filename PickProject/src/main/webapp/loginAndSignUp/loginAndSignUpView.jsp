@@ -51,10 +51,10 @@
 					<br />
 
 					<div class='row'>
-						<div id="login_btn"  name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</div>
+						<div id="login_btn"  class='col s12 btn btn-large waves-effect indigo'>Login</div>
 					</div>
 			 		<div class='row'>
-						<div id="fb_login_btn"  name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Facebook login</div>
+						<div id="fb_login_btn"  class='col s12 btn btn-large waves-effect indigo'>Facebook login</div>
 					</div> 
 					
 
@@ -88,15 +88,15 @@
 					<br />
 
 					<div class='row'>
-						<div id="register_btn" name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Register</div>
+						<div id="register_btn"  class='col s12 btn btn-large waves-effect indigo'>Register</div>
 					</div>
 
 				</form>
 			</div>
 			<div class="col offset-s4 s4 center">
 				<br />
-				<div id="change_register_form" style="cursor: pointer;">Create account</div>
-				<div id="change_login_form" style="cursor: pointer; display: none;">login</div>
+				<div id="change_register_form" class="change_btn" style="cursor: pointer;">Create account</div>
+				<div id="change_login_form"  class="change_btn" style="cursor: pointer; display: none;">login</div>
 			</div>
 
 		</div>

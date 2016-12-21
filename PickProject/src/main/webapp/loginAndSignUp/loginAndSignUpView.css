@@ -34,3 +34,9 @@ main {
 .indigo-text {
     color: #ED2553 !important;
 }
+
+.change_btn{
+	color: white;
+	font-size: large;
+	
+}

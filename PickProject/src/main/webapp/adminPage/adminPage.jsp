@@ -27,9 +27,9 @@
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3"><a class="${path=='pick'? 'active':''}" href="#pick">Pick</a></li>
-				<li class="tab col s2"><a class="${path=='user'? 'active':''}" href="#user">UserInfo</a></li>
-				<li class="tab col s3"><a class="${path=='category'? 'active':''}" href="#category">Category</a></li>
+				<li class="tab col s3"><a class="${path=='pick'? 'active':''}" href="#pick">투표 관리</a></li>
+				<li class="tab col s2"><a class="${path=='user'? 'active':''}" href="#user">사용자 관리</a></li>
+				<li class="tab col s3"><a class="${path=='category'? 'active':''}" href="#category">카테 고리 관리</a></li>
 			</ul>
 		</div>
 		<!--    User Info-->
@@ -38,7 +38,7 @@
 				<div class="col s12">
 					<div class="card material-table">
 						<div class="table-header">
-							<span class="table-title">USER</span>
+							<span class="table-title">투표 관리</span>
 							<div class="actions">
 								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
 									<i class="material-icons">search</i>
@@ -82,7 +82,7 @@
 				<div class="col s12">
 					<div class="card material-table">
 						<div class="table-header">
-							<span class="table-title">PICK</span>
+							<span class="table-title">투표 관리</span>
 							<div class="actions">
 								<a href="#" class="search-toggle waves-effect btn-flat nopadding">
 									<i class="material-icons">search</i>
@@ -129,7 +129,7 @@
 				<div class="col  s12">
 					<div class="card material-table">
 						<div class="table-header">
-							<span class="table-title">CATEGORY</span>
+							<span class="table-title">카테고리 관리</span>
 							<div class="actions">
 								<a href="#modal1" class="modal-trigger waves-effect btn-flat nopadding">
 									<i class="material-icons">add_circle_outline</i>
@@ -172,7 +172,7 @@
 		<div class="navbar-fixed">
 			<nav class="custom-nav">
 				<div class="nav-wrapper">
-					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Add Category </a>
+					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;카테고리 추가하기 </a>
 				</div>
 			</nav>
 		</div>

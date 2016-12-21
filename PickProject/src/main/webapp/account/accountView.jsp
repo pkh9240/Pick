@@ -24,7 +24,7 @@
 		<div class="navbar-fixed">
 			<nav class="custom-nav">
 				<div class="nav-wrapper">
-					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;My Account</a>
+					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;내 정보 보기</a>
 				</div>
 			</nav>
 		</div>
