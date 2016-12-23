@@ -92,7 +92,13 @@ public class VoteController {
 			MultipartHttpServletRequest multipartHttpServletRequest, Model model, HttpSession session,
 			@ModelAttribute VoteAuthority voteA​uthority) throws Exception {
 		System.out.println("addVote-POST");
-
+	
+		String voteOriginalImageUploadPathOnServer = session.getServletContext().getRealPath("/image/vote/original");
+		String voteThumbnailImageUploadPathOnServer = session.getServletContext().getRealPath("/image/vote/thumbnail");
+		
+		
+		
+		
 		vote.setVoteAuthority(voteA​uthority);
 		vote.setUserNo(((User) session.getAttribute("user")).getUserNo());
 		voteService.addVote(vote);
@@ -116,8 +122,14 @@ public class VoteController {
 
 			String leftRandomPhotoName = UUID.randomUUID().toString().replace("-", "")
 					+ leftPhoto.getOriginalFilename().toLowerCase();
-			File originalLeftFile = new File(voteOriginalImageUploadPath, leftRandomPhotoName);
-			File thumbnaiLeftlFile = new File(voteThumbnailImageUploadPath, leftRandomPhotoName);
+			/*로컬*/
+			//File originalLeftFile = new File(voteOriginalImageUploadPath, leftRandomPhotoName);
+			//File thumbnaiLeftlFile = new File(voteThumbnailImageUploadPath, leftRandomPhotoName);
+			
+			
+			/*서버*/
+			File originalLeftFile = new File(voteOriginalImageUploadPathOnServer, leftRandomPhotoName);
+			File thumbnaiLeftlFile = new File(voteThumbnailImageUploadPathOnServer, leftRandomPhotoName);
 
 			leftPhoto.transferTo(originalLeftFile);
 			Thumbnails.of(originalLeftFile).crop(Positions.CENTER).size(160, 160).imageType(BufferedImage.TYPE_INT_ARGB)
@@ -161,9 +173,13 @@ public class VoteController {
 
 				randomPhotoName = UUID.randomUUID().toString().replace("-", "")
 						+ photo.getOriginalFilename().toLowerCase();
-
-				File originalFile = new File(voteOriginalImageUploadPath, randomPhotoName);
-				File thumbnailFile = new File(voteThumbnailImageUploadPath, randomPhotoName);
+				/*로컬 */
+				//File originalFile = new File(voteOriginalImageUploadPath, randomPhotoName);
+				//File thumbnailFile = new File(voteThumbnailImageUploadPath, randomPhotoName);
+				/*서버 */
+				File originalFile = new File(voteOriginalImageUploadPathOnServer, randomPhotoName);
+				File thumbnailFile = new File(voteThumbnailImageUploadPathOnServer, randomPhotoName);
+				
 
 				photo.transferTo(originalFile);
 				Thumbnails.of(originalFile).crop(Positions.CENTER).size(100, 100).toFile(thumbnailFile);

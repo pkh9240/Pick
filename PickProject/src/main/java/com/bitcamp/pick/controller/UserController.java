@@ -254,7 +254,11 @@ public class UserController {
 		
 		
 		System.out.println("updateUser- POST");
-
+		/*서버 이미지 저장 경로*/
+		String profileOriginalImageUploadPathOnServer = session.getServletContext().getRealPath("/image/profile/original");
+		String profileThumbnailImageUploadPathOnServer = session.getServletContext().getRealPath("/image/profile/thumbnail");
+		
+		/**/
 		User sessionUser = (User) session.getAttribute("user");
 		List<Interest> userInterestList = new ArrayList<Interest>();
 
@@ -267,16 +271,19 @@ public class UserController {
 		String randomFileName = null;
 
 		
-		
 	
 
 		if (!profileImage.isEmpty()) {
 			 randomFileName = UUID.randomUUID().toString().replace("-", "")+ 
 						profileImage.getOriginalFilename().toLowerCase();
 			 
-			/*오리지널 이미지와 썸네일 이미지 경로 */
-			File originalFile = new File(profileOriginalImageUploadPath, randomFileName);
-			File thumbnailFile = new File(profileThumbnailImageUploadPath, randomFileName);
+			/*오리지널 이미지와 썸네일 이미지 경로(로컬) */
+			//File originalFile = new File(profileOriginalImageUploadPath, randomFileName);
+			//File thumbnailFile = new File(profileThumbnailImageUploadPath, randomFileName);
+			/*   서버 */
+			File originalFile = new File(profileOriginalImageUploadPathOnServer, randomFileName);
+			File thumbnailFile = new File(profileThumbnailImageUploadPathOnServer, randomFileName);
+			
 			
 			
 			try {
@@ -351,7 +358,7 @@ public class UserController {
 
 	/* 카테고리(Interest or Category) 추가 */
 	@RequestMapping(value = "addInterest", method = RequestMethod.POST)
-	public @ResponseBody Interest addInterest(@ModelAttribute Interest interest, MultipartFile interestImage)
+	public @ResponseBody Interest addInterest(@ModelAttribute Interest interest, MultipartFile interestImage,HttpSession session)
 			throws Exception {
 		System.out.println("addInterest POST");
 
@@ -361,7 +368,8 @@ public class UserController {
 		}
 
 		String randomFileName=null;
-		
+		String interestOriginalImageUploadPathOnServer = session.getServletContext().getRealPath("/image/interest/original");
+		String interestThumbnailImageUploadPathOnServer = session.getServletContext().getRealPath("/image/interest/thumbnail");
 		
 		
 
@@ -371,9 +379,14 @@ public class UserController {
 			
 			randomFileName= UUID.randomUUID().toString().replace("-", "")+ interestImage.getOriginalFilename().toLowerCase();
 			
-			/*오리지널 이미지와 썸네일 이미지 경로 */
-			File originalFile = new File(interestOriginalImageUploadPath, randomFileName);
-			File thumbnailFile = new File(interestThumbnailImageUploadPath, randomFileName);
+			/*오리지널 이미지와 썸네일 이미지 경로(로컬) */
+			//File originalFile = new File(interestOriginalImageUploadPath, randomFileName);
+			//File thumbnailFile = new File(interestThumbnailImageUploadPath, randomFileName);
+			
+			/*오리지널 이미지와 썸네일 이미지 경로(서버) */
+			File originalFile = new File(interestOriginalImageUploadPathOnServer, randomFileName);
+			File thumbnailFile = new File(interestThumbnailImageUploadPathOnServer, randomFileName);
+			
 			
 			try {
 				interestImage.transferTo(originalFile);
