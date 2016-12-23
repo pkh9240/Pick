@@ -138,8 +138,16 @@ public class VoteController {
 
 			String rightRandomPhotoName = UUID.randomUUID().toString().replace("-", "")
 					+ rightPhoto.getOriginalFilename().toLowerCase();
-			File originalRightFile = new File(voteOriginalImageUploadPath, rightRandomPhotoName);
-			File thumbnaiRightlFile = new File(voteThumbnailImageUploadPath, rightRandomPhotoName);
+			
+			/* 로컬 */
+			//File originalRightFile = new File(voteOriginalImageUploadPath, rightRandomPhotoName);
+			//File thumbnaiRightlFile = new File(voteThumbnailImageUploadPath, rightRandomPhotoName);
+			
+			
+			
+			/* 서버 */
+			File originalRightFile = new File(voteOriginalImageUploadPathOnServer, rightRandomPhotoName);
+			File thumbnaiRightlFile = new File(voteThumbnailImageUploadPathOnServer, rightRandomPhotoName);
 
 			rightPhoto.transferTo(originalRightFile);
 			Thumbnails.of(originalRightFile).crop(Positions.CENTER).size(160, 160)
