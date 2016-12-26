@@ -197,6 +197,32 @@
 	<script src="/main/tagsly/tagsly.js"></script>
 
 	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
+	
+	<script type="text/javascript">
+	window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '224865167968997',
+	      xfbml      : true,
+	      version    : 'v2.8'
+	    });
+
+	  
+	};
+	(function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/ko_KR/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	
+	function fb_logout(){
+		alert("ddd");
+		FB.logout();
+	}
+	
+	</script>
+	
 	<script type="text/javascript">
 
 		/*투표 창 */
@@ -258,6 +284,7 @@
 
 		/*로그아웃 버튼 */
 		$("#logout_btn").on("click", function() {
+			fb_logout();
 			location.href = "/user/logout";
 		});
 		

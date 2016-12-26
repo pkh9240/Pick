@@ -164,6 +164,9 @@ public class UserController {
 		}
 		return result;
 	}
+	
+
+
 
 	/* 상세정보 선택 뷰 리턴 */
 	@RequestMapping(value = "getDetailInfomationSelectView", method = RequestMethod.GET)
@@ -418,5 +421,27 @@ public class UserController {
 	}
 
 
+	/* Email  체크 For Facebook*/
+
+	@RequestMapping(value = "checkDuplicationForFaceBook", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> checkDuplicationForFaceBook(@ModelAttribute User user,HttpSession session)
+			throws Exception {
+
+		System.out.println("checkDuplicationForFaceBook - GET");
+		System.out.println("Email :"+user.getUserEmail());
+
+		User dbUser = userService.getUserByUserEmail(user.getUserEmail());
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		if (dbUser != null) {
+			session.setAttribute("user", dbUser);
+			result.put("isDuplicated", true);
+		} else {
+			session.setAttribute("user", user);
+			result.put("isDuplicated", false);
+		}
+		
+		return result;
+	}
 
 }
