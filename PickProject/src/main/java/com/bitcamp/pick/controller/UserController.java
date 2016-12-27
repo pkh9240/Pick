@@ -72,13 +72,14 @@ public class UserController {
 
 	/* 단순 main View 로 이동 */
 	@RequestMapping(value = "main", method = RequestMethod.GET)
-	public String mainView(Model model) throws Exception {
+	public String mainView(Model model,HttpSession session) throws Exception {
 
 		System.out.println("main - GET");
 		
 		
 		List<Vote> voteList = voteService.getVoteList();
 		model.addAttribute("voteList", voteList);
+		
 		
 		return "forward:/main/main.jsp";
 	}
@@ -428,7 +429,6 @@ public class UserController {
 			throws Exception {
 
 		System.out.println("checkDuplicationForFaceBook - GET");
-		System.out.println("Email :"+user.getUserEmail());
 
 		User dbUser = userService.getUserByUserEmail(user.getUserEmail());
 		Map<String, Object> result = new HashMap<String, Object>();

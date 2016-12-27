@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 <head>
@@ -12,6 +13,9 @@
 </head>
 
 <body>
+	<!--  Hidden Data-->
+	
+	<input type="hidden" id="fromGetVote" value="${fromGetVote}">
 	<div class="section"></div>
 
 
@@ -116,22 +120,21 @@
 	<script src="/loginAndSignUp/loginAndSignUpView.js"></script>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-
+	
 	<!-- 페이스북 로그인  -->
 	<script type="text/javascript">
 	
 	window.fbAsyncInit = function() {
 	    FB.init({
 	      appId      : '224865167968997',
-	      cookie     : true,  // 쿠키가 세션을 참조할 수 있도록 허용
-	      xfbml      : true,  // 소셜 플러그인이 있으면 처리
-	      version    : 'v2.8' // 버전 2.1 사용
+	      cookie     : true,  
+	      xfbml      : true,  
+	      version    : 'v2.8' 
 	    });
-
+	    
+	
 	  
 	};
-	
-	
 	(function(d, s, id){
 	     var js, fjs = d.getElementsByTagName(s)[0];
 	     if (d.getElementById(id)) {return;}
@@ -140,27 +143,29 @@
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
 
+
 	
 	$("#fb_login_btn").on("click",function(){
-	
-		FB.login(function(response) {
 		
-	    	  if (response.status === 'connected') {
-	    			FB.logout();
-	    			FB.api('/me',{fields: 'email'}, function(user) {
-	    				alert(user.email);
-	  					var user = {"userEmail" : user.email,
-	  								"userPassword":12341234 };/*  */
+		FB.login(function(response) {//로그인 대화 상자 팝업( Facebook 호출을 요청하여 로그인 상태를 가져오고 결과를 통해 콜백 함수를 호출한다.)
+			
+	    	  if (response.status === 'connected') {  //사용자가 Facebook에 로그인하고 앱에 로그인(계정에 앱 추가) 했다. 
+	    			
+	    		 	 FB.logout();  //로그아웃 시키고 진행 
+	    			 FB.api('/me',{fields: 'email'}, function(user) {//데이터를 얻기 위해서 또는 유저에 대한 도움(?)을 위한 조치를 취하기 위해서 Facebook Graph API를 호출
+						var user = {"userEmail" : user.email,
+	  								"userPassword":12341234,//비밀번호는 임시로  일단 임의의 숫자  
+	  								"userPhoto" :'fb_profile_image//graph.facebook.com/'+response.authResponse.userID+'/picture?width=80&height=80'}; 
 	  					
 						$.ajax({
 	    					url : "/user/checkDuplicationForFaceBook",
 	    					type : 'POST',
 	    					data : user,
 	    					success : function(data) {	
-	    						if (data.isDuplicated == true) { /*계정이 존재 할 경우 */
+	    						if (data.isDuplicated == true) { //계정이 존재 할 경우 main  
 	    							location.href="/user/main";
 							
-								} else { /*계정이 존재 하지 않을  경우 */
+								} else { //계정이 존재 하지 않을  경우 상세 정보를 입력 받는다. 
 									swal({
 										title : "해당 계정이 가입이 되어있지 않습니다. 가입하시겠습니까?",
 										confirmButtonColor : "#ED2553"
@@ -184,16 +189,13 @@
 							}
 	    				});
 	    			
-	    		 });
-	    	  } else if (response.status === 'not_authorized') {
-	    	    // The person is logged into Facebook, but not your app.
-	    		  alert("not_authorized");
-	    	  } else {
-	    	    // The person is not logged into Facebook, so we're not sure if
-	    	    // they are logged into this app or not.
-	    		  alert("not_authorized");
+	    		 });  
+	    	  } else if (response.status === 'not_authorized') {//사용자가 Facebook에 로그인 했지만 앱에 로그인 하지 않았다.
+	    			 alert("not_authorized");
+	    	  } else {     //사용자가 Facebook에 로그인 하지 않았으므로 앱에 로그인했는지 알수 없다.또는 FB.logout()이 호출 되었다.  (unknown)
+	    	   		alert("else");
 	    	  }
-	   	},{
+	   	},{//이메일 권한 요청  (반드시 필요)
 		      scope: 'email',
 		      return_scopes: true,
 		      auth_type: 'rerequest'
@@ -224,6 +226,17 @@
 
 
 	<script type="text/javascript">
+		
+		
+		if($("#fromGetVote").val()=='true'){
+			swal({
+				title : "로그인 후 투표 참여가 가능합니다. 간단해요. 계정이 없으시면  가입해주세요.",
+				confirmButtonColor : "#ED2553"
+			});
+		}
+	
+	
+	
 		 $("#change_login_form").on("click", function() {
 			$(this).css("display", "none");
 			$(this).removeAttr("disabled");
@@ -365,6 +378,9 @@
 
 										});
 							});
+			
+			
+			
 	</script>
 
 </body>

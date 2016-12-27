@@ -67,23 +67,31 @@
 						<ul id="commentList" class="commentList">
 							<c:forEach var="comment" items="${commentList}">
 								<li>
-								<div class="commenterImage">
-									<img src="/image/profile/thumbnail/${userPhotoByCommentNoMap.get(comment.commentNo)}" />
-								</div>
-								<div class="commentText">
-									<p class="">${comment.commentContent}</p>
-									<span class="date sub-text">${comment.regDate}</span>
+									<div class="commenterImage">
+										<c:choose>
+											<c:when test="${fn:startsWith(userPhotoByCommentNoMap.get(comment.commentNo), 'fb_profile_image')}">
+												<img  src="${fn:replace(userPhotoByCommentNoMap.get(comment.commentNo),'fb_profile_image', '')}">
+											</c:when>
+											<c:otherwise>
+												<img src="/image/profile/thumbnail/${userPhotoByCommentNoMap.get(comment.commentNo)}" />
+											</c:otherwise>
+										</c:choose>
+									</div>
+									<div class="commentText">
+										<p class="">${comment.commentContent}</p>
+										<span class="date sub-text">${comment.regDate}</span>
 
-								</div>
-								<c:if test="${comment.userNo==user.userNo}">
-										<div id="delete_comment_${comment.commentNo}"  class="delete_btn_custom"><i class="material-icons">remove_circle_outline</i></div>
-								</c:if>
-							</li>
+									</div> <c:if test="${comment.userNo==user.userNo}">
+										<div id="delete_comment_${comment.commentNo}" class="delete_btn_custom">
+											<i class="material-icons">remove_circle_outline</i>
+										</div>
+									</c:if>
+								</li>
 							</c:forEach>
 							<!-- 댓글 들어가는곳 -->
 						</ul>
 
-					<div class="row">
+						<div class="row">
 						<form id="comment_form">
 							<input name="voteNo" type="hidden" value="${vote.voteNo}">
 							<div class="input-field col s8">
@@ -132,7 +140,11 @@
 				var convertedDate= jsDate.getFullYear()+"-"+(jsDate.getMonth()+1)+"-"+jsDate.getDate()+" "+jsDate.getHours()+":"+jsDate.getMinutes()+":"+jsDate.getSeconds()+"."+jsDate.getMilliseconds();
 				var row ="";
 				row +=  "<li><div class='commenterImage'>";
-				row +="<img src='/image/profile/thumbnail/"+data.user.userPhoto+"'/></div>"
+				if(data.user.userPhoto.startsWith("fb_profile_image")){
+					row +="<img src='"+data.user.userPhoto.replace("fb_profile_image","")+"'/></div>"
+				}else{
+					row +="<img src='/image/profile/thumbnail/"+data.user.userPhoto+"'/></div>"
+				}
 				row +="<div class='commentText'>";
 				row +="<p class=''>"+data.comment.commentContent+"</p>";
 				row +="<span class='date sub-text'>"+convertedDate+"</span></div>";
