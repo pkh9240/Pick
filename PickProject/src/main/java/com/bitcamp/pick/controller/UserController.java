@@ -106,6 +106,7 @@ public class UserController {
 			session.setAttribute("user", loginCheckMap.get("user"));
 		}
 		
+		
 		return loginCheckMap;
 
 	}
