@@ -193,6 +193,7 @@ public class VoteController {
 				Thumbnails.of(originalFile).crop(Positions.CENTER).size(100, 100).toFile(thumbnailFile);
 				choice.setPhoto(randomPhotoName);
 
+				
 				choiceService.addChoice(choice);
 				System.out.println("choice info " + i + ":" + choice);
 
