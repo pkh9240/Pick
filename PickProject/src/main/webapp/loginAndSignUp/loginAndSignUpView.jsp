@@ -146,7 +146,7 @@
 		FB.login(function(response) {
 		
 	    	  if (response.status === 'connected') {
-	    			FB.logout();
+	    			
 	    			FB.api('/me',{fields: 'email'}, function(user) {
 	    				alert(user.email);
 	  					var user = {"userEmail" : user.email,
