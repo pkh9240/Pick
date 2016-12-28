@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 
@@ -32,7 +34,14 @@
 		<div class="row">
 			<form id="update_form" class="col s12" enctype="multipart/form-data">
 				<div class="preview img-wrapper">
-					 <img class="get_preview" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
+				<c:choose>
+					<c:when test="${fn:startsWith(user.userPhoto, 'fb_profile_image')}">
+						<img class="get_preview" src="${fn:replace(user.userPhoto,'fb_profile_image', '')}">
+					</c:when>
+					<c:otherwise>
+						<img class="get_preview" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
+					</c:otherwise>
+				</c:choose>
 				</div>
 				<div class="file-upload-wrapper">
 					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" />

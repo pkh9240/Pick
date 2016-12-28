@@ -51,7 +51,13 @@
 				#{userGender:VARCHAR},
 				#{userAge:VARCHAR},
 				'user',
-				'defaultProfileImage.jpg')
+				<if test="userPhoto != null">
+  					 #{userPhoto:VARCHAR}
+  				</if>
+  				<if test="userPhoto == null">
+  					 'defaultProfileImage.jpg'
+  				</if>
+				)
 	</insert>
 	
 	<update id="updateUser" parameterType="user">

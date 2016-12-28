@@ -139,3 +139,12 @@ label img {
 	font-family: 'Hanna', serif !important;
 	
 }
+
+
+.share_btn img{
+	width:30px;
+	height:30px;
+	border-radius: 20%;
+	cursor: pointer;
+	
+}

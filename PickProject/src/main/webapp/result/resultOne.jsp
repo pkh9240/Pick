@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 
 <head>
@@ -66,7 +67,14 @@
 							<c:forEach var="comment" items="${commentList}">
 								<li>
 								<div class="commenterImage">
-									<img src="/image/profile/thumbnail/${userPhotoByCommentNoMap.get(comment.commentNo)}" />
+									<c:choose>
+											<c:when test="${fn:startsWith(userPhotoByCommentNoMap.get(comment.commentNo), 'fb_profile_image')}">
+												<img  src="${fn:replace(userPhotoByCommentNoMap.get(comment.commentNo),'fb_profile_image', '')}">
+											</c:when>
+											<c:otherwise>
+												<img src="/image/profile/thumbnail/${userPhotoByCommentNoMap.get(comment.commentNo)}" />
+											</c:otherwise>
+										</c:choose>
 									
 									
 								</div>
@@ -137,8 +145,16 @@
 						var jsDate = new Date(parsedDate);
 						var convertedDate= jsDate.getFullYear()+"-"+(jsDate.getMonth()+1)+"-"+jsDate.getDate()+" "+jsDate.getHours()+":"+jsDate.getMinutes()+":"+jsDate.getSeconds()+"."+jsDate.getMilliseconds();
 						var row ="";
+						
 						row +=  "<li><div class='commenterImage'>";
-						row +="<img src='/image/profile/thumbnail/"+data.user.userPhoto+"'/></div>"
+						if(data.user.userPhoto.startsWith("fb_profile_image")){
+							row +="<img src='"+data.user.userPhoto.replace("fb_profile_image","")+"'/></div>"
+						}else{
+							row +="<img src='/image/profile/thumbnail/"+data.user.userPhoto+"'/></div>"
+						}
+						
+						
+						
 						row +="<div class='commentText'>";
 						row +="<p class=''>"+data.comment.commentContent+"</p>";
 						row +="<span class='date sub-text'>"+convertedDate+"&nbsp;&nbsp;"+data.user.userName+"님</span></div>";

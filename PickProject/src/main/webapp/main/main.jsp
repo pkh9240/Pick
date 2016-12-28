@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <html>
 
@@ -20,6 +21,12 @@
 
 
 <body>
+		<!--  Hidden Data-->
+	<input type="hidden" id="fromGetVote" value="${fromGetVote}">
+	<input type="hidden" id="fromGetVoteNo" value="${fromGetVoteNo}">
+	<% session.removeAttribute("fromGetVote");%>
+	<% session.removeAttribute("fromGetVoteNo");%>
+
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
@@ -50,12 +57,16 @@
 				<div class="background" style="width: 360px">
 					<img src="/image/main/mainBackground3.png" style="width: 100%; height: auto">
 				</div>
-
-
-				<img class="circle" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg' : user.userPhoto}"> <span class="white-text name"> ${user.userName}</span> <span class="white-text email">${user.userEmail}</span>
-
-
-			</div>
+				<c:choose>
+					<c:when test="${fn:startsWith(user.userPhoto, 'fb_profile_image')}">
+						<img class="circle" src="${fn:replace(user.userPhoto,'fb_profile_image', '')}">
+					</c:when>
+					<c:otherwise>
+						<img class="circle" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg' : user.userPhoto}">
+					</c:otherwise>
+				</c:choose>
+				 <span class="white-text name"> ${user.userName}</span> <span class="white-text email">${user.userEmail}</span>
+				</div>
 		</li>
 
 
@@ -197,33 +208,22 @@
 	<script src="/main/tagsly/tagsly.js"></script>
 
 	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
-	
-	<script type="text/javascript">
-	window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '224865167968997',
-	      xfbml      : true,
-	      version    : 'v2.8'
-	    });
 
-	  
-	};
-	(function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/ko_KR/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	
-	function fb_logout(){
-		alert("ddd");
-		FB.logout();
-	}
-	
-	</script>
-	
-	<script type="text/javascript">
+<script type="text/javascript">
+
+		/* 공유를 통해 접근 */
+		if($("#fromGetVote").val()=='true'){
+			$.colorbox({
+				closeButton : "false",
+				top : "true",
+				iframe : "true",
+				href : "/vote/getVote/"+$("#fromGetVoteNo").val(),
+				width : "550px",
+				height : "550px"
+			});
+		}
+		
+		
 
 		/*투표 창 */
 		
@@ -284,7 +284,6 @@
 
 		/*로그아웃 버튼 */
 		$("#logout_btn").on("click", function() {
-			fb_logout();
 			location.href = "/user/logout";
 		});
 		
