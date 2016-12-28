@@ -131,7 +131,7 @@
 										<div class='day'>${vote.endDate.toString().split(' ')[2]}</div>
 										<div class='month'>${vote.endDate.toString().split(' ')[1]}</div>
 									</div>
-									<!--일단 첫번째 선택지 사진  -->
+									
 									<img src='/image/vote/original/${vote.choiceList.get(0).photo}'>
 								</div>
 								<div class='post-content'>
