@@ -22,7 +22,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col offset-s4 s4 center">
+			<div class="col offset-s2 s8 center">
 				<img class="responsive-img" style="width: 100px;" src="/image/main/pick160.png" />
 
 				<h5 class="indigo-text">Please, login into your account</h5>
