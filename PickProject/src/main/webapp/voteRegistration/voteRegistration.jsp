@@ -29,7 +29,7 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Vote Registration</a>
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;투표 등록</a>
 			</div>
 		</nav>
 	</div>

@@ -19,7 +19,7 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Admin Page</a>
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;관리자 페이지</a>
 			</div>
 		</nav>
 	</div>
@@ -172,7 +172,7 @@
 		<div class="navbar-fixed">
 			<nav class="custom-nav">
 				<div class="nav-wrapper">
-					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;카테고리 추가하기 </a>
+					<a href="#!" class="brand-logo left">&nbsp;&nbsp;카테고리 등록 </a>
 				</div>
 			</nav>
 		</div>
@@ -228,8 +228,8 @@
 
 							swal(
 									{
-										title : $("#content").val()
-												+ "카테고리를 추가 하시겠습니까?",
+										title : "["+$("#content").val()
+												+ "] 카테고리를 추가 하시겠습니까?",
 										type : "info",
 										confirmButtonColor : "#ED2553",
 										showCancelButton : true,

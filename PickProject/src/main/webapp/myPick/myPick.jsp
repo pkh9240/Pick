@@ -15,7 +15,7 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;My Pick</a>
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;내가 참여한 투표</a>
 			</div>
 		</nav>
 	</div>

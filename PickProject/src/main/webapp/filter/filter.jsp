@@ -17,7 +17,7 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;Filter</a>
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;필터링</a>
 			</div>
 		</nav>
 	</div>

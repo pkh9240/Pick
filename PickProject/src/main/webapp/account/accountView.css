@@ -241,4 +241,9 @@ input[type="file"]::-webkit-file-upload-button {
 
 }
 
+/* sweetalert custom */
+h2 {
+  font-size: 20px !important;
+
+}
 

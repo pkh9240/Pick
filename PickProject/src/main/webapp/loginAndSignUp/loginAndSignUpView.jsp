@@ -188,9 +188,9 @@ $("#fb_login_btn").on("click",function(){
 	    			
 	    		 });  
 	    	  } else if (response.status === 'not_authorized') {//사용자가 Facebook에 로그인 했지만 앱에 로그인 하지 않았다.
-	    			 alert("not_authorized");
+	    			 //alert("not_authorized");
 	    	  } else {     //사용자가 Facebook에 로그인 하지 않았으므로 앱에 로그인했는지 알수 없다.또는 FB.logout()이 호출 되었다.  (unknown)
-	    	   		alert("else");
+	    	   		//alert("else");
 	    	  }
 	   	},{//이메일 권한 요청  (반드시 필요)
 		      scope: 'email',
@@ -284,6 +284,7 @@ $("#fb_login_btn").on("click",function(){
 							swal({
 								title : "해당 이메일이 존재하지 않습니다.",
 								confirmButtonColor : "#ED2553"
+							
 							});
 							$("#userEmail").val("");
 							$("#userPassword").val("");
