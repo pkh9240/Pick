@@ -1033,11 +1033,9 @@ body {
     padding-left: 32px !important;
 }
 
-/**/
-
-
-/*드롭다운*/
-
-
-
-/*드롭다운*/s
+#chat_btn{
+	 position:fixed; !important;
+	 top:170px;
+	 left:25px;
+	 background-color: #ED2553 !important; 
+}

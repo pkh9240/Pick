@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -210,14 +211,13 @@ public class VoteController {
 		System.out.println("getVote-GET");
 		Vote vote = voteService.getVote(voteNo);
 		User user = (User) session.getAttribute("user");
-		
 		/*공유를 통하여 접근 하였을 경우*/
 		if(user==null){
 			session.setAttribute("fromGetVote","true");
 			session.setAttribute("fromGetVoteNo",voteNo);
 			return "forward:/loginAndSignUp/loginAndSignUpView.jsp";
 		}
-		
+
 		model.addAttribute("vote", vote);
 		model.addAttribute("user", user);
 		if (vote.getVoteType().equals("MULTI-CHOICE")) {

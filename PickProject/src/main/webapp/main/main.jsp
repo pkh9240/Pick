@@ -40,7 +40,9 @@
 			</div>
 		</nav>
 	</div>
-
+	    
+   <a id ="chat_btn" class="btn-floating btn-large waves-effect waves-light">Chat</a>
+	
 	<div class="float-nav">
 		<a href="#" class="menu-btn button-collapse" data-activates="slide-out">
 			<ul>
@@ -209,6 +211,8 @@
 
 	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
 
+
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script type="text/javascript">
 
 		/* 공유를 통해 접근 */
@@ -338,6 +342,25 @@
 			}
 			
 		});
+		
+		
+		/* 채팅 창 */
+	   	 var socket = io();
+		 var mail = '';
+		
+		   $("#chat_btn").on("click", function(){
+			   $.colorbox({
+					top : "true",
+					iframe : "true",
+					href : "/chat/chat",
+					width : "620px",
+					height : "650px",
+					closeButton : true,
+					scrolling : true
+				});
+		
+		   });
+		
 	   
 	</script>
 </body>
