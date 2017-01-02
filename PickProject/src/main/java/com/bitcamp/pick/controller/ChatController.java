@@ -111,6 +111,8 @@ public class ChatController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/plain;charset=UTF-8");
 
+		
+		
 		return new ResponseEntity<>(voteInfo.toJSONString(), headers, HttpStatus.OK);
 	}
 
