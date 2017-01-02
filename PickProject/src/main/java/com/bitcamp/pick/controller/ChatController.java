@@ -53,118 +53,73 @@ public class ChatController {
 	@Autowired
 	@Qualifier("voteServiceImpl")
 	private VoteService voteService;
-	
-    @Autowired
-    @Qualifier("servletContext")
-	private ServletContext servletContext; 
-	
-	
+
+
 	@Autowired
 	@Qualifier("interestServiceImpl")
 	private InterestService interestService;
 
-	@Value("#{commonProperties['profileThumbnailImageUploadPath']}")
-	String profileThumbnailImageUploadPath;
 
-	@Value("#{commonProperties['profileOriginalImageUploadPath']}")
-	String profileOriginalImageUploadPath;
-
-	@Value("#{commonProperties['interestThumbnailImageUploadPath']}")
-	String interestThumbnailImageUploadPath;
-
-	@Value("#{commonProperties['interestOriginalImageUploadPath']}")
-	String interestOriginalImageUploadPath;
 
 	public ChatController() {
 		System.out.println("ChatController Default Constructor");
 	}
-	
+
 	@RequestMapping(value = "chat", method = RequestMethod.GET)
-	public String chat(Model model, HttpSession session) throws Exception {
-		
-		System.out.println("==========================::[chat Method 시작]::======================================");
-		
-		User sessionUser = (User)session.getAttribute("user");
+	public String chat(Model model, HttpSession session,HttpServletRequest request) throws Exception {
+			
+		System.out.println("chat-GET");
+		User sessionUser = (User) session.getAttribute("user");
 		String userMail = sessionUser.getUserEmail();
-		
-		System.out.println("접속한 유저 : ["+userMail+"] ");
-		
 		ServletContext servletContext = session.getServletContext();
-        servletContext.setAttribute( userMail , sessionUser);
-        User applicationUser = (User)servletContext.getAttribute(userMail);
-        String appUserMail = applicationUser.getUserEmail();
-		System.out.println("ServletContext 에 저장후 다시 가져온  UserMail  : " + appUserMail);
-        System.out.println("==========================::[chat Method 끝]::======================================");
+		servletContext.setAttribute(userMail, sessionUser);
+		User applicationUser = (User) servletContext.getAttribute(userMail);
+		String appUserMail = applicationUser.getUserEmail();
 		
 		return "redirect:http://52.78.201.215:3000/chatServer/" + appUserMail;
 	}
 
-	
-	//node 채팅서버에서 요청한 정보를 return 하기 위한 method
-	@RequestMapping(value = "userJsonObject/{userKey:.+}", 
-			method = RequestMethod.GET)
-	public ResponseEntity<String> userJsonObject(@PathVariable("userKey") String userKey, HttpSession session) throws Exception {
-		
-        System.out.println("==========================::[userJsonObject 시작 ]::=================================");
-        System.out.println(" parameterCheck --> " + userKey);
+	// node 채팅서버에서 요청한 정보를 return 하기 위한 method
+	@RequestMapping(value = "userJsonObject/{userKey:.+}", method = RequestMethod.GET)
+	public ResponseEntity<String> userJsonObject(@PathVariable("userKey") String userKey, HttpSession session)
+			throws Exception {
+		System.out.println("userJsonObject-GET");
 		ServletContext servletContext = session.getServletContext();
-		User user = (User)servletContext.getAttribute(userKey);
-		System.out.println("ServletContext 에서 가져온 User도메인객체 확인 :" + user);
+		User user = (User) servletContext.getAttribute(userKey);
 		
 		JSONObject userInfo = new JSONObject();
 		userInfo.put("userName", user.getUserName());
 		userInfo.put("userPhoto", user.getUserPhoto());
-		
-		System.out.println("JSONString : " + userInfo.toJSONString());
-		
-		
+
 		HttpHeaders headers = new HttpHeaders();
-	    headers.add("Content-Type", "text/plain;charset=UTF-8");
-	    System.out.println("==========================::[userJsonObject 끝 ]::=================================");
-		return new ResponseEntity<>(
-				userInfo.toJSONString(),
-		        headers,
-		        HttpStatus.OK);
-	}
+		headers.add("Content-Type", "text/plain;charset=UTF-8");
 	
-	//node 채팅서버에서 요청한 정보를 return 하기 위한 method
-	@RequestMapping(value = "getVotebyChatServer/{voteKey:.+}", 
-			method = RequestMethod.GET)
+		return new ResponseEntity<>(userInfo.toJSONString(), headers, HttpStatus.OK);
+	}
+
+	// node 채팅서버에서 요청한 정보를 return 하기 위한 method
+	@RequestMapping(value = "getVotebyChatServer/{voteKey:.+}", method = RequestMethod.GET)
 	public ResponseEntity<String> getVotebyChatServer(@PathVariable("voteKey") int voteKey) throws Exception {
-       
-		System.out.println("==========================::[getVoteByChatServer 시작 ]::=================================");
-        System.out.println(" parameterCheck --> " + voteKey);
-        Vote vote = voteService.getVote(voteKey);
-        
+		System.out.println("getVotebyChatServer-GET");
+		Vote vote = voteService.getVote(voteKey);
+
 		JSONObject voteInfo = new JSONObject();
 		voteInfo.put("voteTitle", vote.getVoteTitle());
-		
-		
+
 		System.out.println("JSONString : " + voteInfo.toJSONString());
-		
+
 		HttpHeaders headers = new HttpHeaders();
-	    headers.add("Content-Type", "text/plain;charset=UTF-8");
-	    
-	    System.out.println("==========================::[getVoteByChatServer 끝]::=================================");
-		return new ResponseEntity<>(
-				voteInfo.toJSONString(),
-		        headers,
-		        HttpStatus.OK);
+		headers.add("Content-Type", "text/plain;charset=UTF-8");
+
+		return new ResponseEntity<>(voteInfo.toJSONString(), headers, HttpStatus.OK);
 	}
-	
-	
-	/* 채팅창에서 요청한  나의 정보 보기 */
+
+	/* 채팅창에서 요청한 나의 정보 보기 */
 	@RequestMapping(value = "getAccountBychat/{userMail:.+}", method = RequestMethod.GET)
-	public String getAccountBychat(@PathVariable("userMail") String userMail, Model model, HttpSession session) throws Exception {
-		System.out.println("getAccount- GET");
-		
-		System.out.println("인자값 확인  " +  userMail);
-		
-		ServletContext sc = session.getServletContext();
-		
-		User user = (User)sc.getAttribute(userMail);
-		
-		System.out.println("user정보 확인..." + user);
+	public String getAccountBychat(@PathVariable("userMail") String userMail, Model model, HttpSession session)
+			throws Exception {
+		System.out.println("getAccountBychat- GET");
+		User user = userService.getUserByUserEmail(userMail);
 
 		List<Interest> interestList = interestService.getInterestList();
 
@@ -173,15 +128,14 @@ public class ChatController {
 
 		return "forward:/account/accountView.jsp";
 	}
-	
-	
-	/*투표 하기 뷰 리턴 */
+
+	/* 투표 하기 뷰 리턴 */
 	@RequestMapping(value = "getVoteFromChat/{voteNo}", method = RequestMethod.GET)
 	public String getVote(@PathVariable("voteNo") int voteNo, Model model, HttpSession session) throws Exception {
 		System.out.println("getVoteFromChat-GET");
+		
 		Vote vote = voteService.getVote(voteNo);
 		User user = (User) session.getAttribute("user");
-	
 
 		model.addAttribute("vote", vote);
 		model.addAttribute("user", user);
@@ -192,9 +146,5 @@ public class ChatController {
 		}
 
 	}
-	
-	
-	
-	
-	
+
 }

@@ -58,6 +58,13 @@
 		SELECT *
 		FROM VOTE
 	</select>
+	
+	
+	<select id="getMyVoteList" resultMap="voteSelectMap">
+		SELECT *
+		FROM VOTE
+		WHERE USER_NO = #{value}
+	</select>
 
 
 	<select id="getVoteListByUserNo" parameterType="int" resultMap="voteSelectMap">

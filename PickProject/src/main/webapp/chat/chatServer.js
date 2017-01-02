@@ -111,5 +111,5 @@ io.on('connection', function(socket) {
 
 
 http.listen(3000, function() {
-	console.log('3000포트 연결됨.');
+	console.log('3000 port connected.');
 });

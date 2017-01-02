@@ -308,9 +308,11 @@ public class VoteController {
 		List<User> userList = userService.getUserList();
 
 		Map<Integer, String> userEmailMapByUserNoMap = new HashMap<Integer, String>();
+		Map<Integer, String> userNameMapByUserNoMap = new HashMap<Integer, String>();
 		Map<Integer, Integer> totalCountByVoteNoMap = new HashMap<Integer, Integer>();
 		for (User user : userList) {
 			userEmailMapByUserNoMap.put(user.getUserNo(), user.getUserEmail());
+			userNameMapByUserNoMap.put(user.getUserNo(), user.getUserName());
 		}
 
 		int totalCount = 0;
@@ -326,7 +328,48 @@ public class VoteController {
 		}
 		model.addAttribute("totalCountByVoteNoMap", totalCountByVoteNoMap);
 		model.addAttribute("userEmailMapByUserNoMap", userEmailMapByUserNoMap);
+		model.addAttribute("userNameMapByUserNoMap", userNameMapByUserNoMap);
 		model.addAttribute("voteList", voteList);
+		/*내가 등록한 투표, 내가 참여한 투표 같은 뷰를 쓰기 위하여 타입 으로 판단*/
+		model.addAttribute("type", "byOthers");
+		return "forward:/myPick/myPick.jsp";
+	}
+	
+	
+	/* 내가 등록한 투표 리스트 뷰 리턴 */
+	@RequestMapping(value = "getMyVoteList", method = RequestMethod.GET)
+	public String getMyVoteList(Model model, HttpSession session) throws Exception {
+		System.out.println("getMyVoteList GET");
+		
+		User sessionUser = (User) session.getAttribute("user");
+		List<Vote> voteList = voteService.getMyVoteList(sessionUser.getUserNo());
+		List<User> userList = userService.getUserList();
+
+		Map<Integer, String> userEmailMapByUserNoMap = new HashMap<Integer, String>();
+		Map<Integer, String> userNameMapByUserNoMap = new HashMap<Integer, String>();
+		Map<Integer, Integer> totalCountByVoteNoMap = new HashMap<Integer, Integer>();
+		for (User user : userList) {
+			userEmailMapByUserNoMap.put(user.getUserNo(), user.getUserEmail());
+			userNameMapByUserNoMap.put(user.getUserNo(), user.getUserName());
+		}
+
+		int totalCount = 0;
+		for (Vote vote : voteList) {
+
+			totalCount = 0;
+
+			for (Choice choice : vote.getChoiceList()) {
+				totalCount += choice.getChoiceCount();
+			}
+
+			totalCountByVoteNoMap.put(vote.getVoteNo(), totalCount);
+		}
+		model.addAttribute("totalCountByVoteNoMap", totalCountByVoteNoMap);
+		model.addAttribute("userEmailMapByUserNoMap", userEmailMapByUserNoMap);
+		model.addAttribute("userNameMapByUserNoMap", userNameMapByUserNoMap);
+		model.addAttribute("voteList", voteList);
+		/*내가 등록한 투표, 내가 참여한 투표 같은 뷰를 쓰기 위하여 타입 으로 판단*/
+		model.addAttribute("type", "byMe");
 
 		return "forward:/myPick/myPick.jsp";
 	}

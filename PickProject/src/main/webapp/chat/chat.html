@@ -388,6 +388,7 @@ body {
 			var title = '';
 			var voteTitle = '';
 			var port = location.href.split('3000')[0]+'8080';
+			
 			socket.on(
 							"enter",
 							function(data, data2, data3) {
@@ -426,7 +427,7 @@ body {
 									row += '<div class="name">'+ userlist[i].name + '</div>';
 									row += '</div></li>';
 									$(".list").append(row);
-									alert(row);
+								
 								}
 							});
 

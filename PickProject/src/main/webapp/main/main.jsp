@@ -80,16 +80,19 @@
 
 
 		<li><a href="#" id="myAccount_btn">
-				<i class="material-icons">account_circle</i>My Account
+				<i class="material-icons">account_circle</i>내 정보 보기 
 			</a></li>
 		<li><a href="#" id="myPick_btn">
-				<i class="material-icons">playlist_add_check</i>My Pick
+				<i class="material-icons">playlist_add_check</i>내가 참여한 투표
 			</a></li>
+		<li><a href="#" id="myAddPick_btn">
+				<i class="material-icons">playlist_add_check</i>내가 등록한 투표
+		</a></li>	
 		<li><a href="#" id="filter_btn">
-				<i class="material-icons">filter_list</i>Filtering
-			</a></li>
+				<i class="material-icons">filter_list</i>투표 필터링
+							</a></li>
 		<li><a href="#" id="addPick_btn">
-				<i class="material-icons">add_circle_outline</i>Add Pick
+				<i class="material-icons">add_circle_outline</i>투표 추가하기
 			</a></li>
 
 		<!-- 관리자 메뉴 -->
@@ -97,23 +100,23 @@
 		<li><div class="divider"></div></li>
 		<c:if test="${user.userType=='admin'}">
 
-			<li><a class="subheader">Admin Menu</a></li>
+			<li><a class="subheader">관리자 메뉴</a></li>
 			<li><div class="divider"></div></li>
 
 			<li><a href="#" id="adminPage_btn_user">
-					<i class="material-icons">people</i>User
+					<i class="material-icons">people</i>회원정보 관리
 				</a></li>
 			<li><a href="#" id="adminPage_btn_pick">
-					<i class="material-icons">playlist_add_check</i>Pick
+					<i class="material-icons">playlist_add_check</i>투표 관리
 				</a></li>
 			<li><a href="#" id="adminPage_btn_category">
-					<i class="material-icons">list</i>Category
+					<i class="material-icons">list</i>카테고리 관리
 				</a></li>
 			<li><div class="divider"></div></li>
 		</c:if>
 
 		<li><a href="#" id="logout_btn">
-				<i class="material-icons">exit_to_app</i>Logout
+				<i class="material-icons">exit_to_app</i>로그아웃
 			</a></li>
 	</ul>
 
@@ -181,7 +184,7 @@
 											<c:set var="totalCount" value="${totalCount+choice.choiceCount}"/>
 									</c:forEach>
 									
-									<div class='post-meta'>${totalCount} PICK</div>
+									<div class='post-meta'>VOTE NO:${vote.voteNo} <span id="pick_count">${totalCount} PICK</span> </div>
 								</div>
 							</div>
 						</li>
@@ -291,12 +294,24 @@
 			location.href = "/user/logout";
 		});
 		
-		/* 투표한 리스트 */
+		/* 내가 참여한 투표 리스트 */
 		$("#myPick_btn").on("click", function() {
 			$.colorbox({
 				top : "true",
 				iframe : "true",
 				href : "/vote/getVoteList",
+				width : "1000px",
+				height : "600px"
+			});
+		});
+		
+		
+		/* 내가 등록한 투표 리스트 */
+		$("#myAddPick_btn").on("click", function() {
+			$.colorbox({
+				top : "true",
+				iframe : "true",
+				href : "/vote/getMyVoteList",
 				width : "1000px",
 				height : "600px"
 			});

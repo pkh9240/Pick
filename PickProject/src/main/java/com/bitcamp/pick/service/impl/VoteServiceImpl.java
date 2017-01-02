@@ -88,6 +88,13 @@ public class VoteServiceImpl implements VoteService{
 		System.out.println("VoteServiceImpl-filter");
 		return voteDao.filter(filterMap);
 	}
+
+	@Override
+	public List<Vote> getMyVoteList(int userNo) throws Exception {
+		System.out.println("VoteServiceImpl-getMyVoteList");
+		return voteDao.getMyVoteList(userNo);
+	}
+	
 	
 
 

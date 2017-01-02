@@ -61,6 +61,11 @@ public class VoteDaoImpl implements VoteDao{
 	public List<Vote> filter(Map<String, Object> filterMap) throws Exception {
 		return sqlSession.selectList("VoteMapper.filter", filterMap);
 	}
+
+	@Override
+	public List<Vote> getMyVoteList(int userNo) throws Exception {
+		return sqlSession.selectList("VoteMapper.getMyVoteList",userNo);
+	}
 	
 	
 }

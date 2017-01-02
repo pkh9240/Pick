@@ -50,11 +50,11 @@
 
 								<tr>
 
-									<th data-field="Email">Email</th>
-									<th data-field="Name">Name</th>
-									<th data-field="Gender">Gender</th>
-									<th data-field="Age">Age</th>
-									<th data-field="Password">Password</th>
+									<th data-field="Email">이메일</th>
+									<th data-field="Name">닉네임</th>
+									<th data-field="Gender">성별</th>
+									<th data-field="Age">연령대</th>
+									<th data-field="Password">비밀번호</th>
 								</tr>
 
 							</thead>
@@ -93,13 +93,13 @@
 							<thead>
 
 								<tr>
-									<th data-field="UserEmail">UserEmail</th>
-									<th data-field="Category">Category</th>
-									<th data-field="Title">Title</th>
-									<th data-field="VoteType">VoteType</th>
-									<th data-field="EndDate">End Date</th>
-									<th data-field="PicnNum">Pick Count</th>
-									<th data-field="Result">Result</th>
+									<th data-field="UserEmail">투표 등록자</th>
+									<th data-field="Category">카테고리</th>
+									<th data-field="Title">제목</th>
+									<th data-field="VoteType">투표 타입</th>
+									<th data-field="EndDate">종료일</th>
+									<th data-field="PicnNum">투표 참여수 </th>
+									<th data-field="Result">&nbsp;&nbsp;&nbsp;결과 보기</th>
 								</tr>
 							</thead>
 
@@ -143,8 +143,8 @@
 							<thead>
 								<tr>
 
-									<th data-field="#">Content</th>
-									<th data-field="#">Image</th>
+									<th data-field="#">카테고리 이름</th>
+									<th data-field="#">이미지</th>
 
 								</tr>
 							</thead>

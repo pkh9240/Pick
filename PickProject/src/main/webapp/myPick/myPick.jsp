@@ -15,7 +15,8 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;내가 참여한 투표</a>
+				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;<c:if test="${type=='byMe'}">내가 등록한 투표</c:if>
+																	   <c:if test="${type=='byOthers'}">내가 참여한 투표</c:if></a>
 			</div>
 		</nav>
 	</div>
@@ -33,19 +34,24 @@
 				<table class="datatable">
 					<thead>
 						<tr>
-							<th data-field="UserEmail">UserEmail</th>
-							<th data-field="Category">Category</th>
-							<th data-field="Title">Title</th>
-							<th data-field="VoteType">VoteType</th>
-							<th data-field="EndDate">End Date</th>
-							<th data-field="PicnNum">Pick Count</th>
-							<th data-field="Result">Result</th>
+							<th data-field="UserEmail">
+							 						  <c:if test="${type=='byMe'}">투표 번호</c:if>
+													  <c:if test="${type=='byOthers'}">투표 등록자</c:if>
+							</th>
+							<th data-field="Category">카테고리</th>
+							<th data-field="Title">제목</th>
+							<th data-field="VoteType">투표 타입</th>
+							<th data-field="EndDate">종료일</th>
+							<th data-field="PicnNum">투표 참여수</th>
+							<th data-field="Result">&nbsp;&nbsp;&nbsp;결과 보기</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="vote" items="${voteList}">
 							<tr>
-							<td>${userEmailMapByUserNoMap.get(vote.userNo)}</td>
+							<td><c:if test="${type=='byMe'}">${vote.voteNo}</c:if>
+								<c:if test="${type=='byOthers'}">${userNameMapByUserNoMap.get(vote.userNo)}</c:if>
+							</td>
 							<td>${vote.voteCategory}</td>
 							<td>${vote.voteTitle}</td>
 							<td>${vote.voteType}</td>

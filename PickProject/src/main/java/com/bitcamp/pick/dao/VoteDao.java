@@ -12,6 +12,7 @@ public interface VoteDao {
 	public Vote getVote(int voteNo)throws Exception ; 
     public List<Vote> getVoteList() throws Exception;
     public List<Vote> getVoteListByUserNo(int userNo) throws Exception;
+    public List<Vote> getMyVoteList(int userNo) throws Exception;
     public List<Vote> search(String word) throws Exception;
     public List<Vote> filter(Map<String,Object> filterMap) throws Exception;
 	

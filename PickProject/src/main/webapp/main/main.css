@@ -849,7 +849,6 @@ body {
 	
     color: #999999;
     text-decoration: none;
-    padding-left: 125px;
     font-size: 10px;
     padding-top: 3px;
 }
@@ -859,7 +858,9 @@ body {
     height: auto !important;
     opacity: 1 !important;
 }
-
+#pick_count{
+	padding-left: 55px;
+}
 
 /**/
 
