@@ -217,7 +217,7 @@ public class VoteController {
 			session.setAttribute("fromGetVoteNo",voteNo);
 			return "forward:/loginAndSignUp/loginAndSignUpView.jsp";
 		}
-
+		model.addAttribute("fromChat", false);
 		model.addAttribute("vote", vote);
 		model.addAttribute("user", user);
 		if (vote.getVoteType().equals("MULTI-CHOICE")) {

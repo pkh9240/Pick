@@ -6,29 +6,24 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel='stylesheet prefetch' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!--Import Google Icon Font-->
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style type="text/css">
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
-
-*, *:before, *:after {
-	box-sizing: border-box;
-}
 
 body {
 	background: #C5DDEB;
 	font: 14px/20px "Lato", Arial, sans-serif;
-	/* padding: 40px 0; */
 	color: white;
 }
 
 .container {
-	margin: 0 auto;
-	width: 600px;
-	background: #444753;
-	border-radius: 5px;
+	width: 550px;
+	background: #fce4ec;
 }
 
 .people-list {
-	width: 190px;
+	width: 185px;
 	float: left;
 	font-size: 10px;
 }
@@ -54,7 +49,6 @@ body {
 
 .people-list ul {
 	padding: 20px;
-	height: 585px;
 }
 
 .people-list ul li {
@@ -63,6 +57,7 @@ body {
 
 .people-list img {
 	float: left;
+	margin-top: 15px;
 }
 
 .people-list .about {
@@ -79,16 +74,10 @@ body {
 }
 
 .chat {
-	width: 410px;
+	width: 363px;
 	float: left;
 	background: #F2F5F8;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
 	color: #434651;
-}
-
-.chat-header {
-	height: 65px !important;
 }
 
 .chat .chat-header {
@@ -126,7 +115,7 @@ body {
 	padding: 30px 30px 20px;
 	border-bottom: 2px solid white;
 	overflow-y: scroll;
-	height: 420px;
+	height: 240px;
 }
 
 .chat .chat-history .message-data {
@@ -140,7 +129,7 @@ body {
 
 .chat .chat-history .message {
 	color: white;
-	padding: 18px 20px;
+	padding: 5px 20px 5px 20px;
 	line-height: 26px;
 	font-size: 12px;
 	border-radius: 7px;
@@ -158,21 +147,21 @@ body {
 	width: 0;
 	position: absolute;
 	pointer-events: none;
-	border-bottom-color: #86BB71;
+	border-bottom-color: #fce4ec;
 	border-width: 10px;
 	margin-left: -10px;
 }
 
 .chat .chat-history .my-message {
-	background: #86BB71;
+	background: #fce4ec;
 }
 
 .chat .chat-history .other-message {
-	background: #94C2ED;
+	background: #f8bbd0;
 }
 
 .chat .chat-history .other-message:after {
-	border-bottom-color: #94C2ED;
+	border-bottom-color: #f8bbd0;
 	left: 93%;
 }
 
@@ -181,7 +170,7 @@ body {
 }
 
 .chat .chat-message textarea {
-	width: 100%;
+	width: 290px;
 	height: 55px !important;
 	border: none;
 	padding: 10px 20px;
@@ -198,8 +187,9 @@ body {
 }
 
 .chat .chat-message button {
-	float: right;
-	color: #94C2ED;
+	position: relative;
+	left: 240px;
+	color: #ED2553;
 	font-size: 16px;
 	text-transform: uppercase;
 	border: none;
@@ -209,7 +199,7 @@ body {
 }
 
 .chat .chat-message button:hover {
-	color: #75b1e8;
+	color: #ED2553;
 }
 
 .online, .offline, .me {
@@ -218,7 +208,7 @@ body {
 }
 
 .online {
-	color: #86BB71;
+	color: #fce4ec;
 }
 
 .offline {
@@ -226,7 +216,7 @@ body {
 }
 
 .me {
-	color: #94C2ED;
+	color: #f8bbd0;
 }
 
 .align-left {
@@ -253,6 +243,50 @@ body {
 	clear: both;
 	height: 0;
 }
+
+.email {
+	font-size: 10px;
+	margin-top: 3px;
+}
+
+/*툴팁*/
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 250px;
+	background-color: #f8bbd0;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	margin-left: -60px;
+	opacity: 0;
+	transition: opacity 1s;
+	font-size: 15px;
+}
+
+.tooltip .tooltiptext::after {
+	font-size: 15px;
+	position: absolute;
+	top: 100%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
 </style>
 
 
@@ -269,9 +303,9 @@ body {
 			<div class="chat-header clearfix">
 
 				<div class="chat-about">
-					<div class="chat-with">Chat with Vincent Porter</div>
+					<div class="chat-with"></div>
 				</div>
-				<i class="fa fa-star"></i>
+
 			</div>
 			<!-- end chat-header -->
 
@@ -284,12 +318,15 @@ body {
 			<!-- end chat-history -->
 
 			<div class="chat-message clearfix">
-				<textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
 
-				<i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp; <i class="fa fa-file-image-o"></i>
+				<textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="2"></textarea>
+				<i id="info_btn" class="material-icons tooltip">info_outline <span class="tooltiptext"> 투표 검색 =>#투표 투표번호<br />내정보 보기 => #내정보
+				</span>
+				</i>
+
+
 
 				<button>Send</button>
-
 			</div>
 			<!-- end chat-message -->
 
@@ -298,7 +335,7 @@ body {
 
 	</div>
 	<!-- end container -->
-	
+
 	<script id="message-template" type="text/x-handlebars-template">
 
   <li class="clearfix">
@@ -321,8 +358,8 @@ body {
       <span class="message-data-name" >{{nameOutput}}</span> <i class="fa fa-circle me"></i>
     </div>
     <div class="message other-message float-right">
-       <a href="{{ipPort}}/chat/getVoteFromChat/{{messageOutput}}">
-               {{title}} 투표하러 가기</a>
+       <a href="{{ipPort}}/chat/getVoteFromChat/{{no}}">
+               {{voteTitle}}</a>
     </div>
   </li>
 </script>
@@ -338,7 +375,7 @@ body {
     </div>
   </li>
 </script>
-	
+
 	<script id="message-response-template-tag" type="text/x-handlebars-template">
 
    <li>
@@ -347,15 +384,15 @@ body {
       <span class="message-data-time"> {{time}}, Today</span>
     </div>
     <div class="message my-message">
-     <a href="{{ipPort}}/chat/getVoteFromChat/{{response}}">
-          투표하러 가기</a>
+     <a href="{{ipPort}}/chat/getVoteFromChat/{{no}}">
+         {{voteTitle}} </a>
     </div>
   </li>
 </script>
 
 	<script id="alarm" type="text/x-handlebars-template">
   <li class="align-center">
-    <div style="height:35px;">
+    <div style="height:45px;">
       {{alarm}} ({{alarmMail}})님이 입장하셨습니다. 
     </div>
   </li>
@@ -375,7 +412,6 @@ body {
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 	<script type="text/javascript">
-	
 		(function() {
 			var json;
 			var name = '';
@@ -387,22 +423,26 @@ body {
 			var alarmMail = '';
 			var title = '';
 			var voteTitle = '';
-			var port = location.href.split('3000')[0]+'8080';
-			
-			socket.on(
+			var port = location.href.split('3000')[0] + '8080';
+
+			socket
+					.on(
 							"enter",
 							function(data, data2, data3) {
 								name = data;
 								photoPath = data2;
 								userKey = data3;
 								$(".chat-with").text(name);
-								var img='';
-								if(photoPath.startsWith("fb_profile_image")){
-									img ="<img src='"+photoPath.replace("fb_profile_image","")+"' alt='avatar' height='35px' , width='35px'/>"
-								}else{
+								var img = '';
+								if (photoPath.startsWith("fb_profile_image")) {
+									img = "<img src='"
+											+ photoPath.replace(
+													"fb_profile_image", "")
+											+ "' alt='avatar' height='35px' , width='35px'/>"
+								} else {
 									img = "<img src ='"+port+"/image/profile/thumbnail/"+photoPath+"' alt='avatar' height='35px' , width='35px' />";
 								}
-								
+
 								$(".chat-header").prepend(img);
 							});
 
@@ -410,28 +450,41 @@ body {
 				talkerName = data;
 			});
 
-			socket.on(
+			socket
+					.on(
 							"userlist",
 							function(userlist) {
 								$('.list').text('');
 								for (var i = 0; i < userlist.length; i++) {
 
 									var row = '<li class="clearfix">';
-									if(userlist[i].photoPath.startsWith("fb_profile_image")){
-										row +="<img src='"+userlist[i].photoPath.replace("fb_profile_image","")+"' alt='avatar' height='35px' , width='35px'/>"
-									}else{
+									if (userlist[i].photoPath
+											.startsWith("fb_profile_image")) {
+										row += "<img src='"
+												+ userlist[i].photoPath
+														.replace(
+																"fb_profile_image",
+																"")
+												+ "' alt='avatar' height='35px' , width='35px'/>"
+									} else {
 										row += "<img src ='"+port+"/image/profile/thumbnail/"+userlist[i].photoPath+"' alt='avatar' height='35px' , width='35px' />";
 									}
 									row += '<div class="about">';
-									row += '<div class="email">'+ userlist[i].userKey + '</div>';
-									row += '<div class="name">'+ userlist[i].name + '</div>';
+									row += '<div class="email">'
+											+ userlist[i].userKey + '</div>';
+									row += '<div class="name">'
+											+ userlist[i].name + '</div>';
 									row += '</div></li>';
 									$(".list").append(row);
-								
+
 								}
 							});
 
-
+			//======================== 추가된 부분 ===========================//
+			socket.on("myInfo", function(userMail) {
+				location.href = port + "/chat/getAccountFromChat/" + userMail;
+			});
+			//======================== 추가된 부분 ===========================//
 
 			var chat = {
 				messageToSend : '',
@@ -453,6 +506,9 @@ body {
 					socket.on("broadcast", this.response.bind(this));
 					socket.on("enterAlarm", this.enterAlarm.bind(this));
 					socket.on("exitAlarm", this.exitAlarm.bind(this));
+					socket.on("voteTitle", this.renderTagging.bind(this));
+					socket.on("tagbroadcast", this.renderResponseTagging
+							.bind(this));
 				},
 				render : function() {
 					this.scrollToBottom();
@@ -471,23 +527,21 @@ body {
 						this.$textarea.val('');
 					}
 				},
-				renderTag : function() {
-					
+				renderTag : function(title, voteNo) {
+
 					this.scrollToBottom();
 					if (this.messageToSend.trim() !== '') {
 						var template = Handlebars.compile($(
 								"#message-template-tag").html());
 						var context = {
-							messageOutput : this.messageToSend,
+							no : voteNo,
 							nameOutput : name,
 							ipPort : port,
-							title : voteTitle,
+							voteTitle : title,
 							time : this.getCurrentTime()
 						};
 
 						this.$chatHistoryList.append(template(context));
-						this.messageToSend += "###";
-						socket.emit('chat message', this.messageToSend, name);
 						this.scrollToBottom();
 						this.$textarea.val('');
 					}
@@ -508,13 +562,14 @@ body {
 
 				},
 
-				renderResponseTag : function(msg) {
+				renderResponseTag : function(title, voteNo) {
 					// responses (broadcast 이용 , 나를 제외한 모두에게 보이기)
 					var templateResponse = Handlebars.compile($(
 							"#message-response-template-tag").html());
 					var contextResponse = {
-						response : this.getResponseMsg(msg),
+						no : voteNo,
 						talkerNameOutput : talkerName,
+						voteTitle : title,
 						ipPort : port,
 						time : this.getCurrentTime()
 					};
@@ -555,27 +610,21 @@ body {
 				},
 
 				response : function(msg) {
-
-					if (msg.match("###")) {
-						filterMsg = msg.substring(0, 5);
-						this.renderResponseTag(filterMsg);
-						return;
-					}
 					this.renderResponse(msg);
+				},
+				renderResponseTagging : function(title, voteNo) {
+					this.renderResponseTag(title, voteNo);
+				},
+				renderTagging : function(title, voteNo) {
+					this.renderTag(title, voteNo);
 				},
 				addMessage : function() {
 					this.nameOutput = this.$nameOutput
 					this.messageToSend = this.$textarea.val()
 					//#투표 일 경우 다른로직으로 보냄 
 					if (this.messageToSend.match('#투표')) {
-						this.messageToSend = this.$textarea.val().substring(4,
-								9);
-					
-						this.renderTag();
+						socket.emit('chat message', this.messageToSend, name);
 						return;
-					}
-					if (this.messageToSend.match("#내정보")) {
-						location.href = port+"/chat/getAccountBychat/"+ alarmMail;
 					}
 
 					this.render();
@@ -622,7 +671,11 @@ body {
 				}
 			};
 			searchFilter.init();
-
+			var checkUnload = true;
+			$(window).on("unload", function() {
+				//if (checkUnload) return "채팅방에서 나가집니다."; 
+				socket.emit("leave", userKey, name);
+			});
 		})();
 	</script>
 

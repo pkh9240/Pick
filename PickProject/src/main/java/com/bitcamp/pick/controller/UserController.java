@@ -237,7 +237,7 @@ public class UserController {
 
 		model.addAttribute("user", user);
 		model.addAttribute("interestList", interestList);
-
+		model.addAttribute("fromChat", false);
 		return "forward:/account/accountView.jsp";
 
 	}

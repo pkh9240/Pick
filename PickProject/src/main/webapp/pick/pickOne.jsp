@@ -46,16 +46,19 @@
 
 	<div id="container">
 		<div class="row">
+			<c:if test="${fromChat==true}">
+				<div id="goToChat_btn" class="col s4 center btn">
+					채팅방 가기 
+				</div> 
+			</c:if> 
 			<div class="col s12 center">
 				<br />
 				<div class="card-panel">
 
 					<div id="voteTitle">
 						<span id="voteTitle_content" class="flow-text">${vote.voteTitle}</span>
-					</div>
-					<br />
-					<div id="voteContent">${vote.voteContent}</div>
-				</div>
+					</div> <br /> <div id="voteContent">${vote.voteContent}</div>
+		</div>
 			</div>
 		</div>
 		<div class="row">
@@ -171,7 +174,11 @@
 	
 	
 	
+	/*뒤로 가기 */
 	
+	$("#goToChat_btn").on("click",function(){
+		location.href="/chat/chat";
+	});
 	
 	
 	

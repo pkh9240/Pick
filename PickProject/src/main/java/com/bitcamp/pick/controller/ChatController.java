@@ -97,7 +97,6 @@ public class ChatController {
 		return new ResponseEntity<>(userInfo.toJSONString(), headers, HttpStatus.OK);
 	}
 
-	// node 채팅서버에서 요청한 정보를 return 하기 위한 method
 	@RequestMapping(value = "getVotebyChatServer/{voteKey:.+}", method = RequestMethod.GET)
 	public ResponseEntity<String> getVotebyChatServer(@PathVariable("voteKey") int voteKey) throws Exception {
 		System.out.println("getVotebyChatServer-GET");
@@ -117,17 +116,17 @@ public class ChatController {
 	}
 
 	/* 채팅창에서 요청한 나의 정보 보기 */
-	@RequestMapping(value = "getAccountBychat/{userMail:.+}", method = RequestMethod.GET)
+	@RequestMapping(value = "getAccountFromChat/{userMail:.+}", method = RequestMethod.GET)
 	public String getAccountBychat(@PathVariable("userMail") String userMail, Model model, HttpSession session)
 			throws Exception {
-		System.out.println("getAccountBychat- GET");
+		System.out.println("getAccountFromChat- GET");
 		User user = userService.getUserByUserEmail(userMail);
 
 		List<Interest> interestList = interestService.getInterestList();
 
 		model.addAttribute("user", user);
 		model.addAttribute("interestList", interestList);
-
+		model.addAttribute("fromChat", true);
 		return "forward:/account/accountView.jsp";
 	}
 
@@ -141,6 +140,7 @@ public class ChatController {
 
 		model.addAttribute("vote", vote);
 		model.addAttribute("user", user);
+		model.addAttribute("fromChat", true);
 		if (vote.getVoteType().equals("MULTI-CHOICE")) {
 			return "forward:/pick/pickMulti.jsp";
 		} else {

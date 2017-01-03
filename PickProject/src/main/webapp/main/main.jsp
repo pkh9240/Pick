@@ -368,8 +368,8 @@
 					top : "true",
 					iframe : "true",
 					href : "/chat/chat",
-					width : "620px",
-					height : "650px",
+					width : "550px",
+					height : "550px",
 					closeButton : true,
 					scrolling : true
 				});

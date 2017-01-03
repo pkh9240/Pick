@@ -37,6 +37,11 @@
 	</div>
 	<div id="container">
 		<div class="row">
+			<c:if test="${fromChat==true}">
+				<div id="goToChat_btn" class="col s4 center btn">
+					채팅방 가기 
+				</div> 
+			</c:if> 
 			<div class="col  s12 center">
 				<br />
 				<div class="card-panel">
@@ -174,6 +179,12 @@
 	/*트위터 공유*/
 	$("#share_btn_twitter").on("click",function(){
 		 window.open("https://twitter.com/share?text="+$("#voteTitle_content").text()+"&url="+location.href,"newwindow","width=552,height=690,toolbar=0,menubar=0"); 
+	});
+	
+/*뒤로 가기 */
+	
+	$("#goToChat_btn").on("click",function(){
+		location.href="/chat/chat";
 	});
 	
 	

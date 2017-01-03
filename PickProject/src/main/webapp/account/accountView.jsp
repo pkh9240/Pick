@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib  prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
@@ -20,7 +20,7 @@
 
 <body>
 
- 
+
 
 	<div class="form">
 		<div class="navbar-fixed">
@@ -32,16 +32,19 @@
 		</div>
 
 		<div class="row">
+			<c:if test="${fromChat==true}">
+				<div id="goToChat_btn" class="col s4 center btn">채팅방 돌아가기</div>
+			</c:if>
 			<form id="update_form" class="col s12" enctype="multipart/form-data">
 				<div class="preview img-wrapper">
-				<c:choose>
-					<c:when test="${fn:startsWith(user.userPhoto, 'fb_profile_image')}">
-						<img class="get_preview" src="${fn:replace(user.userPhoto,'fb_profile_image', '')}">
-					</c:when>
-					<c:otherwise>
-						<img class="get_preview" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
-					</c:otherwise>
-				</c:choose>
+					<c:choose>
+						<c:when test="${fn:startsWith(user.userPhoto, 'fb_profile_image')}">
+							<img class="get_preview" src="${fn:replace(user.userPhoto,'fb_profile_image', '')}">
+						</c:when>
+						<c:otherwise>
+							<img class="get_preview" src="/image/profile/thumbnail/${empty user.userPhoto?'defaultProfileImage.jpg':user.userPhoto}">
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="file-upload-wrapper">
 					<input type="file" name="profileImage" class="file-upload-native" accept=".gif,.jpeg,.jpg,.png" />
@@ -62,11 +65,10 @@
 							<c:forEach var="interest" items="${interestList}">
 								<option value="${interest.interestNo}" data-icon="/image/interest/thumbnail/${interest.interestPhoto}" class="circle" ${user.interestList.contains(interest)?'selected':''}>${interest.content}</option>
 							</c:forEach>
-						</select>
-						<label>Interest</label>
+						</select> <label>Interest</label>
 					</div>
 				</div>
-			
+
 				<div class="row">
 
 					<div class="input-field col s6">
@@ -74,8 +76,7 @@
 							<option value="" disabled selected>Gender</option>
 							<option value="male" ${user.userGender=='male' ?'selected':''}>male</option>
 							<option value="female" ${user.userGender=='female' ? 'selected':''}>female</option>
-						</select>
-						<label>Gender</label>
+						</select> <label>Gender</label>
 					</div>
 					<div class="input-field col s6">
 						<select name="userAge">
@@ -86,8 +87,7 @@
 							<option value="40s" ${user.userAge=='40s' ? 'selected':''}>40대</option>
 							<option value="50s" ${user.userAge=='50s' ? 'selected':''}>50대</option>
 							<option value="60s" ${user.userAge=='60s' ? 'selected':''}>60대 이상</option>
-						</select>
-						<label>Age</label>
+						</select> <label>Age</label>
 					</div>
 
 					<div class="col s12"></div>
@@ -106,13 +106,18 @@
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script src="/account/accountView.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 	<script type="text/javascript">
-		
+	/*뒤로 가기 */
+	
+	$("#goToChat_btn").on("click",function(){
+		location.href="/chat/chat";
+	});
+	
 		
 		$("#save_btn").on(
 				"click",

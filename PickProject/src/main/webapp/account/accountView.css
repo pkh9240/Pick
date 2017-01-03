@@ -246,4 +246,6 @@ h2 {
   font-size: 20px !important;
 
 }
-
+#goToChat_btn{
+	background-color: #ED2553;
+}
