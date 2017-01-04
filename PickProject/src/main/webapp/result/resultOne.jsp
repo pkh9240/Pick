@@ -101,6 +101,7 @@
 							<div class="input-field col s8">
 								<i class="material-icons prefix">account_circle</i>
 								<input name="commentContent" id="comment" type="text" class="validate">
+								<input type="text" style="display: none;" />
 								<label for="comment">댓글</label>
 							</div>
 						</form>
@@ -120,7 +121,13 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	<script src="/result/resultOne.js"></script>
 	<script type="text/javascript">
-		
+	$("#comment").keypress(function(e) { 
+		if (e.keyCode == 13){
+	        $('#add_comment_btn').trigger('click');
+	     }    
+	});
+	
+	
 	
 			$("#commentList").scrollTop($("#commentList")[0].scrollHeight);
 	
