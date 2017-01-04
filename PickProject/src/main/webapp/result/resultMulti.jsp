@@ -118,6 +118,7 @@
 	<script src="/result/resultMulti.js"></script>
 
 	<script type="text/javascript">
+	/* Enter 입력시 addComment Event 강제 발생 */
 	$("#comment").keypress(function(e) { 
 		if (e.keyCode == 13){
 	        $('#add_comment_btn').trigger('click');
