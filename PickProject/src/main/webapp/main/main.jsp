@@ -369,7 +369,7 @@
 					iframe : "true",
 					href : "/chat/chat",
 					width : "550px",
-					height : "550px",
+					height : "540px",
 					closeButton : true,
 					scrolling : true
 				});
