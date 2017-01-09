@@ -27,39 +27,26 @@
 			<form id="filter-form">
 				<div class="row">
 					<div class="col s12 emp1"></div>
-					<div class="col s12">Gender</div>
-					<div class="col s12">
+					
+					<div class="input-field col s12">
+						<select name="gender" multiple>
+							<option value="" disabled>Gender</option>
+							<option  id="male" value="male">Male</option>
+							<option  id="female" value="female">Female</option>
+						</select> <label>Gender</label>
 
-
-						<input type="checkbox" name="gender" class="filled-in" id="male" />
-						<label for="male">Male</label>
-
-						<input type="checkbox" name="gender" class="filled-in" id="female" />
-						<label for="female">Female</label>
 					</div>
-
-					<div class="col s12 emp1"></div>
-					<div class="col s12">Age</div>
-					<div class="col s12">
-
-
-						<input type="checkbox" name="age" class="filled-in" id="one" />
-						<label for="one">10대</label>
-
-						<input type="checkbox" name="age" class="filled-in" id="two" />
-						<label for="two">20대</label>
-
-						<input type="checkbox" name="age" class="filled-in" id="three" />
-						<label for="three">30대</label>
-
-						<input type="checkbox" name="age" class="filled-in" id="four" />
-						<label for="four">40대</label>
-
-						<input type="checkbox" name="age" class="filled-in" id="five" />
-						<label for="five">50대</label>
-
-						<input type="checkbox" name="age" class="filled-in" id="six" />
-						<label for="six">60대</label>
+						<div class="col s12 emp1"></div>
+					<div class="input-field col s12">
+						<select name="age" multiple>
+							<option value="" disabled>Age</option>
+							<option id="one">10대</option>
+							<option id="two">20대</option>
+							<option id="three">30대</option>
+							<option id="four">40대</option>
+							<option id="five">50대</option>
+							<option id="six">60대 이상</option>
+						</select> <label>Age</label>
 						<div id='hidden_authority'>
 						<input id="hidden_age_one" type="hidden" name="one" value="false" />
 						<input id="hidden_age_two" type="hidden" name="two" value="false" />
@@ -72,8 +59,7 @@
 					</div>
 
 					</div>
-
-
+			
 					<div class="col s12 emp1"></div>
 					<div class="input-field col s12">
 						<select name="interestNoList" multiple>
@@ -108,25 +94,25 @@
 		
 		$("#filter_btn").on("click",function(){
 			/* 아무것도 선택하지 않았을 경우 권한 선택하지 않은것으로 간주함 */
-	    	var ageCount =  $("input[name='age']:checkbox:checked").length;
+	    	var ageCount =  $('select[name="age"] option:selected').length;
 	    	if(ageCount==0){
 				$("#hidden_authority > input[id^=hidden_age]").val("true");
 			}else{
-				$("input:checkbox:checked").each(function(){
+				$('select[name="age"] option:selected').each(function(){
 					$("div>input[id^='hidden_age_"+$(this).attr("id")+"']").val("true");
 				});
 			}
 	    	
-	    	var genderCount= $("input[name='gender']:checkbox:checked").length;
+	    	var genderCount= $('select[name="gender"] option:selected').length;
 	    	if(genderCount==0){
 				$("#hidden_authority > input[id^=hidden_gender]").val("true");
 			}else{
-				$("input:checkbox:checked").each(function(){
+				$('select[name="gender"] option:selected').each(function(){
 					$("div>input[id^='hidden_gender_"+$(this).attr("id")+"']").val("true");
 				});
 			}
 	    	
-	    	
+
 	    	$("#filter-form").attr("method","post").attr("action","/vote/filter").attr("target","_parent").submit();
 	    	
 		});

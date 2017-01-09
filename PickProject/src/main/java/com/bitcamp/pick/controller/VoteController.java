@@ -484,7 +484,7 @@ public class VoteController {
 			@RequestParam(value = "interestNoList", required = false) List<Integer> interestNoList, Model model)
 			throws Exception {
 		System.out.println("filter -POST");
-
+		System.out.println(voteA​uthority);
 		Map<String, Object> filterMap = new HashMap<String, Object>();
 		filterMap.put("voteA​uthority", voteA​uthority);
 		List<Interest> interestList = new ArrayList<Interest>();
