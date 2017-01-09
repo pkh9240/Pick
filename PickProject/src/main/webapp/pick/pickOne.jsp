@@ -39,18 +39,18 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;투표 하기</a>
+				<a href="#!" class="brand-logo left"><c:if test="${fromChat==true}">
+					<div id="goToChat_btn" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="채팅방으로 가기">
+						<i class="material-icons">keyboard_backspace</i>
+					</div>
+			</c:if> 투표 하기</a>
 			</div>
 		</nav>
 	</div>
 
 	<div id="container">
 		<div class="row">
-			<c:if test="${fromChat==true}">
-				<div id="goToChat_btn" class="col s4 center btn">
-					채팅방 가기 
-				</div> 
-			</c:if> 
+			
 			<div class="col s12 center">
 				<br />
 				<div class="card-panel">
