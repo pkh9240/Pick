@@ -495,7 +495,7 @@ public class UserController {
 		
 
 		  // 제목 설정
-		  msg.setSubject(subject);
+		  msg.setSubject(subject, "text/html;charset=UTF-8");
 		      
 		  // 보내는 사람의 메일주소
 		  Address fromAddr = new InternetAddress(sender);
