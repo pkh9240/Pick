@@ -96,10 +96,25 @@
 					</div>
 
 				</form>
+				
+				<form id="find_password_form" class="col s12" method="post" style="display: none">
+					<div class='row'>
+						<div class='input-field col s12'>
+							<input class='validate' type='email' name='findPasswordUserEmail' id="findPasswordUserEmail" value="" />
+							<label for='email'>Enter your email</label>
+						</div>
+					</div>
+								
+					<div class='row'>
+						<div id="find_password_btn" class='col s12 btn btn-large waves-effect indigo'>Send Password</div>
+					</div>
+					
+				</form>
 			</div>
 			<div class="col offset-s4 s4 center">
 				<br />
 				<div id="change_register_form" class="change_btn" style="cursor: pointer;">Create account</div>
+				<div id="change_find_password_form" class="change_btn" style="cursor: pointer;">Forgot Password?</div>
 				<div id="change_login_form" class="change_btn" style="cursor: pointer; display: none;">login</div>
 			</div>
 
@@ -234,14 +249,18 @@ $("#fb_login_btn").on("click",function(){
 	
 	
 	
-		 $("#change_login_form").on("click", function() {
+		$("#change_login_form").on("click", function() {
 			$(this).css("display", "none");
 			$(this).removeAttr("disabled");
 			$("#register_form").css("display", "none");
 			$("#register_form").attr("disabled", "disabled");
+			$("#find_password_form").css("display", "none");
+			$("#find_password_form").attr("disabled", "disabled");
+			
 
 			$("#login_form").css("display", "inline");
-			$("#change_register_form").css("display", "inline");
+			$("#change_register_form").css("display", "block");
+			$("#change_find_password_form").css("display", "block");
 		});
 
 		$("#change_register_form").on("click", function() {
@@ -249,9 +268,25 @@ $("#fb_login_btn").on("click",function(){
 			$(this).removeAttr("disabled");
 			$("#login_form").css("display", "none");
 			$("#login_form").attr("disabled", "disabled");
+			$("#find_password_form").css("display", "none");
+			$("#find_password_form").attr("disabled", "disabled");
 
 			$("#register_form").css("display", "inline");
-			$("#change_login_form").css("display", "inline");
+			$("#change_login_form").css("display", "block");
+			$("#change_find_password_form").css("display", "block");
+		}); 
+		$("#change_find_password_form").on("click", function() {
+			$(this).css("display", "none");
+			$(this).removeAttr("disabled");
+			
+			$("#login_form").css("display", "none");
+			$("#login_form").attr("disabled", "disabled");
+			$("#register_form").css("display", "none");
+			$("#register_form").attr("disabled", "disabled");
+			
+			$("#find_password_form").css("display", "inline");
+			$("#change_register_form").css("display", "block");
+			$("#change_login_form").css("display", "block");
 		}); 
 
 
@@ -377,6 +412,72 @@ $("#fb_login_btn").on("click",function(){
 										});
 							});
 			
+		
+			/*비밀번호 찾기*/
+			$('#find_password_btn').on('click', function(){
+				
+				var userEmail = $("#findPasswordUserEmail").val();
+				var user = {
+						"userEmail" : userEmail
+						
+				};
+				if($("#findPasswordUserEmail").val()==''){
+					swal({
+						title : "이메일을 입력 하세요.",
+						confirmButtonColor : "#ED2553"
+					});
+					return;
+				}
+				
+				$.ajax({
+					url : "/user/checkDuplication",
+					type : 'POST',
+					accept : "application/json",
+					contentType : "application/json; charset=utf-8",
+					data : JSON.stringify(user),
+					dataType : "json",
+					success : function(data) {
+						if (data.isDuplicated == false) {
+							swal({
+								title : "존재하지 않는 이메일입니다.",
+								confirmButtonColor : "#ED2553"
+							});
+							$("#findPasswordUserEmail").val("");
+					
+						} else {
+							$.ajax({
+							    type: "GET",
+								url:"/user/findPassword/"+userEmail,
+								success: function (data) {
+								
+						  	    }
+							});
+							
+							swal({
+								title : userEmail+"로 임시 비밀번호가 발송되었습니다.",
+								confirmButtonColor : "#ED2553"
+							});
+							
+						
+
+						}
+					},
+					error : function(jqXHR, textStatus,
+							errorThrown) {
+						swal("Error");
+					}
+
+				});
+				
+			
+				
+			});
+
+				
+				
+				
+			
+				
 			
 			
 	</script>

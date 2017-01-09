@@ -7,8 +7,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.UUID;
 
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -33,6 +41,7 @@ import com.bitcamp.pick.domain.Vote;
 import com.bitcamp.pick.service.InterestService;
 import com.bitcamp.pick.service.UserService;
 import com.bitcamp.pick.service.VoteService;
+import com.bitcamp.pick.web.util.SMTPAuthenticator;
 
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
@@ -444,5 +453,71 @@ public class UserController {
 		
 		return result;
 	}
+	/*비밀번호 찾기 */
+	@RequestMapping( value="findPassword/{userEmail:.+}", method=RequestMethod.GET )
+	public void findPassword(@PathVariable("userEmail") String userEmail, HttpSession session) throws Exception{
+
+		System.out.println("findPassword - GET");
+	
+		String sender = "pickyoutest01@gmail.com";
+		String receiver = userEmail;
+		String subject ="[PICK!] 요청하신 임시비밀번호가 발송되었습니다.!";
+		String tempPassword = ((int)(Math.random() * 8999)+1000)+"";
+		
+		String content = "<h2 style='color:red'>"+tempPassword+"</h2>";
+		content+= "임시 비밀번호입니다.  로그인하여 수정해주세요!";
+		Properties property = new Properties();
+
+	
+		property.put("mail.smtp.user", "pickyoutest01@gmail.com");
+		property.put("mail.smtp.host", "smtp.gmail.com");
+		property.put("mail.smtp.port", "465");
+		property.put("mail.smtp.starttls.enable", "true");
+		property.put("mail.smtp.auth", "true");
+		property.put("mail.smtp.debug", "true");
+		property.put("mail.smtp.socketFactory.port", "465");
+		property.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		property.put("mail.smtp.socketFactory.fallback", "false");
+
+
+		try {
+		  Authenticator auth = new SMTPAuthenticator();
+		  Session mailSession = Session.getInstance(property, auth);
+		  User user=userService.getUserByUserEmail(receiver);
+		  user.setUserPassword(tempPassword);
+		  userService.updatePassword(user);
+		   
+		  // 메일을 전송할 때 상세한 상황을 콘솔에 출력한다.
+		  mailSession.setDebug(true);
+		      
+		  // 메일의 내용을 담기 위한 객체
+		  MimeMessage msg = new MimeMessage(mailSession);
+		
+
+		  // 제목 설정
+		  msg.setSubject(subject);
+		      
+		  // 보내는 사람의 메일주소
+		  Address fromAddr = new InternetAddress(sender);
+		  msg.setFrom(fromAddr);
+		      
+		  // 받는 사람의 메일주소
+		  Address toAddr = new InternetAddress(receiver);
+		  msg.addRecipient(Message.RecipientType.TO, toAddr);
+		      
+		  // 메시지 본문의 내용과 형식, 캐릭터 셋 설정
+		  msg.setContent(content, "text/html;charset=UTF-8");
+		      
+		  // 발송하기
+		  Transport.send(msg);
+		
+		
+		} catch (Exception mex) {
+		  mex.printStackTrace();
+		  return;
+		}
+	
+	}
+	
 
 }

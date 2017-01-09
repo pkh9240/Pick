@@ -464,13 +464,18 @@ public class VoteController {
 		System.out.println("search -GET ");
 
 		List<Vote> voteList = voteService.search(word);
-		/* 검색 결과가 없을 경우 */
+		/* 검색 결과가 없을 경우(모든 투표 리스트 ) */
 		if (voteList.size() == 0) {
-			return "forward:/user/main";
+			voteList = voteService.getVoteList();
+			model.addAttribute("fromSearch",true);
+			model.addAttribute("noData",true);
+			model.addAttribute("voteList", voteList);
+			return "forward:/main/main.jsp";
 		}
 
 		model.addAttribute("voteList", voteList);
-
+		model.addAttribute("fromSearch", true);
+		model.addAttribute("noData",false);
 		return "forward:/main/main.jsp";
 	}
 	/* 필터링 */
@@ -493,10 +498,30 @@ public class VoteController {
 				filterMap.put("interestList", interestList);
 			}
 		}
+		
 		List<Vote> voteList = voteService.filter(filterMap);
+		List<Vote> filteredVoteList = new ArrayList<Vote>();
+		
+		for (Vote vote: voteList){
+			int maleCheck=0;
+			int genderCheck=0;
+			
+			VoteAuthority voteA​uthorityFromList = vote.getVoteAuthority();
+			if((voteA​uthorityFromList.isMale()==true) && voteA​uthorityFromList.isMale()==voteA​uthority.isMale()) maleCheck++;
+			if((voteA​uthorityFromList.isFemale()==true) && voteA​uthorityFromList.isFemale()==voteA​uthority.isFemale()) maleCheck++;
+			if((voteA​uthorityFromList.isOne()==true) && voteA​uthorityFromList.isOne()==voteA​uthority.isOne()) genderCheck++;
+			if((voteA​uthorityFromList.isTwo()==true) && voteA​uthorityFromList.isTwo()==voteA​uthority.isTwo()) genderCheck++;
+			if((voteA​uthorityFromList.isThree()==true) && voteA​uthorityFromList.isThree()==voteA​uthority.isThree()) genderCheck++;
+			if((voteA​uthorityFromList.isFour()==true) && voteA​uthorityFromList.isFour()==voteA​uthority.isFour()) genderCheck++;
+			if((voteA​uthorityFromList.isFive()==true) && voteA​uthorityFromList.isFive()==voteA​uthority.isFive()) genderCheck++;
+			if((voteA​uthorityFromList.isSix()==true) && voteA​uthorityFromList.isSix()==voteA​uthority.isSix()) genderCheck++;
 
-		model.addAttribute("voteList", voteList);
-
+			if(maleCheck > 0 &&  genderCheck >0){
+				filteredVoteList.add(vote);
+			}
+		}
+		model.addAttribute("voteList", filteredVoteList);
+		
 		return "forward:/main/main.jsp";
 
 	}

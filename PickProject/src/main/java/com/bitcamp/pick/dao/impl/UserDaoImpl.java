@@ -62,4 +62,10 @@ public class UserDaoImpl implements UserDao {
 		return sqlSession.selectList("UserMapper.getUserList");
 	}
 
+	@Override
+	public void updatePassword(User user) throws Exception {
+		System.out.println("UserDaoImpl-updatePassword");
+		sqlSession.update("UserMapper.updatePassword",user); 
+	}
+
 }

@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/main/main.css">
 <link rel="stylesheet" href="/main/tagsly/tagsly.css">
 <link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
 
 
@@ -24,8 +25,14 @@
 		<!--  Hidden Data-->
 	<input type="hidden" id="fromGetVote" value="${fromGetVote}">
 	<input type="hidden" id="fromGetVoteNo" value="${fromGetVoteNo}">
+	
 	<% session.removeAttribute("fromGetVote");%>
 	<% session.removeAttribute("fromGetVoteNo");%>
+
+	<input type="hidden" id="noData" value="${noData}">
+	<input type="hidden" id="fromSearch" value="${fromSearch}">
+	
+
 
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
@@ -41,9 +48,9 @@
 		</nav>
 	</div>
 	    
-   <a id ="chat_btn" class="btn-floating btn-large waves-effect waves-light">Chat</a>
-	
-	<div class="float-nav">
+    <a id ="chat_btn" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="right" data-delay="50" data-tooltip="실시간 채팅"><i id="chat_icon" class="material-icons">chat</i></a>
+    <a id ="addPick_btn" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="right" data-delay="50" data-tooltip="투표 등록"><i id="add_icon" class="material-icons">edit</i></a>
+	<div class="float-nav tooltipped" data-position="right" data-delay="50" data-tooltip="메뉴">
 		<a href="#" class="menu-btn button-collapse" data-activates="slide-out">
 			<ul>
 				<li class="line"></li>
@@ -52,7 +59,9 @@
 			</ul>
 		</a>
 	</div>
-
+	<a id ="home_btn" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="right" data-delay="50" data-tooltip="홈"><i id="home_icon" class="material-icons">home</i></a>
+	
+	
 	<ul id="slide-out" class="side-nav">
 		<li>
 			<div class="userView">
@@ -91,9 +100,9 @@
 		<li><a href="#" id="filter_btn">
 				<i class="material-icons">filter_list</i>투표 필터링
 							</a></li>
-		<li><a href="#" id="addPick_btn">
+	<!-- 	<li><a href="#" id="addPick_btn">
 				<i class="material-icons">add_circle_outline</i>투표 추가하기
-			</a></li>
+			</a></li> -->
 
 		<!-- 관리자 메뉴 -->
 
@@ -213,7 +222,7 @@
 	<script src="/main/tagsly/tagsly.js"></script>
 
 	<script src="/node_modules/jquery-colorbox/jquery.colorbox-min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script type="text/javascript">
@@ -345,7 +354,7 @@
 				var resizedWidth = realWidth/mok;
 				var resizedHeight = realHeight/mok;
 			
-				$(this).parent().parent().height(resizedHeight+75);
+				$(this).parent().parent().height(resizedHeight+65);
 			});
 			
 		/* 검색  */
@@ -356,6 +365,20 @@
 				location.href="/vote/search/"+word;	
 			}
 			
+		});
+	
+		 if($('#fromSearch').val()=='true'){
+			if($('#noData').val()=='true'){
+				swal({
+					title : "검색 결과가 존재하지 않습니다.",
+					confirmButtonColor : "#ED2553"
+				});
+			}
+		} 
+		
+		/*home btn*/
+		$("#home_btn").on("click",function(){
+			location.href="/user/main";
 		});
 		
 		

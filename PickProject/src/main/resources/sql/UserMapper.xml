@@ -69,6 +69,12 @@
 		WHERE USER_NO=#{userNo}
 	</update>
 	
+	<update id="updatePassword" parameterType="user">
+		UPDATE USERS
+		SET USER_PWD=#{userPassword:VARCHAR}
+		WHERE USER_NO=#{userNo}
+	</update>
+	
 	
 	<select id="getUserList"  resultMap="userSelectMap">
 			SELECT *

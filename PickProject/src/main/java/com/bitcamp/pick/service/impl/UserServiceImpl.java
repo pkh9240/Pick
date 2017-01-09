@@ -115,6 +115,11 @@ public class UserServiceImpl implements UserService {
 		System.out.println(" UserServiceImpl-getUserList");
 		return userDao.getUserList();
 	}
+	@Override
+	public void updatePassword(User user) throws Exception {
+		System.out.println(" UserServiceImpl-updatePassword");
+		userDao.updatePassword(user);
+	}
 
 	
 
