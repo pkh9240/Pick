@@ -182,7 +182,7 @@ $("#fb_login_btn").on("click",function(){
 							
 								} else { //계정이 존재 하지 않을  경우 상세 정보를 입력 받는다. 
 									swal({
-										title : "해당 계정이 가입이 되어있지 않습니다. 가입하시겠습니까?",
+										title : "환영합니다. 상세 정보를 입력해주세요.",
 										confirmButtonColor : "#ED2553"
 									},function(isConfirm) {
 										if (isConfirm) {
