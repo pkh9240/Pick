@@ -79,7 +79,7 @@
 									</div>
 									<div class="commentText">
 										<p class="">${comment.commentContent}</p>
-										<span class="date sub-text">${comment.regDate}</span>
+										<span class="date sub-text">${comment.regDate}&nbsp;&nbsp;${userNameByCommentNoMap.get(comment.commentNo)}님</span>
 
 									</div> <c:if test="${comment.userNo==user.userNo}">
 										<div id="delete_comment_${comment.commentNo}" class="delete_btn_custom">
@@ -154,13 +154,19 @@
 				}else{
 					row +="<img src='/image/profile/thumbnail/"+data.user.userPhoto+"'/></div>"
 				}
+				
+				
+				
+				
+				
 				row +="<div class='commentText'>";
 				row +="<p class=''>"+data.comment.commentContent+"</p>";
-				row +="<span class='date sub-text'>"+convertedDate+"</span></div>";
+				row +="<span class='date sub-text'>"+convertedDate+"&nbsp;&nbsp;"+data.user.userName+"님</span></div>";
 				row +="<div id='delete_comment_"+data.comment.commentNo+"' class='delete_btn_custom'><i class='material-icons'>remove_circle_outline</i></div></li>";
+			
+				
 				$("#commentList").append(row);
 				$("#comment").val("");
-
 				$("#commentList").scrollTop($("#commentList")[0].scrollHeight);
 			}
 		});
