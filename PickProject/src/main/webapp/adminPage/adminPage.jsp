@@ -54,7 +54,7 @@
 									<th data-field="Name">닉네임</th>
 									<th data-field="Gender">성별</th>
 									<th data-field="Age">연령대</th>
-									<th data-field="Password">비밀번호</th>
+									<!-- <th data-field="Password">비밀번호</th> -->
 								</tr>
 
 							</thead>
@@ -66,7 +66,7 @@
 										<td>${user.userName}</td>
 										<td>${user.userGender=='male'?'남자':'여자'}</td>
 										<td>${user.userAge.replace('s','대')}</td>
-										<td>${user.userPassword}</td>
+										<%-- <td>${user.userPassword}</td> --%>
 									</tr>
 
 								</c:forEach>

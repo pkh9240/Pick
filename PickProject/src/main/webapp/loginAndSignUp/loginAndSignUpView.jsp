@@ -3,6 +3,7 @@
 <html>
 
 <head>
+<title>간단한 투표는 Pick!</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="/node_modules/jquery-colorbox/colorbox.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
@@ -92,7 +93,7 @@
 					<br />
 
 					<div class='row'>
-						<div id="register_btn" class='col s12 btn btn-large waves-effect indigo'>Register</div>
+						<div id="register_btn" class='col s12 btn btn-large waves-effect indigo'>Next</div>
 					</div>
 
 				</form>

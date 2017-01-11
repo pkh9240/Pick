@@ -360,7 +360,7 @@
 		}
     
     	var form = new FormData($("#vote_reg_form")[0]);
-
+	
 		swal({
 			title : "투표를 등록 하시겠습니까?",
 			type : "info",
@@ -402,6 +402,7 @@
 	
 	
 	$('#endDate').on("change",function(){
+	
 		if(todayAtMidn > new Date($(this).val())){
 			swal({
 				title : "오늘 이후의 날짜를 선택하세요. ",

@@ -26,15 +26,17 @@
 		<div class="navbar-fixed">
 			<nav class="custom-nav">
 				<div class="nav-wrapper">
-					<a href="#!" class="brand-logo left">&nbsp;&nbsp;&nbsp;내 정보 보기</a>
+					<a href="#!" class="brand-logo left">	<c:if test="${fromChat==true}">
+					<div id="goToChat_btn" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="채팅방으로 가기">
+						<i class="material-icons">keyboard_backspace</i>
+					</div>
+			</c:if>내 정보 보기</a>
 				</div>
 			</nav>
 		</div>
 
 		<div class="row">
-			<c:if test="${fromChat==true}">
-				<div id="goToChat_btn" class="col s4 center btn">채팅방 돌아가기</div>
-			</c:if>
+
 			<form id="update_form" class="col s12" enctype="multipart/form-data">
 				<div class="preview img-wrapper">
 					<c:choose>

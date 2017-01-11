@@ -34,9 +34,9 @@
 				<table class="datatable">
 					<thead>
 						<tr>
-							<th data-field="UserEmail">
-							 						  <c:if test="${type=='byMe'}">투표 번호</c:if>
-													  <c:if test="${type=='byOthers'}">투표 등록자</c:if>
+							<th data-field="UserEmail">투표 번호
+							 						 <%--  <c:if test="${type=='byMe'}">투표 번호</c:if>
+													  <c:if test="${type=='byOthers'}">투표 등록자</c:if> --%>
 							</th>
 							<th data-field="Category">카테고리</th>
 							<th data-field="Title">제목</th>
@@ -49,8 +49,10 @@
 					<tbody>
 						<c:forEach var="vote" items="${voteList}">
 							<tr>
-							<td><c:if test="${type=='byMe'}">${vote.voteNo}</c:if>
-								<c:if test="${type=='byOthers'}">${userNameMapByUserNoMap.get(vote.userNo)}</c:if>
+							<td>
+								${vote.voteNo}
+								<%-- <c:if test="${type=='byMe'}">${vote.voteNo}</c:if>
+								<c:if test="${type=='byOthers'}">${userNameMapByUserNoMap.get(vote.userNo)}</c:if> --%>
 							</td>
 							<td>${vote.voteCategory}</td>
 							<td>${vote.voteTitle}</td>

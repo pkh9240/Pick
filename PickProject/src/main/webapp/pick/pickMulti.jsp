@@ -31,7 +31,8 @@
 	<div class="navbar-fixed">
 		<nav class="custom-nav">
 			<div class="nav-wrapper">
-				<a href="#!" class="brand-logo left"><c:if test="${fromChat==true}">
+				<a href="#!" class="brand-logo left">
+				<c:if test="${fromChat==true}">
 					<div id="goToChat_btn" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="채팅방으로 가기">
 						<i class="material-icons">keyboard_backspace</i>
 					</div>

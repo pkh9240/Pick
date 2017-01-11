@@ -6,6 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
+<title>간단한 투표는 Pick!</title>
 <!--Import Google Icon Font-->
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- Compiled and minified CSS -->
@@ -142,7 +143,8 @@
 							<div class='post-module'>
 								<div class='thumbnail'>
 									<div class='date'>
-										<div class='day'>${vote.endDate.toString().split(' ')[2]}</div>
+									
+										<div class='day'>${vote.endDate.getDate()}</div>
 										<div class='month'>${vote.endDate.toString().split(' ')[1]}</div>
 									</div>
 									

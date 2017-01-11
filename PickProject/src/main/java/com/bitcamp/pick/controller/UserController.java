@@ -465,7 +465,8 @@ public class UserController {
 		String tempPassword = ((int)(Math.random() * 8999)+1000)+"";
 		
 		String content = "<h2 style='color:red'>"+tempPassword+"</h2>";
-		content+= "임시 비밀번호입니다.  로그인하여 수정해주세요!";
+		content+= "임시 비밀번호입니다.  이 비밀번호로 로그인 해주세요!";
+		content+= "<br/><br/><a href='http://52.78.201.215:8080'>로그인 화면으로 바로가기</a>";
 		Properties property = new Properties();
 
 	
