@@ -155,6 +155,7 @@
 	
 	/*Facebook 공유 */
 	$("#share_btn_facebook").on("click",function(){
+	
 			var serverImagePath =  location.href.split('8080')[0]+'8080'+$("#first_img").attr('src');
 			
 		    FB.ui({
