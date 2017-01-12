@@ -49,9 +49,9 @@
 					<label for="voteContent">CONTENT</label>
 				</div>
 				<div class="input-field col s12" id="endend">
-
-					<input name="endDate" id="endDate" type="date" class="datepicker">
-					<label for="endDate">END DATE</label>
+					<input name="endDate" id="endDate" type="hidden">
+					<input name="endDate_first" id="endDate_first" type="date" class="datepicker">
+					<label for="endDate_first">END DATE</label>
 				</div>
 
 				<div class="input-field col s12" id="catecate">
@@ -197,24 +197,24 @@
 					<div id="genderdiv" class="col offset-s2 s4">
 						GENDER<br> <br>
 						<input name="gender" type="checkbox" id="male" />
-						<label for="male">Male</label> <br>
+						<label for="male">남자</label> <br>
 						<input name="gender" type="checkbox" id="female" />
-						<label for="female">Female</label> <br>
+						<label for="female">여자</label> <br>
 					</div>
 					<div id="agediv" class="col s6">
 						AGE<br> <br>
 						<input name="age" type="checkbox" id="one" value="" />
-						<label for="one">10s</label> <br>
+						<label for="one">10대</label> <br>
 						<input name="age" type="checkbox" id="two" />
-						<label for="two">20s</label> <br>
+						<label for="two">20대</label> <br>
 						<input name="age" type="checkbox" id="three" />
-						<label for="three">30s</label> <br>
+						<label for="three">30대</label> <br>
 						<input name="age" type="checkbox" id="four" />
-						<label for="four">40s</label> <br>
+						<label for="four">40대</label> <br>
 						<input name="age" type="checkbox" id="five" />
-						<label for="five">50s</label> <br>
+						<label for="five">50대</label> <br>
 						<input name="age" type="checkbox" id="six" />
-						<label for="six">More than 60</label> <br>
+						<label for="six">60대 이상</label> <br>
 					</div>
 					<div id='hidden_authority'>
 						<input type="hidden" name="one" value="false" />
@@ -266,7 +266,7 @@
     		});
     		return;
     	}
-    	
+    
     	if($("input[name='endDate']").val()==''){
     		swal({
     			title:"투표 종료일을 선택하세요.",
@@ -371,6 +371,7 @@
 
 		}, function(isConfirm) {
 			if (isConfirm) {
+					
 				$.ajax({
 					type : "post",
 					url : "/vote/addVote",
@@ -401,8 +402,8 @@
 	var todayAtMidn = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 	
 	
-	$('#endDate').on("change",function(){
-	
+	$('#endDate_first').on("change",function(){
+		
 		if(todayAtMidn > new Date($(this).val())){
 			swal({
 				title : "오늘 이후의 날짜를 선택하세요. ",
@@ -411,6 +412,9 @@
 				closeOnConfirm : false,
 			});
 			$(this).val('');	
+		}else{
+			$('#endDate').val($(this).val());
+			$(this).val($(this).val().substring(0,10));
 		}
 	});
 	  

@@ -47,28 +47,7 @@ $(function() {
 	});
 	$('.modal').modal();
 
-	/*팝업창*/
-
-	$('#pick10000').on("click", function() {
-		$.colorbox({
-
-			iframe : "true",
-			href : "../pick/pickOne.jsp",
-			width : "800px",
-			height : "900px"
-		});
-
-	});
-	$('#pick10001').on("click", function() {
-		$.colorbox({
-
-			iframe : "true",
-			href : "../pick/pickMulti.jsp",
-			width : "800px",
-			height : "900px"
-		});
-
-	});
+	
 
 	/*관심사 드롭다운*/
 	$('select').material_select();

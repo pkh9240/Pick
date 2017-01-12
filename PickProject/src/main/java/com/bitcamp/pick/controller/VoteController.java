@@ -2,7 +2,9 @@ package com.bitcamp.pick.controller;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,11 +91,11 @@ public class VoteController {
 
 	/* 투표 등록 */
 	@RequestMapping(value = "addVote", method = RequestMethod.POST)
-	public @ResponseBody Vote addVote(@ModelAttribute("vote") Vote vote,
+	public @ResponseBody Vote addVote(@ModelAttribute("vote") Vote vote,@RequestParam("endDate") Timestamp endDate,
 			MultipartHttpServletRequest multipartHttpServletRequest, Model model, HttpSession session,
 			@ModelAttribute VoteAuthority voteA​uthority) throws Exception {
 		System.out.println("addVote-POST");
-	
+		System.out.println("날짜:"+endDate);
 		String voteOriginalImageUploadPathOnServer = session.getServletContext().getRealPath("/image/vote/original");
 		String voteThumbnailImageUploadPathOnServer = session.getServletContext().getRealPath("/image/vote/thumbnail");
 		

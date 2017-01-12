@@ -1,6 +1,7 @@
 package com.bitcamp.pick.domain;
 
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Vote {
 	private String voteTitle;
 	private String voteContent;
 	private int voteHits;
-	private Date endDate;
+	private Timestamp endDate;
 	private String voteType;
 	private int voteMax;
     private List<Choice> choiceList;	
@@ -79,7 +80,7 @@ public class Vote {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(Timestamp endDate) {
 		this.endDate = endDate;
 	}
 

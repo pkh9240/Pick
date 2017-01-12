@@ -143,9 +143,9 @@
 							<div class='post-module'>
 								<div class='thumbnail'>
 									<div class='date'>
-									
-										<div class='day'>${vote.endDate.getDate()}</div>
-										<div class='month'>${vote.endDate.toString().split(' ')[1]}</div>
+										<div class='month'>${vote.endDate.getMonth()+1}.${vote.endDate.getDate()}</div>
+										<%-- <div class='day'>${vote.endDate.getDate()}일</div> --%>
+										
 									</div>
 									
 									<img src='/image/vote/original/${vote.choiceList.get(0).photo}'>

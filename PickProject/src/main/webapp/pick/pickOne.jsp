@@ -87,7 +87,7 @@
 				<span id="share_btn_twitter" class="share_btn"><img class="tooltipped"  data-position="top" data-delay="50" data-tooltip="트위터 공유하기" src="/image/share/Twitter.png"></span>
 			</div>
 			<div class="col s1">
-				<i id="info_btn" class="material-icons right tooltipped" data-html="true" data-position="top" data-delay="50" data-tooltip=" <div>상세정보 <br/>종료일 : ${vote.endDate}<br/>AGE :
+				<i id="info_btn" class="material-icons right tooltipped" data-html="true" data-position="top" data-delay="50" data-tooltip=" <div>상세정보 <br/>종료일 :  ${vote.endDate.toString().substring(0,10)}<br/>AGE :
 											<c:if test="${vote.voteAuthority.one==true &&vote.voteAuthority.two==true &&
 															   vote.voteAuthority.three==true &&vote.voteAuthority.four==true &&
 															   vote.voteAuthority.five==true &&vote.voteAuthority.six==true }">
